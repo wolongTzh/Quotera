@@ -1,4 +1,4 @@
-from flask import Flask , request, render_template
+from flask import Flask , request
 import requests , json , random
 
 
@@ -18,15 +18,35 @@ app.config['JSON_AS_ASCII'] = False
 def search():
     query = request.args.get("s")
     key = 'hitokoto'
-    url = requests.get(f"http://39.97.172.123:8081/api/graph/findInstanceByName?searchText={query}")
+    url = requests.get("https://api.pwxiao.top/sentences/i.json")
     text = url.text
     data = json.loads(text)
         
-    matches = json.dumps(data,ensure_ascii=False)
+    matches = [item for item in data if key in item and query in item[key]]
+    matches = json.dumps(matches,ensure_ascii=False)
     return matches
     
 
 
 @app.route('/',methods=["GET"])
 def return_OneText():
-    return render_template('index_out.html')
+
+    category = request.args.get("category")
+
+    category =  select(category)
+    url = requests.get("https://api.pwxiao.top/sentences/" + category + ".json")
+    text = url.text
+    # with open("../sentences/"+category+".json",'r',encoding='utf-8') as f:
+    #      text = f.read()       
+
+    res = json.loads(text)
+
+    try:
+        number = random.randint(0,(len(res) - 1))
+    except:
+        number = 6
+
+    result = res[number]
+    fina_res = json.dumps(result,ensure_ascii=False)
+ 
+    return fina_res
