@@ -18,12 +18,11 @@ app.config['JSON_AS_ASCII'] = False
 def search():
     query = request.args.get("s")
     key = 'hitokoto'
-    url = requests.get("https://api.pwxiao.top/sentences/i.json")
+    url = requests.get(f"http://39.97.172.123:8081/api/graph/findInstanceByName?searchText={query}")
     text = url.text
     data = json.loads(text)
         
-    matches = [item for item in data if key in item and query in item[key]]
-    matches = json.dumps(matches,ensure_ascii=False)
+    matches = json.dumps(data,ensure_ascii=False)
     return matches
     
 
