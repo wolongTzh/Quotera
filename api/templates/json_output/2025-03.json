@@ -1,0 +1,7442 @@
+[
+  {
+    "type": "吊销资质牌照",
+    "argument": "安庆市"
+  },
+  {
+    "type": "重大债务到期",
+    "argument": "福建船政"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "富士康"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "泰乐福"
+  },
+  {
+    "type": "员工罢工示威",
+    "argument": "英歌舞团"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "大鹏文旅"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "龙城小学"
+  },
+  {
+    "type": "高层变更",
+    "argument": "民治街道"
+  },
+  {
+    "type": "高层变更",
+    "argument": "东门步行街研学实践基地"
+  },
+  {
+    "type": "高层变更",
+    "argument": "罗湖区"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "奇蔬异果"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "清水河人工智能"
+  },
+  {
+    "type": "裁员",
+    "argument": "朴朴网络科技"
+  },
+  {
+    "type": "产品虚假宣传",
+    "argument": "光明街道"
+  },
+  {
+    "type": "高层变更",
+    "argument": "新桥街道"
+  },
+  {
+    "type": "高层变更",
+    "argument": "3·15国际消费者权益日"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "comA"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "小鹏汽车"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "理想汽车"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "乐山安捷奥信汽车销售服务有限公司"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "比亚迪海狮"
+  },
+  {
+    "type": "高层变更",
+    "argument": "小米集团"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "小米"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "FF"
+  },
+  {
+    "type": "破产清算",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "湖北悦来悦香食品科技有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "湖北恒环环保科技有限公司"
+  },
+  {
+    "type": "破产清算",
+    "argument": "湖北德纳法权信息科技有限公司"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "湖北归元生态农业科技有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "湖北恒森门业有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "兴业证券"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "格力电器"
+  },
+  {
+    "type": "高层变更",
+    "argument": "格力"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "湖北廷旭网络科技有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "湖北念一金属制品有限公司"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "中国电信"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "中航成飞"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "湖北崀水源生态农业有限公司"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "湖北泽安消防科技有限公司"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "湖北润骄泽宇环境技术有限公司"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "平安银行"
+  },
+  {
+    "type": "高层变更",
+    "argument": "委内瑞拉"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "东风奕派"
+  },
+  {
+    "type": "高层变更",
+    "argument": "长庆油田采气二厂"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "俄乌"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "银发经济"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "银河麒麟"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "小米"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "三星堆"
+  },
+  {
+    "type": "债务违约",
+    "argument": "中国电信重庆公司"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "吉林"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "湖北"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "台湾"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "攀枝花"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "税务非正常户",
+    "argument": "悦康药业"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "悦康药业"
+  },
+  {
+    "type": "延期信息披露",
+    "argument": "悦康药业"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "悦康药业"
+  },
+  {
+    "type": "公司注销",
+    "argument": "招商局蛇口工业区控股股份有限公司"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "多彩三角梅"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "多彩三角梅"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "何健麒"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "广铁集团"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "广州"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "美国"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "马边花间刺绣专业合作社"
+  },
+  {
+    "type": "高层变更",
+    "argument": "艾可萨科技"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "中国银行"
+  },
+  {
+    "type": "高层失联/死亡",
+    "argument": "香港科技大学"
+  },
+  {
+    "type": "重大债务到期",
+    "argument": "长安启源"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "华为"
+  },
+  {
+    "type": "高层变更",
+    "argument": "长和"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "贝德斯金融集团有限公司"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "Shopee"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "台湾积体电路制造股份有限公司"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "天成科技"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "大猩猩科技集团"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "温德姆酒店"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "奥本海默"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "希尔顿全球控股有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "宁德时代"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "上汽通用"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "康达新材"
+  },
+  {
+    "type": "扰乱市场秩序",
+    "argument": "赛力斯集团"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "泽连斯基"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "桃花"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "别克"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "小鹏汽车"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "苹果"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "奥迪"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "自如"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "财通"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "北角皇都"
+  },
+  {
+    "type": "公司退市",
+    "argument": "华夏金茂商业"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "加拿大"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "泽连斯基"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "罗湖发展"
+  },
+  {
+    "type": "重大债务到期",
+    "argument": "莲塘"
+  },
+  {
+    "type": "高层变更",
+    "argument": "罗湖"
+  },
+  {
+    "type": "高层变更",
+    "argument": "南都新闻"
+  },
+  {
+    "type": "高层变更",
+    "argument": "华为"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "瑞穗银行"
+  },
+  {
+    "type": "重大债务到期",
+    "argument": "城中村"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "大摩"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "中泰证券"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "三农老道"
+  },
+  {
+    "type": "高层变更",
+    "argument": "音乐动感"
+  },
+  {
+    "type": "高层变更",
+    "argument": "旅居云南"
+  },
+  {
+    "type": "窃取别人商业机密",
+    "argument": "云南"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "科技型"
+  },
+  {
+    "type": "高层变更",
+    "argument": "成都大运会"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "Espergyon"
+  },
+  {
+    "type": "高层变更",
+    "argument": "四川代表团"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "苹果"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中新网"
+  },
+  {
+    "type": "股票发行失败",
+    "argument": "泽广投资"
+  },
+  {
+    "type": "高层变更",
+    "argument": "金程源"
+  },
+  {
+    "type": "高层变更",
+    "argument": "广东鸿图科技股份有限公司"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "四季教育"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "资兴市州门司"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "白银"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "中国水运网"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中国水运网"
+  },
+  {
+    "type": "高层变更",
+    "argument": "TCL科技"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "大众汽车"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "吉利银河"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "凯迪拉克"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "奇瑞汽车"
+  },
+  {
+    "type": "裁员",
+    "argument": "保时捷"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "吉利汽车"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "实际控制人变更",
+    "argument": "杰思金材"
+  },
+  {
+    "type": "资本充足不足",
+    "argument": "湖北银行"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "高层变更",
+    "argument": "吉利"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "华为"
+  },
+  {
+    "type": "企业被问询约谈审查",
+    "argument": "安顺经开区"
+  },
+  {
+    "type": "公司注销",
+    "argument": "广东代表团"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "未来"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "金洲管道"
+  },
+  {
+    "type": "高层变更",
+    "argument": "美国信息"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "中科星图"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "芬太尼"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "深中通道"
+  },
+  {
+    "type": "实际控制人变更",
+    "argument": "浙江安晟控股有限公司"
+  },
+  {
+    "type": "公司注销",
+    "argument": "奇正藏药"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "汇中股份"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "万辰集团"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "泽连斯基"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "小麦妈"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "三星"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "北荆州莲藕"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "上海营养与健康研究所"
+  },
+  {
+    "type": "高层变更",
+    "argument": "华为"
+  },
+  {
+    "type": "连续下跌",
+    "argument": "北京大洋路"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "洽洽食品"
+  },
+  {
+    "type": "欠薪",
+    "argument": "科大讯飞"
+  },
+  {
+    "type": "产品虚假宣传",
+    "argument": "湖南师范大学"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "比特币"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "网易"
+  },
+  {
+    "type": "裁员",
+    "argument": "微芯科技"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "谷歌"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "吉利"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "中兴通讯"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "吉利汽车"
+  },
+  {
+    "type": "重大债务到期",
+    "argument": "帝欧家居"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "广东科绿饲料有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "上海凯兴泰新材料有限公司"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "海新联金属新材料有限公司"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "上海锦雅自动化设备有限公司"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "上海胜岳自动化设备有限公司"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "石油天然气"
+  },
+  {
+    "type": "停产停业",
+    "argument": "新兴"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "悍野"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "起亚"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "风光无限"
+  },
+  {
+    "type": "高层变更",
+    "argument": "千里科技"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "吉利"
+  },
+  {
+    "type": "高层变更",
+    "argument": "国家能源集团"
+  },
+  {
+    "type": "财务信息造假",
+    "argument": "东方集团"
+  },
+  {
+    "type": "盗取隐私信息",
+    "argument": "中银证券"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "江南布衣"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "Ultra18an"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "干科技"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中国残疾人艺术团"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "奥迪"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "九号公司"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "小米"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "长安汽车"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "埃安t"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "中国地震台网"
+  },
+  {
+    "type": "裁员",
+    "argument": "极星科技"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "特斯拉"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "华为"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "奇瑞"
+  },
+  {
+    "type": "高层变更",
+    "argument": "东风越野车有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "宇通集团"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "中科软"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "嘉环科技"
+  },
+  {
+    "type": "高层变更",
+    "argument": "汇丰"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "河北宇刚管道制造有限公司"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "南宫市喀秋莎润滑油科技有限公司"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "三河市简译软件开发有限公司"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "河北辰治汽车零部件科技有限公司"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "保定荣凯舜商砼制造有限公司"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "石家庄择科农牧机械设备有限公司"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "河北慧水新材料科技发展有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "北博可耐特汽车零部件有限公司"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "河北碳谷碳纤维有限公司"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "定州市瑞昌金属制品有限公司"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "唐山维真科技有限公司"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "河北标宁信息技术有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "定州新纶环保设备有限公司"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "河北奥贝斯食品有限公司"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "英思特"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "中航成飞"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "壹连科技"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "超研股份"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "中瑞股份"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "英思特"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "礼来公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "福州经济技术开发区"
+  },
+  {
+    "type": "高层变更",
+    "argument": "滨江集团"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "洽洽食品"
+  },
+  {
+    "type": "实际控制人涉诉仲裁",
+    "argument": "盒马"
+  },
+  {
+    "type": "高层变更",
+    "argument": "四川工程"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "北京花鳅"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "阳光"
+  },
+  {
+    "type": "高层变更",
+    "argument": "京津中关村科技城"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "人工智能"
+  },
+  {
+    "type": "退出市场",
+    "argument": "钱塘区"
+  },
+  {
+    "type": "连续下跌",
+    "argument": "英伟达"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "北方"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "龙迅半导体（合肥）股份有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "福州古城"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "胖东来"
+  },
+  {
+    "type": "高层变更",
+    "argument": "石鼓文"
+  },
+  {
+    "type": "高层变更",
+    "argument": "小米"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "HoMO"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "油茶果"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "金山云"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "广州天河"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "Rockstar启动器"
+  },
+  {
+    "type": "股票发行失败",
+    "argument": "网上"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "技嘉"
+  },
+  {
+    "type": "股票发行失败",
+    "argument": "江南新材"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "中央电视台"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "浙江黎明智造股份有限公司"
+  },
+  {
+    "type": "债务融资失败",
+    "argument": "和网"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "未来"
+  },
+  {
+    "type": "高层变更",
+    "argument": "诚邦生态环境股份有限公司"
+  },
+  {
+    "type": "股票发行失败",
+    "argument": "永杰新材"
+  },
+  {
+    "type": "重大债务到期",
+    "argument": "中登上海分公司"
+  },
+  {
+    "type": "财务信息造假",
+    "argument": "浙江黎明智造股份有限公司"
+  },
+  {
+    "type": "裁员",
+    "argument": "天津渤海银行"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "哪吒"
+  },
+  {
+    "type": "高层变更",
+    "argument": "浙江大学医学院附属第二医院"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "小米"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "InvergyHomes"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "ExtraSpaceSTorage"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "##yCapital"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "Da"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "亚瑟加拉格尔"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "Mexi特克"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "SpaceMshore"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "皇家加勒比集团"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "FometEntertainment"
+  },
+  {
+    "type": "高层变更",
+    "argument": "十四届全国人大"
+  },
+  {
+    "type": "高层变更",
+    "argument": "厦门港务发展股份有限公司"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "中国"
+  },
+  {
+    "type": "企业被问询约谈审查",
+    "argument": "宁波精达成形装备股份有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "景旺电子"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "股份"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "宁波精达成形装备股份有限公司"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "山东玻纤集团股份有限公司"
+  },
+  {
+    "type": "企业被问询约谈审查",
+    "argument": "宁波精达"
+  },
+  {
+    "type": "企业被问询约谈审查",
+    "argument": "宁波精达"
+  },
+  {
+    "type": "高层变更",
+    "argument": "辽宁"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "AI"
+  },
+  {
+    "type": "延期信息披露",
+    "argument": "英伟达"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "申花"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "亿航智能"
+  },
+  {
+    "type": "公司注销",
+    "argument": "恒润股份"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "彭博电视"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "德"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "绿色通道"
+  },
+  {
+    "type": "公司停牌",
+    "argument": "雪榕生物"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "英伟达"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "惠民生"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "美联储"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "YouTube"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "南华期货"
+  },
+  {
+    "type": "非法集资",
+    "argument": "日前"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "小米汽车"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "中信证券"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "海亮股份"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "智能投影仪"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "淄博鑫诺铸造材料科技有限公司"
+  },
+  {
+    "type": "高层失联/死亡",
+    "argument": "北京国安足球俱乐部"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "众安在线"
+  },
+  {
+    "type": "高层变更",
+    "argument": "英华特泰国"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "谷歌"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "海檀英投资合伙企业"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "和元生物"
+  },
+  {
+    "type": "高层变更",
+    "argument": "和元生物技术（上海）股份有限公司"
+  },
+  {
+    "type": "投资亏损",
+    "argument": "基金"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "鹏华中证传媒"
+  },
+  {
+    "type": "投资亏损",
+    "argument": "鹏华中证高铁产业"
+  },
+  {
+    "type": "高层变更",
+    "argument": "静为律所"
+  },
+  {
+    "type": "股票发行失败",
+    "argument": "美林数据"
+  },
+  {
+    "type": "投资亏损",
+    "argument": "英伟达"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "华为"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "小鹏汽车"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "哪吒汽车"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "红旗e-QM5"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "科大讯飞"
+  },
+  {
+    "type": "高层变更",
+    "argument": "追觅科技"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "腾讯"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "大位科技"
+  },
+  {
+    "type": "高层变更",
+    "argument": "广汽集团"
+  },
+  {
+    "type": "重大资产损失",
+    "argument": "92号汽油"
+  },
+  {
+    "type": "高层变更",
+    "argument": "宝马集团"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "小米"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "索尼"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "高达"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "格力"
+  },
+  {
+    "type": "员工罢工示威",
+    "argument": "妈阁塘"
+  },
+  {
+    "type": "高层变更",
+    "argument": "广东醒狮"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "安诚保险"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "赛微电子"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中材科技"
+  },
+  {
+    "type": "高层变更",
+    "argument": "广州酒家集团股份有限公司"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "庆阳市"
+  },
+  {
+    "type": "裁员",
+    "argument": "美国国防部"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "伊马姆奥卢"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "大宁县"
+  },
+  {
+    "type": "高层变更",
+    "argument": "美联储"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "优兔"
+  },
+  {
+    "type": "员工罢工示威",
+    "argument": "联邦机构"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "尼日尔"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "芬兰学校"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "腾讯"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "麒麟"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "钢铝"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "比亚迪海豹"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "中国巨石"
+  },
+  {
+    "type": "破产清算",
+    "argument": "索菱股份"
+  },
+  {
+    "type": "重大资产损失",
+    "argument": "赛微电子"
+  },
+  {
+    "type": "破产清算",
+    "argument": "飞龙股份"
+  },
+  {
+    "type": "破产清算",
+    "argument": "飞龙股份"
+  },
+  {
+    "type": "破产清算",
+    "argument": "国药股份"
+  },
+  {
+    "type": "裁员",
+    "argument": "西门子"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "海新能科"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "青岛港"
+  },
+  {
+    "type": "高层变更",
+    "argument": "瑞芯微"
+  },
+  {
+    "type": "破产清算",
+    "argument": "星宇股份"
+  },
+  {
+    "type": "破产清算",
+    "argument": "株洲冶炼集团股份有限公司"
+  },
+  {
+    "type": "欠薪",
+    "argument": "连环欠"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "联邦制药"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "华东理工大学"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "麦洛维"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "喀土穆银行"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "喀土穆银行"
+  },
+  {
+    "type": "裁员",
+    "argument": "苏丹"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "苏丹"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "苏丹"
+  },
+  {
+    "type": "裁员",
+    "argument": "尼旅游"
+  },
+  {
+    "type": "挤兑",
+    "argument": "苏丹"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "韩国贸易投资振兴公社"
+  },
+  {
+    "type": "裁员",
+    "argument": "机会发展特区"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "恩图曼"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "无晶圆厂"
+  },
+  {
+    "type": "税务非正常户",
+    "argument": "IMP"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "尼卫生"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "乐天全球物流"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "海上风电"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "保税工厂"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "聚丙烯"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "日本"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "泰国"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "泰国"
+  },
+  {
+    "type": "重大安全事故",
+    "argument": "希思罗机场"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "美国钢铝"
+  },
+  {
+    "type": "企业被问询约谈审查",
+    "argument": "公共开发公司"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "韩国银行"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "北汽蓝谷"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "金海通"
+  },
+  {
+    "type": "高层变更",
+    "argument": "烟台金润核电材料股份有限公司"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "gb"
+  },
+  {
+    "type": "高层变更",
+    "argument": "汉宇集团"
+  },
+  {
+    "type": "高层变更",
+    "argument": "兴通股份"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "新疆众和"
+  },
+  {
+    "type": "高层变更",
+    "argument": "湖南文昌新材科技股份有限公司"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "微软"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "长安汽车"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "特斯拉"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "珍爱网"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "光大保德信基金管理有限公司"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "广发中证"
+  },
+  {
+    "type": "延期信息披露",
+    "argument": "台湾积体电路制造股份有限公司"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "拼多多"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "精准科学"
+  },
+  {
+    "type": "高层变更",
+    "argument": "山东华鹏精机股份有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "新疆众和"
+  },
+  {
+    "type": "高层变更",
+    "argument": "新疆众和"
+  },
+  {
+    "type": "高层变更",
+    "argument": "凯恩股份"
+  },
+  {
+    "type": "公司退市",
+    "argument": "金麒麟"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "博鳌亚洲"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "华为"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "福建"
+  },
+  {
+    "type": "公司停牌",
+    "argument": "黑海海上"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "久立特材"
+  },
+  {
+    "type": "高层变更",
+    "argument": "习酒集团"
+  },
+  {
+    "type": "重大赔付",
+    "argument": "小米"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "联想"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "成都市西博城"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "成都人"
+  },
+  {
+    "type": "高层失联/死亡",
+    "argument": "襄阳市中心医院"
+  },
+  {
+    "type": "企业被问询约谈审查",
+    "argument": "全棉时代"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "珠江江"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中新社"
+  },
+  {
+    "type": "企业被问询约谈审查",
+    "argument": "浪莎"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "方塔纳"
+  },
+  {
+    "type": "股票发行失败",
+    "argument": "中新社"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "2017年国际滑联短道速滑世锦赛"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "天山网"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "广西崇左市扶绥县市场监督管理局"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "水土保持"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "水口山"
+  },
+  {
+    "type": "非法集资",
+    "argument": "人保财险衡阳市分公司"
+  },
+  {
+    "type": "产品虚假宣传",
+    "argument": "中国银行衡阳分行"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "春回大地"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "江海直航"
+  },
+  {
+    "type": "经营激进",
+    "argument": "中国外运股份有限公司"
+  },
+  {
+    "type": "产品虚假宣传",
+    "argument": "邮储银行武平县支行"
+  },
+  {
+    "type": "高层涉嫌违法",
+    "argument": "茂名"
+  },
+  {
+    "type": "高层变更",
+    "argument": "茂名市"
+  },
+  {
+    "type": "高层变更",
+    "argument": "茂名市人民检察院"
+  },
+  {
+    "type": "高层变更",
+    "argument": "茂名"
+  },
+  {
+    "type": "高层变更",
+    "argument": "茂名市"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "夏季"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "贝姿妍"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "梁山希希纸制品有限公司"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "黄金"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "梁山希希纸制品有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "三星商家"
+  },
+  {
+    "type": "大量投诉",
+    "argument": "丰泽区"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "成都"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "青白江"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "啄木鸟"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "你点我检"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "健芝初医疗器械有限公司"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "啄木鸟"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "意大利"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "啄木鸟"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "上海销氪信息科技有限公司"
+  },
+  {
+    "type": "违规催收",
+    "argument": "借贷宝"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "煤层气公司"
+  },
+  {
+    "type": "责令改正",
+    "argument": "西城环卫所"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "梁山希希纸制品有限公司"
+  },
+  {
+    "type": "盗取隐私信息",
+    "argument": "外呼智能"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中新社"
+  },
+  {
+    "type": "员工罢工示威",
+    "argument": "中新社"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "七国集团"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "小t"
+  },
+  {
+    "type": "被列为失信被执行人",
+    "argument": "湖北日报传媒集团"
+  },
+  {
+    "type": "信息泄露",
+    "argument": "智优擎网络科技有限公司"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "网红"
+  },
+  {
+    "type": "非法集资",
+    "argument": "湖北中行金融教育"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "中新社"
+  },
+  {
+    "type": "第一大股东变化",
+    "argument": "复星医药"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "健芝初医疗器械有限公司"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "宝钢集团"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "未来"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "贵港贵港"
+  },
+  {
+    "type": "高层变更",
+    "argument": "深汕特别合作区"
+  },
+  {
+    "type": "产品虚假宣传",
+    "argument": "金堂羊肚菌"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "红海"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "沈阳市"
+  },
+  {
+    "type": "高层变更",
+    "argument": "小米"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "溪源江"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "小米"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "大冶"
+  },
+  {
+    "type": "高层变更",
+    "argument": "天空地海"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "盘龙古道"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "邮储银行"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "江西铜业"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "法拉利"
+  },
+  {
+    "type": "重大安全事故",
+    "argument": "雷电"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "恒隆商圈"
+  },
+  {
+    "type": "高层变更",
+    "argument": "邮储银行"
+  },
+  {
+    "type": "财务信息造假",
+    "argument": "区分"
+  },
+  {
+    "type": "高层变更",
+    "argument": "邮储银行"
+  },
+  {
+    "type": "造假欺诈",
+    "argument": "中国邮政储蓄银行股份有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中国邮政储蓄银行股份有限公司"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "神龙汽车"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "福特"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "中信建投"
+  },
+  {
+    "type": "高层变更",
+    "argument": "英伟达"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "兴义机场"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "小米"
+  },
+  {
+    "type": "企业被问询约谈审查",
+    "argument": "苏州华之杰电讯股份有限公司"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "世界(集团)"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "恒邦股份"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "新甘肃"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "山石网科"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "瑞斯康集团"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "红星美凯龙"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中手游"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "山西安装"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "华滋国际海洋"
+  },
+  {
+    "type": "公司退市",
+    "argument": "联康生物科"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "升能集团"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "工商银行湖北省分行"
+  },
+  {
+    "type": "高层变更",
+    "argument": "潜江"
+  },
+  {
+    "type": "高层变更",
+    "argument": "招商引资"
+  },
+  {
+    "type": "重大资产损失",
+    "argument": "蒙牛乳业"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "三只松鼠"
+  },
+  {
+    "type": "实际控制人变更",
+    "argument": "锐成芯微"
+  },
+  {
+    "type": "延期信息披露",
+    "argument": "美国证券交易委员会"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "福特汽车公司"
+  },
+  {
+    "type": "股票发行失败",
+    "argument": "格陵兰"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "碧桂园"
+  },
+  {
+    "type": "重大资产损失",
+    "argument": "凯盛科技"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "小米汽车"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "建设银行"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "Gas)"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "玉溪河"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "创新药"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "甲酸炉"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "全鑫精密"
+  },
+  {
+    "type": "审计师辞任",
+    "argument": "YiHubManagementSystem"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "混联式"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "LGOL"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "霍尼韦尔"
+  },
+  {
+    "type": "第一大股东变化",
+    "argument": "##tosecond"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中新网站"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "美团"
+  },
+  {
+    "type": "高层变更",
+    "argument": "大乐之野"
+  },
+  {
+    "type": "审计师辞任",
+    "argument": "福建省"
+  },
+  {
+    "type": "股票发行失败",
+    "argument": "苏州长光华芯光电技术股份有限"
+  },
+  {
+    "type": "高层变更",
+    "argument": "高凌军"
+  },
+  {
+    "type": "高层变更",
+    "argument": "沈阳"
+  },
+  {
+    "type": "经营期限到期",
+    "argument": "苏州长光华芯光电技术股份有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "本所"
+  },
+  {
+    "type": "实际控制人变更",
+    "argument": "邓兆敬先生"
+  },
+  {
+    "type": "财务信息造假",
+    "argument": "大家"
+  },
+  {
+    "type": "审计师辞任",
+    "argument": "敦煌种业"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "甘肃省敦煌种业集团股份有限公司"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "中新社"
+  },
+  {
+    "type": "重大债务到期",
+    "argument": "泰国家庭"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "中新社"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "蔚来"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "十四五"
+  },
+  {
+    "type": "高层变更",
+    "argument": "阿联酋"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "凯龙高科"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "碳汇"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "嘀嗒"
+  },
+  {
+    "type": "高层变更",
+    "argument": "美晨科技"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "奥锐特"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "地平线"
+  },
+  {
+    "type": "扰乱市场秩序",
+    "argument": "高盛"
+  },
+  {
+    "type": "高层变更",
+    "argument": "凯利・洛夫勒"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "中新社"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "侗族大歌"
+  },
+  {
+    "type": "高层变更",
+    "argument": "英联邦"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "波音公司"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "京大学法学院"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "箭步高"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "方舟健客"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "交通银行"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "腾讯混元"
+  },
+  {
+    "type": "高层变更",
+    "argument": "华为"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "盛新锂能"
+  },
+  {
+    "type": "高层变更",
+    "argument": "科陆电子"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "凡拓数创"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "faceboo"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "极氪"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "雷丁汽车"
+  },
+  {
+    "type": "高层变更",
+    "argument": "腾势汽车"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "腾势"
+  },
+  {
+    "type": "停产停业",
+    "argument": "宝马"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "安旭生物"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "Beyond2"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "赛腾股份"
+  },
+  {
+    "type": "高层变更",
+    "argument": "易方达基金"
+  },
+  {
+    "type": "公司停牌",
+    "argument": "重庆新铝时代科技股份有限公司"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "北大"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "猫头鹰"
+  },
+  {
+    "type": "延期信息披露",
+    "argument": "万东医疗"
+  },
+  {
+    "type": "高层变更",
+    "argument": "紫金矿业"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "新劲刚"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中集环科"
+  },
+  {
+    "type": "高层变更",
+    "argument": "新铝时代"
+  },
+  {
+    "type": "产品虚假宣传",
+    "argument": "湖北省利川市博育局"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "马马"
+  },
+  {
+    "type": "高层变更",
+    "argument": "安孚科技"
+  },
+  {
+    "type": "责令改正",
+    "argument": "津门虎"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "惠欣冉"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "金山银山"
+  },
+  {
+    "type": "高层变更",
+    "argument": "荣耀"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "小米"
+  },
+  {
+    "type": "高层变更",
+    "argument": "荣耀"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "泽连斯基"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "智能家居"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "耐数电子"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "乐业"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "法拉帝集团"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "一汽-大众"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "别克"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "上汽通用汽车"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "小米汽车"
+  },
+  {
+    "type": "高层变更",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "高层变更",
+    "argument": "零壹智库"
+  },
+  {
+    "type": "重大债务到期",
+    "argument": "南宁万达店"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "高层变更",
+    "argument": "福田时尚"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "未来"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "小米"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "算力中心"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "美国"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "深圳百果园实业（集团）股份有限"
+  },
+  {
+    "type": "高层变更",
+    "argument": "金才玖"
+  },
+  {
+    "type": "高层变更",
+    "argument": "财阀城市发展有限公司"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "瑞波币"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "南方"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "北京人工智能"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "特斯拉"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "福·齐亚·塔莱"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "小雷"
+  },
+  {
+    "type": "高层变更",
+    "argument": "卡通动物"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "华夏国证"
+  },
+  {
+    "type": "投资亏损",
+    "argument": "盛世古董"
+  },
+  {
+    "type": "高层变更",
+    "argument": "华能新疆公司"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "迪特"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "哈萨克斯"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "微软"
+  },
+  {
+    "type": "大量投诉",
+    "argument": "畅通信托"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "长沙市麓山国际第二实验小学"
+  },
+  {
+    "type": "授信额度减少",
+    "argument": "未来"
+  },
+  {
+    "type": "重大债务到期",
+    "argument": "平安人寿"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "比特币"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "奥巴马时代"
+  },
+  {
+    "type": "高层变更",
+    "argument": "圣淘沙"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "苹果"
+  },
+  {
+    "type": "高层变更",
+    "argument": "北电数智"
+  },
+  {
+    "type": "高层变更",
+    "argument": "天马行空"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "Intel"
+  },
+  {
+    "type": "高层变更",
+    "argument": "瑞波币"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "江西中东部"
+  },
+  {
+    "type": "员工罢工示威",
+    "argument": "埃隆"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "迪亚洛"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "小鹏汽车"
+  },
+  {
+    "type": "高层变更",
+    "argument": "全运会"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "迪丽努尔"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "三星电子"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "沈阳让牡花"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "卓越工程师"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "通城县第一小学"
+  },
+  {
+    "type": "连续下跌",
+    "argument": "法拉利"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "秦L"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "红旗e-H9"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "轻便摩托车"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "环保运营服务"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "乌苏"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "北美"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "国金证券"
+  },
+  {
+    "type": "停产停业",
+    "argument": "百县千镇"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "2017年来"
+  },
+  {
+    "type": "高层变更",
+    "argument": "未来咖啡"
+  },
+  {
+    "type": "经营激进",
+    "argument": "淘宝天猫"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "加工玉米"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "博士"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "微软"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "新汴河"
+  },
+  {
+    "type": "连续下跌",
+    "argument": "上海贝岭"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "信测标准"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "安徽省大酒店"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "沈阳"
+  },
+  {
+    "type": "裁员",
+    "argument": "泗县总工会"
+  },
+  {
+    "type": "高层变更",
+    "argument": "皖工"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "健康美食"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "券商营业部"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "胜利油田"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "中石油"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "沙特"
+  },
+  {
+    "type": "盗取隐私信息",
+    "argument": "小艺"
+  },
+  {
+    "type": "高层变更",
+    "argument": "三博脑科"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "千禾味业"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "胡塞武装"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "三三"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "新恒汇"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "有友食品"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "长安汽车"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "长城汽车"
+  },
+  {
+    "type": "停产停业",
+    "argument": "奥迪"
+  },
+  {
+    "type": "高层变更",
+    "argument": "小米"
+  },
+  {
+    "type": "高层变更",
+    "argument": "特朗普"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "苹果"
+  },
+  {
+    "type": "企业被问询约谈审查",
+    "argument": "美乌代表团"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "布鲁可"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "小米"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "秦Lev"
+  },
+  {
+    "type": "盗取隐私信息",
+    "argument": "Mea"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "东方市"
+  },
+  {
+    "type": "员工罢工示威",
+    "argument": "特斯拉"
+  },
+  {
+    "type": "盗取隐私信息",
+    "argument": "倍儿"
+  },
+  {
+    "type": "裁员",
+    "argument": "首都医科大学"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "法拉利车队"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "滴滴"
+  },
+  {
+    "type": "高层变更",
+    "argument": "西门子"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "小猫头鹰"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "谷歌"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "##nelux"
+  },
+  {
+    "type": "高层变更",
+    "argument": "尼日利亚"
+  },
+  {
+    "type": "重大安全事故",
+    "argument": "卧龙电器厂"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "深康佳Ａ"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "创新"
+  },
+  {
+    "type": "第一大股东变化",
+    "argument": "幄肯"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "稷"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "安徽"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "合肥欣奕华"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "深圳市联得半导体技术有限公司"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "轩田科技"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "VF80"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "天帆"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "森美协尔"
+  },
+  {
+    "type": "高层变更",
+    "argument": "毛葆庆音乐文化基金会"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "黑海安全航行"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "经营激进",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "经营激进",
+    "argument": "云南云大科技农化有限公司"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "##ssabas"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "Boltotherapeutics"
+  },
+  {
+    "type": "停产停业",
+    "argument": "重庆市"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "俄罗斯银行"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "江苏恒瑞医药股份有限公司"
+  },
+  {
+    "type": "财务信息造假",
+    "argument": "倍杰特"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "复星医药"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "成都环境集团"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "小米汽车"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "新疆"
+  },
+  {
+    "type": "高层变更",
+    "argument": "字节跳动"
+  },
+  {
+    "type": "高层变更",
+    "argument": "泽连斯基"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "博鳌亚洲论坛"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "澳大利亚"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "摩根士丹利"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "现代汽车集团"
+  },
+  {
+    "type": "重大安全事故",
+    "argument": "法国空军"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "物流公司"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "复宏汉霖"
+  },
+  {
+    "type": "经营激进",
+    "argument": "达州钢铁集团有限责任公司"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "今天国际"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "泸州老窖"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "航运业"
+  },
+  {
+    "type": "重大安全事故",
+    "argument": "淮河能源"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "星沙产业基地开发有限公司"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "海南自由贸易港"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "朗鸿科技"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "国盾量子"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "合康新能"
+  },
+  {
+    "type": "高层变更",
+    "argument": "大连中远海运有限公司"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "克里姆林"
+  },
+  {
+    "type": "重大安全事故",
+    "argument": "泽连斯基"
+  },
+  {
+    "type": "高层变更",
+    "argument": "泽连斯基"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "中国居民"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "盐城国际足球"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "黄帝陵"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "远亲"
+  },
+  {
+    "type": "高层变更",
+    "argument": "盘龙区联社"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "蚂蚁集团"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "人工智能"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "土拨鼠"
+  },
+  {
+    "type": "重大赔付",
+    "argument": "沈海高速"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "机器人"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "湖北大学阳逻校区"
+  },
+  {
+    "type": "高层变更",
+    "argument": "日本央行"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "日本央行"
+  },
+  {
+    "type": "高层变更",
+    "argument": "小米汽车"
+  },
+  {
+    "type": "高层变更",
+    "argument": "江西农商银行"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中加基金"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "青川县"
+  },
+  {
+    "type": "高层变更",
+    "argument": "淄博大亚金属科技股份有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "铜仁市"
+  },
+  {
+    "type": "高层变更",
+    "argument": "铜仁市第三届人民代表大会"
+  },
+  {
+    "type": "高层变更",
+    "argument": "铜仁市"
+  },
+  {
+    "type": "高层变更",
+    "argument": "铜仁市"
+  },
+  {
+    "type": "高层变更",
+    "argument": "铜仁市第三届人民代表大会常务委员会"
+  },
+  {
+    "type": "高层变更",
+    "argument": "#&#"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "雷军"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "问界"
+  },
+  {
+    "type": "裁员",
+    "argument": "奔驰中国"
+  },
+  {
+    "type": "高层变更",
+    "argument": "华为"
+  },
+  {
+    "type": "高层变更",
+    "argument": "华为"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "小米"
+  },
+  {
+    "type": "财务报表更正",
+    "argument": "小鹏汽车"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "本田公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中展集团"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "华盛顿"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "一人食"
+  },
+  {
+    "type": "经营激进",
+    "argument": "muji"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "火星"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "斯普特尼克"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "浩瀚宇宙"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "小米"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "北京大承精技汽车部件有限公司"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "小米家胶囊咖啡机"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "长光华芯"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "安迪苏"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "安博通"
+  },
+  {
+    "type": "高层变更",
+    "argument": "日本央行"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "第一资本金融公司"
+  },
+  {
+    "type": "资产冻结",
+    "argument": "斯坦福大学"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "威胜信息"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "四川第一部农田建设"
+  },
+  {
+    "type": "裁员",
+    "argument": "利安德巴塞尔工业公司"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "欧盟"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "美国"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "华为"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "苹果"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "快科技"
+  },
+  {
+    "type": "高层变更",
+    "argument": "小米SU7Ultra"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "德州公路酒吧"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "VeraTherapeutics"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "tOgroupHoldings"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "小米"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "喜瑞都小区"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "映恩生物"
+  },
+  {
+    "type": "经营激进",
+    "argument": "星邦互娱"
+  },
+  {
+    "type": "重大安全事故",
+    "argument": "长征二号丙"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "谷底程"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "北京W王者荣耀分部"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "任天堂"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "##guelike"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "动视"
+  },
+  {
+    "type": "员工罢工示威",
+    "argument": "阿萨德"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "长沙五一商圈"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "烟台机场"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "金沙江"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "猫尾草加工"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "庆阳"
+  },
+  {
+    "type": "高层变更",
+    "argument": "伏羲庙"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "积石山"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "佳盛达种养殖专业合作社"
+  },
+  {
+    "type": "高层变更",
+    "argument": "未来"
+  },
+  {
+    "type": "高层变更",
+    "argument": "重庆市城市治理研究院"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "乌军"
+  },
+  {
+    "type": "高层变更",
+    "argument": "迪士尼"
+  },
+  {
+    "type": "高层变更",
+    "argument": "沈阳市"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "运-9"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "三八红旗"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "苏美达"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "霸凌国家"
+  },
+  {
+    "type": "高层变更",
+    "argument": "志邦家居"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "国能乾安新能源有限公司"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "珲春"
+  },
+  {
+    "type": "经营激进",
+    "argument": "低空经济"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "洛阳奥图机械设备有限公司"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "上海巧坤化工科技有限公司"
+  },
+  {
+    "type": "延期信息披露",
+    "argument": "华能江苏公司"
+  },
+  {
+    "type": "重大安全事故",
+    "argument": "兰州登岭医药化工开发有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "运达股份"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "山东金科力新能源科技有限责任公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "浙江菲达精工机械有限公司"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "山东山铝颐丰铝基新材料股份有限公司"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "上海华丝微精网科技有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "特朗普"
+  },
+  {
+    "type": "高层变更",
+    "argument": "泛美航空科技（南京）有限公司"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "滨湖金投集团"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "酒吧"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "光线传媒"
+  },
+  {
+    "type": "高层变更",
+    "argument": "广西云-广西代表团"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "富顺街社区"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "天津滨海能源发展股份有限公司"
+  },
+  {
+    "type": "高层涉嫌违法",
+    "argument": "万辰集团"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "仰望u7"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "新款"
+  },
+  {
+    "type": "高层涉嫌违法",
+    "argument": "首尔中央地方法院"
+  },
+  {
+    "type": "高层变更",
+    "argument": "华为"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "上海报业集团"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "长阳博物馆"
+  },
+  {
+    "type": "重大债务到期",
+    "argument": "甜城湖"
+  },
+  {
+    "type": "高层变更",
+    "argument": "三堆书"
+  },
+  {
+    "type": "财务信息造假",
+    "argument": "澳大利亚"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "加拿大"
+  },
+  {
+    "type": "停产停业",
+    "argument": "神华新街能源有限公司"
+  },
+  {
+    "type": "停产停业",
+    "argument": "云发煤矿"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "iPad"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "微软"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "库尔斯克州"
+  },
+  {
+    "type": "高层变更",
+    "argument": "默茨"
+  },
+  {
+    "type": "高层变更",
+    "argument": "雪榕生物"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "东方雨虹"
+  },
+  {
+    "type": "无法表示意见",
+    "argument": "金分红"
+  },
+  {
+    "type": "高层变更",
+    "argument": "贺利氏光伏（上海）有限公司"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "雪榕转债"
+  },
+  {
+    "type": "企业被问询约谈审查",
+    "argument": "未来"
+  },
+  {
+    "type": "股票发行失败",
+    "argument": "雪榕生物"
+  },
+  {
+    "type": "公司注销",
+    "argument": "东方雨虹"
+  },
+  {
+    "type": "公司违规关联交易",
+    "argument": ""
+  },
+  {
+    "type": "资金紧张",
+    "argument": "雪榕生物"
+  },
+  {
+    "type": "实际控制人变更",
+    "argument": "雪榕生物科技股份有限公司"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "坦克"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "奥迪"
+  },
+  {
+    "type": "公司停牌",
+    "argument": "腾景科技"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "信隆健康"
+  },
+  {
+    "type": "重大赔付",
+    "argument": "ST天邦"
+  },
+  {
+    "type": "连续下跌",
+    "argument": "康辰药业"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "雄帝科技"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "泽连斯基"
+  },
+  {
+    "type": "产品虚假宣传",
+    "argument": "太原市龙潭公园"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "湖南众用电子有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "海思科"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "保时捷"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "威刚"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "宝钢包装"
+  },
+  {
+    "type": "经营激进",
+    "argument": "福特汽车"
+  },
+  {
+    "type": "高层变更",
+    "argument": "保时捷"
+  },
+  {
+    "type": "经营激进",
+    "argument": "恒立液压"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "加拿大银行"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "海底捞"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "华商基金"
+  },
+  {
+    "type": "高层变更",
+    "argument": "广东省政府"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "腾景科技"
+  },
+  {
+    "type": "高层变更",
+    "argument": "瑞银"
+  },
+  {
+    "type": "高层变更",
+    "argument": "华为"
+  },
+  {
+    "type": "高层变更",
+    "argument": "2018年11日"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "手机"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "薯片"
+  },
+  {
+    "type": "裁员",
+    "argument": "特斯拉"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "埃及"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "Stratabarie"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "雷军"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "美国"
+  },
+  {
+    "type": "高层变更",
+    "argument": "芬太尼"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "苹果"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "彩电"
+  },
+  {
+    "type": "员工罢工示威",
+    "argument": "城东雅园小区"
+  },
+  {
+    "type": "重大安全事故",
+    "argument": "雷电"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "长城汽车"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "途昂Pro"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "北京市促进国四"
+  },
+  {
+    "type": "窃取别人商业机密",
+    "argument": "龙岩植物"
+  },
+  {
+    "type": "财务信息造假",
+    "argument": "胖五斤"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "哈尔滨市继红小学"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "小红书"
+  },
+  {
+    "type": "窃取别人商业机密",
+    "argument": "沈阳"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "金融基金"
+  },
+  {
+    "type": "高层变更",
+    "argument": "斯特兰蒂斯集团"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "可口可乐"
+  },
+  {
+    "type": "财务信息造假",
+    "argument": "长园集团"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "湖南共联电气有限公司"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "沈阳市"
+  },
+  {
+    "type": "重大安全事故",
+    "argument": "未来"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "张谷英村"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "海螺水泥"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "克山"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "泰豪"
+  },
+  {
+    "type": "高层变更",
+    "argument": "郴州启程自驾游俱乐部"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "郴州"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "湘亦佳公司"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "安仁稻田公园"
+  },
+  {
+    "type": "窃取别人商业机密",
+    "argument": "雷军"
+  },
+  {
+    "type": "停产停业",
+    "argument": "福克斯"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "Intel"
+  },
+  {
+    "type": "高层变更",
+    "argument": "智元机器人"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "辽宁杏林整形外科医院"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "新一代智慧"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "赫尔松州"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "京新发地"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "苹果"
+  },
+  {
+    "type": "高层涉嫌违法",
+    "argument": "益丰大药房"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "第三象限"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "未来房地产"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "惠众粮油专业合作社"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "江西伊发电力股份有限公司"
+  },
+  {
+    "type": "重大赔付",
+    "argument": "梅州市兴缘农业发展有限公司"
+  },
+  {
+    "type": "裁员",
+    "argument": "长庆油田第三采油厂"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "三星"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "中远海运"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "连云港"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "波音公司"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "g50混动"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "途昂Pro"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "德科技"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "贵州三力制药股份公司"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "途昂Pro"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "未来"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "腾讯"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "老美"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "楼向平"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "阿萨德"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "鲁比奥"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "迈克"
+  },
+  {
+    "type": "股票发行失败",
+    "argument": "百利天恒"
+  },
+  {
+    "type": "高层变更",
+    "argument": "五道口江湖"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "广东省"
+  },
+  {
+    "type": "高层涉嫌违法",
+    "argument": "四川长虹电子控股集团"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "创投行业"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "杭州宇树科技"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "吉林"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "广州金控"
+  },
+  {
+    "type": "高层变更",
+    "argument": "广东"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "绿城管理"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "NVIDIA"
+  },
+  {
+    "type": "高层变更",
+    "argument": "萨摩耶云科技集团"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "发达国家技术"
+  },
+  {
+    "type": "退出市场",
+    "argument": "特斯拉"
+  },
+  {
+    "type": "高层变更",
+    "argument": "金点子"
+  },
+  {
+    "type": "高层变更",
+    "argument": "水果玉米"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "懂车帝"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "广东东莞新彤盛女篮"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "广东女团"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "伯明翰"
+  },
+  {
+    "type": "高层变更",
+    "argument": "深圳街超"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "覃海洋"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "贝莱德"
+  },
+  {
+    "type": "公司退市",
+    "argument": "玉龙股份"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "埃尔多安"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "OPPO"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "兰娅"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "江苏运动"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "金鹤镇"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "双湖县"
+  },
+  {
+    "type": "高层变更",
+    "argument": "南繁硅谷"
+  },
+  {
+    "type": "高层变更",
+    "argument": "王台书市"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "弘景光电"
+  },
+  {
+    "type": "实际控制人涉诉仲裁",
+    "argument": "大连万达"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "广州蒲公英足球"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "保亭"
+  },
+  {
+    "type": "高层失联/死亡",
+    "argument": "西北高新医院"
+  },
+  {
+    "type": "经营激进",
+    "argument": "华盛顿"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "海地人"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "矽电半导体设备股份有限"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "力拓集团"
+  },
+  {
+    "type": "经营激进",
+    "argument": "凤翔苹果"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "一加"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "微软"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "云迹科技"
+  },
+  {
+    "type": "高层变更",
+    "argument": "小小河湖卫士"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "地球青松YE"
+  },
+  {
+    "type": "高层变更",
+    "argument": "天津市青年京剧团"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "新疆"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "中山梅州足球"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "金钟湖公园"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中国盛泰（Sunrit）集团"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "智利"
+  },
+  {
+    "type": "股票发行失败",
+    "argument": "智利"
+  },
+  {
+    "type": "经营激进",
+    "argument": "智利"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "波黑"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "非洲能源"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "爱沙尼亚"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "纳齐提加水电站公司"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "非洲开发银行"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "科特迪瓦"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "猴痘"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "商业银行"
+  },
+  {
+    "type": "裁员",
+    "argument": "布雷顿"
+  },
+  {
+    "type": "公司停牌",
+    "argument": "喀麦隆"
+  },
+  {
+    "type": "被列为失信被执行人",
+    "argument": "克"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "克罗地亚"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "克罗地亚"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "克罗地亚"
+  },
+  {
+    "type": "高层变更",
+    "argument": "波黑塞族共和国"
+  },
+  {
+    "type": "吊销业务许可或执照",
+    "argument": "波黑"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "波黑"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "波黑"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "波黑电力公司"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "波黑"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "德国"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "波黑联邦"
+  },
+  {
+    "type": "高层变更",
+    "argument": "名创优品集团"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "实皆市"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "将军山国际滑雪度假区"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "马丁"
+  },
+  {
+    "type": "高层变更",
+    "argument": "新能源汽车"
+  },
+  {
+    "type": "经营激进",
+    "argument": "广汽本田"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "云辇-z智能"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "汽车导航"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "千县万镇"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "格隆汇"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "喀麦隆"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "德新社"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "科技"
+  },
+  {
+    "type": "高层变更",
+    "argument": "联想"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "盛大"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "雷军"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "小鹏汽车"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "防水冲锋衣"
+  },
+  {
+    "type": "停产停业",
+    "argument": "善商控股"
+  },
+  {
+    "type": "高层变更",
+    "argument": "新疆奶茶"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "奥体中心"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "新疆男子铁饼"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "新疆"
+  },
+  {
+    "type": "高层变更",
+    "argument": "洛浦县民乐地毯进出口有限公司"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "巴里坤"
+  },
+  {
+    "type": "裁员",
+    "argument": "新疆女篮"
+  },
+  {
+    "type": "高层变更",
+    "argument": "广百股份"
+  },
+  {
+    "type": "产品虚假宣传",
+    "argument": "中墨"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "谷罗"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "南横琴北高新"
+  },
+  {
+    "type": "高层变更",
+    "argument": "国企"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "海上风电"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "和辉光电"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "乌克兰无人机"
+  },
+  {
+    "type": "信息泄露",
+    "argument": "福克斯"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "四明山国家森林公园"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "青岛的人工智能计算中心"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "鲸鸿动能"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "英特尔"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "德尔塔"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "齐达康"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "Mea"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "人民银行山西省分行"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "耶鲁大学"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "中国人保"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "蜜雪集团"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "古茗"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "高层变更",
+    "argument": "智汇云舟"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "华为"
+  },
+  {
+    "type": "高层变更",
+    "argument": "贸泽电子"
+  },
+  {
+    "type": "高层变更",
+    "argument": "雅里数科"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "老邓调解工作室"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "日偏食"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "别尔哥罗德能源公司"
+  },
+  {
+    "type": "资金紧张",
+    "argument": ""
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": ""
+  },
+  {
+    "type": "财务信息造假",
+    "argument": "雷尔伟"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": ""
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": ""
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "iPhone"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "胡塞武装"
+  },
+  {
+    "type": "评级机构中止评级",
+    "argument": "北京燕山分公司"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "龙源（北京）新能源工程技术有限公司"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "申万菱信"
+  },
+  {
+    "type": "产品虚假宣传",
+    "argument": "平安"
+  },
+  {
+    "type": "高层变更",
+    "argument": "索菲亚"
+  },
+  {
+    "type": "高层变更",
+    "argument": "福田区"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "阳岗街道"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "龙岗五院"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "上海农商行"
+  },
+  {
+    "type": "高层变更",
+    "argument": "卡尼"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "世卫组织"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "智己汽车"
+  },
+  {
+    "type": "重大安全事故",
+    "argument": "俄罗斯"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "海南自贸港建设"
+  },
+  {
+    "type": "裁员",
+    "argument": "嘉能可"
+  },
+  {
+    "type": "裁员",
+    "argument": "江苏"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "美国国债"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "富国银行"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "小鹏汽车"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "上汽集团"
+  },
+  {
+    "type": "高层变更",
+    "argument": "小鹏汽车"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "啄木鸟公司"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "万科物业"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "海信"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "三星"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "胡塞武装"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "同花顺财"
+  },
+  {
+    "type": "重大安全事故",
+    "argument": "马航"
+  },
+  {
+    "type": "经营激进",
+    "argument": "成都数字文创"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "小米"
+  },
+  {
+    "type": "审计师辞任",
+    "argument": "华为"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "智能"
+  },
+  {
+    "type": "重大资产损失",
+    "argument": "华润三九"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "开源证券"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "开源证券"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "未来"
+  },
+  {
+    "type": "第一大股东变化",
+    "argument": "药明康德"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "沈阳市"
+  },
+  {
+    "type": "停产停业",
+    "argument": "中国联通"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "白银中天新材料有限责任公司"
+  },
+  {
+    "type": "债务展期",
+    "argument": "哪吒工艺品"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "青岛港"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "义乌国际贸易"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "广州港"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "中国重汽"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "厦门标准砂"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "海通发展"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "重庆三峡水利电力（集团）股份有限公司"
+  },
+  {
+    "type": "限制股东权利",
+    "argument": "思路"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "美联储"
+  },
+  {
+    "type": "债务展期",
+    "argument": "成都世纪城"
+  },
+  {
+    "type": "窃取别人商业机密",
+    "argument": "美团"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "阿富汗"
+  },
+  {
+    "type": "高层变更",
+    "argument": "国际奥委会"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "香港贸易发展局"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "Ricky"
+  },
+  {
+    "type": "重大安全事故",
+    "argument": "中船黄埔文冲船舶有限公司"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "宜昌-忠县航线"
+  },
+  {
+    "type": "重大赔付",
+    "argument": "霸王"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "商业银行"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中国黄金集团有限公司"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "牧原股份"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "芬太尼"
+  },
+  {
+    "type": "高层变更",
+    "argument": "孚日股份"
+  },
+  {
+    "type": "高层变更",
+    "argument": "柳工"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "冠农数字农业"
+  },
+  {
+    "type": "盗取隐私信息",
+    "argument": "百度"
+  },
+  {
+    "type": "盗取隐私信息",
+    "argument": "清朗"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "江城"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "中碳登大厦"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "丹江口市"
+  },
+  {
+    "type": "高层变更",
+    "argument": "意大利"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "丹尼索瓦人"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "迪生力"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "奥福环保"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "华阳集团"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "苏美达"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "永安期货"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "联创锂能"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "中国平安"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "天合光能"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "吉利汽车"
+  },
+  {
+    "type": "高层变更",
+    "argument": "广汽集团"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "问界"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "Transier"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "大疆"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "苹果"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "摩根大通"
+  },
+  {
+    "type": "重大安全事故",
+    "argument": "东风奕派"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "华为"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "宝马"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "哪吒汽车"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "腾讯元宝"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "金元期货"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "融通基金"
+  },
+  {
+    "type": "高层变更",
+    "argument": "融通基金"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "汇添富上海地产"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "路博迈基金"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "金蝶国际"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "卓易信息"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "华海诚科"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "华海诚科"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "阿那亚"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "英国利率期货"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "联发科"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "未来"
+  },
+  {
+    "type": "财务信息造假",
+    "argument": "极氪科技"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "小米汽车"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "龙文化"
+  },
+  {
+    "type": "产品虚假宣传",
+    "argument": "未来"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "重庆"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "东方金诚"
+  },
+  {
+    "type": "公司注销",
+    "argument": "姑姑"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "天籽茶林"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "电投数科"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "苹果公司"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "丽台LEadtek"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "小米"
+  },
+  {
+    "type": "资产冻结",
+    "argument": "GAHubx"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "通用技术"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "渝昆高铁"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "盒马"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "路透社"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "《哪吒"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "成都"
+  },
+  {
+    "type": "高层变更",
+    "argument": "潜江"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "信融"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "黄河流域"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "宝妈宝爸"
+  },
+  {
+    "type": "高层变更",
+    "argument": "小米"
+  },
+  {
+    "type": "扰乱市场秩序",
+    "argument": "红旗"
+  },
+  {
+    "type": "高层变更",
+    "argument": "波罗申科"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "华为"
+  },
+  {
+    "type": "裁员",
+    "argument": "瑞讯银行"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "文莱"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "理想汽车"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "中老铁路"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "华为链"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "柯力传感"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "西南证券"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "华安证券"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "山西证券"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "东吴证券"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": ""
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "橙柿互动"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "莱斯康制药有限公司"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "海纳国际集团"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "小摩"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "##rikuTechfinance"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "星快船公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "华漕"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "MANus"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中新网"
+  },
+  {
+    "type": "实际控制人涉诉仲裁",
+    "argument": "中富转债"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "高校"
+  },
+  {
+    "type": "高层变更",
+    "argument": "河南太和文旅集团"
+  },
+  {
+    "type": "产品虚假宣传",
+    "argument": "纯粮酒"
+  },
+  {
+    "type": "产品虚假宣传",
+    "argument": "三八"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "荆楚放心礼"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "花互动"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "腾讯"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "江苏省血液中心"
+  },
+  {
+    "type": "骗保",
+    "argument": "医保基金"
+  },
+  {
+    "type": "员工罢工示威",
+    "argument": "长春万达"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "东鹏饮料（集团）股份有限公司"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "理想汽车"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "易德龙"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "aeT阿尔泰"
+  },
+  {
+    "type": "债务展期",
+    "argument": "新亚胜"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "云课堂"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "南海"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "美联储"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "微信"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "南京市"
+  },
+  {
+    "type": "实际控制人变更",
+    "argument": "上海哈茂"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "FPSO"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "宁德时代"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "高通骁龙"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "Firefly萤火虫"
+  },
+  {
+    "type": "高层变更",
+    "argument": "红色星球"
+  },
+  {
+    "type": "大量投诉",
+    "argument": "智能"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "小米"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "腾讯元宝"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "茶艺文化"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "金山银山"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "紫云自治县猫营镇"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "宁德时代"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "美湖股份"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "腾讯元宝"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "尼特"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "博鳌亚洲会"
+  },
+  {
+    "type": "重大资产损失",
+    "argument": "光智科技"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "百度"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "加拿大钢铁"
+  },
+  {
+    "type": "高层变更",
+    "argument": "泽连斯基"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "斯塔默"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "广汽集团"
+  },
+  {
+    "type": "高层变更",
+    "argument": "乌军"
+  },
+  {
+    "type": "破产清算",
+    "argument": "AMD"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "中新社"
+  },
+  {
+    "type": "高层变更",
+    "argument": "蜜雪集团"
+  },
+  {
+    "type": "大量投诉",
+    "argument": "新生态"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "华尔兹"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "吉利"
+  },
+  {
+    "type": "高层变更",
+    "argument": "白云镇平元村"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "蜂糖李"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "金果果"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "NVIDIA"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "打捞公司"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "胡塞武装"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "哈伊尔基金会"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "英格兰国民健康"
+  },
+  {
+    "type": "高层变更",
+    "argument": "美国之音电台"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "伯克希尔"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "美股科技"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "艾瑞泽"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "Firefly萤火虫"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "啄木鸟"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "广东"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "中国"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "山野徒步"
+  },
+  {
+    "type": "高层变更",
+    "argument": "特鲁多"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "丹麦"
+  },
+  {
+    "type": "债务违约",
+    "argument": "雅典"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "海草"
+  },
+  {
+    "type": "停产停业",
+    "argument": "福特"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "美国之音"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "也门胡塞武装"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "胡塞武装"
+  },
+  {
+    "type": "员工罢工示威",
+    "argument": "海地帮派"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "广义货币"
+  },
+  {
+    "type": "盗取隐私信息",
+    "argument": "信息贩子"
+  },
+  {
+    "type": "重大赔付",
+    "argument": "麦当劳"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "One"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "小鹏汽车"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "小米汽车"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "奥迪"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "高层变更",
+    "argument": "未来"
+  },
+  {
+    "type": "财务信息造假",
+    "argument": "爱奇艺"
+  },
+  {
+    "type": "停产停业",
+    "argument": "刚果矿场"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "群创"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "沈阳市"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "吉利银河"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "零跑汽车"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "益生股份"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "东方雨虹"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "八达通公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "土中友好基金会"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "海信"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "横店东磁"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "信隆健康"
+  },
+  {
+    "type": "高层变更",
+    "argument": "工商银行"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "Olrol"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "开源人工智能"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "俄军"
+  },
+  {
+    "type": "被列为失信被执行人",
+    "argument": "美国"
+  },
+  {
+    "type": "高层变更",
+    "argument": "特朗普"
+  },
+  {
+    "type": "重大安全事故",
+    "argument": "俄罗斯"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "加拿大"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "保交房"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "新浪"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "巴勒斯坦"
+  },
+  {
+    "type": "退出市场",
+    "argument": "张家港锦隆码头"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "山东港口渤海湾港"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "马尾造船公司"
+  },
+  {
+    "type": "重大债务到期",
+    "argument": "学生"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "开源证券"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "华为"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "奥维云网"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "万源通"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "华为"
+  },
+  {
+    "type": "停产停业",
+    "argument": "千江高新"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "埃夫特"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "开源证券"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "长盛轴承"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "宝丰能源"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "东海证券"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "开源证券"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "东吴证券"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "山东药玻"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "聚乙烯"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "智能网联汽车"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "呼和浩特市卫生健康委员会"
+  },
+  {
+    "type": "高层变更",
+    "argument": "国泰君安证券"
+  },
+  {
+    "type": "高层变更",
+    "argument": "安宁股份"
+  },
+  {
+    "type": "限制股东权利",
+    "argument": "安宁股份"
+  },
+  {
+    "type": "高层变更",
+    "argument": "农业推广硕士"
+  },
+  {
+    "type": "信息泄露",
+    "argument": "微信"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "小鹏汽车"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "张国靖"
+  },
+  {
+    "type": "高层变更",
+    "argument": "日照金山"
+  },
+  {
+    "type": "盗取隐私信息",
+    "argument": "未来之城"
+  },
+  {
+    "type": "重大赔付",
+    "argument": "众惠相互"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "旭辉商业"
+  },
+  {
+    "type": "高层变更",
+    "argument": "深业集团"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "阿尔塞"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "美国人"
+  },
+  {
+    "type": "财务信息造假",
+    "argument": "深圳广播电影电视集团"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "泰国"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "热交换器"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "哈哈"
+  },
+  {
+    "type": "审计师辞任",
+    "argument": "海峡股份"
+  },
+  {
+    "type": "审计师辞任",
+    "argument": "天擎公司"
+  },
+  {
+    "type": "吊销业务许可或执照",
+    "argument": "海南海峡航运股份有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "深圳市广电网络有限公司"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "育碧"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "中国恒天立信国际"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "成佳镇"
+  },
+  {
+    "type": "高层变更",
+    "argument": "绵阳市委"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "成都市电影公司"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "乐山"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "四川电竞"
+  },
+  {
+    "type": "实际控制人变更",
+    "argument": "丹麦"
+  },
+  {
+    "type": "高层变更",
+    "argument": "藏格矿业"
+  },
+  {
+    "type": "高层变更",
+    "argument": "浪潮信息"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "大富科技"
+  },
+  {
+    "type": "公司退市",
+    "argument": "世纪鼎利"
+  },
+  {
+    "type": "债务重组",
+    "argument": "中铝国际"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "金力永磁"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "中远海发"
+  },
+  {
+    "type": "财务报表更正",
+    "argument": ""
+  },
+  {
+    "type": "高层变更",
+    "argument": "北京"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "前B社"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "中国星集团"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "傲基股份"
+  },
+  {
+    "type": "公司停牌",
+    "argument": "中航产融"
+  },
+  {
+    "type": "经营激进",
+    "argument": "汽车电子"
+  },
+  {
+    "type": "高层变更",
+    "argument": "江阴市恒润重工股份有限公司"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "藏格矿业"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "长飞光纤"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "粤电力A"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "国泰君安"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "石破茂"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "福到家肠轻松"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "高通骁龙"
+  },
+  {
+    "type": "欠薪",
+    "argument": "广西壮族自治区"
+  },
+  {
+    "type": "高层变更",
+    "argument": "广西"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "蓝光治疗"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "赛博"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "广西创新"
+  },
+  {
+    "type": "高层变更",
+    "argument": "柳州市宸泰机械有限责任公司"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "静安"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "蚂蚁基金"
+  },
+  {
+    "type": "重大资产损失",
+    "argument": "柳工"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "泰祥股份"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "小米"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中原高速"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中恒集团"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中恒集团"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "华为"
+  },
+  {
+    "type": "高层变更",
+    "argument": "航天智装"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "斐济瓦图科拉金矿"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "百利天恒"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中创新航"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "大成食品"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "微信"
+  },
+  {
+    "type": "产品虚假宣传",
+    "argument": "龙华区"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "STculesshore"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "Wallbox"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "加拿大蒙特利尔银行"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中药"
+  },
+  {
+    "type": "退出市场",
+    "argument": "爱沙尼亚"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "泽连斯基"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "北庭故城"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "吉利银河"
+  },
+  {
+    "type": "暂停上市",
+    "argument": "上汽大众"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "东风本田"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "劳斯莱斯"
+  },
+  {
+    "type": "高层变更",
+    "argument": "零跑汽车"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "快节奏"
+  },
+  {
+    "type": "窃取别人商业机密",
+    "argument": "盗版电影"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "天誉金号"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "海信电视"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "当升科技"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "大鹏舞狮"
+  },
+  {
+    "type": "履行连带担保责任",
+    "argument": "东方集团"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "特斯拉"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中新网"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "小米"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "纽约联邦储备银行"
+  },
+  {
+    "type": "重大安全事故",
+    "argument": "德美"
+  },
+  {
+    "type": "高层变更",
+    "argument": "泽连斯基"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "哈佛大学"
+  },
+  {
+    "type": "高层变更",
+    "argument": "美国太空探索技术公司"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "小米"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "哈雷戴维森"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "微信"
+  },
+  {
+    "type": "停产停业",
+    "argument": "鲁比奥"
+  },
+  {
+    "type": "高层变更",
+    "argument": "红托竹荪"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "华为"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "新国潮汉服"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "未来"
+  },
+  {
+    "type": "经营激进",
+    "argument": "花漾年华"
+  },
+  {
+    "type": "高层变更",
+    "argument": "新疆工艺美术大师"
+  },
+  {
+    "type": "高层变更",
+    "argument": "汇顶科技"
+  },
+  {
+    "type": "高层变更",
+    "argument": "格林基金"
+  },
+  {
+    "type": "高层变更",
+    "argument": "华安基金"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "CHgeP公司"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "广发基金管理有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "嘉实基金管理有限公司"
+  },
+  {
+    "type": "停产停业",
+    "argument": "华亭市产投集团黎明川省级现代农业产业园"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "川字牌"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "手回科技"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "贝克休斯公司"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "南平"
+  },
+  {
+    "type": "高层失联/死亡",
+    "argument": "博爱"
+  },
+  {
+    "type": "高层变更",
+    "argument": "红十字会"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "红鳍鱼公司"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "奥莱利汽车股份有限公司"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "Wayfair"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "猫途鹰"
+  },
+  {
+    "type": "高层变更",
+    "argument": "德国绿党"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "温氏股份"
+  },
+  {
+    "type": "高层变更",
+    "argument": "广发银行股份有限公司"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "上海港"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "微软"
+  },
+  {
+    "type": "重大资产损失",
+    "argument": "奥特维"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "天蓝蓝"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "鲲游光电"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "斯洛伐克"
+  },
+  {
+    "type": "债务展期",
+    "argument": "高阶智能"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "全新智己"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "比特智路"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "本田"
+  },
+  {
+    "type": "高层变更",
+    "argument": "理想汽车"
+  },
+  {
+    "type": "扰乱市场秩序",
+    "argument": "凯迪拉克"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "常山药业"
+  },
+  {
+    "type": "高层变更",
+    "argument": "一汽-大众"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "小米"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "达达"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "海南大学"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "海南自由贸易港"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中国信息协会"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "澳大利亚"
+  },
+  {
+    "type": "高层涉嫌违法",
+    "argument": "济源产城融合示范区"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "泽连斯基"
+  },
+  {
+    "type": "高层变更",
+    "argument": "启德体育园"
+  },
+  {
+    "type": "高层变更",
+    "argument": "保利发展"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "江苏大丰"
+  },
+  {
+    "type": "经营激进",
+    "argument": "猪"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "乌克兰"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "全利集团"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "SpaceX"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "小米"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "Gk3"
+  },
+  {
+    "type": "高层变更",
+    "argument": "小鹏机器人"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "阶跃星辰"
+  },
+  {
+    "type": "债务展期",
+    "argument": "太阳光伏公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "云南拓源新能源有限公司"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "微软"
+  },
+  {
+    "type": "扰乱市场秩序",
+    "argument": "量子"
+  },
+  {
+    "type": "高层变更",
+    "argument": "蚂蚁集团"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "海信"
+  },
+  {
+    "type": "高层变更",
+    "argument": "蚂蚁集团"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "智界"
+  },
+  {
+    "type": "延期信息披露",
+    "argument": "华为"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "小米"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "Sflake"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "潞晨科技"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "新腕儿"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "山西煤炭企业"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "福然德"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "金融"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "冶金电极材料"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "软顶帐篷"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "艾融软件"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "塔牌集团"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "中兴通讯"
+  },
+  {
+    "type": "暂停上市",
+    "argument": "小米汽车"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "牛士"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "问界汽车"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "新腕儿"
+  },
+  {
+    "type": "股票发行失败",
+    "argument": "阿里巴巴"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "小红书"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "MANus"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "江赫哲远鹏科技有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "高水平科技"
+  },
+  {
+    "type": "高层变更",
+    "argument": "未来"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "声网"
+  },
+  {
+    "type": "高层失联/死亡",
+    "argument": "高君宇"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "苏奥传感"
+  },
+  {
+    "type": "高层变更",
+    "argument": "北方国际合作股份有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "北方国际"
+  },
+  {
+    "type": "重大安全事故",
+    "argument": "涠洲10-5油气田"
+  },
+  {
+    "type": "高层变更",
+    "argument": "游族网络"
+  },
+  {
+    "type": "高层变更",
+    "argument": "海天股份"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "德科技"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "建艺集团"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中路股份"
+  },
+  {
+    "type": "责令改正",
+    "argument": "峡门乡"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "未来学习环境"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "开天窗"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "浙江省海港集团"
+  },
+  {
+    "type": "裁员",
+    "argument": "美国"
+  },
+  {
+    "type": "高层变更",
+    "argument": "京津中"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "AI"
+  },
+  {
+    "type": "股票发行失败",
+    "argument": "霸王茶姬"
+  },
+  {
+    "type": "财务报表更正",
+    "argument": "卓翼科技"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "泽连斯基"
+  },
+  {
+    "type": "高层变更",
+    "argument": "莽山"
+  },
+  {
+    "type": "高层变更",
+    "argument": "郴州磐石电子有限公司"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "金属探测"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中微半导体设备（四川）有限公司"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "养老金融"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "江苏悦达集团有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "双良节能"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "奥本海默"
+  },
+  {
+    "type": "高层变更",
+    "argument": "德州）医药科技股份有限公司"
+  },
+  {
+    "type": "实际控制人变更",
+    "argument": "珠海和谐康健投资基金"
+  },
+  {
+    "type": "实际控制人变更",
+    "argument": ""
+  },
+  {
+    "type": "实际控制人变更",
+    "argument": "和谐康健"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "包银高铁"
+  },
+  {
+    "type": "高层变更",
+    "argument": "兴化股份"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "天邑股份"
+  },
+  {
+    "type": "高层变更",
+    "argument": "双良节能"
+  },
+  {
+    "type": "高层变更",
+    "argument": "安徽建工"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "银泰百货"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "叮咚买菜"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "养老金融"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "唯科"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "永赢基金管理有限公司"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "科技创新"
+  },
+  {
+    "type": "责令改正",
+    "argument": "民生"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "和平区"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "快科技"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "苹果"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "问界"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "美墨加"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "巴拿马运河"
+  },
+  {
+    "type": "破产清算",
+    "argument": "苹果"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中新网"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "中海地产"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "豆包"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "埃克森美孚集团"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "加拿大"
+  },
+  {
+    "type": "投资亏损",
+    "argument": "波段"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "南财理财通"
+  },
+  {
+    "type": "高层变更",
+    "argument": "大众汽车"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "百花医药"
+  },
+  {
+    "type": "高层变更",
+    "argument": "ST交投"
+  },
+  {
+    "type": "重大债务到期",
+    "argument": "Deepikuk"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "智元机器人"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "福建省"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "未来"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "中国成品油"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "中国初级形状"
+  },
+  {
+    "type": "高层变更",
+    "argument": "汇绿生态"
+  },
+  {
+    "type": "高层变更",
+    "argument": "电投产融"
+  },
+  {
+    "type": "高层变更",
+    "argument": "汇绿生态"
+  },
+  {
+    "type": "高层变更",
+    "argument": "楚天科技"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "复星医药"
+  },
+  {
+    "type": "高层涉嫌违法",
+    "argument": "中山"
+  },
+  {
+    "type": "经营激进",
+    "argument": "中新社"
+  },
+  {
+    "type": "高层变更",
+    "argument": "湖南湘江新区"
+  },
+  {
+    "type": "高层变更",
+    "argument": "上海湘商"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "JB"
+  },
+  {
+    "type": "裁员",
+    "argument": "斯柯达"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "西部利得基金管理有限公司"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "兴全基金管理有限公司"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "嘉实基金管理有限公司"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "德邦基金管理有限公司"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "长安基金管理有限公司"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "财通基金管理有限公司"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "中加基金管理有限公司"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "新沃中债"
+  },
+  {
+    "type": "高层变更",
+    "argument": "长城基金管理有限公司"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "天弘安益"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "建科院"
+  },
+  {
+    "type": "高层变更",
+    "argument": "金沙街沙顶社区"
+  },
+  {
+    "type": "裁员",
+    "argument": "特斯拉"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "未来"
+  },
+  {
+    "type": "高层变更",
+    "argument": "波士顿咨询集团"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "德斯维尔工业公司"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "呷哺集团"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "深圳湾科技生态园"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "晶丰明源"
+  },
+  {
+    "type": "高层变更",
+    "argument": "花花"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "加拿大"
+  },
+  {
+    "type": "裁员",
+    "argument": "彭博电视"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中华人民共和国"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "习近平"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "梁家河村小学"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "民革"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "波音"
+  },
+  {
+    "type": "高层变更",
+    "argument": "民进"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "福特"
+  },
+  {
+    "type": "高层变更",
+    "argument": "江苏神通"
+  },
+  {
+    "type": "公司退市",
+    "argument": "金固股份"
+  },
+  {
+    "type": "高层变更",
+    "argument": "皇台酒业"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "兴业银锡"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "杭州它人机器人有限公司"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "西藏博盛矿业"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "中信证券"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "济民健康"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "泽连斯基"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "四川"
+  },
+  {
+    "type": "警告",
+    "argument": "以军"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "克里米亚"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "冯德莱恩"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "天安门"
+  },
+  {
+    "type": "总部被警方调查",
+    "argument": "MANus"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "恒大汽车"
+  },
+  {
+    "type": "高层变更",
+    "argument": "零跑汽车"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "苹果"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "恒大汽车"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "乐魔"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "索尼"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "零跑C16"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "睿尔曼"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "零跑汽车"
+  },
+  {
+    "type": "窃取别人商业机密",
+    "argument": "环球音乐集团"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "春粮"
+  },
+  {
+    "type": "高层变更",
+    "argument": "南京安居集团颐和历保公司"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "金银珠宝"
+  },
+  {
+    "type": "延期信息披露",
+    "argument": "江苏省电力有限公司"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "景曜科技"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "春日盛放"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "未来"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "亭湖阳角椒"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "兴化千垛"
+  },
+  {
+    "type": "高层变更",
+    "argument": "西至凤游寺路"
+  },
+  {
+    "type": "行业排名下降",
+    "argument": "江苏"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "吴中好物"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "苏宁易购无锡苏宁广场店"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "小米"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "中复神鹰"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "缤越LD"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "保时捷"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "比亚迪"
+  },
+  {
+    "type": "停产停业",
+    "argument": "广汽本田"
+  },
+  {
+    "type": "偿付能力不足",
+    "argument": "乐道汽车"
+  },
+  {
+    "type": "更换基金经理",
+    "argument": "华泰柏瑞中证智能汽车"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "BP"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "恒大汽车"
+  },
+  {
+    "type": "高层变更",
+    "argument": "古铁雷斯"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "朝聚眼科"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "天齐锂业"
+  },
+  {
+    "type": "经营亏损",
+    "argument": "瑞浦兰钧"
+  },
+  {
+    "type": "自然灾害",
+    "argument": "曼哈顿"
+  },
+  {
+    "type": "企业被问询约谈审查",
+    "argument": "都江堰马拉松"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "上汽集团"
+  },
+  {
+    "type": "高层变更",
+    "argument": "格力电器"
+  },
+  {
+    "type": "高层变更",
+    "argument": "星星"
+  },
+  {
+    "type": "高层变更",
+    "argument": "无锡市长渚"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "陈氏古建"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "芯笙半导体科技(上海)有限公司"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "soP"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "和林微纳"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "悦芯科技股份有限公司"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "万事达"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "SIcules芯片"
+  },
+  {
+    "type": "监管入驻",
+    "argument": "行一精密科技有限公司"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "湖南银海新材科技有限公司"
+  },
+  {
+    "type": "偷税漏税",
+    "argument": "小牛电动"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "天成科技"
+  },
+  {
+    "type": "债务展期",
+    "argument": "红蜻蜓"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "理想汽车"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "奥迪"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "小米"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "吉利银河"
+  },
+  {
+    "type": "高层变更",
+    "argument": "平安银行"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "钧达股份"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "理想汽车"
+  },
+  {
+    "type": "重大安全事故",
+    "argument": "陕西航天商业发动机有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "永辉超市"
+  },
+  {
+    "type": "高层变更",
+    "argument": "小米集团"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "未来"
+  },
+  {
+    "type": "高层变更",
+    "argument": "博鳌亚洲会"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "TVB"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "流行乐"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "尼龙6"
+  },
+  {
+    "type": "关闭分支机构",
+    "argument": "智通财经"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "CheckPoint软件科技有限公司"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "曲沃县永利农机专业合作社"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "饭圈"
+  },
+  {
+    "type": "高层变更",
+    "argument": "苹果"
+  },
+  {
+    "type": "裁员",
+    "argument": "阿拉"
+  },
+  {
+    "type": "高层变更",
+    "argument": "Switch2"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "提振消费"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "高达"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "越冬综合征"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "鸿蒙"
+  },
+  {
+    "type": "高层变更",
+    "argument": "江苏省演艺集团"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "##nEntertainment"
+  },
+  {
+    "type": "外部信用评级下调",
+    "argument": "智能算法生成"
+  },
+  {
+    "type": "业务/资产重组",
+    "argument": "莱维特"
+  },
+  {
+    "type": "高层变更",
+    "argument": "小米汽车"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "vivo"
+  },
+  {
+    "type": "非法集资",
+    "argument": "工商银行大连市分行"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "连连数字"
+  },
+  {
+    "type": "盈利能力下降",
+    "argument": "小米集团"
+  },
+  {
+    "type": "股东利益斗争",
+    "argument": "霍家三代"
+  },
+  {
+    "type": "高层变更",
+    "argument": "深圳魏桥新能源船舶有限公司"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "易术致慧（深圳）医疗有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "厦门金砖麦养元食品创新研究院有限公司"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "九江江汇能源有限公司"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "江西产控招商有限公司"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "深圳通汀产业投资有限公司"
+  },
+  {
+    "type": "高层变更",
+    "argument": "厦门市积木饮品有限公司"
+  },
+  {
+    "type": "限制业务范围",
+    "argument": "广州华昕旅游发展有限公司"
+  },
+  {
+    "type": "吊销资质牌照",
+    "argument": "修水县中旺农业有限公司"
+  },
+  {
+    "type": "实际控制人涉诉仲裁",
+    "argument": "乐乐爸爸"
+  },
+  {
+    "type": "澄清辟谣",
+    "argument": "美国"
+  },
+  {
+    "type": "高层变更",
+    "argument": "中国金茂"
+  },
+  {
+    "type": "公司停牌",
+    "argument": "新研股份"
+  },
+  {
+    "type": "出具虚假证明",
+    "argument": "太阳能"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "三菱电机"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "东方财富"
+  },
+  {
+    "type": "高层变更",
+    "argument": "泰安市"
+  },
+  {
+    "type": "资金紧张",
+    "argument": "日照市立盈机械"
+  },
+  {
+    "type": "网站安全漏洞",
+    "argument": "中国绿色能源"
+  }
+]

@@ -1,4 +1,4 @@
-from flask import Flask , request
+from flask import Flask , request, render_template
 import requests , json , random
 
 
@@ -30,23 +30,4 @@ def search():
 
 @app.route('/',methods=["GET"])
 def return_OneText():
-
-    category = request.args.get("category")
-
-    category =  select(category)
-    url = requests.get("https://api.pwxiao.top/sentences/" + category + ".json")
-    text = url.text
-    # with open("../sentences/"+category+".json",'r',encoding='utf-8') as f:
-    #      text = f.read()       
-
-    res = json.loads(text)
-
-    try:
-        number = random.randint(0,(len(res) - 1))
-    except:
-        number = 6
-
-    result = res[number]
-    fina_res = json.dumps(result,ensure_ascii=False)
- 
-    return fina_res
+    return render_template('index_out.html')

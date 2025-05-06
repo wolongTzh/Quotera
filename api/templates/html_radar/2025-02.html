@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>公司风险评分对比 - 多选对比雷达图</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <style>
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            margin: 20px;
+        }
+        #table-container {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+            cursor: pointer;
+        }
+        th {
+            background-color: #007acc;
+            color: white;
+        }
+        #compare-btn {
+            margin: 10px 0;
+            padding: 5px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #pagination {
+            margin: 10px 0;
+            text-align: center;
+        }
+        #pagination button {
+            margin: 0 5px;
+            padding: 5px 10px;
+        }
+        #chart-container {
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div id="table-container">
+    <h3>公司风险评分排行（选择多家公司进行对比）</h3>
+    <table id="company-table">
+        <thead>
+            <tr>
+                <th>选择</th>
+                <th>公司</th>
+                <th>公司治理</th>
+                <th>法律合规</th>
+                <th>财务偿付</th>
+                <th>信息披露</th>
+                <th>经营稳定</th>
+                <th>声誉评级</th>
+                <th>风险分数</th>
+                <th>风险等级</th>
+            </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+    <div id="pagination">
+        <button id="prev-page">上一页</button>
+        <span id="page-info"></span>
+        <button id="next-page">下一页</button>
+    </div>
+    <button id="compare-btn">对比所选公司</button>
+</div>
+<div id="chart-container"></div>
+
+<script>
+const riskDimensions = [
+    "公司治理风险", "法律与合规风险", "财务与偿付风险", 
+    "信息披露风险", "经营稳定风险", "声誉与外部评级风险"
+];
+
+// 示例公司数据（可扩展更多）
+const dataArray = [{"company": "约旦扎尔卡", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "海底捞", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "世界金属", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "HerculesCapital", "statistics": [1, 1, 1, 1, 1, 3], "score": 4.0, "level": "C"}, {"company": "洽洽食品", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "南京银行股份有限公司", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "泽连斯基", "statistics": [4, 1, 1, 1, 1, 1], "score": 4.5, "level": "C"}, {"company": "潇湘电影集团", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "长盛轴承", "statistics": [1, 1, 1, 3, 1, 1], "score": 4.0, "level": "C"}, {"company": "巴西矿产", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "五星", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "俄军", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "巴西淡水河谷", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "胡金秋", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "TCL", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "中国银行股份有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "字节跳动", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "TCL动态", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "亚德诺(Adiku.US)公司", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "网易", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "哪吒", "statistics": [4, 1, 1, 3, 1, 1], "score": 5.5, "level": "B"}, {"company": "珠海", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "重农兴农富农", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "", "statistics": [2, 1, 1, 2, 1, 1], "score": 4.0, "level": "C"}, {"company": "Netflix", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "美联储", "statistics": [4, 1, 2, 1, 3, 1], "score": 6.0, "level": "B"}, {"company": "海尔集团", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "人工智能", "statistics": [2, 1, 2, 1, 1, 1], "score": 4.0, "level": "C"}, {"company": "康菲石油", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "唐山", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "安徽港航集团", "statistics": [1, 1, 1, 3, 1, 1], "score": 4.0, "level": "C"}, {"company": "江海联运", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "江西省水利投资集团有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "招金集团", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "中新社", "statistics": [4, 1, 1, 1, 1, 1], "score": 4.5, "level": "C"}, {"company": "同享科技", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "天宏锂电", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "克莱特", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "福特", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "零跑汽车有限公司金东分公司", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "歌尔光学", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "泰国", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "泰警", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "宜家商场", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "贵州茅台", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "坎托菲茨杰拉德公司", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "利安德巴塞尔工业公司", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "坎托菲茨", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "格林美", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "纽约联储", "statistics": [1, 1, 2, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "航天", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "小米", "statistics": [4, 1, 1, 3, 1, 1], "score": 5.5, "level": "B"}, {"company": "湖北协进半导体科技有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "苹果", "statistics": [2, 1, 1, 2, 1, 1], "score": 4.0, "level": "C"}, {"company": "酒后", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "武汉港", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "深圳晶泰科技有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "红塔红土长益定开债A", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "盐津铺子", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "比亚迪", "statistics": [4, 1, 1, 1, 1, 1], "score": 4.5, "level": "C"}, {"company": "MoO", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "宝地矿业", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "快科技", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "桂冠电力", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "中铁装备集团", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "利雅得", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "必得科技", "statistics": [1, 1, 2, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "吉布", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "全发农业", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "喀麦隆", "statistics": [1, 1, 2, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "迪奥普", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "塔", "statistics": [1, 1, 1, 1, 2, 2], "score": 4.0, "level": "C"}, {"company": "杜尚别国际机场", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "通威股份", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "瑞金医院", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "俄乌", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "长寿花食品", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "成都京东方光电科技有限公司", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "百度", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "港珠澳", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "爱奇艺", "statistics": [2, 1, 1, 1, 1, 2], "score": 4.0, "level": "C"}, {"company": "becden", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "元宵", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "荣耀", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "深圳市洲明科技股份有限公司", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "六小龙", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "长江通航", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "韩国", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "华夏创业板", "statistics": [1, 1, 2, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "PowerEnsPro2", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "饿了么", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "申合达实业有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "上海汉理通达供应链有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "上海产嵘智能科技有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "金山海事局", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "十堰市人民公园", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "汇丰控股", "statistics": [1, 1, 2, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "渝开发", "statistics": [3, 1, 1, 1, 1, 1], "score": 4.0, "level": "C"}, {"company": "长虹华意", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "汕头临港经济区", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "国光股份", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "新疆策勒县", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "宿迁市柏尊生物工程有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "江苏保上润达商贸有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "连云港市金融控股集团有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "南京力骏智能科技有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "盐城市都市康旅运营管理有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "拜城县众泰煤焦化有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "宝山区", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "RedM斯公司", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "CapitalMarkets", "statistics": [1, 1, 1, 1, 1, 8], "score": 6.5, "level": "B"}, {"company": "天津泰达建设集团", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "天津利顺德大饭店", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "三农", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "深圳客", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "民生", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "长沙高中", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "新疆际云染织科技有限公司", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "高标准", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "赛博朋克", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "格力", "statistics": [3, 1, 1, 1, 1, 1], "score": 4.0, "level": "C"}, {"company": "三姆啤酒", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "SeaportGlobal", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "哈利法塔", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "瑞银", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "kelemgDrPepper", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "大摩", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "视觉中国", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "华硕", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "小米公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "热门手游", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "Deep#k", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "福建省", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "法治护航", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "铜仁市", "statistics": [3, 1, 1, 1, 1, 1], "score": 4.0, "level": "C"}, {"company": "长城汽车", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "波音公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "瑞宝通达（深圳）科技有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "景洋创新资本投资（深圳）有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "江苏宝利国际投资股份有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "宝利国际", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "玩美", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "AmericanHomes4Ret", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "凯撒娱乐公司", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "BoisescadeCo", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "Wbash国立", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "杭州宇树科技有限公司", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "乌克兰", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "市三届人大", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "金瑞新材", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "保管", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "上海证", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "三元", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "保险公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "绝味食品股份有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "DaDavidson", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "Fresh#", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "solarisEnergy", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "AlignmentHealthcare", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "重庆千里科技股份有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "天士力", "statistics": [3, 1, 1, 1, 1, 2], "score": 4.5, "level": "C"}, {"company": "天士力医药集团股份有限公司", "statistics": [3, 1, 1, 1, 1, 1], "score": 4.0, "level": "C"}, {"company": "特斯拉", "statistics": [1, 1, 1, 3, 1, 1], "score": 4.0, "level": "C"}, {"company": "融创", "statistics": [1, 1, 2, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "广州长隆", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "古巴", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "广州地铁", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "常德市国土空间", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "山东航空", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "斯塔默", "statistics": [3, 1, 1, 1, 1, 1], "score": 4.0, "level": "C"}, {"company": "福备箕畴", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "大马士革", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "英德", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "侨都咖啡", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "华储网", "statistics": [1, 2, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "大众安徽", "statistics": [1, 1, 2, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "唐河元宵节", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "保时捷", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "龙光", "statistics": [1, 1, 2, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "明尼阿波利斯联储", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "美国巨影电影公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "巴西", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "雷诺兹", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "斯", "statistics": [2, 1, 2, 1, 1, 1], "score": 4.0, "level": "C"}, {"company": "武侠小说", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "安仁古镇", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "智界", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "泉州非遗馆", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "祥瑞舞狮", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "法国", "statistics": [2, 1, 1, 2, 1, 1], "score": 4.0, "level": "C"}, {"company": "铜梁龙舞火龙", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "雷洞坪车站", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "马云", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "加拿大", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "兰博基尼", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "金饰", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "华为", "statistics": [2, 1, 1, 1, 2, 1], "score": 4.0, "level": "C"}, {"company": "长春市", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "春门锦绣", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "蔚来汽车", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "诸暨", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "蓝景丽家", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "智能出菇房", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "OPPO", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "春运", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "新疆昆玉钢铁有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "未来", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "松下", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "漠河市净界食品科技有限责任公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "合庆老集", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "华体赛事(北京)体育管理有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "中国铁路成都局集团有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "惠州东方航空公司浙江分公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "中国奥运", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "摩根大通证券公司", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "USFoods", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "金佛山冰雪运动体验课", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "腾讯", "statistics": [2, 1, 1, 1, 1, 2], "score": 4.0, "level": "C"}, {"company": "日产", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "微软", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "重庆市供销合作社", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "施罗德基金管理（中国）有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "哪吒2", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "靖远县北滩镇", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "中孚实业", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "中铁二十二局", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "洋山深水港", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "中吉乌铁路", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "蜜雪冰城", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "海淀", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "##xi价", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "云南绿算新能源有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "传祺", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "波特兰通用电气", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "可口可乐欧洲太平洋", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "通用汽车", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "铁山有限公司", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "艾昆纬", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "金克地产公司", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "利西亚车行", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "StratumSCape", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "中山交通", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "湖北省演艺集团", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "建功", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "任天堂", "statistics": [2, 1, 1, 2, 1, 1], "score": 4.0, "level": "C"}, {"company": "博时富悦纯债A", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "柳钢集团", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "沃尔华", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "上海国际航运中心", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "天津港集团", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "夏雨荷", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "蛇夫座", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "美团", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "湖南特力液压有限公司", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "函谷", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "福鹿", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "国能成都金堂发电有限公司", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "湖南响箭重工科技股份有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "丰田北美", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "长安常乐", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "法国政府", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "贝鲁", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "春节档", "statistics": [1, 2, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "中兴网", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "江苏新韩通船舶重工有限公司", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "国泰航空", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "贝法易集团", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "雅化锂业（雅安）有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "春风行动", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "颖通控股有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "福士水晶连廊", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "中心", "statistics": [1, 1, 2, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "创润（西昌）高纯钛", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "印度", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "玉出昆冈", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "星辰在线", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "银江镇阿署达村", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "蒙电服务", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "高通公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "金麒麟", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "大运河", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "蛇舞新春", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "百福齐臻", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "红嘴鸥", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "谷歌", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "高盛", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "宝马", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "厦门", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "未来招商", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "财达证券", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "巴克莱", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "人寿保险", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "劳合社", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "江汽集团", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "江波龙", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "约翰逊", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "埃隆・马斯克", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "上海瑞晨泵业有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "高德恩科技有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "恒叶心（上海）材料科技有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "上海华润瑞宸置业有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "中铁银通", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "上海拜高高分子材料有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "航空航天飞行器", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "万科", "statistics": [3, 1, 1, 1, 1, 1], "score": 4.0, "level": "C"}, {"company": "圳铁路投资建设集团有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "黄石经济技术开发区", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "天润科技", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "晋剧", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "定军山", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "芯涛微电子", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "温江高新技术产业园区", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "中瑞建交", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "华陆新材", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "徽墨", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "##ysolar", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "四川电网", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "一汽解放汽车有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "安集延洛奇", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "邹平一电三厂", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "爱马仕", "statistics": [1, 1, 1, 1, 3, 1], "score": 4.0, "level": "C"}, {"company": "海南", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "以色列", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "响水工业经济区", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "塔吉克斯坦", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "塔罗贡水电站", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "塔吉克斯", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "抖音", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "祐富百胜宝电器（深圳）有限公司", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "哪吒精神", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "重庆燃气集团", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "麒灵", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "小米汽车", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "阿联酋", "statistics": [3, 1, 1, 1, 1, 1], "score": 4.0, "level": "C"}, {"company": "xboxSeriesS", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "肇庆市产业集团有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "内蒙古", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "北京市公园", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "北京地铁", "statistics": [2, 1, 1, 1, 2, 1], "score": 4.0, "level": "C"}, {"company": "国际国内", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "中国杂技团", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "景德镇", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "基莱斯", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "广之旅", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "旅游巴士", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "FBI", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "三七互娱", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "丰富数据", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "广汽集团", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "未来钱", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "俄罗斯", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "特朗普", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "中奢奥莱", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "苏宁易购", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "襄阳樊西智慧物流园区", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "山东新视觉数码科技有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "金融", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "海爱讯信迪通信息科技有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "深圳市铂科新材料销售有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "上海浐策实业有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "首钢", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "昆明邦立置业有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "港航", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "克劳斯", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "SuperMaterials", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "派拓网络公司", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "艾芙隆海湾社区", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "江苏法尔胜股份有限公司", "statistics": [2, 1, 1, 2, 1, 1], "score": 4.0, "level": "C"}, {"company": "美国军事学院", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "黑龙江", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "柏志国", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "沈阳滨", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "岭南控股", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "安徽鑫铂铝业股份有限公司", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "龙泉股份", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "三星", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "德皓事务所", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "野山参", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "明微电子", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "锡基钙钛矿", "statistics": [1, 1, 1, 2, 1, 1], "score": 3.5, "level": "D"}, {"company": "生态气象云服务", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "扬州大学动物科学与技术学院肉鹅育种", "statistics": [2, 1, 1, 1, 1, 1], "score": 3.5, "level": "D"}, {"company": "泡泡玛特", "statistics": [1, 1, 1, 1, 2, 1], "score": 3.5, "level": "D"}, {"company": "航天卫星技术有限公司", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "复星旅游文化", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "冠军科技集团", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "海纳国际集团", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "雷蒙德詹姆斯公司", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "RedRockResorts", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}, {"company": "丹佛", "statistics": [1, 1, 1, 1, 1, 2], "score": 3.5, "level": "D"}];
+
+const pageSize = 10;
+let currentPage = 1;
+let totalPages = Math.ceil(dataArray.length / pageSize);
+
+const companyData = dataArray.sort((a, b) => b.score - a.score);
+
+const chartDom = document.getElementById('chart-container');
+const myChart = echarts.init(chartDom);
+
+function calculateMaxValue(selectedCompanies) {
+    let max = 0;
+    selectedCompanies.forEach(company => {
+        company.statistics.forEach(v => {
+            if (v > max) max = v;
+        });
+    });
+    return max + 2;
+};
+
+function renderChart(selectedCompanies, max_value=10) {
+    const colors = ['#FF6B6B', '#4ECDC4', '#FFD93D', '#5470C6', '#91CC75', '#EE6666'];
+    const seriesData = selectedCompanies.map((company, idx) => {
+        const adjustedValues = company.statistics.map(v => v); // +1 仅用于绘图
+        return {
+            value: adjustedValues,
+            name: company.company,
+            itemStyle: { color: colors[idx % colors.length] },
+            areaStyle: { color: colors[idx % colors.length] + '66' },
+            originalValues: company.statistics // 保留原始值用于 tooltip
+        };
+    });
+
+    const option = {
+        title: {
+            text: selectedCompanies.length === 1 ?
+                `${selectedCompanies[0].name} 风险画像雷达图` :
+                '公司风险画像对比雷达图',
+            left: 'center',
+            textStyle: { fontSize: 20 }
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: function (params) {
+                let val = params.value;
+                let total = (val.reduce((a, b) => a + b, 0) / val.length).toFixed(2);
+                let str = `<b>${params.name}</b><br/>风险指数：<b>${total}</b><br/>`;
+                riskDimensions.forEach((dim, i) => {
+                    str += `- ${dim}：${val[i]}<br/>`;
+                });
+                return str;
+            }
+        },
+        radar: {
+            indicator: riskDimensions.map(dim => ({ name: dim, max: max_value > 10 ? max_value : 10 })),
+            shape: 'polygon',
+            radius: '70%',
+            name: { textStyle: { fontSize: 16, color: '#333' } }
+        },
+        series: [{
+            type: 'radar',
+            data: seriesData,
+            areaStyle: { opacity: 0.1 }
+        }]
+    };
+    myChart.setOption(option);
+}
+
+function renderTablePage(page) {
+    const tableBody = document.getElementById('table-body');
+    tableBody.innerHTML = '';
+    const start = (page - 1) * pageSize;
+    const end = Math.min(start + pageSize, companyData.length);
+    const currentData = companyData.slice(start, end);
+
+    currentData.forEach(company => {
+        const row = document.createElement('tr');
+        console.log(company)
+        row.innerHTML = `
+            <td><input type="checkbox" class="company-checkbox" data-name="${company.company}"></td>
+            <td>${company.company}</td>
+            ${company.statistics.map(v => `<td>${v}</td>`).join('')}
+            <td><b>${company.score}</b></td>
+            <td><b>${company.level}</b></td>
+        `;
+        row.onmouseover = () => renderChart([company]);
+        tableBody.appendChild(row);
+    });
+
+    document.getElementById('page-info').textContent = `第 ${currentPage} / ${totalPages} 页`;
+}
+
+document.getElementById('compare-btn').onclick = function () {
+    const checkboxes = document.querySelectorAll('.company-checkbox');
+    let selectedCompanies = [];
+    checkboxes.forEach(box => {
+        if (box.checked) {
+            let name = box.getAttribute('data-name');
+            const comp = companyData.find(c => c.company === name);
+            if (comp) selectedCompanies.push(comp);
+        }
+    });
+    if (selectedCompanies.length === 0) {
+        alert("请选择至少一家进行对比！");
+        return;
+    }
+    renderChart(selectedCompanies, calculateMaxValue(selectedCompanies));
+};
+
+document.getElementById('prev-page').onclick = function () {
+    if (currentPage > 1) {
+        currentPage--;
+        renderTablePage(currentPage);
+    }
+};
+
+document.getElementById('next-page').onclick = function () {
+    if (currentPage < totalPages) {
+        currentPage++;
+        renderTablePage(currentPage);
+    }
+};
+
+// 初始化
+renderTablePage(currentPage);
+renderChart([companyData[0]]);
+</script>
+</body>
+</html>
