@@ -579,7 +579,7 @@
             <div class="toggle-group">
                 <!-- 语言切换按钮 -->
                 <button class="lang-toggle" id="lang-toggle" aria-label="切换语言">
-                    <span id="lang-indicator">EN</span>
+                    <span id="lang-indicator">中</span>
                 </button>
                 <!-- 主题切换按钮 -->
                 <button class="theme-toggle" id="theme-toggle" aria-label="切换深色/浅色模式">
@@ -1015,7 +1015,7 @@ edkg:LPitem</span> a <span style="color:#005cc5;">owl:Class</span> ;
         }
         
         // 检查本地存储中的语言偏好
-        let currentLang = localStorage.getItem('language') || 'zh-CN';
+        let currentLang = 'en-US';
         updateLanguage(currentLang);
         updateLangIndicator(currentLang);
         
