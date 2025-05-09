@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - Vercel风格</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <style>
+        /* 主题变量 */
+        :root {
+            /* 浅色模式变量 */
+            --light-text-color: #000;
+            --light-text-secondary: #666;
+            --light-background: #fff;
+            --light-border-color: rgba(0, 0, 0, 0.1);
+            --light-accent-1: rgba(0, 0, 0, 0.05);
+            --light-accent-2: rgba(0, 0, 0, 0.1);
+            --light-button-text: #fff;
+            --light-button-bg: #000;
+            --light-card-bg: #fff;
+            --light-toggle-bg: rgba(0, 0, 0, 0.1);
+            --light-toggle-icon: #000;
+            
+            /* 深色模式变量 */
+            --dark-text-color: #fff;
+            --dark-text-secondary: #aaa;
+            --dark-background: #111;
+            --dark-border-color: rgba(255, 255, 255, 0.1);
+            --dark-accent-1: rgba(255, 255, 255, 0.05);
+            --dark-accent-2: rgba(255, 255, 255, 0.1);
+            --dark-button-text: #000;
+            --dark-button-bg: #fff;
+            --dark-card-bg: #1a1a1a;
+            --dark-toggle-bg: rgba(255, 255, 255, 0.1);
+            --dark-toggle-icon: #fff;
+            
+            /* 通用变量 */
+            --radius: 8px;
+            --font-sans: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        /* 浅色模式 */
+        .light {
+            --text-color: var(--light-text-color);
+            --text-secondary: var(--light-text-secondary);
+            --background: var(--light-background);
+            --border-color: var(--light-border-color);
+            --accent-1: var(--light-accent-1);
+            --accent-2: var(--light-accent-2);
+            --button-text: var(--light-button-text);
+            --button-bg: var(--light-button-bg);
+            --card-bg: var(--light-card-bg);
+            --toggle-bg: var(--light-toggle-bg);
+            --toggle-icon: var(--light-toggle-icon);
+        }
+        
+        /* 深色模式 */
+        .dark {
+            --text-color: var(--dark-text-color);
+            --text-secondary: var(--dark-text-secondary);
+            --background: var(--dark-background);
+            --border-color: var(--dark-border-color);
+            --accent-1: var(--dark-accent-1);
+            --accent-2: var(--dark-accent-2);
+            --button-text: var(--dark-button-text);
+            --button-bg: var(--dark-button-bg);
+            --card-bg: var(--dark-card-bg);
+            --toggle-bg: var(--dark-toggle-bg);
+            --toggle-icon: var(--dark-toggle-icon);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--background);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        /* 网格背景 */
+        .grid-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: linear-gradient(to right, var(--border-color) 1px, transparent 1px),
+                              linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
+            background-size: 80px 80px;
+            opacity: 0.3;
+            transition: background-image 0.3s ease;
+        }
+        
+        /* 头部 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            transition: border-color 0.3s ease;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin-right: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            cursor: pointer;
+        }
+        
+        .logo img {
+            width: 40px;
+            height: 40px;
+            /* background-color: var(--text-color); */
+        
+        }
+        
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0.8;
+            transition: opacity 0.2s ease, color 0.3s ease;
+        }
+        
+        nav a:hover {
+            opacity: 1;
+        }
+        
+        /* 切换按钮组 */
+        .toggle-group {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        /* 主题切换按钮 */
+        .theme-toggle,
+        .lang-toggle {
+            background-color: var(--toggle-bg);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .theme-toggle:hover,
+        .lang-toggle:hover {
+            background-color: var(--accent-2);
+        }
+        
+        .theme-toggle svg,
+        .lang-toggle span {
+            fill: var(--toggle-icon);
+            color: var(--toggle-icon);
+            transition: fill 0.3s ease, color 0.3s ease;
+        }
+        
+        .lang-toggle span {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* 主要内容 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            text-align: center;
+            margin-bottom: 6rem;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: color 0.3s ease;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        /* 英雄区域渐变背景 */
+        .gradient-bg {
+            position: absolute;
+            bottom: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 400px;
+            background: radial-gradient(circle, 
+                rgba(255, 0, 128, 0.25) 0%, 
+                rgba(0, 255, 255, 0.25) 50%, 
+                rgba(255, 255, 0, 0.25) 100%);
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.7;
+        }
+        
+        /* 按钮 */
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 4rem;
+        }
+        
+        .button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .button-primary {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .button-primary:hover {
+            opacity: 0.9;
+        }
+        
+        .button-secondary {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .button-secondary:hover {
+            background-color: var(--accent-1);
+        }
+        
+        /* 概念图 */
+        .concept-diagram {
+            background-color: var(--accent-1);
+            border-radius: var(--radius);
+            padding: 0rem 0rem;
+            margin-bottom: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .concept-diagram img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        /* 三角形装饰 */
+        .triangle {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: transparent;
+            border-left: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color);
+            transform: rotate(-45deg);
+            transition: border-color 0.3s ease;
+        }
+        
+        .triangle-1 {
+            top: 20%;
+            left: 10%;
+        }
+        
+        .triangle-2 {
+            bottom: 20%;
+            right: 10%;
+            transform: rotate(135deg);
+        }
+        
+        /* 特性部分 */
+        .feature-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            align-items: center;
+        }
+        
+        .feature-section:nth-child(even) {
+            grid-template-columns: 1fr 2fr;
+        }
+        
+        .feature-section:last-child {
+            margin-bottom: 6rem;
+        }
+        
+        .feature-description {
+            padding: 2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .feature-description h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .feature-description p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .feature-button {
+            background-color: #007bff; /* 更显眼的蓝色背景 */
+            color: #fff; /* 白色文字 */
+            border: none; /* 去掉边框 */
+            border-radius: 12px; /* 更柔和的圆角 */
+            padding: 1.5rem 2rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3); /* 明显的阴影 */
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 123, 255, 0.5); /* 悬停时阴影更浓 */
+            background-color: #0056b3; /* 深一点的蓝色作为 hover 效果 */
+        }
+        
+        .dark .feature-button:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-button h4 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .code-img {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .code-box, .animation-box {
+            flex: 1;
+            max-width: 48%;
+        }
+
+        .code-box pre {
+            background: #ffffff; /* 白色背景 */
+            color: #333333;      /* 深灰色文字 */
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 14px;
+            line-height: 1.5;
+            border: 1px solid #ccc;
+        }
+
+        .download-btn {
+  position: absolute;
+  /* top: 1px;
+  right: 1px; */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding-left: 42%;
+  padding-top: 1%;
+}
+.download-btn img, .download-btn svg {
+  width: 460px;
+  height: 460px;
+}
+.download-btn:hover {
+  opacity: 0.8;
+}
+
+        pre {
+            margin: 0;
+            overflow-x: auto;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .animation-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .animation-box img {
+            width: 100%;
+            max-width: 480px;
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .code-box {
+            padding-bottom: 2px;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .header-left {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .feature-section,
+            .feature-section:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #f8f9fa;
+            padding: 2rem 0;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #343a40;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .group-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #495057;
+        }
+        
+        .person-contact-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-bottom: 0.5rem;
+        }
+        
+        .person-name {
+            padding-right: 1rem;
+        }
+        
+        .contact-info {
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-background"></div>
+    
+    <!-- 头部导航 -->
+    <header>
+        <div class="header-left">
+            <!-- <a href="#" class="logo"> -->
+                <div class="logo" onclick="window.location.href='/'">
+                    <img src="/static/assets/logo2.png" alt="Animation Example">
+                </div>
+                <!-- <span data-i18n="logo">logo</span> -->
+            <!-- </a> -->
+            <div class="toggle-group">
+                <!-- 语言切换按钮 -->
+                <button class="lang-toggle" id="lang-toggle" aria-label="切换语言">
+                    <span id="lang-indicator">EN</span>
+                </button>
+                <!-- 主题切换按钮 -->
+                <button class="theme-toggle" id="theme-toggle" aria-label="切换深色/浅色模式">
+                    <!-- 月亮图标（深色模式） -->
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+                    </svg>
+                    <!-- 太阳图标（浅色模式） -->
+                    <svg class="sun-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1zm0 19a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1zm13-9h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2zM1 12a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1zm19.071-7.657l-.707.707a1 1 0 1 0 1.414 1.414l.707-.707a1 1 0 0 0-1.414-1.414zM3.929 19.657l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0-1.414-1.414zM3.929 4.343a1 1 0 0 0-1.414 1.414l.707.707a1 1 0 0 0 1.414-1.414l-.707-.707zm16.142 15.314a1 1 0 0 0 1.414-1.414l-.707-.707a1 1 0 0 0-1.414 1.414l.707.707z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <nav>
+            <a href="#" data-i18n="nav.products" onclick="location.href='build-guide'">图谱构建</a>
+            <a href="#" data-i18n="nav.solutions" onclick="location.href='example'">图谱样例</a>
+            <a href="#" data-i18n="nav.resources" onclick="downloadOntology()">本体下载</a>
+            <a href="#" data-i18n="nav.enterprise" onclick="scrollToFooter()">联系我们</a>
+        </nav>
+    </header>
+    
+    <!-- 主要内容 -->
+    <div class="container">
+        <!-- 英雄区域 -->
+        <section class="hero">
+            <h1 data-i18n="hero.title">EduKG</h1>
+            <p data-i18n="hero.subtitle">为您提供完整的解决方案，帮助您更快、更高效地实现目标。</p>
+            <div class="gradient-bg"></div>
+            
+        </section>
+        
+        <!-- 概念图 -->
+        <section class="concept-diagram">
+            <!-- <div class="triangle triangle-1"></div>
+            <div class="triangle triangle-2"></div> -->
+            <img src="/static/assets/concept.png" alt="Animation Example">
+        </section>
+
+        <section class="code-img">
+            <!-- 左侧代码 -->
+            <div class="code-box">
+                <button class="download-btn" onclick="downloadOntology()" title="下载代码"
+                style="position: absolute;  background: none; border: none; cursor: pointer;">
+          <svg viewBox="0 0 24 24"
+               style="width: 30px; height: 30px; transform: rotate(180deg); text-align: right; fill: #333;">
+            <path d="M5 18h14v2H5v-2zm7-14l7 7h-4v6h-6v-6H5l7-7z"/>
+          </svg>
+        </button>
+              <!-- <button class="copy-btn" onclick="copyCode()">Copy</button> -->
+              <pre style="text-align: left; font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.5;">
+                
+                <span style="color:#999;">
+# Learning Point Collection</span><span style="color:#d73a49;">
+edkg:LearningPointCollection</span> a <span style="color:#005cc5;">owl:Class</span> ;
+    rdfs:subClassOf <span style="color:#005cc5;">edkg:BaseEntity</span> ;
+    rdfs:label <span style="color:#032f62;">" Learning Point Collection "</span> ;
+    rdfs:comment <span style="color:#032f62;">"A collection of learning points "</span> .
+                <span style="color:#999;">
+# Learning Point Item</span><span style="color:#d73a49;">
+edkg:LPitem</span> a <span style="color:#005cc5;">owl:Class</span> ;
+    rdfs:subClassOf <span style="color:#005cc5;">edkg:BaseEntity</span> ;
+    rdfs:label <span style="color:#032f62;">" Learning Point "</span> ;
+    rdfs:comment <span style="color:#032f62;">"An individual learning point "</span> .
+                </pre>
+                <p data-i18n="feature1.ttl" style="margin-top: 1rem;">
+                    IEEE教育图谱本体包含三类实体：知识点（LPitem）、资源（RItem）和教学规范（PRItem）。对于属性和关系来说，我们也允许用户进行自定义的扩展，可以点击右上角的下载图标下载本体源文件进行浏览。
+                </p>
+            </div>
+        
+            <!-- 右侧动图 -->
+            <div class="animation-box">
+              <img src="/static/assets/graph.gif" alt="Animation Example">
+            </div>
+        </section>
+
+        <section></section>
+        
+        <!-- 特性部分1：介绍和展示查看按钮 -->
+        <section class="feature-section">
+            <div class="feature-description">
+                <h3 data-i18n="feature1.title">介绍：点击查看图谱和主体</h3>
+                <p data-i18n="feature1.description">通过我们的图谱系统，您可以直观地了解各个主体之间的关系和连接。点击右侧按钮查看详细信息和完整图谱。</p>
+            </div>
+            <div class="feature-button" onclick="location.href='example'">
+                <h4 data-i18n="feature1.button">展示查看按钮</h4>
+            </div>
+        </section>
+
+
+        
+        <!-- 特性部分2：介绍和构建流程按钮 -->
+        <section class="feature-section">
+            <div class="feature-button" onclick="location.href='build-guide'">
+                <h4 data-i18n="feature2.button">构建流程按钮</h4>
+            </div>
+            <div class="feature-description">
+                <h3 data-i18n="feature2.title">介绍：点击尝试生成自己的图谱</h3>
+                <p data-i18n="feature2.description">我们的系统允许您创建自己的图谱，根据您的需求定制内容和关系。点击左侧按钮开始构建您的专属流程。</p>
+            </div>
+        </section>
+
+        
+        
+          <!-- Prism.js 高亮 -->
+    </div>
+    
+    
+    <!-- 页脚 -->
+    <footer id="page-footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- 第一列：集团 -->
+                <div class="footer-column">
+                    <h3 data-i18n="feature2.group">集团</h3>
+                    <!-- Tsinghua University -->
+                    <div class="footer-group">
+                        <div class="group-name">Tsinghua University</div>
+                        <div style="height: 117px"></div>
+                    </div>
+                    <!-- Beijing Normal University -->
+                    <div class="footer-group">
+                        <div class="group-name">Beijing Normal University</div>
+                        <div style="height: 39px"></div>
+                    </div>
+                    <!-- Working Group Project Manager -->
+                    <div class="footer-group">
+                        <div class="group-name">Working Group Project Manager</div>
+                    </div>
+                    <!-- Squirrel Ai -->
+                    <div class="footer-group">
+                        <div class="group-name">Squirrel Ai</div>
+                        <div style="height: 38px"></div>
+                    </div>
+                    <!-- Beijing Zhipu Huazhang Technology Co., Ltd -->
+                    <div class="footer-group">
+                        <div class="group-name">Beijing Zhipu Huazhang Technology Co., Ltd</div>
+                    </div>
+                    <!-- Shenzhen University -->
+                    <div class="footer-group">
+                        <div class="group-name">Shenzhen University</div>
+                    </div>
+                    <!-- AI Startup (Singapore) -->
+                    <div class="footer-group">
+                        <div class="group-name">AI Startup (Singapore)</div>
+                    </div>
+                    <!-- Tianjin University -->
+                    <div class="footer-group">
+                        <div class="group-name">Tianjin University</div>
+                    </div>
+                    <!-- Shanghai Jiao Tong University -->
+                    <div class="footer-group">
+                        <div class="group-name">Shanghai Jiao Tong University</div>
+                    </div>
+                    <!-- Institute of Computing Technology, CAS -->
+                    <div class="footer-group">
+                        <div class="group-name">Institute of Computing Technology, CAS</div>
+                        <div style="height: 12px"></div>
+                    </div>
+                    <!-- Zhongke Letin Intelligent Technology (Jinan) Co., Ltd -->
+                    <div class="footer-group">
+                        <div class="group-name">Zhongke Letin Intelligent Technology (Jinan) Co., Ltd</div>
+                    </div>
+                    <!-- East China Normal University -->
+                    <div class="footer-group">
+                        <div class="group-name">East China Normal University</div>
+                        <div style="height: 16px"></div>
+                    </div>
+                    <!-- Inspir Group -->
+                    <div class="footer-group">
+                        <div class="group-name">Inspir Group</div>
+                        <div style="height: 16px"></div>
+                    </div>
+                    <!-- Chinese Academy of Medical Sciences -->
+                    <div class="footer-group">
+                        <div class="group-name">Chinese Academy of Medical Sciences</div>
+                    </div>
+                    <!-- Lenovo Research Institute -->
+                    <div class="footer-group">
+                        <div class="group-name">Lenovo Research Institute</div>
+                    </div>
+                    <!-- Intel -->
+                    <div class="footer-group">
+                        <div class="group-name">Intel</div>
+                    </div>
+                </div>
+                
+                <!-- 第二列：人名 -->
+                <div class="footer-column">
+                    <h3 data-i18n="feature2.name">人名</h3>
+                    <!-- Tsinghua University -->
+                    <div class="footer-group">
+                        <div class="person-name">Bin Xu (许斌)</div>
+                        <div class="person-name">Xiaofei Zheng (郑晓飞)</div>
+                        <div class="person-name">Jing Du</div>
+                        <div class="person-name">Hanming Li</div>
+                        <div class="person-name">Siyu Wang</div>
+                        <div class="person-name">Yazhen Gu (顾雅珍)</div>
+                    </div>
+                    <!-- Beijing Normal University -->
+                    <div class="footer-group">
+                        <div class="person-name">Yanyan Li (李艳燕)</div>
+                        <div class="person-name">Penghe Chen（陈鹏鹤）</div>
+                        <div class="person-name">Ruiyu Li</div>
+                    </div>
+                    <!-- Working Group Project Manager -->
+                    <div class="footer-group">
+                        <div class="person-name">Meng Zhao (赵盟)</div>
+                        <div style="height: 8px"></div>
+                    </div>
+                    <!-- Squirrel Ai -->
+                    <div class="footer-group">
+                        <div class="person-name">Joleen Liang (梁静)</div>
+                        <div class="person-name">Richard Tong ( 佟佳睿)</div>
+                        <div class="person-name">Jessie Tong (佟佳熹)</div>
+                    </div>
+                    <!-- Beijing Zhipu Huazhang Technology Co., Ltd -->
+                    <div class="footer-group">
+                        <div class="person-name">Yakun Li (李亚坤)</div>
+                        <div style="height: 38px"></div>
+                    </div>
+                    <!-- Shenzhen University -->
+                    <div class="footer-group">
+                        <div class="person-name">Weili Liu (刘伟丽)</div>
+                        <div style="height: 10px"></div>
+                    </div>
+                    <!-- AI Startup (Singapore) -->
+                    <div class="footer-group">
+                        <div class="person-name">Chuan Jiang (川江)</div>
+                        <div style="height: 11px"></div>
+                    </div>
+                    <!-- Tianjin University -->
+                    <div class="footer-group">
+                        <div class="person-name">Xiaowang Zhang (张晓旺)</div>
+                        <div style="height: 11px"></div>
+                    </div>
+                    <!-- Shanghai Jiao Tong University -->
+                    <div class="footer-group">
+                        <div class="person-name">Liping Shen (申丽萍)</div>
+                        <div style="height: 11px"></div>
+                    </div>
+                    <!-- Institute of Computing Technology, CAS -->
+                    <div class="footer-group">
+                        <div class="person-name">Xinlong Jiang (蒋鑫龙)</div>
+                        <div class="person-name">Qian Chen (陈前)</div>
+                    </div>
+                    <!-- Zhongke Letin Intelligent Technology (Jinan) Co., Ltd -->
+                    <div class="footer-group">
+                        <div class="person-name">Chenlong Gao (高晨龙)</div>
+                        <div style="height: 38px"></div>
+                    </div>
+                    <!-- East China Normal University -->
+                    <div class="footer-group">
+                        <div class="person-name">Zhanjie Wu (吴战杰)</div>
+                        <div class="person-name">Yonghe Wu（吴永和）</div>
+                    </div>
+                    <!-- Inspir Group -->
+                    <div class="footer-group">
+                        <div class="person-name">Yonghui Lü (吕永惠)</div>
+                        <div class="person-name">Cong Huang (黄聪)</div>
+                    </div>
+                    <!-- Chinese Academy of Medical Sciences -->
+                    <div class="footer-group">
+                        <div class="person-name">Jiangbo Pu (蒲江波)</div>
+                        <div style="height: 11px"></div>
+                    </div>
+                    <!-- Lenovo Research Institute -->
+                    <div class="footer-group">
+                        <div class="person-name">Xiaoping Zhang (张晓平)</div>
+                        <div style="height: 11px"></div>
+                    </div>
+                    <!-- Intel -->
+                    <div class="footer-group">
+                        <div class="person-name">Jane Wu</div>
+                    </div>
+                </div>
+                
+                <!-- 第三列：联系方式 -->
+                <div class="footer-column">
+                    <h3 data-i18n="feature2.contact">联系方式</h3>
+                    <!-- Tsinghua University -->
+                    <div class="footer-group">
+                        <div class="contact-info">xubin@tsinghua.edu.cn</div>
+                        <div class="contact-info">13718825535@126.com</div>
+                        <div class="contact-info">dujing@tsinghua.edu.cn</div>
+                        <div class="contact-info">-</div>
+                        <div class="contact-info">-</div>
+                        <div class="contact-info">yazhengu@126.com</div>
+                    </div>
+                    <!-- Beijing Normal University -->
+                    <div class="footer-group">
+                        <div class="contact-info">liyy@bnu.edu.cn</div>
+                        <div class="contact-info">chenpenghe@bnu.edu.cn</div>
+                        <div class="contact-info">-</div>
+                    </div>
+                    <!-- Working Group Project Manager -->
+                    <div class="footer-group">
+                        <div class="contact-info">meng.zhao@ieee.org</div>
+                        <div style="height: 8px"></div>
+                    </div>
+                    <!-- Squirrel Ai -->
+                    <div class="footer-group">
+                        <div class="contact-info">joleenliang@songshuai.com</div>
+                        <div class="contact-info">richard.tong@ieee.org</div>
+                        <div class="contact-info">jessie.tong@ieee.org</div>
+                    </div>
+                    <!-- Beijing Zhipu Huazhang Technology Co., Ltd -->
+                    <div class="footer-group">
+                        <div class="contact-info">yakunli0316@gmail.com</div>
+                        <div style="height: 38px"></div>
+                    </div>
+                    <!-- Shenzhen University -->
+                    <div class="footer-group">
+                        <div class="contact-info">liuwl@szu.edu.cn</div>
+                        <div style="height: 10px"></div>
+                    </div>
+                    <!-- AI Startup (Singapore) -->
+                    <div class="footer-group">
+                        <div class="contact-info">chuanjiangliu99@gmail.com</div>
+                        <div style="height: 11px"></div>
+                    </div>
+                    <!-- Tianjin University -->
+                    <div class="footer-group">
+                        <div class="contact-info">xiaowangzhang@tju.edu.cn</div>
+                        <div style="height: 11px"></div>
+                    </div>
+                    <!-- Shanghai Jiao Tong University -->
+                    <div class="footer-group">
+                        <div class="contact-info">lpshen@sjtu.edu.cn</div>
+                        <div style="height: 11px"></div>
+                    </div>
+                    <!-- Institute of Computing Technology, CAS -->
+                    <div class="footer-group">
+                        <div class="contact-info">jiangxinlong@ict.ac.cn</div>
+                        <div class="contact-info">chenqian20b@ict.ac.cn</div>
+                    </div>
+                    <!-- Zhongke Letin Intelligent Technology (Jinan) Co., Ltd -->
+                    <div class="footer-group">
+                        <div class="contact-info">gaochenlong@ict.ac.cn</div>
+                        <div style="height: 38px"></div>
+                    </div>
+                    <!-- East China Normal University -->
+                    <div class="footer-group">
+                        <div class="contact-info">zjwu@deit.ecnu.edu.cn</div>
+                        <div class="contact-info">yhwu@deit.ecnu.edu.cn</div>
+                    </div>
+                    <!-- Inspir Group -->
+                    <div class="footer-group">
+                        <div class="contact-info">-</div>
+                        <div class="contact-info">huangcong@inspur.com</div>
+                    </div>
+                    <!-- Chinese Academy of Medical Sciences -->
+                    <div class="footer-group">
+                        <div class="contact-info">jiangbo.pu@foxmail.com</div>
+                        <div style="height: 11px"></div>
+                    </div>
+                    <!-- Lenovo Research Institute -->
+                    <div class="footer-group">
+                        <div class="contact-info">zhangxpd@lenovo.com</div>
+                        <div style="height: 11px"></div>
+                    </div>
+                    <!-- Intel -->
+                    <div class="footer-group">
+                        <div class="contact-info">jane.wu@intel.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 语言数据
+        const i18n = {
+            'zh-CN': {
+                'logo': 'logo',
+                'nav.solutions': '样例展示',
+                'nav.products': '图谱构建',
+                'nav.resources': '本体下载',
+                'nav.enterprise': '联系我们',
+                'nav.docs': '文档',
+                'hero.title': 'EduKG.org',
+                'hero.subtitle': '为您提供 IEEE 标准的教育知识图谱构建、展示与应用建议',
+                'feature1.title': '点击查看标准图谱样例',
+                'feature1.description': '您可以在这里浏览符合我们教育图谱标准的四门学科（计算机网络、生物、化学、物理）的图谱案例。',
+                'feature1.button': '样例展示',
+                'feature2.title': '点击尝试构建自己的图谱',
+                'feature2.description': '我们的系统允许您构建自己的图谱。只需导入一个符合系统格式的 CSV 文件，即可自动完成符合标准的教育图谱构建与展示。',
+                'feature2.button': '图谱构建',
+                'feature1.ttl': 'IEEE教育图谱本体包含三类实体：知识点（LPitem）、资源（RItem）和教学规范（PRItem）。对于属性和关系来说，我们也允许用户进行自定义的扩展，可以点击右上角的下载图标下载本体源文件进行浏览。',
+                'feature2.contact': '联系方式',
+                'feature2.name': '人名',
+                'feature2.group': '组织'
+            },
+            'en-US': {
+                'logo': 'logo',
+                'nav.solutions': 'View Samples',
+                'nav.products': 'Builde Graph',
+                'nav.resources': 'Ontology Download',
+                'nav.enterprise': 'Contact Us',
+                'nav.docs': 'Docs',
+                'hero.title': 'EduKG.org',
+                'hero.subtitle': 'We provide IEEE-compliant educational knowledge graph solutions, including construction, visualization, and application guidance.',
+                'feature1.title': 'View Standardized Graph Examples',
+                'feature1.description': 'Browse graph examples across four subjects—Computer Networks, Biology, Chemistry, and Physics—that conform to our educational graph standard.',
+                'feature1.button': 'View Samples',
+                'feature2.title': 'Try Building Your Own Graph',
+                'feature2.description': 'Our system allows you to build your own educational graph. Simply upload a CSV file in the required format, and we’ll automatically generate a graph that meets our standards.',
+                'feature2.button': 'Build Graph',
+                'feature1.ttl': 'The IEEE Educational Graph Ontology includes three types of entities: Learning Points (LPitem), Resources (RItem), and Pedagogical Requirements (PRItem). Users can also define custom properties and relationships. Click the download icon in the top-right corner to browse the ontology source file.',
+                'feature2.contact': 'Contact Info',
+                'feature2.name': 'Names',
+                'feature2.group': 'Organizations'
+            }
+        };
+
+        
+        // 获取主题切换按钮和图标
+        const themeToggle = document.getElementById('theme-toggle');
+        const moonIcon = document.querySelector('.moon-icon');
+        const sunIcon = document.querySelector('.sun-icon');
+        const htmlElement = document.documentElement;
+        
+        // 获取语言切换按钮和指示器
+        const langToggle = document.getElementById('lang-toggle');
+        const langIndicator = document.getElementById('lang-indicator');
+        
+        // 检查本地存储中的主题偏好
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            htmlElement.className = savedTheme;
+            updateIcons(savedTheme);
+        }
+        
+        // 检查本地存储中的语言偏好
+        let currentLang = localStorage.getItem('language') || 'zh-CN';
+        updateLanguage(currentLang);
+        updateLangIndicator(currentLang);
+        
+        // 切换主题
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.className;
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            htmlElement.className = newTheme;
+            localStorage.setItem('theme', newTheme);
+            updateIcons(newTheme);
+        });
+        
+        // 切换语言
+        langToggle.addEventListener('click', () => {
+            currentLang = currentLang === 'zh-CN' ? 'en-US' : 'zh-CN';
+            localStorage.setItem('language', currentLang);
+            updateLanguage(currentLang);
+            updateLangIndicator(currentLang);
+            
+            // 更新HTML lang属性
+            document.documentElement.setAttribute('lang', currentLang);
+        });
+        
+        // 更新图标显示
+        function updateIcons(theme) {
+            if (theme === 'dark') {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            } else {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+            }
+        }
+        
+        // 更新语言指示器
+        function updateLangIndicator(lang) {
+            langIndicator.textContent = lang === 'zh-CN' ? 'EN' : '中';
+        }
+        
+        // 更新页面语言
+        function updateLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (i18n[lang][key]) {
+                    element.textContent = i18n[lang][key];
+                }
+            });
+            
+            // 更新页面标题
+            document.title = lang === 'zh-CN' ? '首页 - Vercel风格' : 'Home - Vercel Style';
+        }
+        
+        // 检查系统偏好
+        function checkSystemPreference() {
+            // 如果用户没有手动设置主题，则检查系统偏好
+            if (!localStorage.getItem('theme')) {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                htmlElement.className = prefersDark ? 'dark' : 'light';
+                updateIcons(prefersDark ? 'dark' : 'light');
+            }
+        }
+        
+        // 初始检查系统偏好
+        checkSystemPreference();
+        
+        // 监听系统主题变化
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            // 只有当用户没有手动设置主题时才跟随系统
+            if (!localStorage.getItem('theme')) {
+                const newTheme = e.matches ? 'dark' : 'light';
+                htmlElement.className = newTheme;
+                updateIcons(newTheme);
+            }
+        });
+
+        function downloadOntology() {
+            const filePath = "/static/ttl/" + "edkg-ontology-02-25.ttl";
+            const link = document.createElement("a");
+            link.href = filePath;
+            link.download = "edkg-ontology-02-25.ttl";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+
+        function scrollToFooter() {
+            document.getElementById('page-footer').scrollIntoView({
+                behavior: 'smooth'
+            });
+        };
+    </script>
+</body>
+</html>

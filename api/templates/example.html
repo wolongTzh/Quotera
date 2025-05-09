@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="head">展示查看页</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text-color: #000;
+      --text-secondary: #666;
+      --background: #fff;
+      --border-color: rgba(0, 0, 0, 0.1);
+      --accent-1: rgba(0, 0, 0, 0.05);
+      --accent-2: rgba(0, 0, 0, 0.1);
+      --button-text: #fff;
+      --button-bg: #000;
+      --card-bg: #fff;
+      --radius: 12px;
+      --font-sans: 'Inter', 'Noto Sans SC', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      background-color: var(--background);
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+      background-size: 20px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin: 1rem 0 2rem;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: relative;
+    }
+
+    .lang-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: var(--accent-1);
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    select, .button {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-color);
+      background-color: var(--accent-1);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover, select:hover {
+      background-color: var(--accent-2);
+    }
+
+    .viewer-box {
+      margin: 2rem auto;
+      width: 100%;
+      max-width: 1600px;
+      height: 900px;
+      background-color: var(--accent-1);
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-color);
+      transition: background-color 0.3s ease;
+    }
+
+    .search-box {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      /* position: absolute; */
+      bottom: 40px;
+      width: 100%;
+    }
+
+    .search-box input {
+      padding: 0.8rem 1.4rem;
+      font-size: 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 22px;
+      outline: none;
+      width: 500px;
+      background-color: #f7f7f7;
+      transition: border-color 0.3s ease;
+      margin-right: 30px;
+    }
+
+    .search-box input:focus {
+      border-color: var(--button-bg);
+    }
+
+    .search-box button {
+      padding: 0.8rem 1.4rem;
+      font-size: 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 22px;
+      background-color: var(--accent-2);
+      color: var(--text-color);
+      cursor: pointer;
+      transition: opacity 0.3s ease, transform 0.2s ease;
+    }
+
+    .search-box button:hover {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+
+    .footer-btn {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    #toggle-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 25px;
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    #toggle-button:hover {
+      background-color: var(--accent-2);
+      transform: scale(1.05);
+    }
+
+    .logo {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: var(--text-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        transition: color 0.3s ease;
+    }
+
+    .logo:hover {
+      cursor: pointer;
+    }
+        
+    .logo img {
+        width: 40px;
+        height: 40px;
+        /* background-color: var(--text-color); */
+    
+    }
+
+    
+
+    @media (max-width: 768px) {
+      .viewer-box {
+        height: 600px;
+      }
+
+      .search-box input {
+        width: 80%;
+      }
+
+      .footer-btn {
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo" onclick="window.location.href='/'">
+      <img src="/static/assets/logo2.png" alt="Animation Example">
+    </div>
+    <select id="graph-selector" style="margin-left: 50px;">
+      <option value="network" data-i18n="network">计算机网络图谱</option>
+      <option value="physics" data-i18n="physics">物理图谱</option>
+      <option value="chemistry" data-i18n="chemistry">化学图谱</option>
+      <option value="biology" data-i18n="biology">生物图谱</option>
+      
+    </select>
+    <button class="button" style="margin-right: 50px;" id="download-button" onclick="downloadGraph()" data-i18n="download">点击下载图谱</button>
+    <button class="lang-toggle" onclick="toggleLang()" id="lang-toggle">中</button>
+  </header>
+
+  <h1 data-i18n="title">展示查看页</h1>
+
+  <div class="viewer-box" id="viewer"></div>
+
+  <div class="search-box" id="search-box">
+    <input type="text" id="search-input" placeholder="Please input your keywords...">
+    <button onclick="handleSearch()" data-i18n="search">搜索</button>
+  </div>
+
+  <!-- <div class="footer-btn">
+    <button class="button" id="toggle-button" onclick="toggleView()">切换本体</button>
+  </div> -->
+
+  <script>
+    let isGraph = true;
+
+    function toggleView() {
+      isGraph = !isGraph;
+      if(isGraph) {
+        allNodes = graphs.network.nodes
+        allLinks = graphs.network.links
+        show_d3(graphs.network.nodes, graphs.network.links);  // 第二个参数为true表示合并重载
+      }
+
+      const viewer = document.getElementById('viewer');
+      const toggleButton = document.getElementById('toggle-button');
+      const downloadButton = document.getElementById('download-button');
+      const graphSelector = document.getElementById('graph-selector');
+      const searchBox = document.getElementById('search-box');
+      if(!isGraph) {
+        viewer.textContent = '展示本体';
+      }
+      toggleButton.textContent = isGraph ? '切换本体' : '切换图谱';
+      downloadButton.textContent = isGraph ? '点击下载图谱' : '点击下载本体';
+
+      graphSelector.style.display = isGraph ? 'inline-block' : 'none';
+      searchBox.style.display = isGraph ? 'flex' : 'none';
+    }
+
+    // function handleSearch() {
+    //   const val = document.getElementById('search-input').value.trim();
+    //   if (val) {
+    //     alert('搜索：“' + val + '”（模拟）');
+    //   } else {
+    //     alert('请输入关键词再搜索');
+    //   }
+    // }
+    function downloadGraph() {
+      const selectedFileName = document.getElementById('graph-selector').value;
+      const filePath = "/static/ttl/" + selectedFileName + ".ttl";
+      const link = document.createElement("a");
+      link.href = filePath;
+      link.download = selectedFileName + ".ttl";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+    // function downloadGraph() {
+    //   alert(isGraph ? '正在下载图谱...（模拟）' : '正在下载本体...（模拟）');
+    // }
+  </script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+  window.onload = function() {
+    allNodes = graphs.network.nodes
+    allLinks = graphs.network.links
+    show_d3(graphs.network.nodes, graphs.network.links);  // 第二个参数为true表示合并重载
+  };
+  var allNodes = []
+  var allLinks = []
+  const graphs = {
+    "network": {
+      "nodes":[
+        {
+          "id": "https://example.com/concept_graph/lp/IMAP",
+          "name": "IMAP"
+        },
+        {
+          "id": "http://edkg.org/ontology#LPitem",
+          "name": "LPitem"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/POP3",
+          "name": "POP3"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/IP_address_allocation",
+          "name": "IP_address_allocation"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/socket",
+          "name": "socket"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/UDP",
+          "name": "UDP"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/DNS",
+          "name": "DNS"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/application_layer_protocol",
+          "name": "application_layer_protocol"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/TLD_DNS_server",
+          "name": "TLD_DNS_server"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/instant_messaging",
+          "name": "instant_messaging"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/distributed_system",
+          "name": "distributed_system"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/SMTP",
+          "name": "SMTP"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/client/server_model",
+          "name": "server_model"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/skype",
+          "name": "skype"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/root_DNS_server",
+          "name": "root_DNS_server"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/MIME",
+          "name": "MIME"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/URL",
+          "name": "URL"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/packet",
+          "name": "packet"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/local_DNS_server",
+          "name": "local_DNS_server"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/application_programming_interface_",
+          "name": "application_programming_interface_"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/TCP",
+          "name": "TCP"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/dynamic_host_configuration_protocol",
+          "name": "dynamic_host_configuration_protocol"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/upper_layer_data",
+          "name": "upper_layer_data"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/DNS_server",
+          "name": "DNS_server"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/socket_API_primitive",
+          "name": "socket_API_primitive"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/FTP",
+          "name": "FTP"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/domain_name",
+          "name": "domain_name"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/authoritative_DNS_server",
+          "name": "authoritative_DNS_server"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/DNS_resource_record",
+          "name": "DNS_resource_record"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/Peer-to-Peer_model",
+          "name": "Peer-to-Peer_model"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/default_DNS_server",
+          "name": "default_DNS_server"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
+          "name": "hybrid_of_client-server_and_P2P"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/mail_access_protocol",
+          "name": "mail_access_protocol"
+        },
+        {
+          "id": "https://example.com/concept_graph/relation/depends_on",
+          "name": "depends_on"
+        },
+        {
+          "id": "http://edkg.org/ontology#DisciplinaryProperty",
+          "name": "DisciplinaryProperty"
+        },
+        {
+          "id": "https://example.com/concept_graph/relation/layer_below",
+          "name": "layer_below"
+        },
+        {
+          "id": "https://example.com/concept_graph/relation/belong_to",
+          "name": "belong_to"
+        },
+        {
+          "id": "https://example.com/concept_graph/relation/part_of",
+          "name": "part_of"
+        },
+        {
+          "id": "https://example.com/concept_graph/relation/synonym_of",
+          "name": "synonym_of"
+        }
+      ],
+      "links":[
+        {
+          "source": "https://example.com/concept_graph/lp/DNS",
+          "target": "https://example.com/concept_graph/lp/application_layer_protocol",
+          "relation": "belong_to"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/TLD_DNS_server",
+          "target": "https://example.com/concept_graph/lp/DNS",
+          "relation": "part_of"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/socket",
+          "target": "https://example.com/concept_graph/lp/distributed_system",
+          "relation": "depends_on"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/SMTP",
+          "target": "https://example.com/concept_graph/lp/client/server_model",
+          "relation": "belong_to"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/TLD_DNS_server",
+          "target": "https://example.com/concept_graph/lp/root_DNS_server",
+          "relation": "layer_below"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/SMTP",
+          "target": "https://example.com/concept_graph/lp/MIME",
+          "relation": "depends_on"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/DNS",
+          "target": "https://example.com/concept_graph/lp/client/server_model",
+          "relation": "belong_to"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/local_DNS_server",
+          "target": "https://example.com/concept_graph/lp/dynamic_host_configuration_protocol",
+          "relation": "depends_on"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/FTP",
+          "target": "https://example.com/concept_graph/lp/TCP",
+          "relation": "depends_on"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/DNS",
+          "target": "https://example.com/concept_graph/lp/domain_name",
+          "relation": "depends_on"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/authoritative_DNS_server",
+          "target": "https://example.com/concept_graph/lp/DNS_server",
+          "relation": "belong_to"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/FTP",
+          "target": "https://example.com/concept_graph/lp/client/server_model",
+          "relation": "belong_to"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/SMTP",
+          "target": "https://example.com/concept_graph/lp/TCP",
+          "relation": "depends_on"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/DNS",
+          "target": "https://example.com/concept_graph/lp/DNS_server",
+          "relation": "depends_on"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/DNS",
+          "target": "https://example.com/concept_graph/lp/DNS_resource_record",
+          "relation": "depends_on"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/DNS",
+          "target": "https://example.com/concept_graph/lp/UDP",
+          "relation": "depends_on"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/authoritative_DNS_server",
+          "target": "https://example.com/concept_graph/lp/TLD_DNS_server",
+          "relation": "layer_below"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/local_DNS_server",
+          "target": "https://example.com/concept_graph/lp/default_DNS_server",
+          "relation": "synonym_of"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/socket",
+          "target": "https://example.com/concept_graph/lp/socket_API_primitive",
+          "relation": "part_of"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/socket",
+          "target": "https://example.com/concept_graph/lp/application_programming_interface_",
+          "relation": "belong_to"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/local_DNS_server",
+          "target": "https://example.com/concept_graph/lp/DNS_server",
+          "relation": "belong_to"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/instant_messaging",
+          "target": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
+          "relation": "belong_to"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/domain_name",
+          "target": "https://example.com/concept_graph/lp/URL",
+          "relation": "part_of"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/IMAP",
+          "target": "https://example.com/concept_graph/lp/TCP",
+          "relation": "depends_on"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/authoritative_DNS_server",
+          "target": "https://example.com/concept_graph/lp/DNS",
+          "relation": "part_of"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/MIME",
+          "target": "https://example.com/concept_graph/lp/application_layer_protocol",
+          "relation": "belong_to"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/upper_layer_data",
+          "target": "https://example.com/concept_graph/lp/packet",
+          "relation": "part_of"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/POP3",
+          "target": "https://example.com/concept_graph/lp/application_layer_protocol",
+          "relation": "belong_to"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/IMAP",
+          "target": "https://example.com/concept_graph/lp/application_layer_protocol",
+          "relation": "belong_to"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
+          "target": "https://example.com/concept_graph/lp/Peer-to-Peer_model",
+          "relation": "depends_on"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
+          "target": "https://example.com/concept_graph/lp/client/server_model",
+          "relation": "depends_on"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/dynamic_host_configuration_protocol",
+          "target": "https://example.com/concept_graph/lp/IP_address_allocation",
+          "relation": "depends_on"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/local_DNS_server",
+          "target": "https://example.com/concept_graph/lp/DNS",
+          "relation": "part_of"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/POP3",
+          "target": "https://example.com/concept_graph/lp/mail_access_protocol",
+          "relation": "belong_to"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/TLD_DNS_server",
+          "target": "https://example.com/concept_graph/lp/DNS_server",
+          "relation": "belong_to"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/IMAP",
+          "target": "https://example.com/concept_graph/lp/mail_access_protocol",
+          "relation": "belong_to"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/skype",
+          "target": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
+          "relation": "belong_to"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/FTP",
+          "target": "https://example.com/concept_graph/lp/application_layer_protocol",
+          "relation": "belong_to"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/POP3",
+          "target": "https://example.com/concept_graph/lp/TCP",
+          "relation": "depends_on"
+        },
+        {
+          "source": "https://example.com/concept_graph/lp/SMTP",
+          "target": "https://example.com/concept_graph/lp/application_layer_protocol",
+          "relation": "belong_to"
+        }
+      ] 
+    },
+    "physics": {
+      "nodes": [
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/neutron",
+          "name": "proton"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/spin_quantization",
+          "name": "spin_quantization"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/1_1_DiscoveryOfParticles",
+          "name": "1_1_DiscoveryOfParticles"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/electric_charge",
+          "name": "electric_charge"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/hadron",
+          "name": "hadron"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/positron",
+          "name": "positron"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/proton",
+          "name": "proton"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/particle_lifetime",
+          "name": "particle_lifetime"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/particle",
+          "name": "particle"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/lifetime",
+          "name": "lifetime"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/meson",
+          "name": "meson"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/mass-energy_equivalence",
+          "name": "mass-energy_equivalence"
+        },
+        {
+          "id": "http://edkg.org/ontology#LPitem",
+          "name": "LPitem"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/PhysicsExample_Collection",
+          "name": "Physics"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/1_ElementaryParticle",
+          "name": "1_ElementaryParticle"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/elementary_charge_e",
+          "name": "elementary_charge_e"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/1_2_ClassificationOfParticles",
+          "name": "1_2_ClassificationOfParticles"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/elementary_particle",
+          "name": "elementary_particle"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/relation/emits",
+          "name": "emits"
+        },
+        {
+          "id": "http://edkg.org/ontology#DisciplinaryProperty",
+          "name": "DisciplinaryProperty"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/atom",
+          "name": "atom"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/fundamental_interactions",
+          "name": "fundamental_interactions"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/d-quark",
+          "name": "d-quark"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/neutrino",
+          "name": "neutrino"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/u-quark",
+          "name": "u-quark"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/relation/transformsInto",
+          "name": "transformsInto"
+        },
+        {
+          "id": "http://edkg.org/ontology#LearningPointCollection",
+          "name": "LearningPointCollection"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/relation/includes",
+          "name": "includes"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/relation/isComposedOf",
+          "name": "isComposedOf"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/lp/spin_motion",
+          "name": "spin_motion"
+        },
+        {
+          "id": "https://kgeditor.cn/physics_example/relation/decaysInto",
+          "name": "decaysInto"
+        }
+      ],
+      "links": [
+        {
+          "source": "https://kgeditor.cn/physics_example/lp/particle",
+          "target": "https://kgeditor.cn/physics_example/lp/lifetime",
+          "relation": "includes"
+        },
+        {
+          "source": "https://kgeditor.cn/physics_example/lp/electric_charge",
+          "target": "https://kgeditor.cn/physics_example/lp/elementary_charge_e",
+          "relation": "includes"
+        },
+        {
+          "source": "https://kgeditor.cn/physics_example/lp/proton",
+          "target": "https://kgeditor.cn/physics_example/lp/neutrino",
+          "relation": "emits"
+        },
+        {
+          "source": "https://kgeditor.cn/physics_example/lp/proton",
+          "target": "https://kgeditor.cn/physics_example/lp/u-quark",
+          "relation": "isComposedOf"
+        },
+        {
+          "source": "https://kgeditor.cn/physics_example/lp/particle",
+          "target": "https://kgeditor.cn/physics_example/lp/particle",
+          "relation": "decaysInto"
+        },
+        {
+          "source": "https://kgeditor.cn/physics_example/lp/proton",
+          "target": "https://kgeditor.cn/physics_example/lp/meson",
+          "relation": "transformsInto"
+        },
+        {
+          "source": "https://kgeditor.cn/physics_example/lp/proton",
+          "target": "https://kgeditor.cn/physics_example/lp/d-quark",
+          "relation": "isComposedOf"
+        },
+        {
+          "source": "https://kgeditor.cn/physics_example/lp/proton",
+          "target": "https://kgeditor.cn/physics_example/lp/neutron",
+          "relation": "transformsInto"
+        },
+        {
+          "source": "https://kgeditor.cn/physics_example/lp/neutron",
+          "target": "https://kgeditor.cn/physics_example/lp/d-quark",
+          "relation": "isComposedOf"
+        },
+        {
+          "source": "https://kgeditor.cn/physics_example/lp/particle",
+          "target": "https://kgeditor.cn/physics_example/lp/spin_motion",
+          "relation": "includes"
+        },
+        {
+          "source": "https://kgeditor.cn/physics_example/lp/proton",
+          "target": "https://kgeditor.cn/physics_example/lp/positron",
+          "relation": "emits"
+        },
+        {
+          "source": "https://kgeditor.cn/physics_example/lp/neutron",
+          "target": "https://kgeditor.cn/physics_example/lp/u-quark",
+          "relation": "isComposedOf"
+        }
+      ]
+    },
+    "biology": {
+      "nodes": [
+        {
+          "id": "http://example.org/instance#T1",
+          "name": "Biology and Cells"
+        },
+        {
+          "id": "http://example.org/instance#S1",
+          "name": "Distinguishing between living and non-living things"
+        },
+        {
+          "id": "http://example.org/instance#Q1",
+          "name": "Differentiation of plant characteristics"
+        },
+        {
+          "id": "http://example.org/instance#LO3",
+          "name": "Algae, mosses, and ferns"
+        },
+        {
+          "id": "http://example.org/instance#LO1",
+          "name": "Observe living organisms in the surrounding environment"
+        },
+        {
+          "id": "http://example.org/instance#A1",
+          "name": "Assignment on the characteristics of living organisms."
+        },
+        {
+          "id": "http://example.org/instance#IT1",
+          "name": "Reinforcement exercise on plant characteristic differentiation"
+        },
+        {
+          "id": "http://example.org/instance#PR3",
+          "name": "PR3"
+        },
+        {
+          "id": "http://example.org/instance#LO4",
+          "name": "Seed plants"
+        },
+        {
+          "id": "http://example.org/instance#PR1",
+          "name": "Utilize Teaching Resources"
+        },
+        {
+          "id": "http://example.org/instance#Bio701_Collection",
+          "name": "Biology"
+        },
+        {
+          "id": "http://edkg.org/ontology#RIitem",
+          "name": "RIitem"
+        },
+        {
+          "id": "http://example.org/instance#T2",
+          "name": "Diversity of Living Organisms"
+        },
+        {
+          "id": "http://example.org/instance#PR2",
+          "name": "Summarize Key Knowledge Points"
+        },
+        {
+          "id": "http://example.org/instance#L1",
+          "name": "Video on living organisms in the environment"
+        },
+        {
+          "id": "http://edkg.org/ontology#LPitem",
+          "name": "LPitem"
+        },
+        {
+          "id": "http://example.org/instance#LO2",
+          "name": "Characteristics of living organisms"
+        },
+        {
+          "id": "http://edkg.org/ontology#PRitem",
+          "name": "PRitem"
+        },
+        {
+          "id": "http://edkg.org/ontology#LearningPointCollection",
+          "name": "LearningPointCollection"
+        }
+      ],
+      "links": []
+    },
+    "chemistry": {
+      "nodes": [
+        {
+          "id": "http://example.org/instance#10491",
+          "name": "Essential Nutrients for Humans"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/1331",
+          "name": "Composite Materials and Nanomaterials"
+        },
+        {
+          "id": "http://example.org/instance#10519",
+          "name": "Composite Materials"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/1335",
+          "name": "Life Activities and Six Major Nutrients"
+        },
+        {
+          "id": "http://example.org/instance#10497",
+          "name": "Essential Nutrients for Humans"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/1295",
+          "name": "Chemistry and Social Development"
+        },
+        {
+          "id": "http://example.org/instance#10504",
+          "name": "Chemical Elements and Human Health"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/1321",
+          "name": "Common Chemical Synthetic Materials"
+        },
+        {
+          "id": "http://edkg.org/ontology#LPitem",
+          "name": "LPitem"
+        },
+        {
+          "id": "http://example.org/instance#10503",
+          "name": "Chemical Elements and Human Health"
+        },
+        {
+          "id": "http://example.org/instance#10496",
+          "name": "Essential Nutrients for Humans"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/1333",
+          "name": "Chemicals and Health"
+        },
+        {
+          "id": "http://example.org/instance#10520",
+          "name": "Composite Materials"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/1334",
+          "name": "The Elemental Composition of the Human Body and the Important Role of Elements in Human Health"
+        },
+        {
+          "id": "https://example.com/concept_graph/lp/1327",
+          "name": "White Pollution and Prevention/Control"
+        },
+        {
+          "id": "http://example.org/instance#10514",
+          "name": "White Pollution"
+        },
+        {
+          "id": "http://edkg.org/ontology#RIitem",
+          "name": "RIitem"
+        },
+        {
+          "id": "http://example.org/instance#10513",
+          "name": "White Pollution"
+        },
+        {
+          "id": "http://example.org/instance#10495",
+          "name": "Essential Nutrients for Humans"
+        },
+        {
+          "id": "http://example.org/instance#10521",
+          "name": "Composite Materials"
+        }
+      ],
+      "links": []
+    }
+  }
+  
+  function show_d3(nodes, links) {
+    const container = document.getElementById('viewer');
+    container.innerHTML = ''; // 清空之前的 SVG 内容
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+    const svg = d3.select('#viewer')
+      .append('svg')
+      .attr('width', width)
+      .attr('height', height);
+
+    // 创建 zoom 行为
+    const zoom = d3.zoom()
+      .scaleExtent([0.1, 10]) // 缩放范围
+      .on("zoom", (event) => {
+        g.attr("transform", event.transform);
+    });
+
+    // 应用 zoom 行为到 svg 上
+    svg.call(zoom);
+
+
+    
+    const g = svg.append("g");
+
+    const simulation = d3.forceSimulation(nodes)
+      .force('link', d3.forceLink(links).id(d => d.id).distance(200))
+      .force('charge', d3.forceManyBody().strength(-500))
+      .force('center', d3.forceCenter(width / 2, height / 2));
+
+    const linkGroup = g.append('g')
+      .attr('stroke', '#999')
+      .attr('stroke-opacity', 0.6);
+
+    const link = linkGroup.selectAll('line')
+      .data(links)
+      .join('line')
+      .attr('stroke-width', 2);
+
+    const linkText = linkGroup.selectAll('text')
+      .data(links)
+      .join('text')
+      .text(d => d.relation)
+      .attr('font-size', '12px')
+      .attr('fill', '#333');
+
+    const node = g.append('g')
+      .attr('stroke', '#fff')
+      .attr('stroke-width', 1.5)
+      .selectAll('circle')
+      .data(nodes)
+      .join('circle')
+      .attr('r', 30)
+      .attr('fill', '#69b3a2')
+      .call(drag(simulation));
+
+    const label = g.append('g')
+      .selectAll('text')
+      .data(nodes)
+      .join('text')
+      .text(d => d.name)
+      .attr('text-anchor', 'middle')
+      .attr('dy', '.35em')
+      .attr('font-size', '14px')
+      .attr('font-weight', 'bold');
+
+    simulation.on('tick', () => {
+      link
+        .attr('x1', d => d.source.x)
+        .attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x)
+        .attr('y2', d => d.target.y);
+
+      linkText
+        .attr('x', d => (d.source.x + d.target.x) / 2)
+        .attr('y', d => (d.source.y + d.target.y) / 2);
+
+      node
+        .attr('cx', d => d.x)
+        .attr('cy', d => d.y);
+
+      label
+        .attr('x', d => d.x)
+        .attr('y', d => d.y);
+    });
+
+    function drag(simulation) {
+      function dragstarted(event, d) {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+      }
+
+      function dragged(event, d) {
+        d.fx = event.x;
+        d.fy = event.y;
+      }
+
+      function dragended(event, d) {
+        if (!event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+      }
+
+      return d3.drag()
+        .on('start', dragstarted)
+        .on('drag', dragged)
+        .on('end', dragended);
+    }
+  }
+  
+  document.getElementById('graph-selector').addEventListener('change', function () {
+    const selected = this.value;
+    if(selected === "network") {
+      allNodes = graphs.network.nodes
+      allLinks = graphs.network.links
+      show_d3(graphs.network.nodes, graphs.network.links);  // 第二个参数为true表示合并重载
+    }
+    else if(selected === "physics") {
+      allNodes = graphs.physics.nodes
+      allLinks = graphs.physics.links
+      show_d3(graphs.physics.nodes, graphs.physics.links);  // 第二个参数为true表示合并重载
+    }  
+    else if(selected === "biology") {
+      allNodes = graphs.biology.nodes
+      allLinks = graphs.biology.links
+      show_d3(graphs.biology.nodes, graphs.biology.links);  // 第二个参数为true表示合并重载
+    } 
+    else if(selected === "chemistry") {
+      allNodes = graphs.chemistry.nodes
+      allLinks = graphs.chemistry.links
+      show_d3(graphs.chemistry.nodes, graphs.chemistry.links);  // 第二个参数为true表示合并重载
+    } 
+  });
+
+
+  function handleSearch() {
+    const keyword = document.getElementById('search-input').value.trim().toLowerCase();
+
+    if (!keyword) {
+      // 如果搜索框为空，显示全部
+      show_d3(allNodes, allLinks);
+      return;
+    }
+
+    // 找出名称中包含关键字的节点
+    const matchedNodes = allNodes.filter(node => node.name.toLowerCase().includes(keyword));
+    const matchedNodeIds = new Set(matchedNodes.map(n => n.id));
+
+    // 找出连接到这些节点的边
+    const matchedLinks = allLinks.filter(link =>
+      matchedNodeIds.has(link.source.id || link.source) || matchedNodeIds.has(link.target.id || link.target)
+    );
+
+    // 为了让相关的 source/target 节点都出现在图中，补充它们
+    const connectedNodeIds = new Set([
+      ...matchedLinks.map(l => (typeof l.source === 'object' ? l.source.id : l.source)),
+      ...matchedLinks.map(l => (typeof l.target === 'object' ? l.target.id : l.target)),
+    ]);
+    var finalNodes = []
+    if(matchedLinks.length > 0) {
+      finalNodes = allNodes.filter(n => connectedNodeIds.has(n.id));
+    }
+    else {
+      finalNodes = matchedNodes
+    }
+    
+
+    show_d3(finalNodes, matchedLinks);
+  };
+
+  const i18n = {
+    'zh-CN': {
+      title: '展示查看页',
+      network: '计算机网络图谱',
+      physics: '物理图谱',
+      chemistry: '化学图谱',
+      biology: '生物图谱',
+      download: '点击下载图谱',
+      search: '搜索',
+      head: '图谱样例查看页'
+    },
+    'en-US': {
+      title: 'Graph Viewer',
+      network: 'Computer Networks',
+      physics: 'Physics',
+      chemistry: 'Chemistry',
+      biology: 'Biology',
+      download: 'Download Graph',
+      search: 'Search',
+      head: 'Graph Sample Viewer'
+    }
+  };
+
+  let currentLang = 'en-US';
+
+  function toggleLang() {
+    currentLang = currentLang === 'zh-CN' ? 'en-US' : 'zh-CN';
+    document.documentElement.lang = currentLang;
+    document.getElementById('lang-toggle').textContent = currentLang === 'zh-CN' ? 'EN' : '中';
+    updateI18n();
+  }
+
+  function updateI18n() {
+    const elements = document.querySelectorAll('[data-i18n]');
+    elements.forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (i18n[currentLang][key]) {
+        el.textContent = i18n[currentLang][key];
+      }
+    });
+    document.title = i18n[currentLang]['title'];
+  }
+
+  updateI18n();
+
+</script>
+
+</body>
+</html>

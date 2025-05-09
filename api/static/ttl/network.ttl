@@ -1,0 +1,189 @@
+@prefix edkg: <http://edkg.org/ontology#> .
+@prefix lp: <https://example.com/concept_graph/lp/> .
+@prefix r: <https://example.com/concept_graph/relation/> .
+
+########################################
+# Declaration of Customized Disciplinary Properties
+########################################
+
+r:belong_to a edkg:DisciplinaryProperty .
+
+r:depends_on a edkg:DisciplinaryProperty .
+
+r:layer_below a edkg:DisciplinaryProperty .
+
+r:part_of a edkg:DisciplinaryProperty .
+
+r:synonym_of a edkg:DisciplinaryProperty .
+
+########################################
+# Learning Points
+########################################
+
+lp:FTP a edkg:LPitem ;
+    edkg:identifier "964a69ac-7f63-4ab8-8142-a6be90578447" ;
+    edkg:title "FTP" ;
+    r:belong_to lp:application_layer_protocol,
+        <https://example.com/concept_graph/lp/client/server_model> ;
+    r:depends_on lp:TCP .
+
+lp:IMAP a edkg:LPitem ;
+    edkg:identifier "a24276c0-ed1d-4839-ba48-6ea1c2d34db1" ;
+    edkg:title "IMAP" ;
+    r:belong_to lp:application_layer_protocol,
+        lp:mail_access_protocol ;
+    r:depends_on lp:TCP .
+
+lp:POP3 a edkg:LPitem ;
+    edkg:identifier "a10eccef-326e-464b-9b5c-651510b2e61c" ;
+    edkg:title "POP3" ;
+    r:belong_to lp:application_layer_protocol,
+        lp:mail_access_protocol ;
+    r:depends_on lp:TCP .
+
+lp:SMTP a edkg:LPitem ;
+    edkg:identifier "eb822cd0-8f99-463b-93df-02ce86c8b848" ;
+    edkg:title "SMTP" ;
+    r:belong_to lp:application_layer_protocol,
+        <https://example.com/concept_graph/lp/client/server_model> ;
+    r:depends_on lp:MIME,
+        lp:TCP .
+
+lp:authoritative_DNS_server a edkg:LPitem ;
+    edkg:identifier "3e2a67a7-3e82-48be-9cbc-4ade6b21ab4e" ;
+    edkg:title "authoritative DNS server" ;
+    r:belong_to lp:DNS_server ;
+    r:layer_below lp:TLD_DNS_server ;
+    r:part_of lp:DNS .
+
+lp:instant_messaging a edkg:LPitem ;
+    edkg:identifier "f2216990-a6db-4d88-892b-10c98157b71d" ;
+    edkg:title "instant messaging" ;
+    r:belong_to lp:hybrid_of_client-server_and_P2P .
+
+lp:local_DNS_server a edkg:LPitem ;
+    edkg:identifier "f2fd0e76-8a60-40fc-8c43-5f2070094fa9" ;
+    edkg:title "local DNS server" ;
+    r:belong_to lp:DNS_server ;
+    r:depends_on lp:dynamic_host_configuration_protocol ;
+    r:part_of lp:DNS ;
+    r:synonym_of lp:default_DNS_server .
+
+lp:skype a edkg:LPitem ;
+    edkg:identifier "e5d5aa77-dd46-4249-a69e-1d44d1a22786" ;
+    edkg:title "skype" ;
+    r:belong_to lp:hybrid_of_client-server_and_P2P .
+
+lp:socket a edkg:LPitem ;
+    edkg:identifier "895c810a-d9eb-44fa-9013-dadb03e4ed6c" ;
+    edkg:title "socket" ;
+    r:belong_to lp:application_programming_interface_ ;
+    r:depends_on lp:distributed_system ;
+    r:part_of lp:socket_API_primitive .
+
+lp:upper_layer_data a edkg:LPitem ;
+    edkg:identifier "cbe59fe3-8f67-456c-9254-8645a5b8a490" ;
+    edkg:title "upper layer data" ;
+    r:part_of lp:packet .
+
+lp:DNS_resource_record a edkg:LPitem ;
+    edkg:identifier "4ebccf1c-c74c-4bde-bd53-15bdd7ea0d48" ;
+    edkg:title "DNS resource record" .
+
+lp:IP_address_allocation a edkg:LPitem ;
+    edkg:identifier "38f94b1b-72da-4b7e-93b7-1dd1f9096c42" ;
+    edkg:title "IP address allocation" .
+
+lp:MIME a edkg:LPitem ;
+    edkg:identifier "b26d2d98-3567-4176-961f-d922dca8b753" ;
+    edkg:title "MIME" ;
+    r:belong_to lp:application_layer_protocol .
+
+lp:Peer-to-Peer_model a edkg:LPitem ;
+    edkg:identifier "26d6a328-6080-4258-af67-99fafdefe49d" ;
+    edkg:title "Peer-to-Peer model" .
+
+lp:TLD_DNS_server a edkg:LPitem ;
+    edkg:identifier "f332515c-b354-4e37-96bd-76e9505ae763" ;
+    edkg:title "TLD DNS server" ;
+    r:belong_to lp:DNS_server ;
+    r:layer_below lp:root_DNS_server ;
+    r:part_of lp:DNS .
+
+lp:UDP a edkg:LPitem ;
+    edkg:identifier "6f92e096-57a3-4cdf-ba52-95788b1f99f4" ;
+    edkg:title "UDP" .
+
+lp:URL a edkg:LPitem ;
+    edkg:identifier "1aa3e21d-846b-4d82-9a57-d5b8d2994806" ;
+    edkg:title "URL" .
+
+lp:application_programming_interface_ a edkg:LPitem ;
+    edkg:identifier "b6ca6b30-2887-47a7-8b96-af052bed78aa" ;
+    edkg:title "application programming interface " .
+
+lp:default_DNS_server a edkg:LPitem ;
+    edkg:identifier "878b8df0-7a6f-4769-ba4a-16a8215c2f8f" ;
+    edkg:title "default DNS server" .
+
+lp:distributed_system a edkg:LPitem ;
+    edkg:identifier "b9fc3464-f0e5-447d-b050-c920913bb752" ;
+    edkg:title "distributed system" .
+
+lp:domain_name a edkg:LPitem ;
+    edkg:identifier "f2ad74c7-5dd8-49e1-9592-871779743bcc" ;
+    edkg:title "domain name" ;
+    r:part_of lp:URL .
+
+lp:dynamic_host_configuration_protocol a edkg:LPitem ;
+    edkg:identifier "29206af1-d9ee-4b5b-80c0-aa9717bbfab7" ;
+    edkg:title "dynamic host configuration protocol" ;
+    r:depends_on lp:IP_address_allocation .
+
+lp:packet a edkg:LPitem ;
+    edkg:identifier "15f735db-352a-4e00-9016-9e55998abf84" ;
+    edkg:title "packet" .
+
+lp:root_DNS_server a edkg:LPitem ;
+    edkg:identifier "8c216209-2e65-4436-8da6-ede819dc05d9" ;
+    edkg:title "root DNS server" .
+
+lp:socket_API_primitive a edkg:LPitem ;
+    edkg:identifier "5414b6ac-a068-4ca9-b1d6-4635fad9e5cc" ;
+    edkg:title "socket API primitive" .
+
+lp:hybrid_of_client-server_and_P2P a edkg:LPitem ;
+    edkg:identifier "d747d897-67ff-4ba9-aa57-7b3a82f07475" ;
+    edkg:title "hybrid of client-server and P2P" ;
+    r:depends_on lp:Peer-to-Peer_model,
+        <https://example.com/concept_graph/lp/client/server_model> .
+
+lp:mail_access_protocol a edkg:LPitem ;
+    edkg:identifier "f220fa93-e0db-4651-8c6c-9f3ff480813e" ;
+    edkg:title "mail access protocol" .
+
+lp:DNS a edkg:LPitem ;
+    edkg:identifier "f2202b6e-6bbb-4c90-9e28-b447ab23bba3" ;
+    edkg:title "DNS" ;
+    r:belong_to lp:application_layer_protocol,
+        <https://example.com/concept_graph/lp/client/server_model> ;
+    r:depends_on lp:DNS_resource_record,
+        lp:DNS_server,
+        lp:UDP,
+        lp:domain_name .
+
+lp:DNS_server a edkg:LPitem ;
+    edkg:identifier "603941d3-31d5-477d-a27f-cb72646140f8" ;
+    edkg:title "DNS server" .
+
+lp:TCP a edkg:LPitem ;
+    edkg:identifier "f80e27b7-ece4-4769-9e48-9a2dd5657e5e" ;
+    edkg:title "TCP" .
+
+<https://example.com/concept_graph/lp/client/server_model> a edkg:LPitem ;
+    edkg:identifier "4bbd9999-c28e-485d-92f7-aa2788d743de" ;
+    edkg:title "client/server model" .
+
+lp:application_layer_protocol a edkg:LPitem ;
+    edkg:identifier "8def6b20-1265-49d7-beef-ab508fe5c915" ;
+    edkg:title "application layer protocol" .

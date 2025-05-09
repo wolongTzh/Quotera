@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>图谱构建流程</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+SC:wght@500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --font-sans: 'Inter', 'Noto Sans SC', sans-serif;
+      --text-color: #000;
+      --background: #fff;
+      --border-color: rgba(0, 0, 0, 0.15);
+      --accent-1: rgba(0, 0, 0, 0.05);
+      --accent-2: rgba(0, 0, 0, 0.1);
+      --button-bg: #000;
+      --button-text: #fff;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      background-color: var(--background);
+      color: var(--text-color);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      background-color: #f9f9f9;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      width: 700px;
+      max-width: 90%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;  /* 居中容器内所有内容 */
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .upload-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;  /* 确保上传框和按钮居中 */
+      background-color: var(--accent-1);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      width: 500px;
+      max-width: 90%;
+      margin-bottom: 2rem;  /* 上传框和按钮之间的间距 */
+    }
+
+    .upload-container input[type="text"] {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-size: 1rem;
+      outline: none;
+      color: #555;
+    }
+
+    .upload-button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .upload-button svg {
+      width: 24px;
+      height: 24px;
+      fill: #555;
+      transition: fill 0.3s;
+    }
+
+    .upload-button:hover svg {
+      fill: #000;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .custom-file-label {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      background-color: #f0f0f0;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+      transition: background-color 0.3s ease;
+    }
+
+    .custom-file-label:hover {
+      background-color: #e2e2e2;
+    }
+
+    .step-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 4rem;  /* 增加上一步和下一步之间的间距 */
+      width: 100%;
+    }
+
+    .step-buttons button {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 25px;
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin: 0 20px;  /* 增加按钮之间的间距 */
+    }
+
+    .lang-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: var(--accent-1);
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .step-buttons button:hover {
+      background-color: #333;
+      transform: scale(1.05);
+    }
+
+    .logo {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: var(--text-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        transition: color 0.3s ease;
+    }
+
+    .logo:hover {
+      cursor: pointer;
+    }
+        
+    .logo img {
+        width: 40px;
+        height: 40px;
+        /* background-color: var(--text-color); */
+    
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo" onclick="window.location.href='/'">
+    <img src="/static/assets/logo2.png" alt="Logo">
+  </div>
+
+  <div class="container">
+    <button class="lang-toggle" onclick="toggleLang()" id="lang-toggle">中</button>
+    <h2 id="step-title">第二步：上传图谱文件</h2>
+
+    <!-- Upload 1 -->
+    <div class="upload-container">
+      <input type="text" id="file-display-1" disabled />
+      <button class="upload-button" onclick="document.getElementById('file-input-1').click()">
+        <svg viewBox="0 0 24 24">
+          <path d="M5 18h14v2H5v-2zm7-14l7 7h-4v6h-6v-6H5l7-7z"/>
+        </svg>
+      </button>
+      <input type="file" id="file-input-1" onchange="handleFileUpload(event, 1)" />
+    </div>
+
+    <!-- Upload 2 -->
+    <div class="upload-container">
+      <input type="text" id="file-display-2" disabled />
+      <button class="upload-button" onclick="document.getElementById('file-input-2').click()">
+        <svg viewBox="0 0 24 24">
+          <path d="M5 18h14v2H5v-2zm7-14l7 7h-4v6h-6v-6H5l7-7z"/>
+        </svg>
+      </button>
+      <input type="file" id="file-input-2" onchange="handleFileUpload(event, 2)" />
+    </div>
+
+    <div class="step-buttons">
+      <button id="back-btn" onclick="location.href='build-guide'">上一步</button>
+      <button onclick="nextStep()" id="next-btn">开始构建</button>
+    </div>
+  </div>
+
+  <script>
+    const i18n = {
+      'zh-CN': {
+        title: '图谱构建流程',
+        step1: '第二步：上传图谱文件',
+        back: '上一步',
+        next: '开始构建',
+        fileNotSelected1: '请上传entities.csv文件',
+        fileNotSelected2: '请上传relations.csv文件',
+        fileSelected: '已选择文件：',
+        uploadError: '请上传所有图谱文件后再继续。'
+      },
+      'en-US': {
+        title: 'Graph Construction Process',
+        step1: 'Step 2: Upload Graph File',
+        back: 'Previous',
+        next: 'Start Building',
+        fileNotSelected1: 'Please upload entities.csv',
+        fileNotSelected2: 'Please upload relations.csv',
+        fileSelected: 'File selected: ',
+        uploadError: 'Please upload all required files before continuing.'
+      }
+    };
+
+    let currentLang = 'en-US';  // 默认中文
+
+    function toggleLang() {
+      currentLang = currentLang === 'zh-CN' ? 'en-US' : 'zh-CN';
+      updateLanguage();
+    }
+
+    function updateLanguage() {
+      document.getElementById('lang-toggle').textContent = currentLang === 'zh-CN' ? 'EN' : '中';
+      document.getElementById('step-title').textContent = `${i18n[currentLang].step1}`;
+      document.getElementById('back-btn').textContent = i18n[currentLang].back;
+      document.getElementById('next-btn').textContent = i18n[currentLang].next;
+      // 只有未选择文件时才更新提示
+      if (!document.getElementById('file-input-1').files[0]) {
+        document.getElementById('file-display-1').value = i18n[currentLang].fileNotSelected1;
+      }
+      if (!document.getElementById('file-input-2').files[0]) {
+        document.getElementById('file-display-2').value = i18n[currentLang].fileNotSelected2;
+      }
+    }
+
+    function handleFileUpload(event, index) {
+      const file = event.target.files[0];
+      const fileDisplay = document.getElementById(`file-display-${index}`);
+      if (file) {
+        fileDisplay.value = i18n[currentLang].fileSelected + file.name;
+      } else {
+        fileDisplay.value = i18n[currentLang][`fileNotSelected${index}`];
+      }
+    }
+
+    function nextStep() {
+      const file1 = document.getElementById('file-input-1').files[0];
+      const file2 = document.getElementById('file-input-2').files[0];
+      if (!file1 || !file2) {
+        alert(i18n[currentLang].uploadError);
+        return;
+      }
+      window.location.href = 'presonal-graph';
+      // TODO: 调用构建逻辑
+    }
+
+    updateLanguage(); // 初始化语言
+  </script>
+</body>
+</html>

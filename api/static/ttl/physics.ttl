@@ -1,0 +1,217 @@
+@prefix edkg: <http://edkg.org/ontology#> .
+@prefix lp: <https://kgeditor.cn/physics_example/lp/> .
+@prefix r: <https://kgeditor.cn/physics_example/relation/> .
+
+########################################
+# Learning Point Collection
+########################################
+
+lp:PhysicsExample_Collection a edkg:LearningPointCollection;
+	edkg:identifier "234d22c8-9958-4789-bb36-673f32cc38ac";
+	edkg:title "Physics" ;
+	edkg:version: "1.0.0" ;
+	edkg:contains lp:1_ElementaryParticle ;
+
+########################################
+# Declaration of Customized Disciplinary Properties
+########################################
+
+r:includes a edkg:DisciplinaryProperty .
+
+r:decaysInto a edkg:DisciplinaryProperty .
+
+r:emits a edkg:DisciplinaryProperty .
+
+r:isComposedOf a edkg:DisciplinaryProperty .
+
+r:transformsInto a edkg:DisciplinaryProperty .
+
+########################################
+# Learning Points
+########################################
+
+lp:1_ElementaryParticle a edkg:LPitem ;
+	edkg:hasChild lp:1_1_DiscoveryOfParticles,
+		lp:1_2_ClassificationOfParticles ;
+    edkg:identifier "cfd495bc-acb7-46f4-81f1-41597c2a8635" ;
+    edkg:itemType "KUnit" ;
+    edkg:title "1_ElementaryParticle" ;
+    edkg:treeLevel 1 ;
+    edkg:treePosition "1" .
+
+lp:1_1_DiscoveryOfParticles a edkg:LPitem ;
+    edkg:hasChild lp:elementary_charge_e,
+        lp:atom,
+        lp:elementary_particle,
+        lp:particle,
+        lp:spin_quantization,
+        lp:particle_lifetime,
+        lp:mass-energy_equivalence,
+        lp:electric_charge,
+        lp:positron ;
+    edkg:identifier "80937968-23b7-472e-b6b4-acf316b24ee0" ;
+    edkg:itemType "KUnit" ;
+    edkg:title "1_1_DiscoveryOfParticles" ;
+    edkg:treeLevel 2 ;
+    edkg:treePosition "1.1" .
+
+lp:1_2_ClassificationOfParticles a edkg:LPitem ;
+    edkg:hasChild lp:fundamental_interactions,
+        lp:hadron,
+        lp:proton,
+        lp:u-quark,
+        lp:d-quark,
+        lp:neutron,
+        lp:meson,
+        lp:neutrino ;
+    edkg:identifier "ea59c1a5-f963-4fb4-b6f7-eccaa4c4b358" ;
+    edkg:itemType "KUnit" ;
+    edkg:title "1_2_ClassificationOfParticles" ;
+    edkg:treeLevel 2 ;
+    edkg:treePosition "1.2" .
+
+# Sub Learning Point of 1_1
+
+lp:elementary_charge_e a edkg:LPitem ;
+    edkg:contentJson "{\"value\": \"1.602 * 10^-19 C\"}" ;
+    edkg:identifier "750efecf-46b7-4d6c-84fd-3e221e75bf03" ;
+    edkg:itemType "KPoint" ;
+    edkg:title "elementary_charge_e" ;
+    edkg:treeLevel 3 ;
+    edkg:treePosition "1.1.1" .
+
+lp:atom a edkg:LPitem ;
+    edkg:contentJson "{\"composition\": \"electron, atomic nucleus\"}" ;
+    edkg:identifier "e678beae-2299-47b1-8c0e-6d4fbc173da3" ;
+    edkg:itemType "KPoint" ;
+    edkg:title "atom" ;
+    edkg:treeLevel 3 ;
+    edkg:treePosition "1.1.2" .
+
+lp:elementary_particle a edkg:LPitem ;
+    edkg:contentJson "{\"definition\": \"Particles with different masses and properties that can transform into each other\"}" ;
+    edkg:identifier "c91fed72-cb50-43da-8cc9-143d1ea8d943" ;
+    edkg:itemType "KPoint" ;
+    edkg:title "elementary_particle" ;
+    edkg:treeLevel 3 ;
+    edkg:treePosition "1.1.3" .
+
+lp:particle a edkg:LPitem ;
+    edkg:contentJson "{\"electric charge\": \"positive, negative, neutral\"}" ;
+    edkg:identifier "fd340149-b9ea-49c1-add5-f10e1d1d49c1" ;
+    edkg:itemType "KPoint" ;
+    edkg:title "particle" ;
+    r:includes lp:lifetime,
+        lp:spin_motion ;
+    r:decaysInto lp:particle ;
+    edkg:treeLevel 3 ;
+    edkg:treePosition "1.1.4" .
+
+lp:spin_quantization a edkg:LPitem ;
+    edkg:contentJson "{\"description\": \"The spin angular momentum (or spin) of each particle is also quantized, usually measured in multiples of Planck's constant\"}" ;
+    edkg:identifier "8845cf46-b9d9-41b1-92f4-1dcdef2017d8" ;
+    edkg:itemType "KPoint" ;
+    edkg:title "spin_quantization" ;
+    edkg:treeLevel 3 ;
+    edkg:treePosition "1.1.5" .
+
+lp:particle_lifetime a edkg:LPitem ;
+    edkg:contentJson "{\"definition\": \"The average time a particle exists before decaying is called its lifetime\"}" ;
+    edkg:identifier "f605007b-eb1a-47f5-924a-e880e0bbcd0b" ;
+    edkg:itemType "KPoint" ;
+    edkg:title "particle_lifetime" ;
+    edkg:treeLevel 3 ;
+    edkg:treePosition "1.1.6" .
+
+lp:mass-energy_equivalence a edkg:LPitem ;
+    edkg:contentJson "{\"formula\": \"E=mc^2\", \"proposed by\": \"Einstein\"}" ;
+    edkg:identifier "835fe351-2f4e-441a-9f15-e8f2f6e24fb5" ;
+    edkg:itemType "KPoint" ;
+    edkg:title "mass-energy_equivalence" ;
+    edkg:treeLevel 3 ;
+    edkg:treePosition "1.1.7" .
+
+lp:electric_charge a edkg:LPitem ;
+    edkg:identifier "1da6c439-3e9e-4f79-b1d2-a9c7ce17c7f7" ;
+    edkg:itemType "KPoint" ;
+    edkg:title "electric_charge" ;
+    r:includes lp:elementary_charge_e ;
+    edkg:treeLevel 3 ;
+    edkg:treePosition "1.1.8" .
+
+lp:positron a edkg:LPitem ;
+    edkg:identifier "7b3a04ec-c405-4fb7-be44-a7b0b1eb13f8" ;
+    edkg:itemType "KPoint" ;
+    edkg:title "positron" ;
+    edkg:treeLevel 3 ;
+    edkg:treePosition "1.1.9" .
+
+# Sub Learning Point of 1_2
+
+lp:fundamental_interactions a edkg:LPitem ;
+    edkg:contentJson "{\"number\": \"4 types\", \"classification\": \"['gravity', 'electromagnetic force', 'strong interaction', 'weak interaction']\"}" ;
+    edkg:identifier "64128038-565c-47bf-a1e0-357783a94264" ;
+    edkg:itemType "KPoint" ;
+    edkg:title "fundamental_interactions" ;
+    edkg:treeLevel 3 ;
+    edkg:treePosition "1.2.1" .
+
+lp:hadron a edkg:LPitem ;
+    edkg:contentJson "{\"characteristic physical quantities\": \"particle type, spin, mass, electric charge\"}" ;
+    edkg:identifier "f995cd2e-c4fa-4689-bfe8-0332d73e17ca" ;
+    edkg:itemType "KPoint" ;
+    edkg:title "hadron" ;
+    edkg:treeLevel 3 ;
+    edkg:treePosition "1.2.2" .
+
+lp:proton a edkg:LPitem ;
+    edkg:contentJson "{\"composition\": \"2 up quarks and 1 down quark\"}" ;
+    edkg:identifier "c57ef85f-4a69-498a-a5b7-0409816b2c5f" ;
+    edkg:itemType "KPoint" ;
+    edkg:title "proton" ;
+    r:emits lp:neutrino,
+	    lp:positron ;
+    r:isComposedOf lp:u-quark,
+        lp:d-quark;
+    r:transformsInto lp:neutron,
+	    lp:meson ;
+    edkg:treeLevel 3 ;
+    edkg:treePosition "1.2.3" .
+
+lp:u-quark a edkg:LPitem ;
+    edkg:identifier "5827f33e-c620-42a5-afbc-5e8a1e939693" ;
+    edkg:itemType "KPoint" ;
+    edkg:title "u-quark" ;
+    edkg:treeLevel 3 ;
+    edkg:treePosition "1.2.4" .
+
+lp:d-quark a edkg:LPitem ;
+    edkg:identifier "95e87536-7620-46b7-998f-89e24a90a748" ;
+    edkg:itemType "KPoint" ;
+    edkg:title "d-quark" ;
+    edkg:treeLevel 3 ;
+    edkg:treePosition "1.2.5" .
+
+lp:neutron a edkg:LPitem ;
+    edkg:contentJson "{\"composition\": \"2 down quarks and 1 up quark\"}" ;
+    edkg:identifier "820ce5f1-2cd1-45d0-9a45-706ee4521c2d" ;
+    edkg:itemType "KPoint" ;
+    edkg:title "proton" ;
+    r:isComposedOf lp:u-quark,
+        lp:d-quark ;
+    edkg:treeLevel 3 ;
+    edkg:treePosition "1.2.6" .
+
+lp:meson a edkg:LPitem ;
+    edkg:identifier "c259434c-4a20-449d-b323-9ac303fa8342" ;
+    edkg:itemType "KPoint" ;
+    edkg:title "meson" ;
+    edkg:treeLevel 3 ;
+    edkg:treePosition "1.2.7" .
+
+lp:neutrino a edkg:LPitem ;
+    edkg:identifier "9d048519-0290-43f6-ac06-2265ec9dda86" ;
+    edkg:itemType "KPoint" ;
+    edkg:title "neutrino" ;
+    edkg:treeLevel 3 ;
+    edkg:treePosition "1.2.8" .

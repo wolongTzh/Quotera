@@ -1,0 +1,415 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix edkg: <http://edkg.org/ontology#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+# Ontology Definition
+edkg: a owl:Ontology ;
+    dc:title "Educational Knowledge Graph Ontology" ;
+    dc:description "An ontology for representing educational entities, learning points, and their relationships in a knowledge graph" ;
+    owl:versionInfo "1.0.0" ;
+    dc:creator "EDKG Working Group" ;
+    dc:date "2024-03-14"^^xsd:date .
+
+#################################################################
+# Base Entity Class and Common Properties
+#################################################################
+
+edkg:BaseEntity a owl:Class ;
+    rdfs:label "Base Entity" ;
+    rdfs:comment "Abstract base class for all EDKG entities" ;
+    owl:hasKey (edkg:identifier) .
+
+# Required Common Properties
+edkg:title a owl:DatatypeProperty ;
+    rdfs:domain edkg:BaseEntity ;
+    rdfs:range xsd:string ;
+    rdfs:label "title" ;
+    rdfs:comment "Required title for the entity" ;
+    sh:minCount 1 .
+
+edkg:identifier a owl:DatatypeProperty ;
+    rdfs:domain edkg:BaseEntity ;
+    rdfs:range xsd:string ;
+    rdfs:label "identifier" ;
+    rdfs:comment "Required GUID identifier" ;
+    sh:pattern "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$" ;
+    sh:minCount 1 .
+
+edkg:itemType a owl:DatatypeProperty ;
+    rdfs:domain edkg:BaseEntity ;
+    rdfs:range edkg:ItemTypeValue ;
+    rdfs:label "item type" ;
+    rdfs:comment "Required type classification" ;
+    sh:minCount 1 .
+
+# Optional Common Properties
+edkg:tags a owl:DatatypeProperty ;
+    rdfs:domain edkg:BaseEntity ;
+    rdfs:range rdf:List ;
+    rdfs:label "tags" ;
+    rdfs:comment "Optional list of tags" .
+
+edkg:humanAssignedId a owl:DatatypeProperty ;
+    rdfs:domain edkg:BaseEntity ;
+    rdfs:range xsd:string ;
+    rdfs:label "human assigned ID" ;
+    rdfs:comment "Optional human-readable identifier" .
+
+edkg:contentJson a owl:DatatypeProperty ;
+    rdfs:domain edkg:BaseEntity ;
+    rdfs:range xsd:string ;
+    rdfs:label "content JSON" ;
+    rdfs:comment "Optional JSON content for extended properties" .
+
+edkg:lastChangeDateTime a owl:DatatypeProperty ;
+    rdfs:domain edkg:BaseEntity ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "last change date time" ;
+    rdfs:comment "When the entity was last modified" .
+
+#################################################################
+# Core Classes
+#################################################################
+
+# Learning Point Collection
+edkg:LearningPointCollection a owl:Class ;
+    rdfs:subClassOf edkg:BaseEntity ;
+    rdfs:label "Learning Point Collection" ;
+    rdfs:comment "A collection of learning points" .
+
+# Learning Point Item
+edkg:LPitem a owl:Class ;
+    rdfs:subClassOf edkg:BaseEntity ;
+    rdfs:label "Learning Point" ;
+    rdfs:comment "An individual learning point" .
+
+# Resource Item
+edkg:RIitem a owl:Class ;
+    rdfs:subClassOf edkg:BaseEntity ;
+    rdfs:label "Resource Item" ;
+    rdfs:comment "A resource item" .
+
+# Pedagogical Rule Item
+edkg:PRitem a owl:Class ;
+    rdfs:subClassOf edkg:BaseEntity ;
+    rdfs:label "Pedagogical Rule" ;
+    rdfs:comment "A pedagogical rule following KSTAR structure" .
+
+#################################################################
+# Collection Management
+#################################################################
+
+# Collection Properties
+edkg:collectionUri a owl:DatatypeProperty ;
+    rdfs:domain edkg:LearningPointCollection ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "collection URI" ;
+    rdfs:comment "Unique URI for the collection" ;
+    sh:minCount 1 .
+
+edkg:version a owl:DatatypeProperty ;
+    rdfs:domain edkg:LearningPointCollection ;
+    rdfs:range xsd:string ;
+    rdfs:label "version" ;
+    rdfs:comment "Version identifier of the collection" .
+
+# Collection Dependencies
+edkg:CollectionDependency a owl:Class ;
+    rdfs:label "Collection Dependency" ;
+    rdfs:comment "Represents a dependency on another collection" .
+
+edkg:hasDependency a owl:ObjectProperty ;
+    rdfs:domain edkg:LearningPointCollection ;
+    rdfs:range edkg:CollectionDependency ;
+    rdfs:label "has dependency" ;
+    rdfs:comment "Links a collection to its dependencies" .
+
+edkg:dependencyUri a owl:DatatypeProperty ;
+    rdfs:domain edkg:CollectionDependency ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "dependency URI" ;
+    sh:minCount 1 .
+
+edkg:dependencyVersion a owl:DatatypeProperty ;
+    rdfs:domain edkg:CollectionDependency ;
+    rdfs:range xsd:string .
+
+edkg:dependencyPurpose a owl:DatatypeProperty ;
+    rdfs:domain edkg:CollectionDependency ;
+    rdfs:range [
+        a rdfs:Datatype ;
+        owl:oneOf ("alignment" "extension" "prerequisite" "reference")
+    ] ;
+    sh:minCount 1 .
+
+#################################################################
+# Learning Point Properties and Relationships
+#################################################################
+
+# LP Properties
+edkg:fullStatement a owl:DatatypeProperty ;
+    rdfs:domain edkg:LPitem ;
+    rdfs:range xsd:string .
+
+edkg:sequenceNumber a owl:DatatypeProperty ;
+    rdfs:domain edkg:LPitem ;
+    rdfs:range xsd:integer .
+
+# Tree Structure Properties
+edkg:treeLevel a owl:DatatypeProperty ;
+    rdfs:domain edkg:LPitem ;
+    rdfs:range xsd:integer .
+
+edkg:treePosition a owl:DatatypeProperty ;
+    rdfs:domain edkg:LPitem ;
+    rdfs:range xsd:string .
+
+# New Discipline Property - as a datatype property for learning points
+edkg:discipline a owl:DatatypeProperty ;
+    rdfs:domain edkg:LPitem ;
+    rdfs:range xsd:string ;
+    rdfs:label "discipline" ;
+    rdfs:comment "Academic discipline or field to which this learning point belongs" .
+
+# Internal Relationships
+edkg:hasParent a owl:ObjectProperty ;
+    rdfs:domain edkg:LPitem ;
+    rdfs:range edkg:LPitem .
+
+edkg:hasChild a owl:ObjectProperty ;
+    rdfs:domain edkg:LPitem ;
+    rdfs:range edkg:LPitem ;
+    owl:inverseOf edkg:hasParent .
+
+# CASE Relationships
+edkg:isPrerequisiteFor a owl:ObjectProperty ;
+    rdfs:subPropertyOf skos:broader ;
+    rdfs:domain edkg:LPitem ;
+    rdfs:range edkg:LPitem .
+
+edkg:hasPrerequisite a owl:ObjectProperty ;
+    rdfs:subPropertyOf skos:narrower ;
+    rdfs:domain edkg:LPitem ;
+    rdfs:range edkg:LPitem ;
+    owl:inverseOf edkg:isPrerequisiteFor .
+
+edkg:isEquivalentTo a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:subPropertyOf skos:exactMatch ;
+    rdfs:domain edkg:LPitem ;
+    rdfs:range edkg:LPitem .
+
+edkg:isBroaderThan a owl:ObjectProperty ;
+    rdfs:subPropertyOf skos:broader ;
+    rdfs:domain edkg:LPitem ;
+    rdfs:range edkg:LPitem .
+
+edkg:isNarrowerThan a owl:ObjectProperty ;
+    rdfs:subPropertyOf skos:narrower ;
+    rdfs:domain edkg:LPitem ;
+    rdfs:range edkg:LPitem ;
+    owl:inverseOf edkg:isBroaderThan .
+
+edkg:isRelatedTo a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:subPropertyOf skos:related ;
+    rdfs:domain edkg:LPitem ;
+    rdfs:range edkg:LPitem .
+
+#################################################################
+# External References
+#################################################################
+
+edkg:ExternalReference a owl:Class ;
+    rdfs:label "External Reference" ;
+    rdfs:comment "Represents a reference to an item in another collection" .
+
+edkg:hasExternalMatch a owl:ObjectProperty ;
+    rdfs:domain edkg:LPitem ;
+    rdfs:range edkg:ExternalReference .
+
+edkg:externalCollectionUri a owl:DatatypeProperty ;
+    rdfs:domain edkg:ExternalReference ;
+    rdfs:range xsd:anyURI ;
+    sh:minCount 1 .
+
+edkg:externalIdentifier a owl:DatatypeProperty ;
+    rdfs:domain edkg:ExternalReference ;
+    rdfs:range xsd:string ;
+    sh:minCount 1 .
+
+#################################################################
+# Resource Item Properties and Relationships
+#################################################################
+
+edkg:resourceType a owl:DatatypeProperty ;
+    rdfs:domain edkg:RIitem ;
+    rdfs:range [
+        a rdfs:Datatype ;
+        owl:oneOf (
+            "assessment"
+            "lesson"
+            "activity"
+            "reference"
+            "tool"
+            "media"
+            "simulation"
+            "game"
+            "dataset"
+            "example"
+            "template"
+            "rubric"
+        )
+    ] .
+
+edkg:resourceUrl a owl:DatatypeProperty ;
+    rdfs:domain edkg:RIitem ;
+    rdfs:range xsd:anyURI .
+
+edkg:resourceFormat a owl:DatatypeProperty ;
+    rdfs:domain edkg:RIitem ;
+    rdfs:range xsd:string .
+
+#################################################################
+# Pedagogical Rule Properties (KSTAR)
+#################################################################
+
+edkg:actorRole a owl:DatatypeProperty ;
+    rdfs:domain edkg:PRitem ;
+    rdfs:range xsd:string .
+
+edkg:situation a owl:DatatypeProperty ;
+    rdfs:domain edkg:PRitem ;
+    rdfs:range xsd:string .
+
+edkg:task a owl:DatatypeProperty ;
+    rdfs:domain edkg:PRitem ;
+    rdfs:range xsd:string .
+
+edkg:actionPlan a owl:DatatypeProperty ;
+    rdfs:domain edkg:PRitem ;
+    rdfs:range xsd:string .
+
+edkg:expectedResult a owl:DatatypeProperty ;
+    rdfs:domain edkg:PRitem ;
+    rdfs:range xsd:string .
+
+#################################################################
+# Cross-Entity Relationships
+#################################################################
+
+edkg:hasLearningPoint a owl:ObjectProperty ;
+    rdfs:domain 
+        [
+            owl:unionOf (edkg:LearningPointCollection edkg:RIitem edkg:PRitem)
+        ] ;
+    rdfs:range edkg:LPitem .
+
+edkg:hasResource a owl:ObjectProperty ;
+    rdfs:domain [
+        owl:unionOf (edkg:LPitem edkg:PRitem)
+    ] ;
+    rdfs:range edkg:RIitem .
+
+edkg:hasPedagogicalRule a owl:ObjectProperty ;
+    rdfs:domain [
+        owl:unionOf (edkg:LPitem edkg:RIitem)
+    ] ;
+    rdfs:range edkg:PRitem .
+
+edkg:appliesTo a owl:ObjectProperty ;
+    rdfs:domain edkg:PRitem ;
+    rdfs:range [
+        owl:unionOf (edkg:LPitem edkg:RIitem)
+    ] ;
+    owl:inverseOf edkg:hasPedagogicalRule .
+
+#################################################################
+# Disciplinary Properties for Domain-Specific Relationships
+#################################################################
+
+edkg:DisciplinaryProperty rdfs:subClassOf owl:ObjectProperty ;
+    rdfs:domain edkg:LPitem ;
+    rdfs:range edkg:LPitem ;
+    rdfs:label "Disciplinary Property" ;
+    rdfs:comment "Base class for domain-specific relationships between learning points" .
+
+#################################################################
+# Standard Relationship Type Properties
+#################################################################
+
+# Define specific relationship type properties
+edkg:contains a owl:ObjectProperty ;
+    rdfs:subPropertyOf edkg:hasLearningPoint ;
+    rdfs:domain [
+        owl:unionOf (edkg:LearningPointCollection edkg:RIitem edkg:PRitem)
+    ] ;
+    rdfs:range edkg:LPitem ;
+    rdfs:label "contains" ;
+    rdfs:comment "Indicates that one entity contains another as a component" .
+
+edkg:supports a owl:ObjectProperty ;
+    rdfs:subPropertyOf edkg:hasLearningPoint ;
+    rdfs:domain [
+        owl:unionOf (edkg:LearningPointCollection edkg:RIitem edkg:PRitem)
+    ] ;
+    rdfs:range edkg:LPitem ;
+    rdfs:label "supports" ;
+    rdfs:comment "Indicates that one entity provides supporting content for another" .
+
+edkg:implements a owl:ObjectProperty ;
+    rdfs:subPropertyOf edkg:hasLearningPoint ;
+    rdfs:domain [
+        owl:unionOf (edkg:LearningPointCollection edkg:RIitem edkg:PRitem)
+    ] ;
+    rdfs:range edkg:LPitem ;
+    rdfs:label "implements" ;
+    rdfs:comment "Indicates that one entity implements the guidelines of another" .
+
+edkg:demonstrates a owl:ObjectProperty ;
+    rdfs:subPropertyOf edkg:hasLearningPoint ;
+    rdfs:domain [
+        owl:unionOf (edkg:LearningPointCollection edkg:RIitem edkg:PRitem)
+    ] ;
+    rdfs:range edkg:LPitem ;
+    rdfs:label "demonstrates" ;
+    rdfs:comment "Indicates that one entity demonstrates the skills or knowledge of another" .
+
+edkg:explains a owl:ObjectProperty ;
+    rdfs:subPropertyOf edkg:hasLearningPoint ;
+    rdfs:domain [
+        owl:unionOf (edkg:LearningPointCollection edkg:RIitem edkg:PRitem)
+    ] ;
+    rdfs:range edkg:LPitem ;
+    rdfs:label "explains" ;
+    rdfs:comment "Indicates that one entity explains the concepts of another" .
+
+edkg:practices a owl:ObjectProperty ;
+    rdfs:subPropertyOf edkg:hasLearningPoint ;
+    rdfs:domain [
+        owl:unionOf (edkg:LearningPointCollection edkg:RIitem edkg:PRitem)
+    ] ;
+    rdfs:range edkg:LPitem ;
+    rdfs:label "practices" ;
+    rdfs:comment "Indicates that one entity provides practice for another" .
+
+edkg:assesses a owl:ObjectProperty ;
+    rdfs:subPropertyOf edkg:hasLearningPoint ;
+    rdfs:domain [
+        owl:unionOf (edkg:LearningPointCollection edkg:RIitem edkg:PRitem)
+    ] ;
+    rdfs:range edkg:LPitem ;
+    rdfs:label "assesses" ;
+    rdfs:comment "Indicates that one entity assesses the knowledge or skills of another" .
+
+edkg:extends a owl:ObjectProperty ;
+    rdfs:subPropertyOf edkg:hasLearningPoint ;
+    rdfs:domain [
+        owl:unionOf (edkg:LearningPointCollection edkg:RIitem edkg:PRitem)
+    ] ;
+    rdfs:range edkg:LPitem ;
+    rdfs:label "extends" ;
+    rdfs:comment "Indicates that one entity extends the content of another" .

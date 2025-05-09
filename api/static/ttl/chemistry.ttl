@@ -1,0 +1,227 @@
+@prefix edkg: <http://edkg.org/ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix lp: <https://example.com/concept_graph/lp/> .
+@prefix ex:  <http://example.org/instance#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+########################################
+# Learning Point Collection
+########################################
+ex:Middle_Chemistry_Collection
+	a edkg:LearningPointCollection ;
+	edkg:identifier "c273d5b1-5a36-4ece-9a99-62a9aab7e632" ;
+	edkg:title Middle_Chemistry ;
+	edkg:humanAssignedId Middle_Chemistry_Collection ;
+	edkg:collectionUri http://example.org/Middle_Chemistry/collection ;
+	edkg:version "1.0.0" ;
+	edkg:contains lp:1295 .
+
+########################################
+# Learning Points
+########################################
+lp:1295
+    a edkg:LPitem ;
+    edkg:identifier "300813c3-9618-4191-8036-149a6b8e1d94" ;
+    edkg:title "Chemistry and Social Development" ;
+    edkg:itemType "KPoint" ;
+    edkg:discipline "Chemistry" ;
+    edkg:hasChild lp:1321, lp:1333 ;
+    edkg:treeLevel 1 ;
+    edkg:treePosition "1" ;
+    edkg:humanAssignedId "1295" .
+
+lp:1333
+    a edkg:LPitem ;
+    edkg:identifier "00fabe1a-874f-47de-8f42-3d392a2c9831" ;
+    edkg:title "Chemicals and Health" ;
+    edkg:itemType "KPoint" ;
+    edkg:discipline "Chemistry" ;
+    edkg:hasChild lp:1334, lp:1335 ;
+    edkg:treeLevel 2 ;
+    edkg:hasParent lp:1295 ;
+    edkg:treePosition "1.1" ;
+    edkg:humanAssignedId "1333" .
+
+lp:1321
+    a edkg:LPitem ;
+    edkg:identifier "fa1dfdfe-63be-40b6-87ad-522ba589319a" ;
+    edkg:title "Common Chemical Synthetic Materials" ;
+    edkg:itemType "KPoint" ;
+    edkg:discipline "Chemistry" ;
+    edkg:hasChild lp:1331, lp:1327 ;
+    edkg:treeLevel 2 ;
+    edkg:hasParent lp:1295 ;
+    edkg:treePosition "1.2" ;
+    edkg:humanAssignedId "1321" .
+
+lp:1334
+    a edkg:LPitem ;
+    edkg:identifier "039ca02b-4926-4618-9c40-44f039d99c66" ;
+    edkg:title "The Elemental Composition of the Human Body and the Important Role of Elements in Human Health" ;
+    edkg:itemType "KPoint" ;
+    edkg:discipline "Chemistry" ;
+    edkg:treeLevel 3 ;
+    edkg:hasParent lp:1333 ;
+    edkg:hasResource ex:10503, ex:10504 ;
+    edkg:treePosition "1.1.1" ;
+    edkg:humanAssignedId "1334" .
+
+lp:1335
+    a edkg:LPitem ;
+    edkg:identifier "83c4ca76-084f-444b-957a-19baf3564846" ;
+    edkg:title "Life Activities and Six Major Nutrients" ;
+    edkg:itemType "KPoint" ;
+    edkg:discipline "Chemistry" ;
+    edkg:treeLevel 3 ;
+    edkg:hasParent lp:1333 ;
+    edkg:hasResource ex:10491, ex:10495, ex:10496, ex:10497 ;
+    edkg:treePosition "1.1.2" ;
+    edkg:humanAssignedId "1335" .
+
+lp:1327
+    a edkg:LPitem ;
+    edkg:identifier "15c17cb4-a184-48a2-a711-b172d8b1cd0b" ;
+    edkg:title "White Pollution and Prevention/Control" ;
+    edkg:itemType "KPoint" ;
+    edkg:discipline "Chemistry" ;
+    edkg:treeLevel 3 ;
+    edkg:hasParent lp:1321 ;
+    edkg:hasResource ex:10513, ex:10514 ;
+    edkg:treePosition "1.2.1" ;
+    edkg:humanAssignedId "1327" .
+
+lp:1331
+    a edkg:LPitem ;
+    edkg:identifier "a6b17504-7a75-45e9-8ef6-c6c6246551cf" ;
+    edkg:title "Composite Materials and Nanomaterials" ;
+    edkg:itemType "KPoint" ;
+    edkg:discipline "Chemistry" ;
+    edkg:treeLevel 3 ;
+    edkg:hasParent lp:1321 ;
+    edkg:hasResource ex:10519, ex:10520, ex:10521 ;
+    edkg:treePosition "1.2.2" ;
+    edkg:humanAssignedId "1331" .
+
+########################################
+# Resource Items
+########################################
+ex:10503
+    a edkg:RIitem ;
+    edkg:identifier "78fa22b9-e03d-4c9a-a60e-0238ae8415cc" ;
+    edkg:title "Chemical Elements and Human Health" ;
+    edkg:description "The forms of chemical elements in the human body" ;
+    edkg:contentJson "{\"type\":\"text\",\"value\":\"(1) Carbon, hydrogen, oxygen, and nitrogen primarily exist in the form of water, carbohydrates, proteins, vitamins, and fats.\n(2) Other elements mainly exist in the form of inorganic salts in aqueous solutions.\"}" ;
+    edkg:itemType "Resource" ;
+    edkg:resourceType "reference" ;
+    edkg:resourceFormat "text" ;
+    edkg:humanAssignedId "10503" .
+
+ex:10504
+    a edkg:RIitem ;
+    edkg:identifier "1940a2aa-ffa6-4794-b22e-cdea1fa1abcd" ;
+    edkg:title "Chemical Elements and Human Health" ;
+    edkg:description "Macroelements" ;
+    edkg:contentJson "{\"show\":false,\"type\":\"text\",\"value\":\"The human body contains 11 major elements constituting approximately 99.95% of total body mass. Elements exceeding 0.01% concentration are classified as macroelements.\"}" ;
+    edkg:itemType "Resource" ;
+    edkg:resourceType "reference" ;
+    edkg:resourceFormat "text" ;
+    edkg:humanAssignedId "10504" .
+
+ex:10491
+    a edkg:RIitem ;
+    edkg:identifier "de99bba2-912f-46a7-9eda-4e26c7872703" ;
+    edkg:title "Essential Nutrients for Humans" ;
+    edkg:description "Proteins" ;
+    edkg:contentJson "{\"type\":\"text\",\"value\":\"Proteins are fundamental building blocks of cells and serve as primary materials for tissue growth and repair.\n\n(1) Protein Diversity: Proteins are highly complex organic compounds composed of various amino acids, with molecular weights ranging from tens of thousands to millions of Daltons. The elemental composition of amino acids includes H, O, C, and N, though additional elements may be present in specific proteins (e.g., Fe (iron) in hemoglobin).\n\n(2) Protein Sources: Predominantly found in animal muscle, skin, hair, hooves, horns, blood, and enzymes. Many plant sources such as soybeans and peanuts also contain abundant proteins in their seeds.\"}" ;
+    edkg:itemType "Resource" ;
+    edkg:resourceType "reference" ;
+    edkg:resourceFormat "text" ;
+    edkg:humanAssignedId "10491" .
+
+ex:10495
+    a edkg:RIitem ;
+    edkg:identifier "9d45b1c9-2c24-4bef-a101-7af46e33d12f" ;
+    edkg:title "Essential Nutrients for Humans" ;
+    edkg:description "Inorganic Salts" ;
+    edkg:contentJson "{\"type\":\"text\",\"value\":\"(1) Functions of Inorganic Salts in the Human Body\nInorganic salts are one of the essential nutrients in the human body. Although present in small amounts, they significantly impact normal physiological activities. Main functions include: forming important components of human tissues; maintaining osmotic pressure and acid-base balance of body fluids; sustaining nerve cell excitability; constituting enzyme components or activating enzyme activity; participating in material metabolism.\n\n(2) Acquisition and Deficiency Disorders of Inorganic Salts\nDuring metabolism, inorganic salts are continuously excreted through various pathways such as sweat and urine, necessitating timely and appropriate replenishment. Inorganic salts are widely available in food and water, generally preventing deficiencies.\n\nSpecific physiological conditions, geographical environments, or other special circumstances may cause deficiency or excess of certain elements, leading to endemic diseases such as Keshan disease and Kashin-Beck disease.\"}" ;
+    edkg:itemType "Resource" ;
+    edkg:resourceType "reference" ;
+    edkg:resourceFormat "text" ;
+    edkg:humanAssignedId "10495" .
+
+ex:10496
+    a edkg:RIitem ;
+    edkg:identifier "63e572a7-dd98-4691-87bd-ffc77b784d2b" ;
+    edkg:title "Essential Nutrients for Humans" ;
+    edkg:description "Body Water" ;
+    edkg:contentJson "{\"type\":\"text\",\"value\":\"(1) Functions of Water in the Human Body\nWater maintains cellular status, enhances metabolic functions, regulates blood circulation, dissolves nutrients for absorption and transport. It assists in waste excretion, heat dissipation, body temperature regulation, and blood pH balance. Water plays vital roles in food digestion, promoting bodily fluid circulation, lubricating joints and organs to maintain physiological functions. Additionally, it cushions internal organ vibrations.\n\n(2) Water Loss and Intake Pathways\n1. Water loss pathways: Urination, respiration, perspiration, defecation.\n2. Water intake pathways: Drinking, food consumption, internal metabolic processes.\n3. Insufficient water intake initially triggers adaptive reduction in water excretion to maintain balance, but severe deficiency disrupts this regulation.\"}" ;
+    edkg:itemType "Resource" ;
+    edkg:resourceType "reference" ;
+    edkg:resourceFormat "text" ;
+    edkg:humanAssignedId "10496" .
+
+ex:10497
+    a edkg:RIitem ;
+    edkg:identifier "aaf5fb34-473b-498b-ae1f-b7130ea76d33" ;
+    edkg:title "Essential Nutrients for Humans" ;
+    edkg:description "Example Question" ;
+    edkg:contentJson "{\"type\":\"text\",\"value\":\"Which statement about nutrients is correct? ( )\nA. Glucose, proteins, and starch are all organic macromolecular compounds\nB. Lipids contain C, H, O and are liquid at room temperature\nC. Dietary starch is converted to glucose for absorption\nD. Inorganic salts are micronutrients not classified as essential\n\nAnalysis: Organic macromolecular compounds have large molecular weights. Glucose's molecular weight is relatively small (A incorrect). Plant lipids are liquid while animal lipids are solid at room temperature (B incorrect). Although required in small amounts, inorganic salts are essential nutrients (D incorrect).\nAnswer C\"}" ;
+    edkg:itemType "Resource" ;
+    edkg:resourceType "example" ;
+    edkg:resourceFormat "text" ;
+    edkg:humanAssignedId "10497" .
+
+ex:10519
+    a edkg:RIitem ;
+    edkg:identifier "4ce01b32-0f03-4f00-92db-b08d01dab376" ;
+    edkg:title "Composite Materials" ;
+    edkg:description "Definition" ;
+    edkg:contentJson "{\"type\":\"text\",\"value\":\"Composite materials are created by combining two or more distinct materials, allowing each component to complement the other's strengths. This results in materials with significantly superior properties compared to their individual constituents. Examples include reinforced concrete and fiberglass.\"}" ;
+    edkg:itemType "Resource" ;
+    edkg:resourceType "reference" ;
+    edkg:resourceFormat "text" ;
+    edkg:humanAssignedId "10519" .
+
+ex:10520
+    a edkg:RIitem ;
+    edkg:identifier "f1649d6e-7747-4c98-9ab5-1365a9ba2a0a" ;
+    edkg:title "Composite Materials" ;
+    edkg:description "Advantages" ;
+    edkg:contentJson "{\"type\":\"text\",\"value\":\"Composite materials integrate the advantages of their components, delivering enhanced comprehensive performance. They optimize resource utilization while conserving energy. Notable examples include: reinforced concrete (steel and concrete composite), vehicle tires (alloy steel and rubber composite), speedboat hulls and restaurant furniture (fiberglass-reinforced plastic/FRP), as well as aircraft wings and rocket nose cones (carbon fiber composites). These characteristics make composites a highly promising class of advanced materials.\"}" ;
+    edkg:itemType "Resource" ;
+    edkg:resourceType "reference" ;
+    edkg:resourceFormat "text" ;
+    edkg:humanAssignedId "10520" .
+
+ex:10521
+    a edkg:RIitem ;
+    edkg:identifier "a307e9e6-efee-4bfa-b042-0345ade01540" ;
+    edkg:title "Composite Materials" ;
+    edkg:description "Application Prospects" ;
+    edkg:contentJson "{\"type\":\"text\",\"value\":\"With exceptional properties including high strength-to-weight ratio, high temperature resistance, and corrosion resistance, composites outperform single-component materials, particularly in aerospace applications. Mass reduction is critical for aircraft, missiles, rockets, satellites, and spacecraft - for instance, reducing a missile's mass by 1 kg can increase its range by several kilometers. Composites also withstand extreme conditions like ultra-high temperatures and intense thermal fluctuations during spaceflight. Their applications are expanding from small simple components to large complex structures, becoming pivotal in aerospace development. Additionally, composites show vast potential in mechanical engineering, sports equipment, and healthcare technologies.\"}" ;
+    edkg:itemType "Resource" ;
+    edkg:resourceType "reference" ;
+    edkg:resourceFormat "text" ;
+    edkg:humanAssignedId "10521" .
+
+ex:10513
+    a edkg:RIitem ;
+    edkg:identifier "e30bc31c-5d13-428c-91fb-a0965c6a1362" ;
+    edkg:title "White Pollution" ;
+    edkg:description "Plastic Packaging Recycling Symbols" ;
+    edkg:contentJson "{\"type\":\"text\",\"value\":\"The recycling symbol for plastic packaging consists of three elements: a graphic, plastic code, and corresponding abbreviation. The graphic features three arrows forming an equilateral triangle. The central code combines '0' (indicating plastic material category) with Arabic numerals to denote specific plastic types. The abbreviation code is positioned below the triangular symbol.\"}" ;
+    edkg:itemType "Resource" ;
+    edkg:resourceType "reference" ;
+    edkg:resourceFormat "text" ;
+    edkg:humanAssignedId "10513" .
+
+ex:10514
+    a edkg:RIitem ;
+    edkg:identifier "031f7c4e-468f-48c0-a318-fd1856c3b691" ;
+    edkg:title "White Pollution" ;
+    edkg:description "Hazards and Control" ;
+    edkg:contentJson "{\"type\":\"text\",\"value\":\"(1) Definition: Environmental pollution caused by plastic waste, unrelated to color.\n\n(2) Hazards of White Pollution\n1. Most plastics are non-biodegradable, causing long-term soil degradation, groundwater contamination, and marine life endangerment.\n2. Incinerating chlorinated plastics releases toxic fumes with pungent odors, contributing to air pollution.\n\n(3) Solutions to White Pollution\n1. Minimize unnecessary plastic consumption\n2. Reuse applicable plastic products\n3. Adopt novel degradable plastics\n4. Implement comprehensive plastic recycling systems\"}" ;
+    edkg:itemType "Resource" ;
+    edkg:resourceType "reference" ;
+    edkg:resourceFormat "text" ;
+    edkg:humanAssignedId "10514" .

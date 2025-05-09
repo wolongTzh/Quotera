@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-i18n="title">图谱构建流程 - 第一步</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+SC:wght@500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --font-sans: 'Inter', 'Noto Sans SC', sans-serif;
+      --text-color: #000;
+      --background: #fff;
+      --border-color: rgba(0, 0, 0, 0.15);
+      --accent-1: rgba(0, 0, 0, 0.05);
+      --accent-2: rgba(0, 0, 0, 0.1);
+      --button-bg: #000;
+      --button-text: #fff;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-sans);
+      background-color: var(--background);
+      color: var(--text-color);
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+
+    .container {
+      background-color: #f9f9f9;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      width: 800px;
+      max-width: 95%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 1rem 0;
+      box-sizing: border-box;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--text-color);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      transition: color 0.3s ease;
+    }
+
+    .logo:hover {
+      cursor: pointer;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    
+    .relations {
+      width: 100%;
+      text-align: left;
+      background-color: #fff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-left: 5px solid red;
+    }
+
+    .instructions {
+      width: 100%;
+      text-align: left;
+      background-color: #fff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-left: 5px solid #007aff;
+    }
+
+    .instructions-title {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .instructions-desc {
+      margin-bottom: 1rem;
+      color: #555;
+    }
+
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      max-height: 300px; /* 限制最大高度 */
+      overflow-y: auto;  /* 当超出高度时显示垂直滚动条 */
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .csv-example {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+
+    .csv-example th, .csv-example td {
+      padding: 0.9rem;
+      border: 1px solid var(--border-color);
+      text-align: left; /* 左对齐 */
+      font-size: 0.95rem;
+      white-space: normal; /* 允许换行，如果你想禁用换行用 nowrap */
+      word-break: break-word; /* 单词太长自动断行 */
+      min-width: 120px; /* 防止列太窄 */
+    }
+
+    .csv-example th {
+      background-color: #f2f2f2;
+      font-weight: 600;
+    }
+
+    .csv-example tbody tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+
+    .download-button {
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-bottom: 2rem;
+      display: inline-block;
+    }
+
+    .download-button:hover {
+      background-color: #333;
+      transform: scale(1.05);
+    }
+
+    .step-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 4rem;
+      width: 100%;
+    }
+
+    .step-buttons button {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 25px;
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin: 0 20px;
+    }
+
+    .step-buttons button:hover {
+      background-color: #333;
+      transform: scale(1.05);
+    }
+
+    .lang-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: var(--accent-1);
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .primary-button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: 1;
+}
+
+.primary-button:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      .instructions {
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 1.5rem;
+        max-width: 95%;
+      }
+      .step-buttons button {
+        padding: 0.7rem 1.2rem;
+        margin: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo" onclick="window.location.href='/'">
+    <img src="/static/assets/logo2.png" alt="Logo">
+  </div>
+  <button class="lang-toggle" onclick="toggleLang()" id="lang-toggle">中</button>
+
+
+  <div class="container">
+    <h2 data-i18n="heading">图谱构建流程 - 第一步：了解上传的文件格式</h2>
+    
+    <h3 style="text-align:left; width:100%; margin-bottom: 1rem;" data-i18n="step1-title">以下是实体定义格式说明，请写入 <code>entities.csv</code> 文件中：</h3>
+    
+    <div class="instructions">
+      <div class="instructions-title" data-i18n="LPitem-title">LPitem：知识点</div>
+      <div class="instructions-desc" data-i18n="LPitem-desc">代表一个具体的学科知识点</div>
+      <div class="table-wrapper">
+        <table class="csv-example">
+          <thead>
+            <tr>
+              <th data-i18n="column1">字段说明</th>
+              <td data-i18n="column2">节点类型</td>
+              <td data-i18n="column3">节点id</td>
+              <td data-i18n="column4">节点名称</td>
+              <td data-i18n="column5">知识点属性（json格式）</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th data-i18n="sample">样例</th>
+              <td>LPitem</td>
+              <td>1001</td>
+              <td>Basic programming concepts</td>
+              <td>{"fullStatement":"Able to read and interpret simple Python statements."}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="instructions">
+      <div class="instructions-title" data-i18n="Ritem-title">Ritem：教学资源</div>
+      <div class="instructions-desc" data-i18n="Ritem-desc">代表教学资源，比如视频音频教材等</div>
+      <div class="table-wrapper">
+        <table class="csv-example">
+          <thead>
+            <tr>
+              <th data-i18n="column1">字段说明</th>
+              <td data-i18n="column2">节点类型</td>
+              <td data-i18n="column3">节点id</td>
+              <td data-i18n="column4">资源链接</td>
+              <td data-i18n="column5">资源格式</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th data-i18n="sample">样例</th>
+              <td>Ritem</td>
+              <td>2001</td>
+              <td>Introduction to Python</td>
+              <td>http://example.org/lecture/intro-python</td>
+              <td>video</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="instructions">
+      <div class="instructions-title" data-i18n="Pitem-title">Pitem：教学规则</div>
+      <div class="instructions-desc" data-i18n="Pitem-desc">代表教学规则，一个教学计划执行的规则</div>
+      <div class="table-wrapper">
+        <table class="csv-example">
+          <thead>
+            <tr>
+              <th data-i18n="column1">字段说明</th>
+              <td data-i18n="column2">节点类型</td>
+              <td data-i18n="column3">节点id</td>
+              <td data-i18n="column4">节点名称</td>
+              <td data-i18n="column5">执行者</td>
+              <td data-i18n="column6">执行场景</td>
+              <td data-i18n="column7">任务描述</td>
+              <td data-i18n="column8">任务计划</td>
+              <td data-i18n="column9">预期结果</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th data-i18n="sample">样例</th>
+              <td>Pitem</td>
+              <td>3001</td>
+              <td>List Topics</td>
+              <td>LMSAssistant</td>
+              <td>When starting the course, the system identifies and lists all available topics.</td>
+              <td>Retrieve all topics from the Learning Points hierarchy.</td>
+              <td>Access the Learning Points collection and extract all associated topics.</td>
+              <td>A comprehensive list of topics covered in the course.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <h3 style="text-align:left; width:100%; margin-bottom: 1rem;" data-i18n="step2-title">以下是关系定义格式说明，请写入 <code>relations.csv</code> 文件中：</h3>
+
+    <div class="relations">
+      <div class="instructions-title" data-i18n="relations-title">关系表</div>
+      <div class="instructions-desc" data-i18n="relations-desc">将实体关联起来</div>
+      <div class="table-wrapper">
+        <table class="csv-example">
+          <thead>
+            <tr>
+              <th data-i18n="column1">字段说明</th>
+              <td data-i18n="column2">头节点id</td>
+              <td data-i18n="column3">尾节点id</td>
+              <td data-i18n="column4">关系名称</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th data-i18n="sample">样例</th>
+              <td>1001</td>
+              <td>2001</td>
+              <td>资源是</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="step-buttons">
+      <a class="primary-button" data-i18n="download" onclick="downloaExample()">下载示例 CSV 文件</a>
+      <button onclick="nextStep()" class="primary-button" data-i18n="next">下一步</button>
+    </div>
+  </div>
+
+  <script>
+    const i18n = {
+      'zh-CN': {
+        'title': '图谱构建流程 - 第一步',
+        'heading': '图谱构建流程 - 第一步：了解上传的文件格式',
+        'step1-title': '以下是实体定义格式说明，请写入 entities.csv 文件中：',
+        'LPitem-title': 'LPitem：知识点',
+        'LPitem-desc': '代表一个具体的学科知识点',
+        'Ritem-title': 'Ritem：教学资源',
+        'Ritem-desc': '代表教学资源，比如视频音频教材等',
+        'Pitem-title': 'Pitem：教学规则',
+        'Pitem-desc': '代表教学规则，一个教学计划执行的规则',
+        'relations-title': '关系表',
+        'relations-desc': '将实体关联起来',
+        'step2-title': '以下是关系定义格式说明，请写入 relations.csv 文件中：',
+        column1: '字段说明',
+        column2: '节点类型',
+        column3: '节点id',
+        column4: '节点名称',
+        column5: '知识点属性（json格式）',
+        column6: '执行者',
+        column7: '执行场景',
+        column8: '任务描述',
+        column9: '任务计划',
+        download: '下载示例 CSV 文件',
+        next: '下一步',
+        sample: '样例'
+      },
+      'en-US': {
+        title: 'Graph Building Process - Step 1',
+        heading: 'Step 1: Understand the Required File Format',
+        'step1-title': 'Below are the entity definition format instructions. Please write them into the entities.csv file:',
+        'LPitem-title': 'LPitem: Knowledge Point',
+        'LPitem-desc': 'Represents a specific academic knowledge point.',
+        'Ritem-title': 'Ritem: Teaching Resource',
+        'Ritem-desc': 'Represents teaching resources, such as videos, audios, textbooks, etc.',
+        'Pitem-title': 'Pitem: Teaching Rule',
+        'Pitem-desc': 'Represents a rule for executing a teaching plan.',
+        'relations-title': 'Relations Table',
+        'relations-desc': 'Links entities together.',
+        'step2-title': 'Below are the relation definition format instructions. Please write them into the relations.csv file:',
+        column1: 'Field Description',
+        column2: 'Node Type',
+        column3: 'Node ID',
+        column4: 'Node Name',
+        column5: 'Knowledge Point Attributes (JSON format)',
+        column6: 'Executor',
+        column7: 'Execution Scene',
+        column8: 'Task Description',
+        column9: 'Task Plan',
+        download: 'Download Sample CSV File',
+        next: 'Next Step',
+        sample: 'Sample'
+      }
+    };
+
+    
+    function downloaExample() {
+        const filePath = "assets/" + "example.rar";
+        const link = document.createElement("a");
+        link.href = filePath;
+        link.download = "example.rar";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
+
+    let currentLang = 'en-US';
+
+    function toggleLang() {
+      currentLang = currentLang === 'zh-CN' ? 'en-US' : 'zh-CN';
+      document.documentElement.lang = currentLang;
+      document.getElementById('lang-toggle').textContent = currentLang === 'zh-CN' ? 'EN' : '中';
+      updateI18n();
+    }
+
+    function updateI18n() {
+      const elements = document.querySelectorAll('[data-i18n]');
+      elements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[currentLang][key]) {
+          el.textContent = i18n[currentLang][key];
+        }
+      });
+      document.title = i18n[currentLang]['title'];
+    }
+
+    function nextStep() {
+      window.location.href = 'build-upload';
+    }
+
+    updateI18n();
+  </script>
+</body>
+</html>
