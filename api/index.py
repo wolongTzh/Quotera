@@ -30,8 +30,8 @@ def presonal_graph():
     print(file1.filename)
     file1_path = "/home/tz/cui/Quotera/api/templates/a.csv"
     file2_path = "/home/tz/cui/Quotera/api/templates/b.csv"
-    file1.save(file1_path)
-    file2.save(file2_path)
+    # file1.save(file1_path)
+    # file2.save(file2_path)
     graphs = {
     "nodes":[
       {
