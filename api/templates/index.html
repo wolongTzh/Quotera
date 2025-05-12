@@ -539,14 +539,55 @@
         }
         
         .footer-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 25.59px;
         }
         
+        .footer-row {
+            display: flex;
+            /* align-items: center; */
+            justify-content: space-between;
+            margin-bottom: 25.59px;
+            gap: 1rem;
+        }
+
         .group-name {
+            align-items: flex-start; /* 顶端对齐 */
             font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-size: 1rem;
             color: #495057;
+            flex: 1;
+        }
+
+        .page-footer {
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-table {
+            width: 30%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .footer-table th, .footer-table td {
+            /* border: 1px solid #ddd; */
+            padding: 10px;
+            vertical-align: top; /* 关键：顶端对齐 */
+        }
+
+        .footer-table th {
+            background-color: #f9f9f9;
+            text-align: left;
+        }
+
+        .org-logo {
+            max-width: 100px;
+            max-height: 50px;
+            object-fit: contain;
+        }
+
+        .spacer {
+            height: 25.58px; /* 高度应与你的 .person-name 高度一致 */
         }
         
         .person-contact-pair {
@@ -690,265 +731,97 @@ edkg:LPitem</span> a <span style="color:#005cc5;">owl:Class</span> ;
     
     <!-- 页脚 -->
     <footer id="page-footer">
-        <div class="container">
-            <div class="footer-content">
-                <!-- 第一列：集团 -->
-                <div class="footer-column">
-                    <h3 data-i18n="feature2.group">集团</h3>
-                    <!-- Tsinghua University -->
-                    <div class="footer-group">
-                        <div class="group-name">Tsinghua University</div>
-                        <div style="height: 117px"></div>
-                    </div>
-                    <!-- Beijing Normal University -->
-                    <div class="footer-group">
-                        <div class="group-name">Beijing Normal University</div>
-                        <div style="height: 39px"></div>
-                    </div>
-                    <!-- Working Group Project Manager -->
-                    <div class="footer-group">
-                        <div class="group-name">Working Group Project Manager</div>
-                    </div>
-                    <!-- Squirrel Ai -->
-                    <div class="footer-group">
-                        <div class="group-name">Squirrel Ai</div>
-                        <div style="height: 38px"></div>
-                    </div>
-                    <!-- Beijing Zhipu Huazhang Technology Co., Ltd -->
-                    <div class="footer-group">
-                        <div class="group-name">Beijing Zhipu Huazhang Technology Co., Ltd</div>
-                    </div>
-                    <!-- Shenzhen University -->
-                    <div class="footer-group">
-                        <div class="group-name">Shenzhen University</div>
-                    </div>
-                    <!-- AI Startup (Singapore) -->
-                    <div class="footer-group">
-                        <div class="group-name">AI Startup (Singapore)</div>
-                    </div>
-                    <!-- Tianjin University -->
-                    <div class="footer-group">
-                        <div class="group-name">Tianjin University</div>
-                    </div>
-                    <!-- Shanghai Jiao Tong University -->
-                    <div class="footer-group">
-                        <div class="group-name">Shanghai Jiao Tong University</div>
-                    </div>
-                    <!-- Institute of Computing Technology, CAS -->
-                    <div class="footer-group">
-                        <div class="group-name">Institute of Computing Technology, CAS</div>
-                        <div style="height: 12px"></div>
-                    </div>
-                    <!-- Zhongke Letin Intelligent Technology (Jinan) Co., Ltd -->
-                    <div class="footer-group">
-                        <div class="group-name">Zhongke Letin Intelligent Technology (Jinan) Co., Ltd</div>
-                    </div>
-                    <!-- East China Normal University -->
-                    <div class="footer-group">
-                        <div class="group-name">East China Normal University</div>
-                        <div style="height: 16px"></div>
-                    </div>
-                    <!-- Inspir Group -->
-                    <div class="footer-group">
-                        <div class="group-name">Inspir Group</div>
-                        <div style="height: 16px"></div>
-                    </div>
-                    <!-- Chinese Academy of Medical Sciences -->
-                    <div class="footer-group">
-                        <div class="group-name">Chinese Academy of Medical Sciences</div>
-                    </div>
-                    <!-- Lenovo Research Institute -->
-                    <div class="footer-group">
-                        <div class="group-name">Lenovo Research Institute</div>
-                    </div>
-                    <!-- Intel -->
-                    <div class="footer-group">
-                        <div class="group-name">Intel</div>
-                    </div>
-                </div>
-                
-                <!-- 第二列：人名 -->
-                <div class="footer-column">
-                    <h3 data-i18n="feature2.name">人名</h3>
-                    <!-- Tsinghua University -->
-                    <div class="footer-group">
-                        <div class="person-name">Bin Xu (许斌)</div>
-                        <div class="person-name">Xiaofei Zheng (郑晓飞)</div>
-                        <div class="person-name">Jing Du</div>
-                        <div class="person-name">Hanming Li</div>
-                        <div class="person-name">Siyu Wang</div>
-                        <div class="person-name">Yazhen Gu (顾雅珍)</div>
-                    </div>
-                    <!-- Beijing Normal University -->
-                    <div class="footer-group">
-                        <div class="person-name">Yanyan Li (李艳燕)</div>
-                        <div class="person-name">Penghe Chen（陈鹏鹤）</div>
-                        <div class="person-name">Ruiyu Li</div>
-                    </div>
-                    <!-- Working Group Project Manager -->
-                    <div class="footer-group">
-                        <div class="person-name">Meng Zhao (赵盟)</div>
-                        <div style="height: 8px"></div>
-                    </div>
-                    <!-- Squirrel Ai -->
-                    <div class="footer-group">
-                        <div class="person-name">Joleen Liang (梁静)</div>
-                        <div class="person-name">Richard Tong ( 佟佳睿)</div>
-                        <div class="person-name">Jessie Tong (佟佳熹)</div>
-                    </div>
-                    <!-- Beijing Zhipu Huazhang Technology Co., Ltd -->
-                    <div class="footer-group">
-                        <div class="person-name">Yakun Li (李亚坤)</div>
-                        <div style="height: 38px"></div>
-                    </div>
-                    <!-- Shenzhen University -->
-                    <div class="footer-group">
-                        <div class="person-name">Weili Liu (刘伟丽)</div>
-                        <div style="height: 10px"></div>
-                    </div>
-                    <!-- AI Startup (Singapore) -->
-                    <div class="footer-group">
-                        <div class="person-name">Chuan Jiang (川江)</div>
-                        <div style="height: 11px"></div>
-                    </div>
-                    <!-- Tianjin University -->
-                    <div class="footer-group">
-                        <div class="person-name">Xiaowang Zhang (张晓旺)</div>
-                        <div style="height: 11px"></div>
-                    </div>
-                    <!-- Shanghai Jiao Tong University -->
-                    <div class="footer-group">
-                        <div class="person-name">Liping Shen (申丽萍)</div>
-                        <div style="height: 11px"></div>
-                    </div>
-                    <!-- Institute of Computing Technology, CAS -->
-                    <div class="footer-group">
-                        <div class="person-name">Xinlong Jiang (蒋鑫龙)</div>
-                        <div class="person-name">Qian Chen (陈前)</div>
-                    </div>
-                    <!-- Zhongke Letin Intelligent Technology (Jinan) Co., Ltd -->
-                    <div class="footer-group">
-                        <div class="person-name">Chenlong Gao (高晨龙)</div>
-                        <div style="height: 38px"></div>
-                    </div>
-                    <!-- East China Normal University -->
-                    <div class="footer-group">
-                        <div class="person-name">Zhanjie Wu (吴战杰)</div>
-                        <div class="person-name">Yonghe Wu（吴永和）</div>
-                    </div>
-                    <!-- Inspir Group -->
-                    <div class="footer-group">
-                        <div class="person-name">Yonghui Lü (吕永惠)</div>
-                        <div class="person-name">Cong Huang (黄聪)</div>
-                    </div>
-                    <!-- Chinese Academy of Medical Sciences -->
-                    <div class="footer-group">
-                        <div class="person-name">Jiangbo Pu (蒲江波)</div>
-                        <div style="height: 11px"></div>
-                    </div>
-                    <!-- Lenovo Research Institute -->
-                    <div class="footer-group">
-                        <div class="person-name">Xiaoping Zhang (张晓平)</div>
-                        <div style="height: 11px"></div>
-                    </div>
-                    <!-- Intel -->
-                    <div class="footer-group">
-                        <div class="person-name">Jane Wu</div>
-                    </div>
-                </div>
-                
-                <!-- 第三列：联系方式 -->
-                <div class="footer-column">
-                    <h3 data-i18n="feature2.contact">联系方式</h3>
-                    <!-- Tsinghua University -->
-                    <div class="footer-group">
-                        <div class="contact-info">xubin@tsinghua.edu.cn</div>
-                        <div class="contact-info">13718825535@126.com</div>
-                        <div class="contact-info">dujing@tsinghua.edu.cn</div>
-                        <div class="contact-info">-</div>
-                        <div class="contact-info">-</div>
-                        <div class="contact-info">yazhengu@126.com</div>
-                    </div>
-                    <!-- Beijing Normal University -->
-                    <div class="footer-group">
-                        <div class="contact-info">liyy@bnu.edu.cn</div>
-                        <div class="contact-info">chenpenghe@bnu.edu.cn</div>
-                        <div class="contact-info">-</div>
-                    </div>
-                    <!-- Working Group Project Manager -->
-                    <div class="footer-group">
-                        <div class="contact-info">meng.zhao@ieee.org</div>
-                        <div style="height: 8px"></div>
-                    </div>
-                    <!-- Squirrel Ai -->
-                    <div class="footer-group">
-                        <div class="contact-info">joleenliang@songshuai.com</div>
-                        <div class="contact-info">richard.tong@ieee.org</div>
-                        <div class="contact-info">jessie.tong@ieee.org</div>
-                    </div>
-                    <!-- Beijing Zhipu Huazhang Technology Co., Ltd -->
-                    <div class="footer-group">
-                        <div class="contact-info">yakunli0316@gmail.com</div>
-                        <div style="height: 38px"></div>
-                    </div>
-                    <!-- Shenzhen University -->
-                    <div class="footer-group">
-                        <div class="contact-info">liuwl@szu.edu.cn</div>
-                        <div style="height: 10px"></div>
-                    </div>
-                    <!-- AI Startup (Singapore) -->
-                    <div class="footer-group">
-                        <div class="contact-info">chuanjiangliu99@gmail.com</div>
-                        <div style="height: 11px"></div>
-                    </div>
-                    <!-- Tianjin University -->
-                    <div class="footer-group">
-                        <div class="contact-info">xiaowangzhang@tju.edu.cn</div>
-                        <div style="height: 11px"></div>
-                    </div>
-                    <!-- Shanghai Jiao Tong University -->
-                    <div class="footer-group">
-                        <div class="contact-info">lpshen@sjtu.edu.cn</div>
-                        <div style="height: 11px"></div>
-                    </div>
-                    <!-- Institute of Computing Technology, CAS -->
-                    <div class="footer-group">
-                        <div class="contact-info">jiangxinlong@ict.ac.cn</div>
-                        <div class="contact-info">chenqian20b@ict.ac.cn</div>
-                    </div>
-                    <!-- Zhongke Letin Intelligent Technology (Jinan) Co., Ltd -->
-                    <div class="footer-group">
-                        <div class="contact-info">gaochenlong@ict.ac.cn</div>
-                        <div style="height: 38px"></div>
-                    </div>
-                    <!-- East China Normal University -->
-                    <div class="footer-group">
-                        <div class="contact-info">zjwu@deit.ecnu.edu.cn</div>
-                        <div class="contact-info">yhwu@deit.ecnu.edu.cn</div>
-                    </div>
-                    <!-- Inspir Group -->
-                    <div class="footer-group">
-                        <div class="contact-info">-</div>
-                        <div class="contact-info">huangcong@inspur.com</div>
-                    </div>
-                    <!-- Chinese Academy of Medical Sciences -->
-                    <div class="footer-group">
-                        <div class="contact-info">jiangbo.pu@foxmail.com</div>
-                        <div style="height: 11px"></div>
-                    </div>
-                    <!-- Lenovo Research Institute -->
-                    <div class="footer-group">
-                        <div class="contact-info">zhangxpd@lenovo.com</div>
-                        <div style="height: 11px"></div>
-                    </div>
-                    <!-- Intel -->
-                    <div class="footer-group">
-                        <div class="contact-info">jane.wu@intel.com</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <table class="footer-table" style="margin: 0 auto; border-collapse: collapse; width: 60%; text-align: center;">
+            <thead>
+            <tr style="border-bottom: 1px solid #e0e0e0;">
+                <th style="font-size: 18px; padding: 10px; text-align: center;">Entity</th>
+                <th ></th>
+                <th style="font-size: 18px; padding: 10px; text-align: center;">Representatives</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid #e0e0e0;">
+                <td class="group-name" style="font-size: 18px; padding: 10px;">
+                    Tsinghua University
+                </td>
+                <td><img src="/static/logos/1.png" class="org-logo" /></td>
+                <td><div>Bin Xu</div><div>Jing Du</div><div>Hanming Li</div></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e0e0e0;">
+                <td class="group-name" style="font-size: 18px; padding: 10px;">Beijing Normal University</td>
+                <td><img src="/static/logos/2.png" class="org-logo" /></td>
+                <td><div>Yanyan Li</div><div>Penghe Chen</div><div>Ruiyu Li</div></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e0e0e0;">
+                <td class="group-name" style="font-size: 18px; padding: 10px;">IEEE</td>
+                <td><img src="/static/logos/3.png" class="org-logo" /></td>
+                <td><div>Meng Zhao</div></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e0e0e0;">
+                <td class="group-name" style="font-size: 18px; padding: 10px;">Squirrel Ai</td>
+                <td><img src="/static/logos/4.svg" class="org-logo" /></td>
+                <td><div>Joleen Liang</div><div>Richard Tong</div><div>Jessie Tong</div></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e0e0e0;">
+                <td class="group-name" style="font-size: 18px; padding: 10px;">Beijing Zhipu Huazhang Technology Co., Ltd</td>
+                <td><img src="/static/logos/5.png" class="org-logo" /></td>
+                <td><div>Yakun Li</div></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e0e0e0;">
+                <td class="group-name" style="font-size: 18px; padding: 10px;">Shenzhen University</td>
+                <td><img src="/static/logos/6.png" class="org-logo" /></td>
+                <td><div>Weili Liu</div></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e0e0e0;">
+                <td class="group-name" style="font-size: 18px; padding: 10px;">Tianjin University</td>
+                <td><img src="/static/logos/7.png" class="org-logo" /></td>
+                <td><div>Xiaowang Zhang</div></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e0e0e0;">
+                <td class="group-name" style="font-size: 18px; padding: 10px;">Shanghai Jiao Tong University</td>
+                <td><img src="/static/logos/8.png" class="org-logo" /></td>
+                <td><div>Liping Shen</div></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e0e0e0;">
+                <td class="group-name" style="font-size: 18px; padding: 10px;">Institute of Computing Technology, CAS</td>
+                <td><img src="/static/logos/9.jpg" class="org-logo" /></td>
+                <td><div>Xinlong Jiang</div><div>Qian Chen</div></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e0e0e0;">
+                <td class="group-name" style="font-size: 18px; padding: 10px;">Zhongke Letin Intelligent Technology (Jinan) Co., Ltd</td>
+                <td><img src="/static/logos/10.jpg" class="org-logo" /></td>
+                <td><div>Chenlong Gao</div></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e0e0e0;">
+                <td class="group-name" style="font-size: 18px; padding: 10px;">East China Normal University</td>
+                <td><img src="/static/logos/11.png" class="org-logo" /></td>
+                <td><div>Zhanjie Wu</div><div>Yonghe Wu</div></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e0e0e0;">
+                <td class="group-name" style="font-size: 18px; padding: 10px;">Inspir Group</td>
+                <td><img src="/static/logos/12.png" class="org-logo" /></td>
+                <td><div>Yonghui Lü</div><div>Cong Huang</div></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e0e0e0;">
+                <td class="group-name" style="font-size: 18px; padding: 10px;">Chinese Academy of Medical Sciences</td>
+                <td><img src="/static/logos/13.png" class="org-logo" /></td>
+                <td><div>Jiangbo Pu</div></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e0e0e0;">
+                <td class="group-name" style="font-size: 18px; padding: 10px;">Lenovo Research Institute</td>
+                <td><img src="/static/logos/14.png" class="org-logo" /></td>
+                <td><div>Xiaoping Zhang</div></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e0e0e0;">
+                <td class="group-name" style="font-size: 18px; padding: 10px;">Intel</td>
+                <td><img src="/static/logos/15.png" class="org-logo" /></td>
+                <td><div>Jane Wu</div></td>
+              </tr>
+            </tbody>
+          </table>
+          
     </footer>
+    
 
     <!-- JavaScript -->
     <script>
@@ -970,9 +843,6 @@ edkg:LPitem</span> a <span style="color:#005cc5;">owl:Class</span> ;
                 'feature2.description': '我们的系统允许您构建自己的图谱。只需导入一个符合系统格式的 CSV 文件，即可自动完成符合标准的教育图谱构建与展示。',
                 'feature2.button': '图谱构建',
                 'feature1.ttl': 'IEEE教育图谱本体包含三类实体：知识点（LPitem）、资源（RItem）和教学规范（PRItem）。对于属性和关系来说，我们也允许用户进行自定义的扩展，可以点击右上角的下载图标下载本体源文件进行浏览。',
-                'feature2.contact': '联系方式',
-                'feature2.name': '人名',
-                'feature2.group': '组织'
             },
             'en-US': {
                 'logo': 'logo',
@@ -989,10 +859,7 @@ edkg:LPitem</span> a <span style="color:#005cc5;">owl:Class</span> ;
                 'feature2.title': 'Try Building Your Own Graph',
                 'feature2.description': 'Our system allows you to build your own educational graph. Simply upload a CSV file in the required format, and we’ll automatically generate a graph that meets our standards.',
                 'feature2.button': 'Build Graph',
-                'feature1.ttl': 'The IEEE Educational Graph Ontology includes three types of entities: Learning Points (LPitem), Resources (RItem), and Pedagogical Requirements (PRItem). Users can also define custom properties and relationships. Click the download icon in the top-right corner to browse the ontology source file.',
-                'feature2.contact': 'Contact Info',
-                'feature2.name': 'Names',
-                'feature2.group': 'Organizations'
+                'feature1.ttl': 'The IEEE Educational Graph Ontology includes three types of entities: Learning Points (LPitem), Resources (RItem), and Pedagogical Requirements (PRItem). Users can also define custom properties and relationships. Click the download icon in the top-right corner to browse the ontology source file.'
             }
         };
 
