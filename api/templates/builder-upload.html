@@ -269,7 +269,24 @@
         alert(i18n[currentLang].uploadError);
         return;
       }
-      window.location.href = 'presonal-graph';
+      const formData = new FormData();
+      formData.append('file1', file1);
+      formData.append('file2', file2);
+      fetch('/presonal-graph', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        window.location.href = 'personal';
+        // 你可以跳转或继续下一步
+        // location.href = "/next-page";
+      })
+      .catch(err => {
+        alert('上传失败，请重试');
+        console.error(err);
+      });
+      // window.location.href = 'presonal-graph';
       // TODO: 调用构建逻辑
     }
 

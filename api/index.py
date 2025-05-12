@@ -1,9 +1,10 @@
-from flask import Flask , request, render_template, send_file
+from flask import Flask , request, render_template, send_file, jsonify, session
 import requests , json , random
 import io
 
 
 app = Flask(__name__)
+app.secret_key = 'edukg.org'
 
 @app.route('/download-presonal-graph')
 def download_presonal_graph():
@@ -21,8 +22,16 @@ def download_presonal_graph():
         mimetype='text/ttl'
     )
 
-@app.route('/presonal-graph',methods=["GET"])
+@app.route('/presonal-graph',methods=["POST"])
 def presonal_graph():
+    file1 = request.files.get('file1')
+    file2 = request.files.get('file2')
+
+    print(file1.filename)
+    file1_path = "/home/tz/cui/Quotera/api/templates/a.csv"
+    file2_path = "/home/tz/cui/Quotera/api/templates/b.csv"
+    file1.save(file1_path)
+    file2.save(file2_path)
     graphs = {
     "nodes":[
       {
@@ -60,7 +69,10 @@ def presonal_graph():
       }
       ]
     }
-    return render_template('personal-graph.html', json_data=graphs) 
+    session['graphs'] = graphs
+    return jsonify({'success': True})
+    # return render_template('personal-graph.html', json_data=graphs) 
+    # return graphs
 
 @app.route('/build-upload',methods=["GET"])
 def build_upload():
@@ -73,6 +85,13 @@ def build_guide():
 @app.route('/example',methods=["GET"])
 def example():
     return render_template('example.html')    
+
+@app.route('/personal',methods=["GET"])
+def personal():
+    graphs = session.get('graphs')
+    if not graphs:
+        return "No data found", 400
+    return render_template('personal-graph.html', json_data=graphs)    
 
 
 @app.route('/',methods=["GET"])
