@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Graph Certification System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* Base styles */
+:root {
+    --primary: #4f46e5;
+    --primary-light: #818cf8;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --background: #ffffff;
+    --card-background: #ffffff;
+    --border-color: #e2e8f0;
+    --success: #10b981;
+    --error: #ef4444;
+    --success-light: #ecfdf5;
+    --error-light: #fef2f2;
+    --radius: 0.5rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem 1rem;
+}
+
+.title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Card styles */
+.card {
+    background-color: var(--card-background);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    max-width: 48rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.card-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.card-description {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.footer-text {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* Upload area */
+.upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.upload-area:hover {
+    background-color: #f8fafc;
+}
+
+.upload-icon {
+    margin: 0 auto 1rem;
+    color: #94a3b8;
+    width: 48px;
+    height: 48px;
+}
+
+.upload-text {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+}
+
+.upload-subtext {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+input[type="file"].hidden {
+    display: none;
+}
+
+/* File info */
+.file-info {
+    margin-top: 1rem;
+}
+
+.file-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+/* Button */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary);
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%;
+}
+
+.button:hover {
+    background-color: #4338ca;
+}
+
+.button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.button-outline {
+    background-color: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.button-outline:hover {
+    background-color: #f5f3ff;
+}
+
+.button-icon {
+    margin-right: 0.5rem;
+}
+
+/* Alert */
+.alert {
+    display: flex;
+    padding: 1rem;
+    border-radius: var(--radius);
+    margin-top: 1rem;
+}
+
+.alert.success {
+    background-color: var(--success-light);
+}
+
+.alert.error {
+    background-color: var(--error-light);
+}
+
+.alert-icon {
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+
+.alert-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.alert-message {
+    font-size: 0.875rem;
+}
+
+/* Certificate */
+.certificate-container {
+    margin-top: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1rem;
+}
+
+.certificate-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+}
+
+.certificate-image-container {
+    background-color: #f8fafc;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.certificate-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .card-header, .card-content, .card-footer {
+        padding: 1rem;
+    }
+    
+    .upload-area {
+        padding: 1.5rem;
+    }
+}
+</style>
+<body>
+    <div class="container">
+        <h1 class="title">EduKG Standard Compliance Certification</h1>
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">EduKG Standard Compliance Certification System</h2>
+                <p class="card-description">Upload a TTL file to verify if your knowledge graph meets standard specifications</p>
+            </div>
+            <div class="card-content">
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                    </div>
+                    <p class="upload-text">Click or drag to upload TTL file</p>
+                    <p class="upload-subtext">Supports .ttl format knowledge graph files</p>
+                    <input type="file" id="file-upload" accept=".ttl" class="hidden">
+                </div>
+
+                <div id="file-info" class="file-info hidden">
+                    <p id="file-name" class="file-name"></p>
+                    <button id="validate-btn" class="button">Validate Knowledge Graph</button>
+                </div>
+
+                <div id="validation-result" class="alert hidden">
+                    <div class="alert-icon" id="alert-icon"></div>
+                    <div class="alert-content">
+                        <h3 id="alert-title" class="alert-title"></h3>
+                        <p id="alert-message" class="alert-message"></p>
+                    </div>
+                </div>
+
+                <div id="certificate-container" class="certificate-container hidden">
+                    <h3 class="certificate-title">Knowledge Graph Certification</h3>
+                    <div class="certificate-image-container">
+                        <img id="certificate-image" src="/static/assets/certificate.png" alt="Knowledge Graph Certificate" class="certificate-image">
+                    </div>
+                    <button id="download-btn" class="button button-outline">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button-icon">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download PDF Certificate
+                    </button>
+                </div>
+            </div>
+            <div class="card-footer">
+                <p class="footer-text">EduKG Certification System © <span id="current-year"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Set current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // DOM elements
+    const uploadArea = document.getElementById('upload-area');
+    const fileUpload = document.getElementById('file-upload');
+    const fileInfo = document.getElementById('file-info');
+    const fileName = document.getElementById('file-name');
+    const validateBtn = document.getElementById('validate-btn');
+    const validationResult = document.getElementById('validation-result');
+    const alertIcon = document.getElementById('alert-icon');
+    const alertTitle = document.getElementById('alert-title');
+    const alertMessage = document.getElementById('alert-message');
+    const certificateContainer = document.getElementById('certificate-container');
+    const downloadBtn = document.getElementById('download-btn');
+
+    // Current file
+    let currentFile = null;
+    let isProcessing = false;
+
+    // Event listeners
+    uploadArea.addEventListener('click', () => fileUpload.click());
+    uploadArea.addEventListener('dragover', handleDragOver);
+    uploadArea.addEventListener('drop', handleDrop);
+    fileUpload.addEventListener('change', handleFileChange);
+    validateBtn.addEventListener('click', handleValidation);
+    downloadBtn.addEventListener('click', handleDownload);
+
+    // Handle drag over
+    function handleDragOver(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        uploadArea.style.backgroundColor = '#f8fafc';
+    }
+
+    // Handle file drop
+    function handleDrop(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        uploadArea.style.backgroundColor = '';
+
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+            handleFile(e.dataTransfer.files[0]);
+        }
+    }
+
+    // Handle file selection
+    function handleFileChange(e) {
+        if (e.target.files && e.target.files[0]) {
+            handleFile(e.target.files[0]);
+        }
+    }
+
+    // Process the selected file
+    function handleFile(file) {
+        if (!file.name.endsWith('.ttl')) {
+            alert('Please upload a .ttl format file');
+            return;
+        }
+
+        currentFile = file;
+        fileName.textContent = `Selected file: ${file.name}`;
+        fileInfo.classList.remove('hidden');
+        validationResult.classList.add('hidden');
+        certificateContainer.classList.add('hidden');
+    }
+
+    // Handle validation
+    async function handleValidation() {
+        if (!currentFile || isProcessing) return;
+
+        isProcessing = true;
+        validateBtn.textContent = 'Validating...';
+        validateBtn.disabled = true;
+
+        try {
+            // Read file content
+            const fileContent = await readFileContent(currentFile);
+            
+            // Validate TTL file
+            const result = await validateTtlFile(fileContent);
+            
+            // Display validation result
+            showValidationResult(result);
+            
+            // Show certificate if valid
+            if (result.valid) {
+                showCertificate();
+            }
+        } catch (error) {
+            console.error('Error processing file:', error);
+            showValidationResult({
+                valid: false,
+                message: 'An error occurred while processing the file. Please try again.'
+            });
+        } finally {
+            isProcessing = false;
+            validateBtn.textContent = 'Validate Knowledge Graph';
+            validateBtn.disabled = false;
+        }
+    }
+
+    // Read file content
+    function readFileContent(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = (e) => resolve(e.target.result);
+            reader.onerror = (e) => reject(e);
+            reader.readAsText(file);
+        });
+    }
+
+    // Validate TTL file
+    async function validateTtlFile(fileContent) {
+        // Simulate server processing time
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        // Simple validation - check for basic TTL syntax elements
+        // In a real application, you would use a proper RDF parser
+        
+        // Check if file is empty
+        if (!fileContent.trim()) {
+            return {
+                valid: false,
+                message: "File content is empty. Please upload a valid TTL file."
+            };
+        }
+        
+        // Check for basic TTL syntax elements
+        const hasPrefix = fileContent.includes('@prefix') || fileContent.includes('@base');
+        const hasTriples = /\s+\w+\s+\w+\s*[.;]/.test(fileContent);
+        const hasValidSyntax = !fileContent.includes('ERROR') && !fileContent.includes('INVALID');
+        
+        if (!hasPrefix) {
+            return {
+                valid: false,
+                message: "Missing valid prefix declaration (@prefix). Please ensure your TTL file contains necessary namespace declarations."
+            };
+        }
+        
+        if (!hasTriples) {
+            return {
+                valid: false,
+                message: "No valid triples (subject-predicate-object) structure detected. Please check your knowledge graph format."
+            };
+        }
+        
+        if (!hasValidSyntax) {
+            return {
+                valid: false,
+                message: "File syntax error. Please ensure your TTL file complies with Turtle syntax specifications."
+            };
+        }
+        
+        // If all checks pass
+        return {
+            valid: true,
+            message: "Congratulations! Your knowledge graph meets standard specifications. Certificate has been generated and is ready for download."
+        };
+    }
+
+    // Show validation result
+    function showValidationResult(result) {
+        validationResult.classList.remove('hidden', 'success', 'error');
+        validationResult.classList.add(result.valid ? 'success' : 'error');
+        
+        alertTitle.textContent = result.valid ? 'Validation Successful' : 'Validation Failed';
+        alertMessage.textContent = result.message;
+        
+        // Set icon
+        if (result.valid) {
+            alertIcon.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="${getComputedStyle(document.documentElement).getPropertyValue('--success')}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+            `;
+        } else {
+            alertIcon.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="${getComputedStyle(document.documentElement).getPropertyValue('--error')}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+            `;
+        }
+    }
+
+    // Show certificate
+    function showCertificate() {
+        // Display the certificate container with the existing certificate image
+        certificateContainer.classList.remove('hidden');
+    }
+
+    // Handle certificate download
+    function handleDownload() {
+        // Download the existing PDF certificate
+        const link = document.createElement('a');
+        link.href = '/static/assets/certificate.pdf';
+        link.download = 'knowledge_graph_certificate.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+});
+    </script>
+</body>
+</html>

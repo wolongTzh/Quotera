@@ -86,6 +86,10 @@ def build_guide():
 def example():
     return render_template('example.html')    
 
+@app.route('/certificate',methods=["GET"])
+def certificate():
+    return render_template('certificate.html')   
+
 @app.route('/personal',methods=["GET"])
 def personal():
     graphs = session.get('graphs')
