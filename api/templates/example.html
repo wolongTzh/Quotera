@@ -96,6 +96,60 @@
       transition: background-color 0.3s ease;
     }
 
+    /* d3部分 */
+    svg { width: 100%; height: 100%; background-color: #f9f9f9; }
+    text.relation {
+      font-size: 14px;
+      fill: #555;
+      pointer-events: none;
+    }
+    .tooltip {
+      position: absolute;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      pointer-events: none;
+      font-size: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      max-width: 250px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .node-highlight {
+      stroke: #ff7700;
+      stroke-width: 2px;
+    }
+    /* 添加按钮样式 */
+    .focus-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 8px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: background-color 0.3s;
+      z-index: 100;
+    }
+    .focus-button:hover {
+      background-color: #45a049;
+    }
+    /* 隐藏实际的边，只用于视觉显示 */
+    .link-visible {
+      pointer-events: none;
+    }
+    /* 用于捕获鼠标事件的宽边 */
+    .link-hitarea {
+      stroke-opacity: 0;
+      stroke-width: 20px; /* 宽的判定区域 */
+      cursor: pointer;
+    }
+
     .search-box {
       display: flex;
       justify-content: center;
@@ -185,7 +239,6 @@
             /* background-color: var(--text-color); */
         
         }
-
     
 
     @media (max-width: 768px) {
@@ -204,6 +257,62 @@
         transform: translateX(-50%);
       }
     }
+
+    /* 图例部分 */
+    .legend-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 20px 0;
+    }
+
+    .legend-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 15px 25px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      width: 100%;
+    }
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin: 0 10px;
+    }
+    
+    .color-circle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    
+    .legend-text {
+      font-size: 14px;
+      color: #333;
+    }
+    
+    .color-1 {
+      background-color: #a66ef7;
+    }
+
+    .color-2 {
+      background-color: #bff76e;
+    }
+
+    .color-3 {
+      background-color: #ea6ef7;
+    }
+
+    .color-4 {
+      background-color: #7eafec;
+    }
   </style>
 </head>
 <body>
@@ -213,10 +322,12 @@
       <img src="/static/assets/logo2.png" alt="Animation Example">
     </div>
     <select id="graph-selector" style="margin-left: 80px;">
-      <option value="network" data-i18n="network">计算机网络图谱</option>
+      <option value="biology" data-i18n="biology">生物图谱</option>
       <option value="physics" data-i18n="physics">物理图谱</option>
       <option value="chemistry" data-i18n="chemistry">化学图谱</option>
-      <option value="biology" data-i18n="biology">生物图谱</option>
+      <option value="network" data-i18n="network">计算机网络图谱</option>
+
+      
       
     </select>
     <button class="button" style="margin-right: 50px;" id="download-button" onclick="downloadGraph()" data-i18n="download">点击下载图谱</button>
@@ -225,7 +336,34 @@
 
   <h1 data-i18n="title">展示查看页</h1>
 
+  <div class="legend-wrapper">
+    <div class="legend-container">
+      <div class="legend-item">
+        <div class="color-circle color-2"></div>
+        <span class="legend-text">LearningPointCollection</span>
+      </div>
+
+      <div class="legend-item">
+        <div class="color-circle color-1"></div>
+        <span class="legend-text">LPitem</span>
+      </div>
+      
+      <div class="legend-item">
+        <div class="color-circle color-3"></div>
+        <span class="legend-text">RIitem</span>
+      </div>
+      
+      <div class="legend-item">
+        <div class="color-circle color-4"></div>
+        <span class="legend-text">PRitem</span>
+      </div>
+    </div>
+  </div>
+
   <div class="viewer-box" id="viewer"></div>
+  <div class="tooltip"></div>
+  <!-- <button class="focus-button">重新对焦</button> -->
+  <!-- 重对焦按钮，功能已经写好，需要修改CSS-TODO -->
 
   <div class="search-box" id="search-box">
     <input type="text" id="search-input" placeholder="Please input your keywords...">
@@ -287,731 +425,1084 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script>
   window.onload = function() {
-    allNodes = graphs.network.nodes
-    allLinks = graphs.network.links
-    show_d3(graphs.network.nodes, graphs.network.links);  // 第二个参数为true表示合并重载
+    allNodes = graphs.biology.nodes
+    allLinks = graphs.biology.links
+    show_d3(graphs.biology.nodes, graphs.biology.links);  // 第二个参数为true表示合并重载
   };
   var allNodes = []
   var allLinks = []
   const graphs = {
     "network": {
-      "nodes":[
-        {
-          "id": "https://example.com/concept_graph/lp/IMAP",
-          "name": "IMAP"
-        },
-        {
-          "id": "http://edkg.org/ontology#LPitem",
-          "name": "LPitem"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/POP3",
-          "name": "POP3"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/IP_address_allocation",
-          "name": "IP_address_allocation"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/socket",
-          "name": "socket"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/UDP",
-          "name": "UDP"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/DNS",
-          "name": "DNS"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/application_layer_protocol",
-          "name": "application_layer_protocol"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/TLD_DNS_server",
-          "name": "TLD_DNS_server"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/instant_messaging",
-          "name": "instant_messaging"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/distributed_system",
-          "name": "distributed_system"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/SMTP",
-          "name": "SMTP"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/client/server_model",
-          "name": "server_model"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/skype",
-          "name": "skype"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/root_DNS_server",
-          "name": "root_DNS_server"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/MIME",
-          "name": "MIME"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/URL",
-          "name": "URL"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/packet",
-          "name": "packet"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/local_DNS_server",
-          "name": "local_DNS_server"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/application_programming_interface_",
-          "name": "application_programming_interface_"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/TCP",
-          "name": "TCP"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/dynamic_host_configuration_protocol",
-          "name": "dynamic_host_configuration_protocol"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/upper_layer_data",
-          "name": "upper_layer_data"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/DNS_server",
-          "name": "DNS_server"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/socket_API_primitive",
-          "name": "socket_API_primitive"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/FTP",
-          "name": "FTP"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/domain_name",
-          "name": "domain_name"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/authoritative_DNS_server",
-          "name": "authoritative_DNS_server"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/DNS_resource_record",
-          "name": "DNS_resource_record"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/Peer-to-Peer_model",
-          "name": "Peer-to-Peer_model"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/default_DNS_server",
-          "name": "default_DNS_server"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
-          "name": "hybrid_of_client-server_and_P2P"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/mail_access_protocol",
-          "name": "mail_access_protocol"
-        },
-        {
-          "id": "https://example.com/concept_graph/relation/depends_on",
-          "name": "depends_on"
-        },
-        {
-          "id": "http://edkg.org/ontology#DisciplinaryProperty",
-          "name": "DisciplinaryProperty"
-        },
-        {
-          "id": "https://example.com/concept_graph/relation/layer_below",
-          "name": "layer_below"
-        },
-        {
-          "id": "https://example.com/concept_graph/relation/belong_to",
-          "name": "belong_to"
-        },
-        {
-          "id": "https://example.com/concept_graph/relation/part_of",
-          "name": "part_of"
-        },
-        {
-          "id": "https://example.com/concept_graph/relation/synonym_of",
-          "name": "synonym_of"
-        }
-      ],
-      "links":[
-        {
-          "source": "https://example.com/concept_graph/lp/DNS",
-          "target": "https://example.com/concept_graph/lp/application_layer_protocol",
-          "relation": "belong_to"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/TLD_DNS_server",
-          "target": "https://example.com/concept_graph/lp/DNS",
-          "relation": "part_of"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/socket",
-          "target": "https://example.com/concept_graph/lp/distributed_system",
-          "relation": "depends_on"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/SMTP",
-          "target": "https://example.com/concept_graph/lp/client/server_model",
-          "relation": "belong_to"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/TLD_DNS_server",
-          "target": "https://example.com/concept_graph/lp/root_DNS_server",
-          "relation": "layer_below"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/SMTP",
-          "target": "https://example.com/concept_graph/lp/MIME",
-          "relation": "depends_on"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/DNS",
-          "target": "https://example.com/concept_graph/lp/client/server_model",
-          "relation": "belong_to"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/local_DNS_server",
-          "target": "https://example.com/concept_graph/lp/dynamic_host_configuration_protocol",
-          "relation": "depends_on"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/FTP",
-          "target": "https://example.com/concept_graph/lp/TCP",
-          "relation": "depends_on"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/DNS",
-          "target": "https://example.com/concept_graph/lp/domain_name",
-          "relation": "depends_on"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/authoritative_DNS_server",
-          "target": "https://example.com/concept_graph/lp/DNS_server",
-          "relation": "belong_to"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/FTP",
-          "target": "https://example.com/concept_graph/lp/client/server_model",
-          "relation": "belong_to"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/SMTP",
-          "target": "https://example.com/concept_graph/lp/TCP",
-          "relation": "depends_on"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/DNS",
-          "target": "https://example.com/concept_graph/lp/DNS_server",
-          "relation": "depends_on"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/DNS",
-          "target": "https://example.com/concept_graph/lp/DNS_resource_record",
-          "relation": "depends_on"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/DNS",
-          "target": "https://example.com/concept_graph/lp/UDP",
-          "relation": "depends_on"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/authoritative_DNS_server",
-          "target": "https://example.com/concept_graph/lp/TLD_DNS_server",
-          "relation": "layer_below"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/local_DNS_server",
-          "target": "https://example.com/concept_graph/lp/default_DNS_server",
-          "relation": "synonym_of"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/socket",
-          "target": "https://example.com/concept_graph/lp/socket_API_primitive",
-          "relation": "part_of"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/socket",
-          "target": "https://example.com/concept_graph/lp/application_programming_interface_",
-          "relation": "belong_to"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/local_DNS_server",
-          "target": "https://example.com/concept_graph/lp/DNS_server",
-          "relation": "belong_to"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/instant_messaging",
-          "target": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
-          "relation": "belong_to"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/domain_name",
-          "target": "https://example.com/concept_graph/lp/URL",
-          "relation": "part_of"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/IMAP",
-          "target": "https://example.com/concept_graph/lp/TCP",
-          "relation": "depends_on"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/authoritative_DNS_server",
-          "target": "https://example.com/concept_graph/lp/DNS",
-          "relation": "part_of"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/MIME",
-          "target": "https://example.com/concept_graph/lp/application_layer_protocol",
-          "relation": "belong_to"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/upper_layer_data",
-          "target": "https://example.com/concept_graph/lp/packet",
-          "relation": "part_of"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/POP3",
-          "target": "https://example.com/concept_graph/lp/application_layer_protocol",
-          "relation": "belong_to"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/IMAP",
-          "target": "https://example.com/concept_graph/lp/application_layer_protocol",
-          "relation": "belong_to"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
-          "target": "https://example.com/concept_graph/lp/Peer-to-Peer_model",
-          "relation": "depends_on"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
-          "target": "https://example.com/concept_graph/lp/client/server_model",
-          "relation": "depends_on"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/dynamic_host_configuration_protocol",
-          "target": "https://example.com/concept_graph/lp/IP_address_allocation",
-          "relation": "depends_on"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/local_DNS_server",
-          "target": "https://example.com/concept_graph/lp/DNS",
-          "relation": "part_of"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/POP3",
-          "target": "https://example.com/concept_graph/lp/mail_access_protocol",
-          "relation": "belong_to"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/TLD_DNS_server",
-          "target": "https://example.com/concept_graph/lp/DNS_server",
-          "relation": "belong_to"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/IMAP",
-          "target": "https://example.com/concept_graph/lp/mail_access_protocol",
-          "relation": "belong_to"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/skype",
-          "target": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
-          "relation": "belong_to"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/FTP",
-          "target": "https://example.com/concept_graph/lp/application_layer_protocol",
-          "relation": "belong_to"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/POP3",
-          "target": "https://example.com/concept_graph/lp/TCP",
-          "relation": "depends_on"
-        },
-        {
-          "source": "https://example.com/concept_graph/lp/SMTP",
-          "target": "https://example.com/concept_graph/lp/application_layer_protocol",
-          "relation": "belong_to"
-        }
-      ] 
-    },
-    "physics": {
-      "nodes": [
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/neutron",
-          "name": "proton"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/spin_quantization",
-          "name": "spin_quantization"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/1_1_DiscoveryOfParticles",
-          "name": "1_1_DiscoveryOfParticles"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/electric_charge",
-          "name": "electric_charge"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/hadron",
-          "name": "hadron"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/positron",
-          "name": "positron"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/proton",
-          "name": "proton"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/particle_lifetime",
-          "name": "particle_lifetime"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/particle",
-          "name": "particle"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/lifetime",
-          "name": "lifetime"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/meson",
-          "name": "meson"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/mass-energy_equivalence",
-          "name": "mass-energy_equivalence"
-        },
-        {
-          "id": "http://edkg.org/ontology#LPitem",
-          "name": "LPitem"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/PhysicsExample_Collection",
-          "name": "Physics"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/1_ElementaryParticle",
-          "name": "1_ElementaryParticle"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/elementary_charge_e",
-          "name": "elementary_charge_e"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/1_2_ClassificationOfParticles",
-          "name": "1_2_ClassificationOfParticles"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/elementary_particle",
-          "name": "elementary_particle"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/relation/emits",
-          "name": "emits"
-        },
-        {
-          "id": "http://edkg.org/ontology#DisciplinaryProperty",
-          "name": "DisciplinaryProperty"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/atom",
-          "name": "atom"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/fundamental_interactions",
-          "name": "fundamental_interactions"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/d-quark",
-          "name": "d-quark"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/neutrino",
-          "name": "neutrino"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/u-quark",
-          "name": "u-quark"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/relation/transformsInto",
-          "name": "transformsInto"
-        },
-        {
-          "id": "http://edkg.org/ontology#LearningPointCollection",
-          "name": "LearningPointCollection"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/relation/includes",
-          "name": "includes"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/relation/isComposedOf",
-          "name": "isComposedOf"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/spin_motion",
-          "name": "spin_motion"
-        },
-        {
-          "id": "https://kgeditor.cn/physics_example/relation/decaysInto",
-          "name": "decaysInto"
-        }
-      ],
-      "links": [
-        {
-          "source": "https://kgeditor.cn/physics_example/lp/particle",
-          "target": "https://kgeditor.cn/physics_example/lp/lifetime",
-          "relation": "includes"
-        },
-        {
-          "source": "https://kgeditor.cn/physics_example/lp/electric_charge",
-          "target": "https://kgeditor.cn/physics_example/lp/elementary_charge_e",
-          "relation": "includes"
-        },
-        {
-          "source": "https://kgeditor.cn/physics_example/lp/proton",
-          "target": "https://kgeditor.cn/physics_example/lp/neutrino",
-          "relation": "emits"
-        },
-        {
-          "source": "https://kgeditor.cn/physics_example/lp/proton",
-          "target": "https://kgeditor.cn/physics_example/lp/u-quark",
-          "relation": "isComposedOf"
-        },
-        {
-          "source": "https://kgeditor.cn/physics_example/lp/particle",
-          "target": "https://kgeditor.cn/physics_example/lp/particle",
-          "relation": "decaysInto"
-        },
-        {
-          "source": "https://kgeditor.cn/physics_example/lp/proton",
-          "target": "https://kgeditor.cn/physics_example/lp/meson",
-          "relation": "transformsInto"
-        },
-        {
-          "source": "https://kgeditor.cn/physics_example/lp/proton",
-          "target": "https://kgeditor.cn/physics_example/lp/d-quark",
-          "relation": "isComposedOf"
-        },
-        {
-          "source": "https://kgeditor.cn/physics_example/lp/proton",
-          "target": "https://kgeditor.cn/physics_example/lp/neutron",
-          "relation": "transformsInto"
-        },
-        {
-          "source": "https://kgeditor.cn/physics_example/lp/neutron",
-          "target": "https://kgeditor.cn/physics_example/lp/d-quark",
-          "relation": "isComposedOf"
-        },
-        {
-          "source": "https://kgeditor.cn/physics_example/lp/particle",
-          "target": "https://kgeditor.cn/physics_example/lp/spin_motion",
-          "relation": "includes"
-        },
-        {
-          "source": "https://kgeditor.cn/physics_example/lp/proton",
-          "target": "https://kgeditor.cn/physics_example/lp/positron",
-          "relation": "emits"
-        },
-        {
-          "source": "https://kgeditor.cn/physics_example/lp/neutron",
-          "target": "https://kgeditor.cn/physics_example/lp/u-quark",
-          "relation": "isComposedOf"
-        }
-      ]
-    },
+       "nodes": [
+      {
+        "id": "https://example.com/concept_graph/lp/TLD_DNS_server",
+        "name": "TLD DNS server",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/FTP",
+        "name": "FTP",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/application_layer_protocol",
+        "name": "application layer protocol",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/packet",
+        "name": "packet",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/TCP",
+        "name": "TCP",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/skype",
+        "name": "skype",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/DNS",
+        "name": "DNS",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/DNS_resource_record",
+        "name": "DNS resource record",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/POP3",
+        "name": "POP3",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/upper_layer_data",
+        "name": "upper layer data",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/root_DNS_server",
+        "name": "root DNS server",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/IP_address_allocation",
+        "name": "IP address allocation",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/IMAP",
+        "name": "IMAP",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/SMTP",
+        "name": "SMTP",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/application_programming_interface_",
+        "name": "application programming interface ",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/domain_name",
+        "name": "domain name",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/UDP",
+        "name": "UDP",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/DNS_server",
+        "name": "DNS server",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/MIME",
+        "name": "MIME",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/authoritative_DNS_server",
+        "name": "authoritative DNS server",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/dynamic_host_configuration_protocol",
+        "name": "dynamic host configuration protocol",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/socket",
+        "name": "socket",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/instant_messaging",
+        "name": "instant messaging",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
+        "name": "hybrid of client-server and P2P",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/client/server_model",
+        "name": "client/server model",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/mail_access_protocol",
+        "name": "mail access protocol",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/Peer-to-Peer_model",
+        "name": "Peer-to-Peer model",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/URL",
+        "name": "URL",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/local_DNS_server",
+        "name": "local DNS server",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/default_DNS_server",
+        "name": "default DNS server",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/distributed_system",
+        "name": "distributed system",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/socket_API_primitive",
+        "name": "socket API primitive",
+        "type": "LPitem"
+      }
+    ],
+    "links": [
+      {
+        "source": "https://example.com/concept_graph/lp/FTP",
+        "target": "https://example.com/concept_graph/lp/application_layer_protocol",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/DNS",
+        "target": "https://example.com/concept_graph/lp/DNS_resource_record",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/TLD_DNS_server",
+        "target": "https://example.com/concept_graph/lp/DNS",
+        "relation": "part_of"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/upper_layer_data",
+        "target": "https://example.com/concept_graph/lp/packet",
+        "relation": "part_of"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/TLD_DNS_server",
+        "target": "https://example.com/concept_graph/lp/root_DNS_server",
+        "relation": "layer_below"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/SMTP",
+        "target": "https://example.com/concept_graph/lp/TCP",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/SMTP",
+        "target": "https://example.com/concept_graph/lp/MIME",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/authoritative_DNS_server",
+        "target": "https://example.com/concept_graph/lp/DNS_server",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/POP3",
+        "target": "https://example.com/concept_graph/lp/application_layer_protocol",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/SMTP",
+        "target": "https://example.com/concept_graph/lp/application_layer_protocol",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/DNS",
+        "target": "https://example.com/concept_graph/lp/domain_name",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/instant_messaging",
+        "target": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
+        "target": "https://example.com/concept_graph/lp/Peer-to-Peer_model",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/FTP",
+        "target": "https://example.com/concept_graph/lp/client/server_model",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/domain_name",
+        "target": "https://example.com/concept_graph/lp/URL",
+        "relation": "part_of"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/SMTP",
+        "target": "https://example.com/concept_graph/lp/client/server_model",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/local_DNS_server",
+        "target": "https://example.com/concept_graph/lp/default_DNS_server",
+        "relation": "synonym_of"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/DNS",
+        "target": "https://example.com/concept_graph/lp/DNS_server",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/TLD_DNS_server",
+        "target": "https://example.com/concept_graph/lp/DNS_server",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/IMAP",
+        "target": "https://example.com/concept_graph/lp/TCP",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/MIME",
+        "target": "https://example.com/concept_graph/lp/application_layer_protocol",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/IMAP",
+        "target": "https://example.com/concept_graph/lp/application_layer_protocol",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/socket",
+        "target": "https://example.com/concept_graph/lp/distributed_system",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/FTP",
+        "target": "https://example.com/concept_graph/lp/TCP",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/DNS",
+        "target": "https://example.com/concept_graph/lp/application_layer_protocol",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/local_DNS_server",
+        "target": "https://example.com/concept_graph/lp/DNS_server",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/local_DNS_server",
+        "target": "https://example.com/concept_graph/lp/DNS",
+        "relation": "part_of"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/dynamic_host_configuration_protocol",
+        "target": "https://example.com/concept_graph/lp/IP_address_allocation",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/IMAP",
+        "target": "https://example.com/concept_graph/lp/mail_access_protocol",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/socket",
+        "target": "https://example.com/concept_graph/lp/application_programming_interface_",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
+        "target": "https://example.com/concept_graph/lp/client/server_model",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/socket",
+        "target": "https://example.com/concept_graph/lp/socket_API_primitive",
+        "relation": "part_of"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/POP3",
+        "target": "https://example.com/concept_graph/lp/TCP",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/authoritative_DNS_server",
+        "target": "https://example.com/concept_graph/lp/DNS",
+        "relation": "part_of"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/authoritative_DNS_server",
+        "target": "https://example.com/concept_graph/lp/TLD_DNS_server",
+        "relation": "layer_below"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/DNS",
+        "target": "https://example.com/concept_graph/lp/UDP",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/local_DNS_server",
+        "target": "https://example.com/concept_graph/lp/dynamic_host_configuration_protocol",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/DNS",
+        "target": "https://example.com/concept_graph/lp/client/server_model",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/POP3",
+        "target": "https://example.com/concept_graph/lp/mail_access_protocol",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/skype",
+        "target": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
+        "relation": "belong_to"
+      }
+    ]
+  },
+  "physics": {
+    "nodes": [
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/particle_lifetime",
+        "name": "particle_lifetime",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/1_1_DiscoveryOfParticles",
+        "name": "1_1_DiscoveryOfParticles",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/PhysicsExample_Collection",
+        "name": "Physics",
+        "type": "LearningPointCollection"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/atom",
+        "name": "atom",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/positron",
+        "name": "positron",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/elementary_particle",
+        "name": "elementary_particle",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/1_2_ClassificationOfParticles",
+        "name": "1_2_ClassificationOfParticles",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/hadron",
+        "name": "hadron",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/neutron",
+        "name": "proton",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/d-quark",
+        "name": "d-quark",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/1_ElementaryParticle",
+        "name": "1_ElementaryParticle",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/meson",
+        "name": "meson",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/neutrino",
+        "name": "neutrino",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/electric_charge",
+        "name": "electric_charge",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/fundamental_interactions",
+        "name": "fundamental_interactions",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/spin_quantization",
+        "name": "spin_quantization",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/proton",
+        "name": "proton",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/particle",
+        "name": "particle",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/mass-energy_equivalence",
+        "name": "mass-energy_equivalence",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/elementary_charge_e",
+        "name": "elementary_charge_e",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/u-quark",
+        "name": "u-quark",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/spin_motion",
+        "name": "spin_motion"
+      },
+      {
+        "id": "https://kgeditor.cn/physics_example/lp/lifetime",
+        "name": "lifetime"
+      }
+    ],
+    "links": [
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_1_DiscoveryOfParticles",
+        "target": "https://kgeditor.cn/physics_example/lp/positron",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_1_DiscoveryOfParticles",
+        "target": "https://kgeditor.cn/physics_example/lp/particle_lifetime",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_2_ClassificationOfParticles",
+        "target": "https://kgeditor.cn/physics_example/lp/d-quark",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/proton",
+        "target": "https://kgeditor.cn/physics_example/lp/meson",
+        "relation": "transformsInto"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_1_DiscoveryOfParticles",
+        "target": "https://kgeditor.cn/physics_example/lp/elementary_charge_e",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_1_DiscoveryOfParticles",
+        "target": "https://kgeditor.cn/physics_example/lp/spin_quantization",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_2_ClassificationOfParticles",
+        "target": "https://kgeditor.cn/physics_example/lp/meson",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/proton",
+        "target": "https://kgeditor.cn/physics_example/lp/neutrino",
+        "relation": "emits"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/proton",
+        "target": "https://kgeditor.cn/physics_example/lp/neutron",
+        "relation": "transformsInto"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_ElementaryParticle",
+        "target": "https://kgeditor.cn/physics_example/lp/1_2_ClassificationOfParticles",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_2_ClassificationOfParticles",
+        "target": "https://kgeditor.cn/physics_example/lp/neutron",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_2_ClassificationOfParticles",
+        "target": "https://kgeditor.cn/physics_example/lp/hadron",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_1_DiscoveryOfParticles",
+        "target": "https://kgeditor.cn/physics_example/lp/particle",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/particle",
+        "target": "https://kgeditor.cn/physics_example/lp/particle",
+        "relation": "decaysInto"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_2_ClassificationOfParticles",
+        "target": "https://kgeditor.cn/physics_example/lp/proton",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/neutron",
+        "target": "https://kgeditor.cn/physics_example/lp/u-quark",
+        "relation": "isComposedOf"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/PhysicsExample_Collection",
+        "target": "https://kgeditor.cn/physics_example/lp/1_ElementaryParticle",
+        "relation": "contains"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_1_DiscoveryOfParticles",
+        "target": "https://kgeditor.cn/physics_example/lp/mass-energy_equivalence",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/proton",
+        "target": "https://kgeditor.cn/physics_example/lp/positron",
+        "relation": "emits"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_1_DiscoveryOfParticles",
+        "target": "https://kgeditor.cn/physics_example/lp/electric_charge",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_ElementaryParticle",
+        "target": "https://kgeditor.cn/physics_example/lp/1_1_DiscoveryOfParticles",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/electric_charge",
+        "target": "https://kgeditor.cn/physics_example/lp/elementary_charge_e",
+        "relation": "includes"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/proton",
+        "target": "https://kgeditor.cn/physics_example/lp/u-quark",
+        "relation": "isComposedOf"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_2_ClassificationOfParticles",
+        "target": "https://kgeditor.cn/physics_example/lp/neutrino",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_2_ClassificationOfParticles",
+        "target": "https://kgeditor.cn/physics_example/lp/fundamental_interactions",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/particle",
+        "target": "https://kgeditor.cn/physics_example/lp/spin_motion",
+        "relation": "includes"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/proton",
+        "target": "https://kgeditor.cn/physics_example/lp/d-quark",
+        "relation": "isComposedOf"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_1_DiscoveryOfParticles",
+        "target": "https://kgeditor.cn/physics_example/lp/elementary_particle",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_1_DiscoveryOfParticles",
+        "target": "https://kgeditor.cn/physics_example/lp/atom",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/neutron",
+        "target": "https://kgeditor.cn/physics_example/lp/d-quark",
+        "relation": "isComposedOf"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/particle",
+        "target": "https://kgeditor.cn/physics_example/lp/lifetime",
+        "relation": "includes"
+      },
+      {
+        "source": "https://kgeditor.cn/physics_example/lp/1_2_ClassificationOfParticles",
+        "target": "https://kgeditor.cn/physics_example/lp/u-quark",
+        "relation": "hasChild"
+      }
+    ]
+  },
     "biology": {
       "nodes": [
-        {
-          "id": "http://example.org/instance#T1",
-          "name": "Biology and Cells"
-        },
-        {
-          "id": "http://example.org/instance#S1",
-          "name": "Distinguishing between living and non-living things"
-        },
-        {
-          "id": "http://example.org/instance#Q1",
-          "name": "Differentiation of plant characteristics"
-        },
-        {
-          "id": "http://example.org/instance#LO3",
-          "name": "Algae, mosses, and ferns"
-        },
-        {
-          "id": "http://example.org/instance#LO1",
-          "name": "Observe living organisms in the surrounding environment"
-        },
-        {
-          "id": "http://example.org/instance#A1",
-          "name": "Assignment on the characteristics of living organisms."
-        },
-        {
-          "id": "http://example.org/instance#IT1",
-          "name": "Reinforcement exercise on plant characteristic differentiation"
-        },
-        {
-          "id": "http://example.org/instance#PR3",
-          "name": "PR3"
-        },
-        {
-          "id": "http://example.org/instance#LO4",
-          "name": "Seed plants"
-        },
-        {
-          "id": "http://example.org/instance#PR1",
-          "name": "Utilize Teaching Resources"
-        },
-        {
-          "id": "http://example.org/instance#Bio701_Collection",
-          "name": "Biology"
-        },
-        {
-          "id": "http://edkg.org/ontology#RIitem",
-          "name": "RIitem"
-        },
-        {
-          "id": "http://example.org/instance#T2",
-          "name": "Diversity of Living Organisms"
-        },
-        {
-          "id": "http://example.org/instance#PR2",
-          "name": "Summarize Key Knowledge Points"
-        },
-        {
-          "id": "http://example.org/instance#L1",
-          "name": "Video on living organisms in the environment"
-        },
-        {
-          "id": "http://edkg.org/ontology#LPitem",
-          "name": "LPitem"
-        },
-        {
-          "id": "http://example.org/instance#LO2",
-          "name": "Characteristics of living organisms"
-        },
-        {
-          "id": "http://edkg.org/ontology#PRitem",
-          "name": "PRitem"
-        },
-        {
-          "id": "http://edkg.org/ontology#LearningPointCollection",
-          "name": "LearningPointCollection"
-        }
-      ],
-      "links": []
-    },
+      {
+        "id": "http://example.org/instance#T1",
+        "name": "Biology and Cells",
+        "type": "LPitem"
+      },
+      {
+        "id": "http://example.org/instance#L1",
+        "name": "Video on living organisms in the environment",
+        "type": "RIitem"
+      },
+      {
+        "id": "http://example.org/instance#LO3",
+        "name": "Algae, mosses, and ferns",
+        "type": "LPitem"
+      },
+      {
+        "id": "http://example.org/instance#PR1",
+        "name": "Utilize Teaching Resources",
+        "type": "PRitem"
+      },
+      {
+        "id": "http://example.org/instance#T2",
+        "name": "Diversity of Living Organisms",
+        "type": "LPitem"
+      },
+      {
+        "id": "http://example.org/instance#LO4",
+        "name": "Seed plants",
+        "type": "LPitem"
+      },
+      {
+        "id": "http://example.org/instance#Bio701_Collection",
+        "name": "Biology",
+        "type": "LearningPointCollection"
+      },
+      {
+        "id": "http://example.org/instance#PR2",
+        "name": "Summarize Key Knowledge Points",
+        "type": "PRitem"
+      },
+      {
+        "id": "http://example.org/instance#IT1",
+        "name": "Reinforcement exercise on plant characteristic differentiation",
+        "type": "RIitem"
+      },
+      {
+        "id": "http://example.org/instance#S1",
+        "name": "Distinguishing between living and non-living things",
+        "type": "RIitem"
+      },
+      {
+        "id": "http://example.org/instance#LO2",
+        "name": "Characteristics of living organisms",
+        "type": "LPitem"
+      },
+      {
+        "id": "http://example.org/instance#Q1",
+        "name": "Differentiation of plant characteristics",
+        "type": "RIitem"
+      },
+      {
+        "id": "http://example.org/instance#LO1",
+        "name": "Observe living organisms in the surrounding environment",
+        "type": "LPitem"
+      },
+      {
+        "id": "http://example.org/instance#A1",
+        "name": "Assignment on the characteristics of living organisms.",
+        "type": "RIitem"
+      },
+      {
+        "id": "http://example.org/instance#PR3",
+        "name": "PR3"
+      }
+    ],
+    "links": [
+      {
+        "source": "http://example.org/instance#T2",
+        "target": "http://example.org/instance#LO4",
+        "relation": "hasChild"
+      },
+      {
+        "source": "http://example.org/instance#T2",
+        "target": "http://example.org/instance#LO3",
+        "relation": "hasChild"
+      },
+      {
+        "source": "http://example.org/instance#S1",
+        "target": "http://example.org/instance#LO2",
+        "relation": "hasLearningPoint"
+      },
+      {
+        "source": "http://example.org/instance#Bio701_Collection",
+        "target": "http://example.org/instance#T1",
+        "relation": "hasLearningPoint"
+      },
+      {
+        "source": "http://example.org/instance#IT1",
+        "target": "http://example.org/instance#LO4",
+        "relation": "hasLearningPoint"
+      },
+      {
+        "source": "http://example.org/instance#IT1",
+        "target": "http://example.org/instance#LO3",
+        "relation": "hasLearningPoint"
+      },
+      {
+        "source": "http://example.org/instance#Q1",
+        "target": "http://example.org/instance#PR2",
+        "relation": "hasPedagogicalRule"
+      },
+      {
+        "source": "http://example.org/instance#LO3",
+        "target": "http://example.org/instance#T2",
+        "relation": "hasParent"
+      },
+      {
+        "source": "http://example.org/instance#Bio701_Collection",
+        "target": "http://example.org/instance#LO2",
+        "relation": "hasLearningPoint"
+      },
+      {
+        "source": "http://example.org/instance#Q1",
+        "target": "http://example.org/instance#PR3",
+        "relation": "hasPedagogicalRule"
+      },
+      {
+        "source": "http://example.org/instance#L1",
+        "target": "http://example.org/instance#PR1",
+        "relation": "hasPedagogicalRule"
+      },
+      {
+        "source": "http://example.org/instance#A1",
+        "target": "http://example.org/instance#LO2",
+        "relation": "hasLearningPoint"
+      },
+      {
+        "source": "http://example.org/instance#Bio701_Collection",
+        "target": "http://example.org/instance#T2",
+        "relation": "hasLearningPoint"
+      },
+      {
+        "source": "http://example.org/instance#T1",
+        "target": "http://example.org/instance#LO2",
+        "relation": "hasChild"
+      },
+      {
+        "source": "http://example.org/instance#L1",
+        "target": "http://example.org/instance#LO1",
+        "relation": "hasLearningPoint"
+      },
+      {
+        "source": "http://example.org/instance#Q1",
+        "target": "http://example.org/instance#LO3",
+        "relation": "hasLearningPoint"
+      },
+      {
+        "source": "http://example.org/instance#LO1",
+        "target": "http://example.org/instance#T1",
+        "relation": "hasParent"
+      },
+      {
+        "source": "http://example.org/instance#Bio701_Collection",
+        "target": "http://example.org/instance#LO1",
+        "relation": "hasLearningPoint"
+      },
+      {
+        "source": "http://example.org/instance#S1",
+        "target": "http://example.org/instance#PR1",
+        "relation": "hasPedagogicalRule"
+      },
+      {
+        "source": "http://example.org/instance#LO4",
+        "target": "http://example.org/instance#T2",
+        "relation": "hasParent"
+      },
+      {
+        "source": "http://example.org/instance#A1",
+        "target": "http://example.org/instance#LO1",
+        "relation": "hasLearningPoint"
+      },
+      {
+        "source": "http://example.org/instance#Q1",
+        "target": "http://example.org/instance#LO4",
+        "relation": "hasLearningPoint"
+      },
+      {
+        "source": "http://example.org/instance#T1",
+        "target": "http://example.org/instance#LO1",
+        "relation": "hasChild"
+      },
+      {
+        "source": "http://example.org/instance#IT1",
+        "target": "http://example.org/instance#PR3",
+        "relation": "hasPedagogicalRule"
+      },
+      {
+        "source": "http://example.org/instance#Bio701_Collection",
+        "target": "http://example.org/instance#LO4",
+        "relation": "hasLearningPoint"
+      },
+      {
+        "source": "http://example.org/instance#Bio701_Collection",
+        "target": "http://example.org/instance#LO3",
+        "relation": "hasLearningPoint"
+      },
+      {
+        "source": "http://example.org/instance#LO2",
+        "target": "http://example.org/instance#T1",
+        "relation": "hasParent"
+      }
+    ]
+  },
     "chemistry": {
-      "nodes": [
-        {
-          "id": "http://example.org/instance#10491",
-          "name": "Essential Nutrients for Humans"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/1331",
-          "name": "Composite Materials and Nanomaterials"
-        },
-        {
-          "id": "http://example.org/instance#10519",
-          "name": "Composite Materials"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/1335",
-          "name": "Life Activities and Six Major Nutrients"
-        },
-        {
-          "id": "http://example.org/instance#10497",
-          "name": "Essential Nutrients for Humans"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/1295",
-          "name": "Chemistry and Social Development"
-        },
-        {
-          "id": "http://example.org/instance#10504",
-          "name": "Chemical Elements and Human Health"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/1321",
-          "name": "Common Chemical Synthetic Materials"
-        },
-        {
-          "id": "http://edkg.org/ontology#LPitem",
-          "name": "LPitem"
-        },
-        {
-          "id": "http://example.org/instance#10503",
-          "name": "Chemical Elements and Human Health"
-        },
-        {
-          "id": "http://example.org/instance#10496",
-          "name": "Essential Nutrients for Humans"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/1333",
-          "name": "Chemicals and Health"
-        },
-        {
-          "id": "http://example.org/instance#10520",
-          "name": "Composite Materials"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/1334",
-          "name": "The Elemental Composition of the Human Body and the Important Role of Elements in Human Health"
-        },
-        {
-          "id": "https://example.com/concept_graph/lp/1327",
-          "name": "White Pollution and Prevention/Control"
-        },
-        {
-          "id": "http://example.org/instance#10514",
-          "name": "White Pollution"
-        },
-        {
-          "id": "http://edkg.org/ontology#RIitem",
-          "name": "RIitem"
-        },
-        {
-          "id": "http://example.org/instance#10513",
-          "name": "White Pollution"
-        },
-        {
-          "id": "http://example.org/instance#10495",
-          "name": "Essential Nutrients for Humans"
-        },
-        {
-          "id": "http://example.org/instance#10521",
-          "name": "Composite Materials"
-        }
-      ],
-      "links": []
-    }
+       "nodes": [
+      {
+        "id": "http://example.org/instance#10495",
+        "name": "Essential Nutrients for Humans",
+        "type": "RIitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/1334",
+        "name": "The Elemental Composition of the Human Body and the Important Role of Elements in Human Health",
+        "type": "LPitem"
+      },
+      {
+        "id": "http://example.org/instance#10497",
+        "name": "Essential Nutrients for Humans",
+        "type": "RIitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/1331",
+        "name": "Composite Materials and Nanomaterials",
+        "type": "LPitem"
+      },
+      {
+        "id": "http://example.org/instance#10521",
+        "name": "Composite Materials",
+        "type": "RIitem"
+      },
+      {
+        "id": "http://example.org/instance#10504",
+        "name": "Chemical Elements and Human Health",
+        "type": "RIitem"
+      },
+      {
+        "id": "http://example.org/instance#10519",
+        "name": "Composite Materials",
+        "type": "RIitem"
+      },
+      {
+        "id": "http://example.org/instance#10491",
+        "name": "Essential Nutrients for Humans",
+        "type": "RIitem"
+      },
+      {
+        "id": "http://example.org/instance#10503",
+        "name": "Chemical Elements and Human Health",
+        "type": "RIitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/1327",
+        "name": "White Pollution and Prevention/Control",
+        "type": "LPitem"
+      },
+      {
+        "id": "http://example.org/instance#10513",
+        "name": "White Pollution",
+        "type": "RIitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/1335",
+        "name": "Life Activities and Six Major Nutrients",
+        "type": "LPitem"
+      },
+      {
+        "id": "http://example.org/instance#10496",
+        "name": "Essential Nutrients for Humans",
+        "type": "RIitem"
+      },
+      {
+        "id": "http://example.org/instance#10514",
+        "name": "White Pollution",
+        "type": "RIitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/1295",
+        "name": "Chemistry and Social Development",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/1333",
+        "name": "Chemicals and Health",
+        "type": "LPitem"
+      },
+      {
+        "id": "http://example.org/instance#10520",
+        "name": "Composite Materials",
+        "type": "RIitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/1321",
+        "name": "Common Chemical Synthetic Materials",
+        "type": "LPitem"
+      }
+    ],
+    "links": [
+      {
+        "source": "https://example.com/concept_graph/lp/1331",
+        "target": "http://example.org/instance#10519",
+        "relation": "hasResource"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1327",
+        "target": "http://example.org/instance#10513",
+        "relation": "hasResource"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1334",
+        "target": "http://example.org/instance#10504",
+        "relation": "hasResource"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1335",
+        "target": "http://example.org/instance#10491",
+        "relation": "hasResource"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1335",
+        "target": "http://example.org/instance#10497",
+        "relation": "hasResource"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1327",
+        "target": "https://example.com/concept_graph/lp/1321",
+        "relation": "hasParent"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1335",
+        "target": "http://example.org/instance#10495",
+        "relation": "hasResource"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1295",
+        "target": "https://example.com/concept_graph/lp/1333",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1334",
+        "target": "https://example.com/concept_graph/lp/1333",
+        "relation": "hasParent"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1333",
+        "target": "https://example.com/concept_graph/lp/1295",
+        "relation": "hasParent"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1335",
+        "target": "http://example.org/instance#10496",
+        "relation": "hasResource"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1327",
+        "target": "http://example.org/instance#10514",
+        "relation": "hasResource"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1331",
+        "target": "http://example.org/instance#10521",
+        "relation": "hasResource"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1334",
+        "target": "http://example.org/instance#10503",
+        "relation": "hasResource"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1295",
+        "target": "https://example.com/concept_graph/lp/1321",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1321",
+        "target": "https://example.com/concept_graph/lp/1331",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1331",
+        "target": "http://example.org/instance#10520",
+        "relation": "hasResource"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1333",
+        "target": "https://example.com/concept_graph/lp/1334",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1333",
+        "target": "https://example.com/concept_graph/lp/1335",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1335",
+        "target": "https://example.com/concept_graph/lp/1333",
+        "relation": "hasParent"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1331",
+        "target": "https://example.com/concept_graph/lp/1321",
+        "relation": "hasParent"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1321",
+        "target": "https://example.com/concept_graph/lp/1327",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1321",
+        "target": "https://example.com/concept_graph/lp/1295",
+        "relation": "hasParent"
+      }
+    ]
+  }
   }
   
   function show_d3(nodes, links) {
@@ -1019,10 +1510,19 @@
     container.innerHTML = ''; // 清空之前的 SVG 内容
     const width = container.clientWidth;
     const height = container.clientHeight;
-    const svg = d3.select('#viewer')
-      .append('svg')
-      .attr('width', width)
-      .attr('height', height);
+    const svg = d3.select("#viewer")
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height);
+      
+    const tooltip = d3.select(".tooltip");
+    const focusButton = d3.select(".focus-button");
+
+    // 删除links中的自环
+    links = links.filter(link => link.source !== link.target);
+
+    // 保存初始聚焦节点的引用
+    let initialFocusNode = null;
 
     // 创建 zoom 行为
     const zoom = d3.zoom()
@@ -1034,69 +1534,122 @@
     // 应用 zoom 行为到 svg 上
     svg.call(zoom);
 
-
-    
+    // 创建容器 g，所有图元都绘制在这个 g 上
     const g = svg.append("g");
 
+    // 创建箭头定义
+    const defs = svg.append("defs");
+    defs.append("marker")
+      .attr("id", "arrowhead")
+      .attr("viewBox", "0 -5 10 10")
+      .attr("refX", 45) // 调整箭头位置，使其位于目标节点边缘
+      .attr("refY", 0)
+      .attr("orient", "auto")
+      .attr("markerWidth", 6)
+      .attr("markerHeight", 6)
+      .attr("xoverflow", "visible")
+      .append("path")
+      .attr("d", "M 0,-5 L 10,0 L 0,5")
+      .attr("fill", "#999")
+      .style("stroke", "none");
+
     const simulation = d3.forceSimulation(nodes)
-      .force('link', d3.forceLink(links).id(d => d.id).distance(200))
-      .force('charge', d3.forceManyBody().strength(-500))
-      .force('center', d3.forceCenter(width / 2, height / 2));
+      .force("link", d3.forceLink(links).id(d => d.id).distance(200))
+      .force("charge", d3.forceManyBody().strength(-600))
+      .force("center", d3.forceCenter(width / 2, height / 2))
+      .force("collision", d3.forceCollide().radius(50)); // 添加碰撞力，防止节点重叠
 
-    const linkGroup = g.append('g')
-      .attr('stroke', '#999')
-      .attr('stroke-opacity', 0.6);
+    const linkGroup = g.append("g")
+      .attr("stroke", "#aaa");
 
-    const link = linkGroup.selectAll('line')
+    // 创建用于显示的边（细线）
+    const linkVisible = linkGroup.selectAll(".link-visible")
       .data(links)
-      .join('line')
-      .attr('stroke-width', 2);
+      .join("line")
+      .attr("class", "link-visible")
+      .attr("stroke-width", 1.5)
+      .attr("marker-end", "url(#arrowhead)"); // 添加箭头
 
-    const linkText = linkGroup.selectAll('text')
+    // 创建用于捕获鼠标事件的宽边（透明）
+    const linkHitarea = linkGroup.selectAll(".link-hitarea")
       .data(links)
-      .join('text')
-      .text(d => d.relation)
-      .attr('font-size', '12px')
-      .attr('fill', '#333');
+      .join("line")
+      .attr("class", "link-hitarea")
+      .on("mouseover", function(event, d) {
+        // 显示悬浮框
+        tooltip.style("opacity", 1)
+          .html(`<strong>关系:</strong> ${d.relation}<br>
+                <strong>源节点:</strong> ${d.source.name} (${d.source.type})<br>
+                <strong>目标节点:</strong> ${d.target.name} (${d.target.type})`)
+          .style("left", (event.pageX + 10) + "px")
+          .style("top", (event.pageY - 10) + "px");
+        
+        // 高亮相关节点
+        node.classed("node-highlight", n => n.id === d.source.id || n.id === d.target.id);
+      })
+      .on("mouseout", function() {
+        // 隐藏悬浮框
+        tooltip.style("opacity", 0);
+        // 移除高亮
+        node.classed("node-highlight", false);
+      });
 
-    const node = g.append('g')
-      .attr('stroke', '#fff')
-      .attr('stroke-width', 1.5)
-      .selectAll('circle')
+    const linkText = g.append("g")
+      .selectAll("text")
+      .data(links)
+      .join("text")
+      .attr("class", "relation")
+      .text(d => d.relation);
+
+    // 根据节点类型设置不同的颜色-TODO
+    const nodeColorScale = d3.scaleOrdinal()
+      .domain(["LPitem", "LearningPointCollection", "RIitem", "PRitem"])
+      .range(["#a66ef7", "#bff76e", "#ea6ef7", "#7eafec"]);
+
+    const node = g.append("g")
+      .selectAll("circle")
       .data(nodes)
-      .join('circle')
-      .attr('r', 30)
-      .attr('fill', '#69b3a2')
+      .join("circle")
+      .attr("r", d => d.type === "LearningPointCollection" ? 40 : 33)  // LPcollection加大
+      .attr("fill", d => nodeColorScale(d.type))
       .call(drag(simulation));
 
-    const label = g.append('g')
-      .selectAll('text')
+    const label = g.append("g")
+      .selectAll("text")
       .data(nodes)
-      .join('text')
+      .join("text")
       .text(d => d.name)
-      .attr('text-anchor', 'middle')
-      .attr('dy', '.35em')
-      .attr('font-size', '14px')
-      .attr('font-weight', 'bold');
+      .attr("text-anchor", "middle")
+      .attr("dy", "2.0em")
+      .attr("font-size", "14px")
+      .attr("font-weight", "bold");
 
-    simulation.on('tick', () => {
-      link
-        .attr('x1', d => d.source.x)
-        .attr('y1', d => d.source.y)
-        .attr('x2', d => d.target.x)
-        .attr('y2', d => d.target.y);
+    simulation.on("tick", () => {
+      // 更新可见边
+      linkVisible
+        .attr("x1", d => d.source.x)
+        .attr("y1", d => d.source.y)
+        .attr("x2", d => d.target.x)
+        .attr("y2", d => d.target.y);
+      
+      // 更新宽边（用于捕获鼠标事件）
+      linkHitarea
+        .attr("x1", d => d.source.x)
+        .attr("y1", d => d.source.y)
+        .attr("x2", d => d.target.x)
+        .attr("y2", d => d.target.y);
 
       linkText
-        .attr('x', d => (d.source.x + d.target.x) / 2)
-        .attr('y', d => (d.source.y + d.target.y) / 2);
+        .attr("x", d => (d.source.x + d.target.x) / 2)
+        .attr("y", d => (d.source.y + d.target.y) / 2);
 
       node
-        .attr('cx', d => d.x)
-        .attr('cy', d => d.y);
+        .attr("cx", d => d.x)
+        .attr("cy", d => d.y);
 
       label
-        .attr('x', d => d.x)
-        .attr('y', d => d.y);
+        .attr("x", d => d.x)
+        .attr("y", d => d.y - 25);
     });
 
     function drag(simulation) {
@@ -1118,10 +1671,64 @@
       }
 
       return d3.drag()
-        .on('start', dragstarted)
-        .on('drag', dragged)
-        .on('end', dragended);
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended);
     }
+
+    // 找到要聚焦的节点
+    function findFocusNode() {
+      // 查找度最大的节点
+      const nodeDegrees = {};
+      nodes.forEach(node => {
+        nodeDegrees[node.id] = 0;
+      });
+      
+      links.forEach(link => {
+        nodeDegrees[link.source.id || link.source] += 1;
+        nodeDegrees[link.target.id || link.target] += 1;
+      });
+      
+      let maxDegree = 0;
+      let maxDegreeNode = null;
+      
+      for (const [nodeId, degree] of Object.entries(nodeDegrees)) {
+        if (degree > maxDegree) {
+          maxDegree = degree;
+          maxDegreeNode = nodes.find(n => n.id === nodeId);
+        }
+      }
+      
+      return maxDegreeNode;
+    }
+
+    // 聚焦到指定节点
+    function focusOnNode(node) {
+      if (!node) return;
+
+      const initial_scale = 1;  // 调整初始缩放-TODO
+      
+      const transform = d3.zoomIdentity
+        .scale(initial_scale)
+        .translate(width / initial_scale / 2 - node.x, height / initial_scale / 2 - node.y);
+      
+      svg.transition()
+        .duration(750)
+        .call(zoom.transform, transform);
+    }
+
+    // // 初始化时聚焦到特定节点
+    // initialFocusNode = findFocusNode();
+    
+    // // 等待力导向布局稳定后再聚焦
+    // setTimeout(() => {
+    //   focusOnNode(initialFocusNode);
+    // }, 1000);
+    
+    // 为重新对焦按钮添加点击事件
+    focusButton.on("click", function() {
+      focusOnNode(initialFocusNode);
+    });
   }
   
   document.getElementById('graph-selector').addEventListener('change', function () {
