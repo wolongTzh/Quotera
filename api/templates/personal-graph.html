@@ -44,19 +44,19 @@
       margin: 1rem 0 2rem;
     }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      position: relative;
-    }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: relative;
+}
 
-    .right-buttons {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
+.header-buttons {
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+}
 
     .lang-toggle {
       position: absolute;
@@ -100,6 +100,60 @@
       font-weight: 600;
       color: var(--text-color);
       transition: background-color 0.3s ease;
+    }
+
+    /* d3部分 */
+    svg { width: 100%; height: 100%; background-color: #f9f9f9; }
+    text.relation {
+      font-size: 14px;
+      fill: #555;
+      pointer-events: none;
+    }
+    .tooltip {
+      position: absolute;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      pointer-events: none;
+      font-size: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      max-width: 250px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .node-highlight {
+      stroke: #ff7700;
+      stroke-width: 2px;
+    }
+    /* 添加按钮样式 */
+    .focus-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 8px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: background-color 0.3s;
+      z-index: 100;
+    }
+    .focus-button:hover {
+      background-color: #45a049;
+    }
+    /* 隐藏实际的边，只用于视觉显示 */
+    .link-visible {
+      pointer-events: none;
+    }
+    /* 用于捕获鼠标事件的宽边 */
+    .link-hitarea {
+      stroke-opacity: 0;
+      stroke-width: 20px; /* 宽的判定区域 */
+      cursor: pointer;
     }
 
     .search-box {
@@ -181,13 +235,6 @@
         transition: color 0.3s ease;
     }
 
-    .button {
-        position: fixed;
-        top: 20px;
-        right: 80px;
-        
-    }
-
     .logo:hover {
       cursor: pointer;
     }
@@ -198,7 +245,6 @@
             /* background-color: var(--text-color); */
         
         }
-
     
 
     @media (max-width: 768px) {
@@ -217,6 +263,62 @@
         transform: translateX(-50%);
       }
     }
+
+    /* 图例部分 */
+    .legend-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 20px 0;
+    }
+
+    .legend-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 15px 25px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      width: 100%;
+    }
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin: 0 10px;
+    }
+    
+    .color-circle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    
+    .legend-text {
+      font-size: 14px;
+      color: #333;
+    }
+    
+    .color-1 {
+      background-color: #a66ef7;
+    }
+
+    .color-2 {
+      background-color: #bff76e;
+    }
+
+    .color-3 {
+      background-color: #ea6ef7;
+    }
+
+    .color-4 {
+      background-color: #7eafec;
+    }
   </style>
 </head>
 <body>
@@ -226,14 +328,39 @@
       <img src="/static/assets/logo2.png" alt="Logo">
     </div>
   
-    <!-- 新增一个容器包裹右侧两个按钮 -->
-    <div class="right-buttons">
-      <button class="button" id="download-button" onclick="downloadGraph()" data-i18n="download">点击下载图谱</button>
-      <button class="lang-toggle" onclick="toggleLang()" id="lang-toggle">中</button>
+
+  <div class="header-buttons">
+    <button class="button" id="download-button" onclick="tempDownloadGraph()" data-i18n="download" style="margin-right: 50px;">点击下载图谱</button>
+    <button class="lang-toggle" onclick="toggleLang()" id="lang-toggle">中</button>
+  </div>
     </div>
   </header>
 
   <h1 data-i18n="title">展示查看页</h1>
+
+  <div class="legend-wrapper">
+    <div class="legend-container">
+      <div class="legend-item">
+        <div class="color-circle color-2"></div>
+        <span class="legend-text">LearningPointCollection</span>
+      </div>
+
+      <div class="legend-item">
+        <div class="color-circle color-1"></div>
+        <span class="legend-text">LPitem</span>
+      </div>
+      
+      <div class="legend-item">
+        <div class="color-circle color-3"></div>
+        <span class="legend-text">RIitem</span>
+      </div>
+      
+      <div class="legend-item">
+        <div class="color-circle color-4"></div>
+        <span class="legend-text">PRitem</span>
+      </div>
+    </div>
+  </div>
 
   <div class="viewer-box" id="viewer"></div>
 
@@ -283,6 +410,16 @@
     function downloadGraph() {
       window.location.href = 'download-presonal-graph';
     }
+
+    function tempDownloadGraph() {
+      const filePath = "/static/ttl/personalGraph.ttl";
+      const link = document.createElement("a");
+      link.href = filePath;
+      link.download = "yourGraph.ttl";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
     // function downloadGraph() {
     //   alert(isGraph ? '正在下载图谱...（模拟）' : '正在下载本体...（模拟）');
     // }
@@ -298,16 +435,24 @@
   var allLinks = []
   const graphs = {{ json_data | tojson }};
   
-  
   function show_d3(nodes, links) {
     const container = document.getElementById('viewer');
     container.innerHTML = ''; // 清空之前的 SVG 内容
     const width = container.clientWidth;
     const height = container.clientHeight;
-    const svg = d3.select('#viewer')
-      .append('svg')
-      .attr('width', width)
-      .attr('height', height);
+    const svg = d3.select("#viewer")
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height);
+      
+    const tooltip = d3.select(".tooltip");
+    const focusButton = d3.select(".focus-button");
+
+    // 删除links中的自环
+    links = links.filter(link => link.source !== link.target);
+
+    // 保存初始聚焦节点的引用
+    let initialFocusNode = null;
 
     // 创建 zoom 行为
     const zoom = d3.zoom()
@@ -319,69 +464,122 @@
     // 应用 zoom 行为到 svg 上
     svg.call(zoom);
 
-
-    
+    // 创建容器 g，所有图元都绘制在这个 g 上
     const g = svg.append("g");
 
+    // 创建箭头定义
+    const defs = svg.append("defs");
+    defs.append("marker")
+      .attr("id", "arrowhead")
+      .attr("viewBox", "0 -5 10 10")
+      .attr("refX", 45) // 调整箭头位置，使其位于目标节点边缘
+      .attr("refY", 0)
+      .attr("orient", "auto")
+      .attr("markerWidth", 6)
+      .attr("markerHeight", 6)
+      .attr("xoverflow", "visible")
+      .append("path")
+      .attr("d", "M 0,-5 L 10,0 L 0,5")
+      .attr("fill", "#999")
+      .style("stroke", "none");
+
     const simulation = d3.forceSimulation(nodes)
-      .force('link', d3.forceLink(links).id(d => d.id).distance(200))
-      .force('charge', d3.forceManyBody().strength(-500))
-      .force('center', d3.forceCenter(width / 2, height / 2));
+      .force("link", d3.forceLink(links).id(d => d.id).distance(200))
+      .force("charge", d3.forceManyBody().strength(-600))
+      .force("center", d3.forceCenter(width / 2, height / 2))
+      .force("collision", d3.forceCollide().radius(50)); // 添加碰撞力，防止节点重叠
 
-    const linkGroup = g.append('g')
-      .attr('stroke', '#999')
-      .attr('stroke-opacity', 0.6);
+    const linkGroup = g.append("g")
+      .attr("stroke", "#aaa");
 
-    const link = linkGroup.selectAll('line')
+    // 创建用于显示的边（细线）
+    const linkVisible = linkGroup.selectAll(".link-visible")
       .data(links)
-      .join('line')
-      .attr('stroke-width', 2);
+      .join("line")
+      .attr("class", "link-visible")
+      .attr("stroke-width", 1.5)
+      .attr("marker-end", "url(#arrowhead)"); // 添加箭头
 
-    const linkText = linkGroup.selectAll('text')
+    // 创建用于捕获鼠标事件的宽边（透明）
+    const linkHitarea = linkGroup.selectAll(".link-hitarea")
       .data(links)
-      .join('text')
-      .text(d => d.relation)
-      .attr('font-size', '12px')
-      .attr('fill', '#333');
+      .join("line")
+      .attr("class", "link-hitarea")
+      .on("mouseover", function(event, d) {
+        // 显示悬浮框
+        tooltip.style("opacity", 1)
+          .html(`<strong>关系:</strong> ${d.relation}<br>
+                <strong>源节点:</strong> ${d.source.name} (${d.source.type})<br>
+                <strong>目标节点:</strong> ${d.target.name} (${d.target.type})`)
+          .style("left", (event.pageX + 10) + "px")
+          .style("top", (event.pageY - 10) + "px");
+        
+        // 高亮相关节点
+        node.classed("node-highlight", n => n.id === d.source.id || n.id === d.target.id);
+      })
+      .on("mouseout", function() {
+        // 隐藏悬浮框
+        tooltip.style("opacity", 0);
+        // 移除高亮
+        node.classed("node-highlight", false);
+      });
 
-    const node = g.append('g')
-      .attr('stroke', '#fff')
-      .attr('stroke-width', 1.5)
-      .selectAll('circle')
+    const linkText = g.append("g")
+      .selectAll("text")
+      .data(links)
+      .join("text")
+      .attr("class", "relation")
+      .text(d => d.relation);
+
+    // 根据节点类型设置不同的颜色-TODO
+    const nodeColorScale = d3.scaleOrdinal()
+      .domain(["LPitem", "LearningPointCollection", "RIitem", "PRitem"])
+      .range(["#a66ef7", "#bff76e", "#ea6ef7", "#7eafec"]);
+
+    const node = g.append("g")
+      .selectAll("circle")
       .data(nodes)
-      .join('circle')
-      .attr('r', 30)
-      .attr('fill', '#69b3a2')
+      .join("circle")
+      .attr("r", d => d.type === "LearningPointCollection" ? 40 : 33)  // LPcollection加大
+      .attr("fill", d => nodeColorScale(d.type))
       .call(drag(simulation));
 
-    const label = g.append('g')
-      .selectAll('text')
+    const label = g.append("g")
+      .selectAll("text")
       .data(nodes)
-      .join('text')
+      .join("text")
       .text(d => d.name)
-      .attr('text-anchor', 'middle')
-      .attr('dy', '.35em')
-      .attr('font-size', '14px')
-      .attr('font-weight', 'bold');
+      .attr("text-anchor", "middle")
+      .attr("dy", "2.0em")
+      .attr("font-size", "14px")
+      .attr("font-weight", "bold");
 
-    simulation.on('tick', () => {
-      link
-        .attr('x1', d => d.source.x)
-        .attr('y1', d => d.source.y)
-        .attr('x2', d => d.target.x)
-        .attr('y2', d => d.target.y);
+    simulation.on("tick", () => {
+      // 更新可见边
+      linkVisible
+        .attr("x1", d => d.source.x)
+        .attr("y1", d => d.source.y)
+        .attr("x2", d => d.target.x)
+        .attr("y2", d => d.target.y);
+      
+      // 更新宽边（用于捕获鼠标事件）
+      linkHitarea
+        .attr("x1", d => d.source.x)
+        .attr("y1", d => d.source.y)
+        .attr("x2", d => d.target.x)
+        .attr("y2", d => d.target.y);
 
       linkText
-        .attr('x', d => (d.source.x + d.target.x) / 2)
-        .attr('y', d => (d.source.y + d.target.y) / 2);
+        .attr("x", d => (d.source.x + d.target.x) / 2)
+        .attr("y", d => (d.source.y + d.target.y) / 2);
 
       node
-        .attr('cx', d => d.x)
-        .attr('cy', d => d.y);
+        .attr("cx", d => d.x)
+        .attr("cy", d => d.y);
 
       label
-        .attr('x', d => d.x)
-        .attr('y', d => d.y);
+        .attr("x", d => d.x)
+        .attr("y", d => d.y - 25);
     });
 
     function drag(simulation) {
@@ -403,10 +601,64 @@
       }
 
       return d3.drag()
-        .on('start', dragstarted)
-        .on('drag', dragged)
-        .on('end', dragended);
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended);
     }
+
+    // 找到要聚焦的节点
+    function findFocusNode() {
+      // 查找度最大的节点
+      const nodeDegrees = {};
+      nodes.forEach(node => {
+        nodeDegrees[node.id] = 0;
+      });
+      
+      links.forEach(link => {
+        nodeDegrees[link.source.id || link.source] += 1;
+        nodeDegrees[link.target.id || link.target] += 1;
+      });
+      
+      let maxDegree = 0;
+      let maxDegreeNode = null;
+      
+      for (const [nodeId, degree] of Object.entries(nodeDegrees)) {
+        if (degree > maxDegree) {
+          maxDegree = degree;
+          maxDegreeNode = nodes.find(n => n.id === nodeId);
+        }
+      }
+      
+      return maxDegreeNode;
+    }
+
+    // 聚焦到指定节点
+    function focusOnNode(node) {
+      if (!node) return;
+
+      const initial_scale = 1;  // 调整初始缩放-TODO
+      
+      const transform = d3.zoomIdentity
+        .scale(initial_scale)
+        .translate(width / initial_scale / 2 - node.x, height / initial_scale / 2 - node.y);
+      
+      svg.transition()
+        .duration(750)
+        .call(zoom.transform, transform);
+    }
+
+    // // 初始化时聚焦到特定节点
+    // initialFocusNode = findFocusNode();
+    
+    // // 等待力导向布局稳定后再聚焦
+    // setTimeout(() => {
+    //   focusOnNode(initialFocusNode);
+    // }, 1000);
+    
+    // 为重新对焦按钮添加点击事件
+    focusButton.on("click", function() {
+      focusOnNode(initialFocusNode);
+    });
   }
   
 
@@ -448,7 +700,7 @@
 
   const i18n = {
     'zh-CN': {
-      title: '展示查看页',
+      title: '图谱展示',
       network: '计算机网络图谱',
       physics: '物理图谱',
       chemistry: '化学图谱',

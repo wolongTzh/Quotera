@@ -36,19 +36,23 @@ def presonal_graph():
     "nodes":[
       {
         "id": "Basic programming concepts",
-        "name": "Basic programming concepts"
+        "name": "Basic programming concepts",
+        "type": "LPitem"
       },
       {
         "id": "Understand basic Python syntax",
-        "name": "Understand basic Python syntax"
+        "name": "Understand basic Python syntax",
+        "type": "LPitem"
       },
       {
         "id": "Introduction to Python",
-        "name": "Introduction to Python"
+        "name": "Introduction to Python",
+        "type": "RIitem"
       },
       {
         "id": "List Topics",
-        "name": "List Topics"
+        "name": "List Topics",
+        "type": "PRitem"
       }
     ],
     "links":[
@@ -60,12 +64,12 @@ def presonal_graph():
       {
         "source": "Introduction to Python",
         "target": "Understand basic Python syntax",
-        "relation": "related leaning point"
+        "relation": "hasLearningPoint"
       },
       {
         "source": "List Topics",
         "target": "Introduction to Python",
-        "relation": "related resource"
+        "relation": "hasResource"
       }
       ]
     }
