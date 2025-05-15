@@ -432,6 +432,372 @@
   var allNodes = []
   var allLinks = []
   const graphs = {
+    "network": {
+       "nodes": [
+      {
+        "id": "https://example.com/concept_graph/lp/TLD_DNS_server",
+        "name": "TLD DNS server",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/FTP",
+        "name": "FTP",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/application_layer_protocol",
+        "name": "application layer protocol",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/packet",
+        "name": "packet",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/TCP",
+        "name": "TCP",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/skype",
+        "name": "skype",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/DNS",
+        "name": "DNS",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/DNS_resource_record",
+        "name": "DNS resource record",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/POP3",
+        "name": "POP3",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/upper_layer_data",
+        "name": "upper layer data",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/root_DNS_server",
+        "name": "root DNS server",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/IP_address_allocation",
+        "name": "IP address allocation",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/IMAP",
+        "name": "IMAP",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/SMTP",
+        "name": "SMTP",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/application_programming_interface_",
+        "name": "application programming interface ",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/domain_name",
+        "name": "domain name",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/UDP",
+        "name": "UDP",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/DNS_server",
+        "name": "DNS server",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/MIME",
+        "name": "MIME",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/authoritative_DNS_server",
+        "name": "authoritative DNS server",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/dynamic_host_configuration_protocol",
+        "name": "dynamic host configuration protocol",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/socket",
+        "name": "socket",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/instant_messaging",
+        "name": "instant messaging",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
+        "name": "hybrid of client-server and P2P",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/client/server_model",
+        "name": "client/server model",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/mail_access_protocol",
+        "name": "mail access protocol",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/Peer-to-Peer_model",
+        "name": "Peer-to-Peer model",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/URL",
+        "name": "URL",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/local_DNS_server",
+        "name": "local DNS server",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/default_DNS_server",
+        "name": "default DNS server",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/distributed_system",
+        "name": "distributed system",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/socket_API_primitive",
+        "name": "socket API primitive",
+        "type": "LPitem"
+      }
+    ],
+    "links": [
+      {
+        "source": "https://example.com/concept_graph/lp/FTP",
+        "target": "https://example.com/concept_graph/lp/application_layer_protocol",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/DNS",
+        "target": "https://example.com/concept_graph/lp/DNS_resource_record",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/TLD_DNS_server",
+        "target": "https://example.com/concept_graph/lp/DNS",
+        "relation": "part_of"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/upper_layer_data",
+        "target": "https://example.com/concept_graph/lp/packet",
+        "relation": "part_of"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/TLD_DNS_server",
+        "target": "https://example.com/concept_graph/lp/root_DNS_server",
+        "relation": "layer_below"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/SMTP",
+        "target": "https://example.com/concept_graph/lp/TCP",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/SMTP",
+        "target": "https://example.com/concept_graph/lp/MIME",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/authoritative_DNS_server",
+        "target": "https://example.com/concept_graph/lp/DNS_server",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/POP3",
+        "target": "https://example.com/concept_graph/lp/application_layer_protocol",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/SMTP",
+        "target": "https://example.com/concept_graph/lp/application_layer_protocol",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/DNS",
+        "target": "https://example.com/concept_graph/lp/domain_name",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/instant_messaging",
+        "target": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
+        "target": "https://example.com/concept_graph/lp/Peer-to-Peer_model",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/FTP",
+        "target": "https://example.com/concept_graph/lp/client/server_model",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/domain_name",
+        "target": "https://example.com/concept_graph/lp/URL",
+        "relation": "part_of"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/SMTP",
+        "target": "https://example.com/concept_graph/lp/client/server_model",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/local_DNS_server",
+        "target": "https://example.com/concept_graph/lp/default_DNS_server",
+        "relation": "synonym_of"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/DNS",
+        "target": "https://example.com/concept_graph/lp/DNS_server",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/TLD_DNS_server",
+        "target": "https://example.com/concept_graph/lp/DNS_server",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/IMAP",
+        "target": "https://example.com/concept_graph/lp/TCP",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/MIME",
+        "target": "https://example.com/concept_graph/lp/application_layer_protocol",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/IMAP",
+        "target": "https://example.com/concept_graph/lp/application_layer_protocol",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/socket",
+        "target": "https://example.com/concept_graph/lp/distributed_system",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/FTP",
+        "target": "https://example.com/concept_graph/lp/TCP",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/DNS",
+        "target": "https://example.com/concept_graph/lp/application_layer_protocol",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/local_DNS_server",
+        "target": "https://example.com/concept_graph/lp/DNS_server",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/local_DNS_server",
+        "target": "https://example.com/concept_graph/lp/DNS",
+        "relation": "part_of"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/dynamic_host_configuration_protocol",
+        "target": "https://example.com/concept_graph/lp/IP_address_allocation",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/IMAP",
+        "target": "https://example.com/concept_graph/lp/mail_access_protocol",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/socket",
+        "target": "https://example.com/concept_graph/lp/application_programming_interface_",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
+        "target": "https://example.com/concept_graph/lp/client/server_model",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/socket",
+        "target": "https://example.com/concept_graph/lp/socket_API_primitive",
+        "relation": "part_of"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/POP3",
+        "target": "https://example.com/concept_graph/lp/TCP",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/authoritative_DNS_server",
+        "target": "https://example.com/concept_graph/lp/DNS",
+        "relation": "part_of"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/authoritative_DNS_server",
+        "target": "https://example.com/concept_graph/lp/TLD_DNS_server",
+        "relation": "layer_below"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/DNS",
+        "target": "https://example.com/concept_graph/lp/UDP",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/local_DNS_server",
+        "target": "https://example.com/concept_graph/lp/dynamic_host_configuration_protocol",
+        "relation": "depends_on"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/DNS",
+        "target": "https://example.com/concept_graph/lp/client/server_model",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/POP3",
+        "target": "https://example.com/concept_graph/lp/mail_access_protocol",
+        "relation": "belong_to"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/skype",
+        "target": "https://example.com/concept_graph/lp/hybrid_of_client-server_and_P2P",
+        "relation": "belong_to"
+      }
+    ]
+  },
   "physics": {
     "nodes": [
       {
