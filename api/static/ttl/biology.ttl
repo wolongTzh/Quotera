@@ -6,6 +6,7 @@
 ########################################
 # Learning Point Collection
 ########################################
+
 ex:Bio701_Collection
     a edkg:LearningPointCollection ;
     edkg:identifier "937b9561-7184-4aa0-b29e-37322d9b6f9a" ;
@@ -13,11 +14,12 @@ ex:Bio701_Collection
     edkg:humanAssignedId "Bio701_Collection" ;
     edkg:collectionUri "https://basic.smartedu.cn" ;
     edkg:version "1.0.0" ;
-    edkg:hasLearningPoint ex:T1, ex:T2, ex:LO1, ex:LO2, ex:LO3, ex:LO4 .
+    edkg:contains ex:T1, ex:T2 .
 
 ########################################
 # Learning Points
 ########################################
+
 ex:T1
     a edkg:LPitem ;
     edkg:identifier "f30802c6-78bf-411f-83ad-6d6b3b5d6c33" ;
@@ -131,7 +133,7 @@ ex:Q1
     edkg:resourceUrl "https://zy.21cnjy.com/21934485" ;
     edkg:resourceFormat "text/html" ;
     edkg:hasLearningPoint ex:LO3, ex:LO4 ;
-    edkg:hasPedagogicalRule ex:PR2, ex:PR3 ;
+    edkg:hasPedagogicalRule ex:PR2;
     edkg:humanAssignedId "Q1" .
 
 ex:IT1
@@ -143,7 +145,6 @@ ex:IT1
     edkg:resourceUrl "https://zy.21cnjy.com/21934485" ;
     edkg:resourceFormat "text/html" ;
     edkg:hasLearningPoint ex:LO3, ex:LO4 ;
-    edkg:hasPedagogicalRule ex:PR3 ;
     edkg:humanAssignedId "IT1" .
 
 ########################################

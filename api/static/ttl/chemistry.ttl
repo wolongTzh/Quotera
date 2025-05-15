@@ -7,13 +7,11 @@
 ########################################
 # Learning Point Collection
 ########################################
-ex:Middle_Chemistry_Collection
-	a edkg:LearningPointCollection ;
-	edkg:identifier "c273d5b1-5a36-4ece-9a99-62a9aab7e632" ;
-	edkg:title Middle_Chemistry ;
-	edkg:humanAssignedId Middle_Chemistry_Collection ;
-	edkg:collectionUri http://example.org/Middle_Chemistry/collection ;
-	edkg:version "1.0.0" ;
+
+lp:Chemistry_Collection a edkg:LearningPointCollection;
+	edkg:identifier "234d22c8-9958-4789-bb36-673f32cc38ac";
+	edkg:title "Chemistry" ;
+	edkg:version: "1.0.0" ;
 	edkg:contains lp:1295 .
 
 ########################################
@@ -225,3 +223,4 @@ ex:10514
     edkg:resourceType "reference" ;
     edkg:resourceFormat "text" ;
     edkg:humanAssignedId "10514" .
+

@@ -1080,29 +1080,19 @@
     "biology": {
       "nodes": [
       {
-        "id": "http://example.org/instance#T1",
-        "name": "Biology and Cells",
+        "id": "http://example.org/instance#LO2",
+        "name": "Characteristics of living organisms",
         "type": "LPitem"
       },
       {
-        "id": "http://example.org/instance#L1",
-        "name": "Video on living organisms in the environment",
-        "type": "RIitem"
-      },
-      {
-        "id": "http://example.org/instance#LO3",
-        "name": "Algae, mosses, and ferns",
-        "type": "LPitem"
-      },
-      {
-        "id": "http://example.org/instance#PR1",
-        "name": "Utilize Teaching Resources",
+        "id": "http://example.org/instance#PR2",
+        "name": "Summarize Key Knowledge Points",
         "type": "PRitem"
       },
       {
-        "id": "http://example.org/instance#T2",
-        "name": "Diversity of Living Organisms",
-        "type": "LPitem"
+        "id": "http://example.org/instance#A1",
+        "name": "Assignment on the characteristics of living organisms.",
+        "type": "RIitem"
       },
       {
         "id": "http://example.org/instance#LO4",
@@ -1110,14 +1100,14 @@
         "type": "LPitem"
       },
       {
-        "id": "http://example.org/instance#Bio701_Collection",
-        "name": "Biology",
-        "type": "LearningPointCollection"
+        "id": "http://example.org/instance#Q1",
+        "name": "Differentiation of plant characteristics",
+        "type": "RIitem"
       },
       {
-        "id": "http://example.org/instance#PR2",
-        "name": "Summarize Key Knowledge Points",
-        "type": "PRitem"
+        "id": "http://example.org/instance#T2",
+        "name": "Diversity of Living Organisms",
+        "type": "LPitem"
       },
       {
         "id": "http://example.org/instance#IT1",
@@ -1130,36 +1120,41 @@
         "type": "RIitem"
       },
       {
-        "id": "http://example.org/instance#LO2",
-        "name": "Characteristics of living organisms",
-        "type": "LPitem"
-      },
-      {
-        "id": "http://example.org/instance#Q1",
-        "name": "Differentiation of plant characteristics",
-        "type": "RIitem"
-      },
-      {
         "id": "http://example.org/instance#LO1",
         "name": "Observe living organisms in the surrounding environment",
         "type": "LPitem"
       },
       {
-        "id": "http://example.org/instance#A1",
-        "name": "Assignment on the characteristics of living organisms.",
+        "id": "http://example.org/instance#Bio701_Collection",
+        "name": "Biology",
+        "type": "LearningPointCollection"
+      },
+      {
+        "id": "http://example.org/instance#LO3",
+        "name": "Algae, mosses, and ferns",
+        "type": "LPitem"
+      },
+      {
+        "id": "http://example.org/instance#T1",
+        "name": "Biology and Cells",
+        "type": "LPitem"
+      },
+      {
+        "id": "http://example.org/instance#L1",
+        "name": "Video on living organisms in the environment",
         "type": "RIitem"
       },
       {
-        "id": "http://example.org/instance#PR3",
-        "name": "PR3",
+        "id": "http://example.org/instance#PR1",
+        "name": "Utilize Teaching Resources",
         "type": "PRitem"
       }
     ],
     "links": [
       {
-        "source": "http://example.org/instance#T2",
+        "source": "http://example.org/instance#Q1",
         "target": "http://example.org/instance#LO4",
-        "relation": "hasChild"
+        "relation": "hasLearningPoint"
       },
       {
         "source": "http://example.org/instance#T2",
@@ -1167,24 +1162,14 @@
         "relation": "hasChild"
       },
       {
-        "source": "http://example.org/instance#S1",
-        "target": "http://example.org/instance#LO2",
+        "source": "http://example.org/instance#IT1",
+        "target": "http://example.org/instance#LO3",
         "relation": "hasLearningPoint"
       },
       {
         "source": "http://example.org/instance#Bio701_Collection",
-        "target": "http://example.org/instance#T1",
-        "relation": "hasLearningPoint"
-      },
-      {
-        "source": "http://example.org/instance#IT1",
-        "target": "http://example.org/instance#LO4",
-        "relation": "hasLearningPoint"
-      },
-      {
-        "source": "http://example.org/instance#IT1",
-        "target": "http://example.org/instance#LO3",
-        "relation": "hasLearningPoint"
+        "target": "http://example.org/instance#T2",
+        "relation": "contains"
       },
       {
         "source": "http://example.org/instance#Q1",
@@ -1192,49 +1177,19 @@
         "relation": "hasPedagogicalRule"
       },
       {
-        "source": "http://example.org/instance#Bio701_Collection",
-        "target": "http://example.org/instance#LO2",
-        "relation": "hasLearningPoint"
-      },
-      {
-        "source": "http://example.org/instance#Q1",
-        "target": "http://example.org/instance#PR3",
-        "relation": "hasPedagogicalRule"
-      },
-      {
-        "source": "http://example.org/instance#L1",
-        "target": "http://example.org/instance#PR1",
-        "relation": "hasPedagogicalRule"
-      },
-      {
-        "source": "http://example.org/instance#A1",
-        "target": "http://example.org/instance#LO2",
-        "relation": "hasLearningPoint"
-      },
-      {
-        "source": "http://example.org/instance#Bio701_Collection",
-        "target": "http://example.org/instance#T2",
-        "relation": "hasLearningPoint"
-      },
-      {
-        "source": "http://example.org/instance#T1",
-        "target": "http://example.org/instance#LO2",
+        "source": "http://example.org/instance#T2",
+        "target": "http://example.org/instance#LO4",
         "relation": "hasChild"
       },
       {
-        "source": "http://example.org/instance#L1",
-        "target": "http://example.org/instance#LO1",
-        "relation": "hasLearningPoint"
-      },
-      {
-        "source": "http://example.org/instance#Q1",
-        "target": "http://example.org/instance#LO3",
+        "source": "http://example.org/instance#IT1",
+        "target": "http://example.org/instance#LO4",
         "relation": "hasLearningPoint"
       },
       {
         "source": "http://example.org/instance#Bio701_Collection",
-        "target": "http://example.org/instance#LO1",
-        "relation": "hasLearningPoint"
+        "target": "http://example.org/instance#T1",
+        "relation": "contains"
       },
       {
         "source": "http://example.org/instance#S1",
@@ -1242,13 +1197,23 @@
         "relation": "hasPedagogicalRule"
       },
       {
+        "source": "http://example.org/instance#S1",
+        "target": "http://example.org/instance#LO2",
+        "relation": "hasLearningPoint"
+      },
+      {
         "source": "http://example.org/instance#A1",
         "target": "http://example.org/instance#LO1",
         "relation": "hasLearningPoint"
       },
       {
-        "source": "http://example.org/instance#Q1",
-        "target": "http://example.org/instance#LO4",
+        "source": "http://example.org/instance#L1",
+        "target": "http://example.org/instance#PR1",
+        "relation": "hasPedagogicalRule"
+      },
+      {
+        "source": "http://example.org/instance#A1",
+        "target": "http://example.org/instance#LO2",
         "relation": "hasLearningPoint"
       },
       {
@@ -1257,24 +1222,69 @@
         "relation": "hasChild"
       },
       {
-        "source": "http://example.org/instance#IT1",
-        "target": "http://example.org/instance#PR3",
-        "relation": "hasPedagogicalRule"
+        "source": "http://example.org/instance#T1",
+        "target": "http://example.org/instance#LO2",
+        "relation": "hasChild"
       },
       {
-        "source": "http://example.org/instance#Bio701_Collection",
-        "target": "http://example.org/instance#LO4",
+        "source": "http://example.org/instance#Q1",
+        "target": "http://example.org/instance#LO3",
         "relation": "hasLearningPoint"
       },
       {
-        "source": "http://example.org/instance#Bio701_Collection",
-        "target": "http://example.org/instance#LO3",
+        "source": "http://example.org/instance#L1",
+        "target": "http://example.org/instance#LO1",
         "relation": "hasLearningPoint"
       }
     ]
   },
     "chemistry": {
-       "nodes": [
+      "nodes": [
+      {
+        "id": "https://example.com/concept_graph/lp/1295",
+        "name": "Chemistry and Social Development",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/1321",
+        "name": "Common Chemical Synthetic Materials",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/1333",
+        "name": "Chemicals and Health",
+        "type": "LPitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/Chemistry_Collection",
+        "name": "Chemistry",
+        "type": "LearningPointCollection"
+      },
+      {
+        "id": "http://example.org/instance#10520",
+        "name": "Composite Materials",
+        "type": "RIitem"
+      },
+      {
+        "id": "http://example.org/instance#10496",
+        "name": "Essential Nutrients for Humans",
+        "type": "RIitem"
+      },
+      {
+        "id": "http://example.org/instance#10514",
+        "name": "White Pollution",
+        "type": "RIitem"
+      },
+      {
+        "id": "https://example.com/concept_graph/lp/1327",
+        "name": "White Pollution and Prevention/Control",
+        "type": "LPitem"
+      },
+      {
+        "id": "http://example.org/instance#10519",
+        "name": "Composite Materials",
+        "type": "RIitem"
+      },
       {
         "id": "http://example.org/instance#10495",
         "name": "Essential Nutrients for Humans",
@@ -1291,43 +1301,8 @@
         "type": "RIitem"
       },
       {
-        "id": "https://example.com/concept_graph/lp/1331",
-        "name": "Composite Materials and Nanomaterials",
-        "type": "LPitem"
-      },
-      {
-        "id": "http://example.org/instance#10521",
-        "name": "Composite Materials",
-        "type": "RIitem"
-      },
-      {
-        "id": "http://example.org/instance#10504",
-        "name": "Chemical Elements and Human Health",
-        "type": "RIitem"
-      },
-      {
-        "id": "http://example.org/instance#10519",
-        "name": "Composite Materials",
-        "type": "RIitem"
-      },
-      {
-        "id": "http://example.org/instance#10491",
-        "name": "Essential Nutrients for Humans",
-        "type": "RIitem"
-      },
-      {
         "id": "http://example.org/instance#10503",
         "name": "Chemical Elements and Human Health",
-        "type": "RIitem"
-      },
-      {
-        "id": "https://example.com/concept_graph/lp/1327",
-        "name": "White Pollution and Prevention/Control",
-        "type": "LPitem"
-      },
-      {
-        "id": "http://example.org/instance#10513",
-        "name": "White Pollution",
         "type": "RIitem"
       },
       {
@@ -1336,41 +1311,41 @@
         "type": "LPitem"
       },
       {
-        "id": "http://example.org/instance#10496",
-        "name": "Essential Nutrients for Humans",
-        "type": "RIitem"
-      },
-      {
-        "id": "http://example.org/instance#10514",
+        "id": "http://example.org/instance#10513",
         "name": "White Pollution",
         "type": "RIitem"
       },
       {
-        "id": "https://example.com/concept_graph/lp/1295",
-        "name": "Chemistry and Social Development",
+        "id": "https://example.com/concept_graph/lp/1331",
+        "name": "Composite Materials and Nanomaterials",
         "type": "LPitem"
       },
       {
-        "id": "https://example.com/concept_graph/lp/1333",
-        "name": "Chemicals and Health",
-        "type": "LPitem"
-      },
-      {
-        "id": "http://example.org/instance#10520",
-        "name": "Composite Materials",
+        "id": "http://example.org/instance#10491",
+        "name": "Essential Nutrients for Humans",
         "type": "RIitem"
       },
       {
-        "id": "https://example.com/concept_graph/lp/1321",
-        "name": "Common Chemical Synthetic Materials",
-        "type": "LPitem"
+        "id": "http://example.org/instance#10504",
+        "name": "Chemical Elements and Human Health",
+        "type": "RIitem"
+      },
+      {
+        "id": "http://example.org/instance#10521",
+        "name": "Composite Materials",
+        "type": "RIitem"
       }
     ],
     "links": [
       {
-        "source": "https://example.com/concept_graph/lp/1331",
-        "target": "http://example.org/instance#10519",
-        "relation": "hasResource"
+        "source": "https://example.com/concept_graph/lp/1295",
+        "target": "https://example.com/concept_graph/lp/1321",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1295",
+        "target": "https://example.com/concept_graph/lp/1333",
+        "relation": "hasChild"
       },
       {
         "source": "https://example.com/concept_graph/lp/1327",
@@ -1378,13 +1353,38 @@
         "relation": "hasResource"
       },
       {
-        "source": "https://example.com/concept_graph/lp/1334",
-        "target": "http://example.org/instance#10504",
+        "source": "https://example.com/concept_graph/lp/1335",
+        "target": "http://example.org/instance#10491",
         "relation": "hasResource"
       },
       {
-        "source": "https://example.com/concept_graph/lp/1335",
-        "target": "http://example.org/instance#10491",
+        "source": "https://example.com/concept_graph/lp/1333",
+        "target": "https://example.com/concept_graph/lp/1334",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1327",
+        "target": "http://example.org/instance#10514",
+        "relation": "hasResource"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1333",
+        "target": "https://example.com/concept_graph/lp/1335",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/Chemistry_Collection",
+        "target": "https://example.com/concept_graph/lp/1295",
+        "relation": "contains"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1331",
+        "target": "http://example.org/instance#10520",
+        "relation": "hasResource"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1331",
+        "target": "http://example.org/instance#10521",
         "relation": "hasResource"
       },
       {
@@ -1398,8 +1398,8 @@
         "relation": "hasResource"
       },
       {
-        "source": "https://example.com/concept_graph/lp/1295",
-        "target": "https://example.com/concept_graph/lp/1333",
+        "source": "https://example.com/concept_graph/lp/1321",
+        "target": "https://example.com/concept_graph/lp/1331",
         "relation": "hasChild"
       },
       {
@@ -1408,49 +1408,24 @@
         "relation": "hasResource"
       },
       {
-        "source": "https://example.com/concept_graph/lp/1327",
-        "target": "http://example.org/instance#10514",
+        "source": "https://example.com/concept_graph/lp/1321",
+        "target": "https://example.com/concept_graph/lp/1327",
+        "relation": "hasChild"
+      },
+      {
+        "source": "https://example.com/concept_graph/lp/1334",
+        "target": "http://example.org/instance#10504",
         "relation": "hasResource"
       },
       {
         "source": "https://example.com/concept_graph/lp/1331",
-        "target": "http://example.org/instance#10521",
+        "target": "http://example.org/instance#10519",
         "relation": "hasResource"
       },
       {
         "source": "https://example.com/concept_graph/lp/1334",
         "target": "http://example.org/instance#10503",
         "relation": "hasResource"
-      },
-      {
-        "source": "https://example.com/concept_graph/lp/1295",
-        "target": "https://example.com/concept_graph/lp/1321",
-        "relation": "hasChild"
-      },
-      {
-        "source": "https://example.com/concept_graph/lp/1321",
-        "target": "https://example.com/concept_graph/lp/1331",
-        "relation": "hasChild"
-      },
-      {
-        "source": "https://example.com/concept_graph/lp/1331",
-        "target": "http://example.org/instance#10520",
-        "relation": "hasResource"
-      },
-      {
-        "source": "https://example.com/concept_graph/lp/1333",
-        "target": "https://example.com/concept_graph/lp/1334",
-        "relation": "hasChild"
-      },
-      {
-        "source": "https://example.com/concept_graph/lp/1333",
-        "target": "https://example.com/concept_graph/lp/1335",
-        "relation": "hasChild"
-      },
-      {
-        "source": "https://example.com/concept_graph/lp/1321",
-        "target": "https://example.com/concept_graph/lp/1327",
-        "relation": "hasChild"
       }
     ]
   }
