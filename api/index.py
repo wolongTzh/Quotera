@@ -4,6 +4,7 @@ import io, os
 from .ttl_generator import convert_csv_to_ttl
 from .ttl_parser import gen_json_from_ttl
 import uuid
+import tempfile
 
 
 
@@ -34,9 +35,12 @@ def presonal_graph():
     random_id = str(uuid.uuid4())
 
 
-    file1_path = random_id + "-entities.csv"
-    file2_path = random_id + "-relations.csv"
-    file3_path = random_id + "-graph.ttl"
+    temp_dir = tempfile.gettempdir()
+
+    file1_path = os.path.join(temp_dir, random_id + "-entities.csv")
+    file2_path = os.path.join(temp_dir, random_id + "-relations.csv")
+    file3_path = os.path.join(temp_dir, random_id + "-graph.ttl")
+    
     file1.save(file1_path)
     file2.save(file2_path)
     try:
