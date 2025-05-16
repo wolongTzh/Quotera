@@ -1,4 +1,4 @@
-@prefix edkg: <http://edkg.org/ontology#> .
+@prefix edukg: <http://edukg.org/ontology#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix ex:  <http://example.org/instance#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -8,184 +8,184 @@
 ########################################
 
 ex:Bio701_Collection
-    a edkg:LearningPointCollection ;
-    edkg:identifier "937b9561-7184-4aa0-b29e-37322d9b6f9a" ;
-    edkg:title "Biology" ;
-    edkg:humanAssignedId "Bio701_Collection" ;
-    edkg:collectionUri "https://basic.smartedu.cn" ;
-    edkg:version "1.0.0" ;
-    edkg:contains ex:T1, ex:T2 .
+    a edukg:LearningPointCollection ;
+    edukg:identifier "937b9561-7184-4aa0-b29e-37322d9b6f9a" ;
+    edukg:title "Biology" ;
+    edukg:humanAssignedId "Bio701_Collection" ;
+    edukg:collectionUri "https://basic.smartedu.cn" ;
+    edukg:version "1.0.0" ;
+    edukg:contains ex:T1, ex:T2 .
 
 ########################################
 # Learning Points
 ########################################
 
 ex:T1
-    a edkg:LPitem ;
-    edkg:identifier "f30802c6-78bf-411f-83ad-6d6b3b5d6c33" ;
-    edkg:title "Biology and Cells" ;
-    edkg:itemType "Topic" ;
-    edkg:fullStatement "Covers Observe living organisms in the surrounding environment and Characteristics of living organisms." ;
-    edkg:hasChild ex:LO1, ex:LO2 ;
-    edkg:treeLevel 1 ;
-    edkg:treePosition "1" ;
-    edkg:humanAssignedId "T1" .
+    a edukg:LPitem ;
+    edukg:identifier "f30802c6-78bf-411f-83ad-6d6b3b5d6c33" ;
+    edukg:title "Biology and Cells" ;
+    edukg:itemType "Topic" ;
+    edukg:fullStatement "Covers Observe living organisms in the surrounding environment and Characteristics of living organisms." ;
+    edukg:hasChild ex:LO1, ex:LO2 ;
+    edukg:treeLevel 1 ;
+    edukg:treePosition "1" ;
+    edukg:humanAssignedId "T1" .
 
 ex:T2
-    a edkg:LPitem ;
-    edkg:identifier "ab3c5113-289f-4a21-9ac5-8c752da19238" ;
-    edkg:title "Diversity of Living Organisms" ;
-    edkg:itemType "Topic" ;
-    edkg:fullStatement "Covers Algae, mosses, ferns and Seed plants." ;
-    edkg:hasChild ex:LO3, ex:LO4 ;
-    edkg:treeLevel 1 ;
-    edkg:treePosition "2" ;
-    edkg:humanAssignedId "T2" .
+    a edukg:LPitem ;
+    edukg:identifier "ab3c5113-289f-4a21-9ac5-8c752da19238" ;
+    edukg:title "Diversity of Living Organisms" ;
+    edukg:itemType "Topic" ;
+    edukg:fullStatement "Covers Algae, mosses, ferns and Seed plants." ;
+    edukg:hasChild ex:LO3, ex:LO4 ;
+    edukg:treeLevel 1 ;
+    edukg:treePosition "2" ;
+    edukg:humanAssignedId "T2" .
 
 ex:LO1
-    a edkg:LPitem ;
-    edkg:identifier "24bc0a5a-438e-4c7c-aec8-a8ca50a41d8a" ;
-    edkg:title "Observe living organisms in the surrounding environment" ;
-    edkg:itemType "LearningObjective" ;
-    edkg:fullStatement "Master basic observation methods and record the characteristics of nearby living organisms." ;
-    edkg:hasParent ex:T1 ;
-    edkg:treeLevel 2 ;
-    edkg:treePosition "1.1" ;
-    edkg:humanAssignedId "LO1" .
+    a edukg:LPitem ;
+    edukg:identifier "24bc0a5a-438e-4c7c-aec8-a8ca50a41d8a" ;
+    edukg:title "Observe living organisms in the surrounding environment" ;
+    edukg:itemType "LearningObjective" ;
+    edukg:fullStatement "Master basic observation methods and record the characteristics of nearby living organisms." ;
+    edukg:hasParent ex:T1 ;
+    edukg:treeLevel 2 ;
+    edukg:treePosition "1.1" ;
+    edukg:humanAssignedId "LO1" .
 
 ex:LO2
-    a edkg:LPitem ;
-    edkg:identifier "19396c62-0517-4a8a-914a-22c376de4b7e" ;
-    edkg:title "Characteristics of living organisms" ;
-    edkg:itemType "LearningObjective" ;
-    edkg:fullStatement "Compare and analyze textual and visual materials of animals and plants, distinguish between living and non-living things, and master the common characteristics of living organisms." ;
-    edkg:hasParent ex:T1 ;
-    edkg:treeLevel 2 ;
-    edkg:treePosition "1.2" ;
-    edkg:humanAssignedId "LO2" .
+    a edukg:LPitem ;
+    edukg:identifier "19396c62-0517-4a8a-914a-22c376de4b7e" ;
+    edukg:title "Characteristics of living organisms" ;
+    edukg:itemType "LearningObjective" ;
+    edukg:fullStatement "Compare and analyze textual and visual materials of animals and plants, distinguish between living and non-living things, and master the common characteristics of living organisms." ;
+    edukg:hasParent ex:T1 ;
+    edukg:treeLevel 2 ;
+    edukg:treePosition "1.2" ;
+    edukg:humanAssignedId "LO2" .
 
 ex:LO3
-    a edkg:LPitem ;
-    edkg:identifier "7eae72c5-c67b-4819-bde9-c50e3ca93944" ;
-    edkg:title "Algae, mosses, and ferns" ;
-    edkg:itemType "LearningObjective" ;
-    edkg:fullStatement "Be able to analyze the characteristics of algae and mosses that help them adapt to their living environments and understand that the characteristics of living organisms are adapted to their environments." ;
-    edkg:hasParent ex:T2 ;
-    edkg:treeLevel 2 ;
-    edkg:treePosition "2.1" ;
-    edkg:humanAssignedId "LO3" .
+    a edukg:LPitem ;
+    edukg:identifier "7eae72c5-c67b-4819-bde9-c50e3ca93944" ;
+    edukg:title "Algae, mosses, and ferns" ;
+    edukg:itemType "LearningObjective" ;
+    edukg:fullStatement "Be able to analyze the characteristics of algae and mosses that help them adapt to their living environments and understand that the characteristics of living organisms are adapted to their environments." ;
+    edukg:hasParent ex:T2 ;
+    edukg:treeLevel 2 ;
+    edukg:treePosition "2.1" ;
+    edukg:humanAssignedId "LO3" .
 
 ex:LO4
-    a edkg:LPitem ;
-    edkg:identifier "d5c8441b-27d3-410f-9d1d-b32b3acfdcaa" ;
-    edkg:title "Seed plants" ;
-    edkg:itemType "LearningObjective" ;
-    edkg:fullStatement "Master the basic structure of seeds by comparing the similarities and differences in the structures of different seeds." ;
-    edkg:hasParent ex:T2 ;
-    edkg:treeLevel 2 ;
-    edkg:treePosition "2.2" ;
-    edkg:humanAssignedId "LO4" .
+    a edukg:LPitem ;
+    edukg:identifier "d5c8441b-27d3-410f-9d1d-b32b3acfdcaa" ;
+    edukg:title "Seed plants" ;
+    edukg:itemType "LearningObjective" ;
+    edukg:fullStatement "Master the basic structure of seeds by comparing the similarities and differences in the structures of different seeds." ;
+    edukg:hasParent ex:T2 ;
+    edukg:treeLevel 2 ;
+    edukg:treePosition "2.2" ;
+    edukg:humanAssignedId "LO4" .
 
 ########################################
 # Resource Items
 ########################################
 ex:L1
-    a edkg:RIitem ;
-    edkg:identifier "c72851f7-3f79-4cdf-964d-df15ff35b9fc" ;
-    edkg:title "Video on living organisms in the environment" ;
-    edkg:itemType "Resource" ;
-    edkg:resourceType "lesson" ;
-    edkg:resourceUrl "https://www.bilibili.com/video/BV1edweenEHW" ;     
-    edkg:resourceFormat "video" ;
-    edkg:hasLearningPoint ex:LO1 ;
-    edkg:hasPedagogicalRule ex:PR1 ;
-    edkg:humanAssignedId "L1" .
+    a edukg:RIitem ;
+    edukg:identifier "c72851f7-3f79-4cdf-964d-df15ff35b9fc" ;
+    edukg:title "Video on living organisms in the environment" ;
+    edukg:itemType "Resource" ;
+    edukg:resourceType "lesson" ;
+    edukg:resourceUrl "https://www.bilibili.com/video/BV1edweenEHW" ;     
+    edukg:resourceFormat "video" ;
+    edukg:hasLearningPoint ex:LO1 ;
+    edukg:hasPedagogicalRule ex:PR1 ;
+    edukg:humanAssignedId "L1" .
 
 ex:S1
-    a edkg:RIitem ;
-    edkg:identifier "f956b981-0dfd-4a52-a217-927b89bbfef8" ;
-    edkg:title "Distinguishing between living and non-living things" ;
-    edkg:itemType "Resource" ;
-    edkg:resourceType "activity" ;
-    edkg:resourceUrl "https://zy.21cnjy.com/21934485" ;    
-    edkg:resourceFormat "text/html" ;
-    edkg:hasLearningPoint ex:LO2 ;
-    edkg:hasPedagogicalRule ex:PR1 ;
-    edkg:humanAssignedId "S1" .
+    a edukg:RIitem ;
+    edukg:identifier "f956b981-0dfd-4a52-a217-927b89bbfef8" ;
+    edukg:title "Distinguishing between living and non-living things" ;
+    edukg:itemType "Resource" ;
+    edukg:resourceType "activity" ;
+    edukg:resourceUrl "https://zy.21cnjy.com/21934485" ;    
+    edukg:resourceFormat "text/html" ;
+    edukg:hasLearningPoint ex:LO2 ;
+    edukg:hasPedagogicalRule ex:PR1 ;
+    edukg:humanAssignedId "S1" .
 
 ex:A1
-    a edkg:RIitem ;
-    edkg:identifier "a218d85f-8127-40ce-a954-63d1cc1b39ac" ;
-    edkg:title "Assignment on the characteristics of living organisms." ;
-    edkg:itemType "Resource" ;
-    edkg:resourceType "assessment" ;
-    edkg:resourceUrl "https://zy.21cnjy.com/21934485" ;
-    edkg:resourceFormat "text/html" ;
-    edkg:hasLearningPoint ex:LO1, ex:LO2 ;
-    edkg:humanAssignedId "A1" .
+    a edukg:RIitem ;
+    edukg:identifier "a218d85f-8127-40ce-a954-63d1cc1b39ac" ;
+    edukg:title "Assignment on the characteristics of living organisms." ;
+    edukg:itemType "Resource" ;
+    edukg:resourceType "assessment" ;
+    edukg:resourceUrl "https://zy.21cnjy.com/21934485" ;
+    edukg:resourceFormat "text/html" ;
+    edukg:hasLearningPoint ex:LO1, ex:LO2 ;
+    edukg:humanAssignedId "A1" .
 
 ex:Q1
-    a edkg:RIitem ;
-    edkg:identifier "84937c2e-9a54-4db7-b997-77abe8d0218f" ;
-    edkg:title "Differentiation of plant characteristics" ;
-    edkg:itemType "Resource" ;
-    edkg:resourceType "assessment" ;
-    edkg:resourceUrl "https://zy.21cnjy.com/21934485" ;
-    edkg:resourceFormat "text/html" ;
-    edkg:hasLearningPoint ex:LO3, ex:LO4 ;
-    edkg:hasPedagogicalRule ex:PR2;
-    edkg:humanAssignedId "Q1" .
+    a edukg:RIitem ;
+    edukg:identifier "84937c2e-9a54-4db7-b997-77abe8d0218f" ;
+    edukg:title "Differentiation of plant characteristics" ;
+    edukg:itemType "Resource" ;
+    edukg:resourceType "assessment" ;
+    edukg:resourceUrl "https://zy.21cnjy.com/21934485" ;
+    edukg:resourceFormat "text/html" ;
+    edukg:hasLearningPoint ex:LO3, ex:LO4 ;
+    edukg:hasPedagogicalRule ex:PR2;
+    edukg:humanAssignedId "Q1" .
 
 ex:IT1
-    a edkg:RIitem ;
-    edkg:identifier "d1159303-97b4-4a46-a67e-365bd20a72fb" ;
-    edkg:title "Reinforcement exercise on plant characteristic differentiation" ;
-    edkg:itemType "Resource" ;
-    edkg:resourceType "activity" ;
-    edkg:resourceUrl "https://zy.21cnjy.com/21934485" ;
-    edkg:resourceFormat "text/html" ;
-    edkg:hasLearningPoint ex:LO3, ex:LO4 ;
-    edkg:humanAssignedId "IT1" .
+    a edukg:RIitem ;
+    edukg:identifier "d1159303-97b4-4a46-a67e-365bd20a72fb" ;
+    edukg:title "Reinforcement exercise on plant characteristic differentiation" ;
+    edukg:itemType "Resource" ;
+    edukg:resourceType "activity" ;
+    edukg:resourceUrl "https://zy.21cnjy.com/21934485" ;
+    edukg:resourceFormat "text/html" ;
+    edukg:hasLearningPoint ex:LO3, ex:LO4 ;
+    edukg:humanAssignedId "IT1" .
 
 ########################################
 # Pedagogical Rules
 ########################################
 ex:PR1
-    a edkg:PRitem ;
-    edkg:identifier "90f0b8ec-2b70-4adf-a999-8ff2e55bc798" ;
-    edkg:title "Utilize Teaching Resources" ;
-    edkg:situation """
+    a edukg:PRitem ;
+    edukg:identifier "90f0b8ec-2b70-4adf-a999-8ff2e55bc798" ;
+    edukg:title "Utilize Teaching Resources" ;
+    edukg:situation """
 When preparing for a lesson, the teacher gathers and organizes relevant teaching materials, including textbooks, videos, and exercises. 
 """ ;
-    edkg:task """
+    edukg:task """
 Identify and collect available resources such as textbooks, multimedia materials, and past test papers related to the lesson topic.
 """ ;
-    edkg:actionPlan """
+    edukg:actionPlan """
 Review the textbook for key concepts, select relevant educational videos to enhance understanding, and prepare exercises or test questions from past exams to reinforce learning.
 """ ;
-    edkg:expectedResult """
+    edukg:expectedResult """
 A well-structured lesson plan incorporating diverse teaching resources to support student comprehension and engagement.
 """ ;
-    edkg:actorRole "Teacher" ;
-    edkg:appliesTo ex:L1, ex:S1 ;
-    edkg:humanAssignedId "PR1" .
+    edukg:actorRole "Teacher" ;
+    edukg:appliesTo ex:L1, ex:S1 ;
+    edukg:humanAssignedId "PR1" .
 
 ex:PR2
-    a edkg:PRitem ;
-    edkg:identifier "d67a231e-4cdc-4629-aa53-8e3af44767ce" ;
-    edkg:title "Summarize Key Knowledge Points" ;
-    edkg:situation """
+    a edukg:PRitem ;
+    edukg:identifier "d67a231e-4cdc-4629-aa53-8e3af44767ce" ;
+    edukg:title "Summarize Key Knowledge Points" ;
+    edukg:situation """
 At the end of a lesson, the teacher summarizes key biological concepts to reinforce student understanding.
 """ ;
-    edkg:task """
+    edukg:task """
 Identify the main knowledge points covered in the lesson and present them in a structured summary. 
 """ ;
-    edkg:actionPlan """
+    edukg:actionPlan """
 Review the lesson's key topics, highlight core biological principles, and create summary notes or concept maps for students. Engage students in discussions or quick quizzes to reinforce retention. 
 """ ;
-    edkg:expectedResult """
+    edukg:expectedResult """
 A concise and clear summary of the lesson's key knowledge points, aiding student comprehension and recall.
 """ ;
-    edkg:actorRole "Teacher" ;
-    edkg:appliesTo ex:Q1 ;
-    edkg:humanAssignedId "PR2" .
+    edukg:actorRole "Teacher" ;
+    edukg:appliesTo ex:Q1 ;
+    edukg:humanAssignedId "PR2" .
