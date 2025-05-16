@@ -61,7 +61,7 @@ def convert_csv_to_ttl(
     entity_id_to_uri = {}
     entity_id_to_entity = {}
 
-    with open(entities_csv_path) as f:
+    with open(entities_csv_path, encoding='utf-8') as f:
         reader = csv.reader(f)
         for row, i in enumerate(reader):
             prefix = f"Entity file row {row + 1} - "
@@ -77,13 +77,17 @@ def convert_csv_to_ttl(
                 raise Exception(prefix + f"Invalid entity type: {i[0]}")
             
             # Check the len of params
-            assert len(i) == {
-                'LPitem': 4,
-                'RIitem': 5,
-                'PRitem': 8,
-            }[i[0]]
-
-            i = i_type(*i[1:])
+            # assert len(i) == {
+            #     'LPitem': 4,
+            #     'RIitem': 5,
+            #     'PRitem': 8,
+            # }[i[0]]
+            if i[0] == "LPitem":
+                i = i_type(*i[1:4])
+            elif i[0] == "RIitem":
+                i = i_type(*i[1:5])
+            elif i[0] == "PRitem":
+                i = i_type(*i[1:8])
 
             # Generate the uri
             try:
@@ -126,7 +130,7 @@ def convert_csv_to_ttl(
             
     # Read relations
     relation_name_to_uri = {}
-    with open(relations_csv_path) as f:
+    with open(relations_csv_path, encoding="utf-8") as f:
         reader = csv.reader(f)
 
         for row, i in enumerate(reader):
