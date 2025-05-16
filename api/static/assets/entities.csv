@@ -1,0 +1,4 @@
+LPitem,L01,Basic programming concepts,"{""fullStatement"":""Covers basic Python syntax, control flow, and foundational programming ideas.""}"
+LPitem,L02,Understand basic Python syntax,"{""fullStatement"":""Able to read and interpret simple Python statements.""}"
+RIitem,R01,Introduction to Python,http://example.org/lecture/intro-python,video
+PRitem,P01,List Topics,LMSAssistant,"When starting the course, the system identifies and lists all available topics.",Retrieve all topics from the Learning Points hierarchy.,Access the Learning Points collection and extract all associated topics.,A comprehensive list of topics covered in the course.
