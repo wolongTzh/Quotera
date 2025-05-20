@@ -3,672 +3,435 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="head">Knowledge Graph Viewer</title>
+  <title data-i18n="head">展示查看页</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-  --text-color: #000;
-  --text-secondary: #666;
-  --background: #fff;
-  --border-color: rgba(0, 0, 0, 0.1);
-  --accent-1: rgba(0, 0, 0, 0.05);
-  --accent-2: rgba(0, 0, 0, 0.1);
-  --button-text: #fff;
-  --button-bg: #000;
-  --card-bg: #fff;
-  --radius: 12px;
-  --font-sans: 'Inter', 'Noto Sans SC', sans-serif;
-  --primary-color: #0078d4;
-  --primary-light: #e6f2fc;
-  --primary-dark: #005a9e;
-  --secondary-color: #f3f9fd;
-  --accent-color: #2ecc71;
-  --hover-bg: #f0f7fc;
-  --active-bg: #e1f1fc;
-  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+      --text-color: #000;
+      --text-secondary: #666;
+      --background: #fff;
+      --border-color: rgba(0, 0, 0, 0.1);
+      --accent-1: rgba(0, 0, 0, 0.05);
+      --accent-2: rgba(0, 0, 0, 0.1);
+      --button-text: #fff;
+      --button-bg: #000;
+      --card-bg: #fff;
+      --radius: 12px;
+      --font-sans: 'Inter', 'Noto Sans SC', sans-serif;
+    }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      background-color: var(--background);
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+      background-size: 20px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
 
-body {
-  margin: 0;
-  font-family: var(--font-sans);
-  background-color: var(--background);
-  color: var(--text-color);
-  line-height: 1.6;
-  min-height: 100vh;
-  overflow-x: hidden;
-  background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
-  background-size: 20px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin: 1rem 0 2rem;
+    }
 
-h1 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  text-align: center;
-  margin: 1rem 0 1.5rem;
-}
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: relative;
+    }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  position: relative;
-}
+    .lang-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: var(--accent-1);
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-.lang-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--accent-1);
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-}
+    select, .button {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-color);
+      background-color: var(--accent-1);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-select, .button {
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 0.6rem 1.2rem;
-  border-radius: 999px;
-  border: 1px solid var(--border-color);
-  background-color: var(--accent-1);
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+    .button:hover, select:hover {
+      background-color: var(--accent-2);
+    }
 
-.button:hover, select:hover {
-  background-color: var(--accent-2);
-}
+    .viewer-box {
+      margin: 2rem auto;
+      width: 100%;
+      max-width: 1600px;
+      height: 900px;
+      background-color: var(--accent-1);
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-color);
+      transition: background-color 0.3s ease;
+    }
 
-.logo {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: var(--text-color);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  transition: color 0.3s ease;
-}
+    /* d3部分 */
+    svg { width: 100%; height: 100%; background-color: #f9f9f9; }
+    text.relation {
+      font-size: 14px;
+      fill: #555;
+      pointer-events: none;
+    }
+    .tooltip {
+      position: absolute;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      pointer-events: none;
+      font-size: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      max-width: 250px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .node-highlight {
+      stroke: #ff7700;
+      stroke-width: 2px;
+    }
+    /* 添加按钮样式 */
+    .focus-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 8px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: background-color 0.3s;
+      z-index: 100;
+    }
+    .focus-button:hover {
+      background-color: #45a049;
+    }
+    /* 隐藏实际的边，只用于视觉显示 */
+    .link-visible {
+      pointer-events: none;
+    }
+    /* 用于捕获鼠标事件的宽边 */
+    .link-hitarea {
+      stroke-opacity: 0;
+      stroke-width: 20px; /* 宽的判定区域 */
+      cursor: pointer;
+    }
 
-.logo:hover {
-  cursor: pointer;
-}
+    .search-box {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      /* position: absolute; */
+      bottom: 40px;
+      width: 100%;
+    }
+
+    .search-box input {
+      padding: 0.8rem 1.4rem;
+      font-size: 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 22px;
+      outline: none;
+      width: 500px;
+      background-color: #f7f7f7;
+      transition: border-color 0.3s ease;
+      margin-right: 30px;
+    }
+
+    .search-box input:focus {
+      border-color: var(--button-bg);
+    }
+
+    .search-box button {
+      padding: 0.8rem 1.4rem;
+      font-size: 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 22px;
+      background-color: var(--accent-2);
+      color: var(--text-color);
+      cursor: pointer;
+      transition: opacity 0.3s ease, transform 0.2s ease;
+    }
+
+    .search-box button:hover {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+
+    .footer-btn {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    #toggle-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 25px;
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    #toggle-button:hover {
+      background-color: var(--accent-2);
+      transform: scale(1.05);
+    }
+
+    .logo {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: var(--text-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        transition: color 0.3s ease;
+    }
+
+    .logo:hover {
+      cursor: pointer;
+    }
+        
+    .logo img {
+            width: 90px;
+            height: 60px;
+            /* background-color: var(--text-color); */
+        
+        }
     
-.logo img {
-  width: 90px;
-  height: 60px;
-}
 
-/* View Toggle Styles */
-.view-toggle {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-}
+    @media (max-width: 768px) {
+      .viewer-box {
+        height: 600px;
+      }
 
-.view-btn {
-  padding: 0.75rem 1.5rem;
-  margin: 0 0.5rem;
-  border: none;
-  border-radius: 8px;
-  background-color: var(--accent-1);
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+      .search-box input {
+        width: 80%;
+      }
 
-.view-btn.active {
-  background-color: var(--primary-color);
-  color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
+      .footer-btn {
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
 
-.view-btn:hover:not(.active) {
-  background-color: var(--accent-2);
-}
+    /* 图例部分 */
+    .legend-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 20px 0;
+    }
 
-.view-container {
-  display: none;
-  width: 100%;
-}
+    .legend-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 15px 25px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      width: 100%;
+    }
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin: 0 10px;
+    }
+    
+    .color-circle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    
+    .legend-text {
+      font-size: 14px;
+      color: #333;
+    }
+    
+    .color-1 {
+      background-color: #a66ef7;
+    }
 
-.view-container.active {
-  display: block;
-}
+    .color-2 {
+      background-color: #bff76e;
+    }
 
-/* Graph View Styles */
-.viewer-box {
-  margin: 1rem auto;
-  width: 100%;
-  max-width: 1600px;
-  height: 700px;
-  background-color: var(--accent-1);
-  border-radius: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--text-color);
-  transition: background-color 0.3s ease;
-  position: relative;
-}
+    .color-3 {
+      background-color: #ea6ef7;
+    }
 
-/* d3部分 */
-svg { 
-  width: 100%; 
-  height: 100%; 
-  background-color: #f9f9f9; 
-  border-radius: 22px;
-}
-
-text.relation {
-  font-size: 14px;
-  fill: #555;
-  pointer-events: none;
-}
-
-.tooltip {
-  position: absolute;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.9);
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  pointer-events: none;
-  font-size: 12px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  max-width: 250px;
-  opacity: 0;
-  transition: opacity 0.3s;
-  z-index: 1000;
-}
-
-.node-highlight {
-  stroke: #ff7700;
-  stroke-width: 2px;
-}
-
-.focus-button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  padding: 8px 15px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  transition: background-color 0.3s;
-  z-index: 100;
-}
-
-.focus-button:hover {
-  background-color: #45a049;
-}
-
-.link-visible {
-  pointer-events: none;
-}
-
-.link-hitarea {
-  stroke-opacity: 0;
-  stroke-width: 20px;
-  cursor: pointer;
-}
-
-.search-box {
-  display: flex;
-  justify-content: center;
-  margin: 1.5rem auto;
-  width: 100%;
-  max-width: 600px;
-}
-
-.search-box input {
-  padding: 0.8rem 1.4rem;
-  font-size: 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 22px;
-  outline: none;
-  width: 70%;
-  background-color: #f7f7f7;
-  transition: border-color 0.3s ease;
-  margin-right: 10px;
-}
-
-.search-box input:focus {
-  border-color: var(--button-bg);
-}
-
-.search-box button {
-  padding: 0.8rem 1.4rem;
-  font-size: 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 22px;
-  background-color: var(--accent-2);
-  color: var(--text-color);
-  cursor: pointer;
-  transition: opacity 0.3s ease, transform 0.2s ease;
-}
-
-.search-box button:hover {
-  opacity: 0.9;
-  transform: scale(1.05);
-}
-
-/* 图例部分 */
-.legend-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 10px 0;
-}
-
-.legend-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
-  padding: 12px 20px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  width: 100%;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  margin: 0 10px;
-}
-
-.color-circle {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  margin-right: 8px;
-}
-
-.legend-text {
-  font-size: 14px;
-  color: #333;
-}
-
-.color-1 {
-  background-color: #a66ef7;
-}
-
-.color-2 {
-  background-color: #bff76e;
-}
-
-.color-3 {
-  background-color: #ea6ef7;
-}
-
-.color-4 {
-  background-color: #7eafec;
-}
-
-/* Tree View Styles */
-.container {
-  display: flex;
-  height: 100vh;
-  max-width: 1400px;
-  margin: 0 auto;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar {
-  width: 400px;
-  border-right: 1px solid #e0e0e0;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.search-container {
-  padding: 16px;
-  border-bottom: 1px solid #e0e0e0;
-  display: flex;
-  gap: 8px;
-}
-
-.search-container input {
-  flex: 1;
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.search-container button,
-.tree-controls button {
-  padding: 8px 12px;
-  background-color: #0070f3;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.search-container button:hover,
-.tree-controls button:hover {
-  background-color: #0060df;
-}
-
-.tree-controls {
-  padding: 8px 16px;
-  display: flex;
-  gap: 8px;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.tree-content {
-  padding: 16px;
-  overflow-y: auto;
-  flex: 1;
-}
-
-.tree-content ul {
-  list-style-type: none;
-  margin-left: 20px;
-}
-
-.tree-content > ul {
-  margin-left: 0;
-}
-
-.tree-node {
-  display: flex;
-  align-items: center;
-  padding: 6px 8px;
-  cursor: pointer;
-  border-radius: 4px;
-  margin: 2px 0;
-}
-
-.tree-node:hover {
-  background-color: #f0f0f0;
-}
-
-.tree-node.active {
-  background-color: #e6f7ff;
-  border-left: 3px solid #1890ff;
-}
-
-.toggle-icon {
-  display: inline-flex;
-  margin-right: 8px;
-  transition: transform 0.2s;
-}
-
-.toggle-icon.expanded svg {
-  transform: rotate(90deg);
-}
-
-.node-label {
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.node-type {
-  font-size: 0.75rem;
-  padding: 2px 6px;
-  background-color: #e6f7ff;
-  color: #1890ff;
-  border-radius: 10px;
-  margin-left: 8px;
-}
-
-.details-panel {
-  flex: 1;
-  padding: 24px;
-  overflow-y: auto;
-}
-
-.empty-state {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  color: #999;
-}
-
-.detail-row {
-  margin-bottom: 16px;
-}
-
-.detail-row .label {
-  font-weight: 600;
-  color: #666;
-  display: block;
-  margin-bottom: 4px;
-}
-
-.detail-row .value {
-  padding: 8px;
-  background-color: #f9f9f9;
-  border-radius: 4px;
-  border: 1px solid #eee;
-}
-
-h3 {
-  margin-bottom: 16px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #eee;
-}
-
-pre {
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-
-.content-container {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding-left: 16px;
-}
-
-.sub-detail {
-  border-left: 2px solid #eaeaea;
-  padding-left: 12px;
-  margin-top: 4px;
-}
-
-/* Responsive Styles */
-@media (max-width: 1024px) {
-  .container {
-    flex-direction: column;
-    height: auto;
-  }
-  
-  .tree-panel, .details-panel {
-    width: 100%;
-  }
-  
-  .tree-panel {
-    height: 400px;
-  }
-  
-  .details-panel {
-    margin-top: 1rem;
-  }
-  
-  header {
-    flex-direction: column;
-    padding: 1rem;
-  }
-  
-  .header-content {
-    margin-bottom: 1rem;
-  }
-  
-  .search-box {
-    width: 100%;
-  }
-  
-  .search-box input {
-    width: 70%;
-  }
-}
-
-@media (max-width: 768px) {
-  h1 {
-    font-size: 1.8rem;
-  }
-  
-  .container {
-    padding: 0 1rem;
-  }
-  
-  .view-btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
-  }
-  
-  .viewer-box {
-    height: 500px;
-  }
-}
+    .color-4 {
+      background-color: #7eafec;
+    }
   </style>
 </head>
 <body>
+
   <header>
     <div class="logo" onclick="window.location.href='/'">
-      <img src="/static/assets/logo2.png" alt="Logo">
+      <img src="/static/assets/logo2.png" alt="Animation Example">
     </div>
     <select id="graph-selector" style="margin-left: 80px;">
-      <option value="biology" data-i18n="biology">Biology</option>
-      <option value="physics" data-i18n="physics">Physics</option>
-      <option value="chemistry" data-i18n="chemistry">Chemistry</option>
+      <option value="biology" data-i18n="biology">生物图谱</option>
+      <option value="physics" data-i18n="physics">物理图谱</option>
+      <option value="chemistry" data-i18n="chemistry">化学图谱</option>
+      <!-- <option value="network" data-i18n="network">计算机网络图谱</option> -->
+
+      
+      
     </select>
-    <button class="button" style="margin-right: 50px;" id="download-button" onclick="downloadGraph()" data-i18n="download">Download Graph</button>
+    <button class="button" style="margin-right: 50px;" id="download-button" onclick="downloadGraph()" data-i18n="download">点击下载图谱</button>
     <button class="lang-toggle" onclick="toggleLang()" id="lang-toggle">中</button>
   </header>
 
-  <h1 data-i18n="title">Knowledge Graph Viewer</h1>
+  <h1 data-i18n="title">展示查看页</h1>
 
-  <!-- View Toggle Buttons -->
-  <div class="view-toggle">
-    <button id="graph-view-btn" class="view-btn active" onclick="switchView('graph')" data-i18n="graph-view">Graph View</button>
-    <button id="tree-view-btn" class="view-btn" onclick="switchView('tree')" data-i18n="tree-view">Tree View</button>
-  </div>
-
-  <!-- Graph View Components -->
-  <div id="graph-view-container" class="view-container active">
-    <div class="legend-wrapper">
-      <div class="legend-container">
-        <div class="legend-item">
-          <div class="color-circle color-2"></div>
-          <span class="legend-text">LearningPointCollection</span>
-        </div>
-        <div class="legend-item">
-          <div class="color-circle color-1"></div>
-          <span class="legend-text">LPitem</span>
-        </div>
-        <div class="legend-item">
-          <div class="color-circle color-3"></div>
-          <span class="legend-text">RIitem</span>
-        </div>
-        <div class="legend-item">
-          <div class="color-circle color-4"></div>
-          <span class="legend-text">PRitem</span>
-        </div>
+  <div class="legend-wrapper">
+    <div class="legend-container">
+      <div class="legend-item">
+        <div class="color-circle color-2"></div>
+        <span class="legend-text">LearningPointCollection</span>
       </div>
-    </div>
 
-    <div class="viewer-box" id="graph-viewer"></div>
-    <div class="tooltip"></div>
-
-    <div class="search-box" id="graph-search-box">
-      <input type="text" id="graph-search-input" placeholder="Search in graph view...">
-      <button onclick="handleGraphSearch()" data-i18n="search">Search</button>
+      <div class="legend-item">
+        <div class="color-circle color-1"></div>
+        <span class="legend-text">LPitem</span>
+      </div>
+      
+      <div class="legend-item">
+        <div class="color-circle color-3"></div>
+        <span class="legend-text">RIitem</span>
+      </div>
+      
+      <div class="legend-item">
+        <div class="color-circle color-4"></div>
+        <span class="legend-text">PRitem</span>
+      </div>
     </div>
   </div>
 
-  <!-- Tree View Components -->
-  <div id="tree-view-container" class="view-container">
-    <div class="container">
-      <div class="sidebar">
-        <!-- 搜索和控制按钮已被删除 -->
-        <div id="treeView" class="tree-content"></div>
-      </div>
-      <div id="details" class="details-panel">
-        <div class="empty-state">
-          <p>Select a node to view details</p>
-        </div>
-      </div>
-    </div>
+  <div class="viewer-box" id="viewer"></div>
+  <div class="tooltip"></div>
+  <!-- <button class="focus-button">重新对焦</button> -->
+  <!-- 重对焦按钮，功能已经写好，需要修改CSS-TODO -->
 
-    <div class="search-box" id="tree-search-box"></div>
-    <!-- 搜索框-逻辑未实现-TODO -->
-    <!-- <div class="search-box" id="tree-search-box">
-      <input type="text" id="tree-search-input" placeholder="Search in tree view...">
-      <button onclick="handleTreeSearch()" data-i18n="search">Search</button>
-    </div> -->
+  <div class="search-box" id="search-box">
+    <input type="text" id="search-input" placeholder="Please input your keywords...">
+    <button onclick="handleSearch()" data-i18n="search">搜索</button>
   </div>
 
-  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- <div class="footer-btn">
+    <button class="button" id="toggle-button" onclick="toggleView()">切换本体</button>
+  </div> -->
+
   <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Initialize both views
-  initGraphView();
-  initTreeView();
-});
+    let isGraph = true;
 
-let cur_selection = "biology";
+    function toggleView() {
+      isGraph = !isGraph;
+      if(isGraph) {
+        allNodes = graphs.network.nodes
+        allLinks = graphs.network.links
+        show_d3(graphs.network.nodes, graphs.network.links);  // 第二个参数为true表示合并重载
+      }
 
-// View switching function
-function switchView(viewType) {
-  // Update button states
-  document.getElementById('graph-view-btn').classList.toggle('active', viewType === 'graph');
-  document.getElementById('tree-view-btn').classList.toggle('active', viewType === 'tree');
-  
-  // Show/hide containers
-  document.getElementById('graph-view-container').classList.toggle('active', viewType === 'graph');
-  document.getElementById('tree-view-container').classList.toggle('active', viewType === 'tree');
+      const viewer = document.getElementById('viewer');
+      const toggleButton = document.getElementById('toggle-button');
+      const downloadButton = document.getElementById('download-button');
+      const graphSelector = document.getElementById('graph-selector');
+      const searchBox = document.getElementById('search-box');
+      if(!isGraph) {
+        viewer.textContent = '展示本体';
+      }
+      toggleButton.textContent = isGraph ? '切换本体' : '切换图谱';
+      downloadButton.textContent = isGraph ? '点击下载图谱' : '点击下载本体';
 
-  initGraphView();
-  initTreeView();
-}
+      graphSelector.style.display = isGraph ? 'inline-block' : 'none';
+      searchBox.style.display = isGraph ? 'flex' : 'none';
+    }
 
-document.getElementById('graph-selector').addEventListener('change', function() {
-  cur_selection = this.value;
-  initGraphView();
-  initTreeView();
-});
-
-// ==================== GRAPH VIEW CODE ====================
-function initGraphView() {
-  // Sample data for graph view
- const graphs = {
+    // function handleSearch() {
+    //   const val = document.getElementById('search-input').value.trim();
+    //   if (val) {
+    //     alert('搜索：“' + val + '”（模拟）');
+    //   } else {
+    //     alert('请输入关键词再搜索');
+    //   }
+    // }
+    function downloadGraph() {
+      const selectedFileName = document.getElementById('graph-selector').value;
+      const filePath = "/static/ttl/" + selectedFileName + ".ttl";
+      const link = document.createElement("a");
+      link.href = filePath;
+      link.download = selectedFileName + ".ttl";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+    // function downloadGraph() {
+    //   alert(isGraph ? '正在下载图谱...（模拟）' : '正在下载本体...（模拟）');
+    // }
+  </script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+  window.onload = function() {
+    allNodes = graphs.biology.nodes
+    allLinks = graphs.biology.links
+    show_d3(graphs.biology.nodes, graphs.biology.links);  // 第二个参数为true表示合并重载
+  };
+  var allNodes = []
+  var allLinks = []
+  const graphs = {
     "network": {
        "nodes": [
       {
@@ -1666,98 +1429,46 @@ function initGraphView() {
       }
     ]
   }
-  };
-
-  let allNodes = graphs[cur_selection].nodes;
-  let allLinks = graphs[cur_selection].links;
+  }
   
-  // Initialize graph view with biology data
-  showD3Graph(allNodes, allLinks);
-  
-  // Set up graph search
-  window.handleGraphSearch = function() {
-    const keyword = document.getElementById('graph-search-input').value.trim().toLowerCase();
-    
-    if (!keyword) {
-      // If search box is empty, show all
-      showD3Graph(allNodes, allLinks);
-      return;
-    }
-    
-    // Find nodes with names containing the keyword
-    const matchedNodes = allNodes.filter(node => node.name.toLowerCase().includes(keyword));
-    const matchedNodeIds = new Set(matchedNodes.map(n => n.id));
-    
-    // Find links connected to these nodes
-    const matchedLinks = allLinks.filter(link =>
-      matchedNodeIds.has(link.source.id || link.source) || matchedNodeIds.has(link.target.id || link.target)
-    );
-    
-    // Include connected nodes
-    const connectedNodeIds = new Set([
-      ...matchedLinks.map(l => (typeof l.source === 'object' ? l.source.id : l.source)),
-      ...matchedLinks.map(l => (typeof l.target === 'object' ? l.target.id : l.target)),
-    ]);
-    
-    let finalNodes = [];
-    if (matchedLinks.length > 0) {
-      finalNodes = allNodes.filter(n => connectedNodeIds.has(n.id));
-    } else {
-      finalNodes = matchedNodes;
-    }
-    
-    showD3Graph(finalNodes, matchedLinks);
-  };
-  
-  // Graph download function
-  window.downloadGraph = function() {
-    const selectedFileName = document.getElementById('graph-selector').value;
-    const filePath = "/static/ttl/" + selectedFileName + ".ttl";
-    const link = document.createElement("a");
-    link.href = filePath;
-    link.download = selectedFileName + ".ttl";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-  
-  // D3 Graph Visualization
-  function showD3Graph(nodes, links) {
-    const container = document.getElementById('graph-viewer');
-    container.innerHTML = ''; // Clear previous SVG content
-    
+  function show_d3(nodes, links) {
+    const container = document.getElementById('viewer');
+    container.innerHTML = ''; // 清空之前的 SVG 内容
     const width = container.clientWidth;
     const height = container.clientHeight;
-    
-    const svg = d3.select("#graph-viewer")
+    const svg = d3.select("#viewer")
       .append("svg")
       .attr("width", width)
       .attr("height", height);
       
     const tooltip = d3.select(".tooltip");
     const focusButton = d3.select(".focus-button");
-    
-    // Remove self-loops
+
+    // 删除links中的自环
     links = links.filter(link => link.source !== link.target);
-    
-    // Create zoom behavior
+
+    // 保存初始聚焦节点的引用
+    let initialFocusNode = null;
+
+    // 创建 zoom 行为
     const zoom = d3.zoom()
-      .scaleExtent([0.1, 10])
+      .scaleExtent([0.1, 10]) // 缩放范围
       .on("zoom", (event) => {
         g.attr("transform", event.transform);
-      });
-    
+    });
+
+    // 应用 zoom 行为到 svg 上
     svg.call(zoom);
-    
-    // Create container for all elements
+
+    // 创建容器 g，所有图元都绘制在这个 g 上
     const g = svg.append("g");
-    
-    // Create arrow definition
+
+    // 创建箭头定义
     const defs = svg.append("defs");
     defs.append("marker")
       .attr("id", "arrowhead")
       .attr("viewBox", "0 -5 10 10")
-      .attr("refX", 45)
+      .attr("refX", 45) // 调整箭头位置，使其位于目标节点边缘
       .attr("refY", 0)
       .attr("orient", "auto")
       .attr("markerWidth", 6)
@@ -1767,68 +1478,68 @@ function initGraphView() {
       .attr("d", "M 0,-5 L 10,0 L 0,5")
       .attr("fill", "#999")
       .style("stroke", "none");
-    
-    // Create force simulation
+
     const simulation = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links).id(d => d.id).distance(200))
       .force("charge", d3.forceManyBody().strength(-600))
       .force("center", d3.forceCenter(width / 2, height / 2))
-      .force("collision", d3.forceCollide().radius(50));
-    
+      .force("collision", d3.forceCollide().radius(50)); // 添加碰撞力，防止节点重叠
+
     const linkGroup = g.append("g")
       .attr("stroke", "#aaa");
-    
-    // Create visible links
+
+    // 创建用于显示的边（细线）
     const linkVisible = linkGroup.selectAll(".link-visible")
       .data(links)
       .join("line")
       .attr("class", "link-visible")
       .attr("stroke-width", 1.5)
-      .attr("marker-end", "url(#arrowhead)");
-    
-    // Create hit area for links
+      .attr("marker-end", "url(#arrowhead)"); // 添加箭头
+
+    // 创建用于捕获鼠标事件的宽边（透明）
     const linkHitarea = linkGroup.selectAll(".link-hitarea")
       .data(links)
       .join("line")
       .attr("class", "link-hitarea")
       .on("mouseover", function(event, d) {
+        // 显示悬浮框
         tooltip.style("opacity", 1)
-          .html(`<strong>Relation:</strong> ${d.relation}<br>
-                <strong>Source:</strong> ${d.source.name} (${d.source.type})<br>
-                <strong>Target:</strong> ${d.target.name} (${d.target.type})`)
+          .html(`<strong>关系:</strong> ${d.relation}<br>
+                <strong>源节点:</strong> ${d.source.name} (${d.source.type})<br>
+                <strong>目标节点:</strong> ${d.target.name} (${d.target.type})`)
           .style("left", (event.pageX + 10) + "px")
           .style("top", (event.pageY - 10) + "px");
         
+        // 高亮相关节点
         node.classed("node-highlight", n => n.id === d.source.id || n.id === d.target.id);
       })
       .on("mouseout", function() {
+        // 隐藏悬浮框
         tooltip.style("opacity", 0);
+        // 移除高亮
         node.classed("node-highlight", false);
       });
-    
-    // Create link labels
+
     const linkText = g.append("g")
       .selectAll("text")
       .data(links)
       .join("text")
       .attr("class", "relation")
       .text(d => d.relation);
-    
-    // Node color scale
+
+    // 根据节点类型设置不同的颜色-TODO
     const nodeColorScale = d3.scaleOrdinal()
       .domain(["LPitem", "LearningPointCollection", "RIitem", "PRitem"])
       .range(["#a66ef7", "#bff76e", "#ea6ef7", "#7eafec"]);
-    
-    // Create nodes
+
     const node = g.append("g")
       .selectAll("circle")
       .data(nodes)
       .join("circle")
-      .attr("r", d => d.type === "LearningPointCollection" ? 40 : 33)
+      .attr("r", d => d.type === "LearningPointCollection" ? 40 : 33)  // LPcollection加大
       .attr("fill", d => nodeColorScale(d.type))
       .call(drag(simulation));
-    
-    // Create node labels
+
     const label = g.append("g")
       .selectAll("text")
       .data(nodes)
@@ -1838,61 +1549,62 @@ function initGraphView() {
       .attr("dy", "2.0em")
       .attr("font-size", "14px")
       .attr("font-weight", "bold");
-    
-    // Update positions on simulation tick
+
     simulation.on("tick", () => {
+      // 更新可见边
       linkVisible
         .attr("x1", d => d.source.x)
         .attr("y1", d => d.source.y)
         .attr("x2", d => d.target.x)
         .attr("y2", d => d.target.y);
       
+      // 更新宽边（用于捕获鼠标事件）
       linkHitarea
         .attr("x1", d => d.source.x)
         .attr("y1", d => d.source.y)
         .attr("x2", d => d.target.x)
         .attr("y2", d => d.target.y);
-      
+
       linkText
         .attr("x", d => (d.source.x + d.target.x) / 2)
         .attr("y", d => (d.source.y + d.target.y) / 2);
-      
+
       node
         .attr("cx", d => d.x)
         .attr("cy", d => d.y);
-      
+
       label
         .attr("x", d => d.x)
         .attr("y", d => d.y - 25);
     });
-    
-    // Drag behavior
+
     function drag(simulation) {
       function dragstarted(event, d) {
         if (!event.active) simulation.alphaTarget(0.3).restart();
         d.fx = d.x;
         d.fy = d.y;
       }
-      
+
       function dragged(event, d) {
         d.fx = event.x;
         d.fy = event.y;
       }
-      
+
       function dragended(event, d) {
         if (!event.active) simulation.alphaTarget(0);
         d.fx = null;
         d.fy = null;
       }
-      
+
       return d3.drag()
         .on("start", dragstarted)
         .on("drag", dragged)
         .on("end", dragended);
     }
-    
-    // Find focus node (node with highest degree)
+
+    // 找到要聚焦的节点
     function findFocusNode() {
+      // 查找度最大的节点
       const nodeDegrees = {};
       nodes.forEach(node => {
         nodeDegrees[node.id] = 0;
@@ -1915,13 +1627,12 @@ function initGraphView() {
       
       return maxDegreeNode;
     }
-    
-    // Focus on a node
+
+    // 聚焦到指定节点
     function focusOnNode(node) {
       if (!node) return;
-      return ;
-      
-      const initial_scale = 1;
+
+      const initial_scale = 1;  // 调整初始缩放-TODO
       
       const transform = d3.zoomIdentity
         .scale(initial_scale)
@@ -1931,821 +1642,127 @@ function initGraphView() {
         .duration(750)
         .call(zoom.transform, transform);
     }
+
+    // // 初始化时聚焦到特定节点
+    // initialFocusNode = findFocusNode();
     
-    // Set up focus button
-    const initialFocusNode = findFocusNode();
+    // // 等待力导向布局稳定后再聚焦
+    // setTimeout(() => {
+    //   focusOnNode(initialFocusNode);
+    // }, 1000);
+    
+    // 为重新对焦按钮添加点击事件
     focusButton.on("click", function() {
       focusOnNode(initialFocusNode);
     });
+  }
+  
+  document.getElementById('graph-selector').addEventListener('change', function () {
+    const selected = this.value;
+    if(selected === "network") {
+      allNodes = graphs.network.nodes
+      allLinks = graphs.network.links
+      show_d3(graphs.network.nodes, graphs.network.links);  // 第二个参数为true表示合并重载
+    }
+    else if(selected === "physics") {
+      allNodes = graphs.physics.nodes
+      allLinks = graphs.physics.links
+      show_d3(graphs.physics.nodes, graphs.physics.links);  // 第二个参数为true表示合并重载
+    }  
+    else if(selected === "biology") {
+      allNodes = graphs.biology.nodes
+      allLinks = graphs.biology.links
+      show_d3(graphs.biology.nodes, graphs.biology.links);  // 第二个参数为true表示合并重载
+    } 
+    else if(selected === "chemistry") {
+      allNodes = graphs.chemistry.nodes
+      allLinks = graphs.chemistry.links
+      show_d3(graphs.chemistry.nodes, graphs.chemistry.links);  // 第二个参数为true表示合并重载
+    } 
+  });
+
+
+  function handleSearch() {
+    const keyword = document.getElementById('search-input').value.trim().toLowerCase();
+
+    if (!keyword) {
+      // 如果搜索框为空，显示全部
+      show_d3(allNodes, allLinks);
+      return;
+    }
+
+    // 找出名称中包含关键字的节点
+    const matchedNodes = allNodes.filter(node => node.name.toLowerCase().includes(keyword));
+    const matchedNodeIds = new Set(matchedNodes.map(n => n.id));
+
+    // 找出连接到这些节点的边
+    const matchedLinks = allLinks.filter(link =>
+      matchedNodeIds.has(link.source.id || link.source) || matchedNodeIds.has(link.target.id || link.target)
+    );
+
+    // 为了让相关的 source/target 节点都出现在图中，补充它们
+    const connectedNodeIds = new Set([
+      ...matchedLinks.map(l => (typeof l.source === 'object' ? l.source.id : l.source)),
+      ...matchedLinks.map(l => (typeof l.target === 'object' ? l.target.id : l.target)),
+    ]);
+    var finalNodes = []
+    if(matchedLinks.length > 0) {
+      finalNodes = allNodes.filter(n => connectedNodeIds.has(n.id));
+    }
+    else {
+      finalNodes = matchedNodes
+    }
     
-    // Initial focus after simulation stabilizes
-    setTimeout(() => {
-      focusOnNode(initialFocusNode);
-    }, 1000);
-  }
-}
 
-// ==================== TREE VIEW CODE ====================
-function initTreeView() {
-  // Sample data for tree view - convert graph data to tree structure
-  const treeData = {
-    "physics": {
-      "id": "https://kgeditor.cn/physics_example/lp/PhysicsExample_Collection",
-      "version:": "1.0.0",
-      "title": "Physics",
-      "type": "LearningPointCollection",
-      "identifier": "234d22c8-9958-4789-bb36-673f32cc38ac",
-      "children": [
-        {
-          "id": "https://kgeditor.cn/physics_example/lp/1_ElementaryParticle",
-          "type": "LPitem",
-          "title": "1_ElementaryParticle",
-          "identifier": "cfd495bc-acb7-46f4-81f1-41597c2a8635",
-          "treeLevel": "1",
-          "itemType": "KUnit",
-          "treePosition": "1",
-          "children": [
-            {
-              "id": "https://kgeditor.cn/physics_example/lp/1_1_DiscoveryOfParticles",
-              "treeLevel": "2",
-              "treePosition": "1.1",
-              "itemType": "KUnit",
-              "type": "LPitem",
-              "title": "1_1_DiscoveryOfParticles",
-              "identifier": "80937968-23b7-472e-b6b4-acf316b24ee0",
-              "children": [
-                {
-                  "id": "https://kgeditor.cn/physics_example/lp/spin_quantization",
-                  "treePosition": "1.1.5",
-                  "identifier": "8845cf46-b9d9-41b1-92f4-1dcdef2017d8",
-                  "title": "spin_quantization",
-                  "itemType": "KPoint",
-                  "type": "LPitem",
-                  "treeLevel": "3",
-                  "contentJson": "{\"description\": \"The spin angular momentum (or spin) of each particle is also quantized, usually measured in multiples of Planck's constant\"}",
-                  "children": []
-                },
-                {
-                  "id": "https://kgeditor.cn/physics_example/lp/atom",
-                  "itemType": "KPoint",
-                  "treeLevel": "3",
-                  "type": "LPitem",
-                  "contentJson": "{\"composition\": \"electron, atomic nucleus\"}",
-                  "title": "atom",
-                  "treePosition": "1.1.2",
-                  "identifier": "e678beae-2299-47b1-8c0e-6d4fbc173da3",
-                  "children": []
-                },
-                {
-                  "id": "https://kgeditor.cn/physics_example/lp/particle",
-                  "https://kgeditor.cn/physics_example/relation/decaysInto": "https://kgeditor.cn/physics_example/lp/particle",
-                  "type": "LPitem",
-                  "treePosition": "1.1.4",
-                  "title": "particle",
-                  "https://kgeditor.cn/physics_example/relation/includes": "https://kgeditor.cn/physics_example/lp/lifetime",
-                  "contentJson": "{\"electric charge\": \"positive, negative, neutral\"}",
-                  "identifier": "fd340149-b9ea-49c1-add5-f10e1d1d49c1",
-                  "treeLevel": "3",
-                  "itemType": "KPoint",
-                  "children": []
-                },
-                {
-                  "id": "https://kgeditor.cn/physics_example/lp/electric_charge",
-                  "identifier": "1da6c439-3e9e-4f79-b1d2-a9c7ce17c7f7",
-                  "treePosition": "1.1.8",
-                  "treeLevel": "3",
-                  "itemType": "KPoint",
-                  "https://kgeditor.cn/physics_example/relation/includes": "https://kgeditor.cn/physics_example/lp/elementary_charge_e",
-                  "title": "electric_charge",
-                  "type": "LPitem",
-                  "children": []
-                },
-                {
-                  "id": "https://kgeditor.cn/physics_example/lp/elementary_charge_e",
-                  "treeLevel": "3",
-                  "treePosition": "1.1.1",
-                  "type": "LPitem",
-                  "title": "elementary_charge_e",
-                  "contentJson": "{\"value\": \"1.602 * 10^-19 C\"}",
-                  "itemType": "KPoint",
-                  "identifier": "750efecf-46b7-4d6c-84fd-3e221e75bf03",
-                  "children": []
-                },
-                {
-                  "id": "https://kgeditor.cn/physics_example/lp/positron",
-                  "treePosition": "1.1.9",
-                  "title": "positron",
-                  "treeLevel": "3",
-                  "type": "LPitem",
-                  "identifier": "7b3a04ec-c405-4fb7-be44-a7b0b1eb13f8",
-                  "itemType": "KPoint",
-                  "children": []
-                },
-                {
-                  "id": "https://kgeditor.cn/physics_example/lp/elementary_particle",
-                  "treePosition": "1.1.3",
-                  "title": "elementary_particle",
-                  "treeLevel": "3",
-                  "itemType": "KPoint",
-                  "contentJson": "{\"definition\": \"Particles with different masses and properties that can transform into each other\"}",
-                  "type": "LPitem",
-                  "identifier": "c91fed72-cb50-43da-8cc9-143d1ea8d943",
-                  "children": []
-                },
-                {
-                  "id": "https://kgeditor.cn/physics_example/lp/particle_lifetime",
-                  "contentJson": "{\"definition\": \"The average time a particle exists before decaying is called its lifetime\"}",
-                  "treeLevel": "3",
-                  "itemType": "KPoint",
-                  "type": "LPitem",
-                  "title": "particle_lifetime",
-                  "treePosition": "1.1.6",
-                  "identifier": "f605007b-eb1a-47f5-924a-e880e0bbcd0b",
-                  "children": []
-                },
-                {
-                  "id": "https://kgeditor.cn/physics_example/lp/mass-energy_equivalence",
-                  "contentJson": "{\"formula\": \"E=mc^2\", \"proposed by\": \"Einstein\"}",
-                  "title": "mass-energy_equivalence",
-                  "identifier": "835fe351-2f4e-441a-9f15-e8f2f6e24fb5",
-                  "itemType": "KPoint",
-                  "treePosition": "1.1.7",
-                  "treeLevel": "3",
-                  "type": "LPitem",
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "https://kgeditor.cn/physics_example/lp/1_2_ClassificationOfParticles",
-              "treeLevel": "2",
-              "itemType": "KUnit",
-              "title": "1_2_ClassificationOfParticles",
-              "type": "LPitem",
-              "identifier": "ea59c1a5-f963-4fb4-b6f7-eccaa4c4b358",
-              "treePosition": "1.2",
-              "children": [
-                {
-                  "id": "https://kgeditor.cn/physics_example/lp/d-quark",
-                  "type": "LPitem",
-                  "treeLevel": "3",
-                  "identifier": "95e87536-7620-46b7-998f-89e24a90a748",
-                  "itemType": "KPoint",
-                  "treePosition": "1.2.5",
-                  "title": "d-quark",
-                  "children": []
-                },
-                {
-                  "id": "https://kgeditor.cn/physics_example/lp/meson",
-                  "treePosition": "1.2.7",
-                  "itemType": "KPoint",
-                  "identifier": "c259434c-4a20-449d-b323-9ac303fa8342",
-                  "treeLevel": "3",
-                  "type": "LPitem",
-                  "title": "meson",
-                  "children": []
-                },
-                {
-                  "id": "https://kgeditor.cn/physics_example/lp/neutron",
-                  "treePosition": "1.2.6",
-                  "itemType": "KPoint",
-                  "https://kgeditor.cn/physics_example/relation/isComposedOf": "https://kgeditor.cn/physics_example/lp/d-quark",
-                  "treeLevel": "3",
-                  "contentJson": "{\"composition\": \"2 down quarks and 1 up quark\"}",
-                  "type": "LPitem",
-                  "identifier": "820ce5f1-2cd1-45d0-9a45-706ee4521c2d",
-                  "title": "neutron",
-                  "children": []
-                },
-                {
-                  "id": "https://kgeditor.cn/physics_example/lp/fundamental_interactions",
-                  "type": "LPitem",
-                  "identifier": "64128038-565c-47bf-a1e0-357783a94264",
-                  "title": "fundamental_interactions",
-                  "treePosition": "1.2.1",
-                  "itemType": "KPoint",
-                  "contentJson": "{\"number\": \"4 types\", \"classification\": \"['gravity', 'electromagnetic force', 'strong interaction', 'weak interaction']\"}",
-                  "treeLevel": "3",
-                  "children": []
-                },
-                {
-                  "id": "https://kgeditor.cn/physics_example/lp/proton",
-                  "type": "LPitem",
-                  "title": "proton",
-                  "https://kgeditor.cn/physics_example/relation/emits": "https://kgeditor.cn/physics_example/lp/positron",
-                  "https://kgeditor.cn/physics_example/relation/isComposedOf": "https://kgeditor.cn/physics_example/lp/d-quark",
-                  "https://kgeditor.cn/physics_example/relation/transformsInto": "https://kgeditor.cn/physics_example/lp/neutron",
-                  "contentJson": "{\"composition\": \"2 up quarks and 1 down quark\"}",
-                  "identifier": "c57ef85f-4a69-498a-a5b7-0409816b2c5f",
-                  "treePosition": "1.2.3",
-                  "itemType": "KPoint",
-                  "treeLevel": "3",
-                  "children": []
-                },
-                {
-                  "id": "https://kgeditor.cn/physics_example/lp/u-quark",
-                  "identifier": "5827f33e-c620-42a5-afbc-5e8a1e939693",
-                  "treeLevel": "3",
-                  "itemType": "KPoint",
-                  "title": "u-quark",
-                  "type": "LPitem",
-                  "treePosition": "1.2.4",
-                  "children": []
-                },
-                {
-                  "id": "https://kgeditor.cn/physics_example/lp/hadron",
-                  "treeLevel": "3",
-                  "treePosition": "1.2.2",
-                  "itemType": "KPoint",
-                  "type": "LPitem",
-                  "contentJson": "{\"characteristic physical quantities\": \"particle type, spin, mass, electric charge\"}",
-                  "title": "hadron",
-                  "identifier": "f995cd2e-c4fa-4689-bfe8-0332d73e17ca",
-                  "children": []
-                },
-                {
-                  "id": "https://kgeditor.cn/physics_example/lp/neutrino",
-                  "treeLevel": "3",
-                  "itemType": "KPoint",
-                  "treePosition": "1.2.8",
-                  "title": "neutrino",
-                  "type": "LPitem",
-                  "identifier": "9d048519-0290-43f6-ac06-2265ec9dda86",
-                  "children": []
-                }
-              ]
-            }
-          ]
-        }
-      ]
+    show_d3(finalNodes, matchedLinks);
+  };
+
+  const i18n = {
+    'zh-CN': {
+      title: '展示查看页',
+      network: '计算机网络图谱',
+      physics: '物理图谱',
+      chemistry: '化学图谱',
+      biology: '生物图谱',
+      download: '点击下载图谱',
+      search: '搜索',
+      head: '图谱样例查看页'
     },
-    "chemistry": {
-      "id": "https://example.com/concept_graph/lp/Chemistry_Collection",
-      "type": "LearningPointCollection",
-      "title": "Chemistry",
-      "version:": "1.0.0",
-      "identifier": "234d22c8-9958-4789-bb36-673f32cc38ac",
-      "children": [
-        {
-          "id": "https://example.com/concept_graph/lp/1295",
-          "type": "LPitem",
-          "title": "Chemistry and Social Development",
-          "itemType": "KPoint",
-          "discipline": "Chemistry",
-          "treePosition": "1",
-          "identifier": "300813c3-9618-4191-8036-149a6b8e1d94",
-          "humanAssignedId": "1295",
-          "treeLevel": "1",
-          "children": [
-            {
-              "id": "https://example.com/concept_graph/lp/1321",
-              "treeLevel": "2",
-              "itemType": "KPoint",
-              "discipline": "Chemistry",
-              "treePosition": "1.2",
-              "hasParent": "https://example.com/concept_graph/lp/1295",
-              "title": "Common Chemical Synthetic Materials",
-              "type": "LPitem",
-              "humanAssignedId": "1321",
-              "identifier": "fa1dfdfe-63be-40b6-87ad-522ba589319a",
-              "children": [
-                {
-                  "id": "https://example.com/concept_graph/lp/1331",
-                  "hasResource": "http://example.org/instance#10521",
-                  "title": "Composite Materials and Nanomaterials",
-                  "hasParent": "https://example.com/concept_graph/lp/1321",
-                  "identifier": "a6b17504-7a75-45e9-8ef6-c6c6246551cf",
-                  "humanAssignedId": "1331",
-                  "itemType": "KPoint",
-                  "discipline": "Chemistry",
-                  "treePosition": "1.2.2",
-                  "type": "LPitem",
-                  "treeLevel": "3",
-                  "children": []
-                },
-                {
-                  "id": "https://example.com/concept_graph/lp/1327",
-                  "type": "LPitem",
-                  "treePosition": "1.2.1",
-                  "treeLevel": "3",
-                  "itemType": "KPoint",
-                  "discipline": "Chemistry",
-                  "identifier": "15c17cb4-a184-48a2-a711-b172d8b1cd0b",
-                  "hasResource": "http://example.org/instance#10514",
-                  "humanAssignedId": "1327",
-                  "title": "White Pollution and Prevention/Control",
-                  "hasParent": "https://example.com/concept_graph/lp/1321",
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "https://example.com/concept_graph/lp/1333",
-              "treePosition": "1.1",
-              "hasParent": "https://example.com/concept_graph/lp/1295",
-              "title": "Chemicals and Health",
-              "humanAssignedId": "1333",
-              "type": "LPitem",
-              "treeLevel": "2",
-              "itemType": "KPoint",
-              "discipline": "Chemistry",
-              "identifier": "00fabe1a-874f-47de-8f42-3d392a2c9831",
-              "children": [
-                {
-                  "id": "https://example.com/concept_graph/lp/1334",
-                  "treePosition": "1.1.1",
-                  "hasResource": "http://example.org/instance#10504",
-                  "title": "The Elemental Composition of the Human Body and the Important Role of Elements in Human Health",
-                  "treeLevel": "3",
-                  "identifier": "039ca02b-4926-4618-9c40-44f039d99c66",
-                  "itemType": "KPoint",
-                  "type": "LPitem",
-                  "discipline": "Chemistry",
-                  "humanAssignedId": "1334",
-                  "hasParent": "https://example.com/concept_graph/lp/1333",
-                  "children": []
-                },
-                {
-                  "id": "https://example.com/concept_graph/lp/1335",
-                  "hasResource": "http://example.org/instance#10491",
-                  "title": "Life Activities and Six Major Nutrients",
-                  "humanAssignedId": "1335",
-                  "hasParent": "https://example.com/concept_graph/lp/1333",
-                  "treePosition": "1.1.2",
-                  "treeLevel": "3",
-                  "itemType": "KPoint",
-                  "type": "LPitem",
-                  "identifier": "83c4ca76-084f-444b-957a-19baf3564846",
-                  "discipline": "Chemistry",
-                  "children": []
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    "biology": {
-      "id": "http://example.org/instance#Bio701_Collection",
-      "humanAssignedId": "Bio701_Collection",
-      "identifier": "937b9561-7184-4aa0-b29e-37322d9b6f9a",
-      "collectionUri": "https://basic.smartedu.cn",
-      "title": "Biology",
-      "type": "LearningPointCollection",
-      "version": "1.0.0",
-      "children": [
-        {
-          "id": "http://example.org/instance#T1",
-          "treeLevel": "1",
-          "humanAssignedId": "T1",
-          "fullStatement": "Covers Observe living organisms in the surrounding environment and Characteristics of living organisms.",
-          "treePosition": "1",
-          "identifier": "f30802c6-78bf-411f-83ad-6d6b3b5d6c33",
-          "itemType": "Topic",
-          "title": "Biology and Cells",
-          "type": "LPitem",
-          "children": [
-            {
-              "id": "http://example.org/instance#LO1",
-              "itemType": "LearningObjective",
-              "title": "Observe living organisms in the surrounding environment",
-              "treePosition": "1.1",
-              "hasParent": "http://example.org/instance#T1",
-              "treeLevel": "2",
-              "humanAssignedId": "LO1",
-              "type": "LPitem",
-              "identifier": "24bc0a5a-438e-4c7c-aec8-a8ca50a41d8a",
-              "fullStatement": "Master basic observation methods and record the characteristics of nearby living organisms.",
-              "children": []
-            },
-            {
-              "id": "http://example.org/instance#LO2",
-              "fullStatement": "Compare and analyze textual and visual materials of animals and plants, distinguish between living and non-living things, and master the common characteristics of living organisms.",
-              "title": "Characteristics of living organisms",
-              "hasParent": "http://example.org/instance#T1",
-              "humanAssignedId": "LO2",
-              "identifier": "19396c62-0517-4a8a-914a-22c376de4b7e",
-              "treeLevel": "2",
-              "itemType": "LearningObjective",
-              "treePosition": "1.2",
-              "type": "LPitem",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "http://example.org/instance#T2",
-          "identifier": "ab3c5113-289f-4a21-9ac5-8c752da19238",
-          "itemType": "Topic",
-          "treeLevel": "1",
-          "title": "Diversity of Living Organisms",
-          "humanAssignedId": "T2",
-          "treePosition": "2",
-          "fullStatement": "Covers Algae, mosses, ferns and Seed plants.",
-          "type": "LPitem",
-          "children": [
-            {
-              "id": "http://example.org/instance#LO3",
-              "itemType": "LearningObjective",
-              "treeLevel": "2",
-              "title": "Algae, mosses, and ferns",
-              "identifier": "7eae72c5-c67b-4819-bde9-c50e3ca93944",
-              "fullStatement": "Be able to analyze the characteristics of algae and mosses that help them adapt to their living environments and understand that the characteristics of living organisms are adapted to their environments.",
-              "treePosition": "2.1",
-              "type": "LPitem",
-              "hasParent": "http://example.org/instance#T2",
-              "humanAssignedId": "LO3",
-              "children": []
-            },
-            {
-              "id": "http://example.org/instance#LO4",
-              "humanAssignedId": "LO4",
-              "type": "LPitem",
-              "fullStatement": "Master the basic structure of seeds by comparing the similarities and differences in the structures of different seeds.",
-              "title": "Seed plants",
-              "treePosition": "2.2",
-              "identifier": "d5c8441b-27d3-410f-9d1d-b32b3acfdcaa",
-              "itemType": "LearningObjective",
-              "hasParent": "http://example.org/instance#T2",
-              "treeLevel": "2",
-              "children": []
-            }
-          ]
-        }
-      ]
+    'en-US': {
+      title: 'Graph Viewer',
+      network: 'Computer Networks',
+      physics: 'Physics',
+      chemistry: 'Chemistry',
+      biology: 'Biology',
+      download: 'Download Graph',
+      search: 'Search',
+      head: 'Graph Sample Viewer'
     }
+  };
+
+  let currentLang = 'en-US';
+
+  function toggleLang() {
+    currentLang = currentLang === 'zh-CN' ? 'en-US' : 'zh-CN';
+    document.documentElement.lang = currentLang;
+    document.getElementById('lang-toggle').textContent = currentLang === 'zh-CN' ? 'EN' : '中';
+    updateI18n();
   }
 
-  let activeNode = null
-
-  // Create tree view
-  function createTreeNode(node, path = []) {
-    const li = document.createElement("li")
-    const nodeDiv = document.createElement("div")
-    nodeDiv.className = "tree-node"
-
-    const currentPath = [...path, node.id]
-    nodeDiv.dataset.path = JSON.stringify(currentPath)
-    nodeDiv.dataset.nodeData = JSON.stringify(node)
-
-    // Create toggle icon
-    const toggleIcon = document.createElement("span")
-    toggleIcon.className = "toggle-icon"
-
-    if (node.children && node.children.length > 0) {
-      toggleIcon.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      `
-      toggleIcon.classList.add("expanded") // Always expanded
-    } else {
-      toggleIcon.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="1"></circle>
-        </svg>
-      `
-    }
-
-    nodeDiv.appendChild(toggleIcon)
-
-    // Create node label - extract the last segment of the ID
-    const nodeLabel = document.createElement("span")
-    nodeLabel.className = "node-label"
-
-    // Get the last segment of the ID
-    const idParts = node.title
-    nodeLabel.textContent = idParts
-
-    nodeDiv.appendChild(nodeLabel)
-
-    // Add node type badge if available
-    if (node.type) {
-      const nodeType = document.createElement("span")
-      nodeType.className = "node-type"
-      nodeType.textContent = node.type
-      nodeDiv.appendChild(nodeType)
-    }
-
-    li.appendChild(nodeDiv)
-
-    // Handle node click - only for displaying details
-    nodeDiv.addEventListener("click", (e) => {
-      e.stopPropagation()
-
-      // Update active node
-      if (activeNode) {
-        activeNode.classList.remove("active")
-      }
-      nodeDiv.classList.add("active")
-      activeNode = nodeDiv
-
-      // Display node details
-      const nodeData = JSON.parse(nodeDiv.dataset.nodeData)
-      displayDetails(nodeData)
-
-      if (node.children && node.children.length > 0) {
-        const childUl = li.querySelector("ul")
-        if (childUl) {
-          const isExpanded = childUl.style.display !== "none"
-          childUl.style.display = isExpanded ? "none" : "block"
-
-          // Toggle the expanded class on the icon
-          if (isExpanded) {
-            toggleIcon.classList.remove("expanded")
-          } else {
-            toggleIcon.classList.add("expanded")
-          }
-        }
-      }
-    })
-
-    // Add children if any
-    if (node.children && node.children.length > 0) {
-      const childUl = document.createElement("ul")
-      childUl.style.display = "none" // Always visible
-
-      node.children.forEach((child) => {
-        const childLi = createTreeNode(child, currentPath)
-        childUl.appendChild(childLi)
-      })
-
-      li.appendChild(childUl)
-    }
-
-    return li
-  }
-
-  // Display node details
-  function displayDetails(node) {
-    const details = document.getElementById("details")
-
-    // Create HTML for details
-    let detailsHTML = `<h3>${node.title || getLastSegment(node.id)}</h3>`
-
-    // Process all properties except id and children
-    for (const [key, value] of Object.entries(node)) {
-      if (key !== "id" && key !== "children") {
-        // 还需要处理content内容展示-TODO
-        if (key === "contentJson" && value) {
-          try {
-            // Parse the contentJson if it exists
-            const contentObj = JSON.parse(value);
-            let contentHtml = '';
-            
-            // Iterate through each key-value pair in the JSON
-            Object.entries(contentObj).forEach(([jsonKey, jsonValue]) => {
-              contentHtml += `
-                <div class="detail-row sub-detail">
-                  <span class="label">${formatLabel(jsonKey)}</span>
-                  <div class="value">${jsonValue}</div>
-                </div>
-              `;
-            });
-            
-            detailsHTML += `
-              <div class="detail-row">
-                <span class="label">Content</span>
-                <div class="value content-container">
-                  ${contentHtml}
-                </div>
-              </div>`;
-          } catch (e) {
-            // If parsing fails, display as is
-            detailsHTML += `<div class="detail-row">
-              <span class="label">Content</span>
-              <div class="value">${value}</div>
-            </div>`;
-          }
-        } else if (key.startsWith("https://")) {
-          // Handle relation properties
-          const relationName = key.split("/").pop();
-          detailsHTML += `<div class="detail-row">
-            <span class="label">Relation: ${relationName}</span>
-            <div class="value">${getLastSegment(value)}</div>
-          </div>`;
-        } else {
-          // Regular properties
-          detailsHTML += `<div class="detail-row">
-            <span class="label">${formatLabel(key)}</span>
-            <div class="value">${value}</div>
-          </div>`;
-        }
-      }
-    }
-
-    details.innerHTML = detailsHTML
-  }
-
-  // Format JSON content for display
-  function formatJsonContent(obj) {
-    let result = ""
-    for (const [key, value] of Object.entries(obj)) {
-      result += `${formatLabel(key)}: ${value}\n`
-    }
-    return result
-  }
-
-  // Format label by capitalizing and adding spaces
-  function formatLabel(str) {
-    return str
-      .replace(/([A-Z])/g, " $1") // Add space before capital letters
-      .replace(/^./, (str) => str.toUpperCase()) // Capitalize first letter
-      .trim()
-  }
-
-  // Get the last segment of a URL or path
-  function getLastSegment(str) {
-    return str.split("/").pop()
-  }
-
-  // Expand all nodes
-  function expandAll() {
-    const allUls = document.querySelectorAll(".tree-content ul")
-    const allToggleIcons = document.querySelectorAll(".toggle-icon")
-
-    allUls.forEach((ul) => {
-      ul.style.display = "block"
-    })
-
-    allToggleIcons.forEach((icon) => {
-      icon.classList.add("expanded")
-    })
-  }
-
-  // Collapse all nodes
-  function collapseAll() {
-    const allUls = document.querySelectorAll(".tree-content ul")
-    const allToggleIcons = document.querySelectorAll(".toggle-icon")
-    const rootUl = document.querySelector(".tree-content > ul")
-
-    allUls.forEach((ul) => {
-      if (ul !== rootUl) {
-        ul.style.display = "none"
-      }
-    })
-
-    allToggleIcons.forEach((icon) => {
-      icon.classList.remove("expanded")
-    })
-  }
-
-  // Tree search function
-  window.handleTreeSearch = () => {
-    const query = document.getElementById("tree-search-input").value.toLowerCase().trim()
-    if (!query) return
-
-    const allNodes = document.querySelectorAll(".tree-node")
-    let foundNode = null
-
-    // Clear previous highlights
-    allNodes.forEach((node) => {
-      node.classList.remove("active")
-    })
-
-    // Find matching node
-    for (const node of allNodes) {
-      const nodeText = node.querySelector(".node-label").textContent.toLowerCase()
-      if (nodeText.includes(query)) {
-        foundNode = node
-        break
-      }
-    }
-
-    if (foundNode) {
-      // Expand parent nodes
-      let parent = foundNode.parentElement
-      while (parent && parent.tagName !== "DIV") {
-        if (parent.tagName === "UL") {
-          parent.style.display = "block"
-
-          // Update toggle icon
-          const parentLi = parent.parentElement
-          if (parentLi && parentLi.querySelector(".toggle-icon")) {
-            parentLi.querySelector(".toggle-icon").classList.add("expanded")
-          }
-        }
-        parent = parent.parentElement
-      }
-
-      // Highlight found node
-      foundNode.classList.add("active")
-      activeNode = foundNode
-
-      // Scroll to node
-      foundNode.scrollIntoView({ behavior: "smooth", block: "center" })
-
-      // Display node details
-      const nodeData = JSON.parse(foundNode.dataset.nodeData)
-      displayDetails(nodeData)
-    }
-  }
-
-  // Initialize tree - directly use the treeData from tree-data.js
-  function Initialize(){
-    const treeView = document.getElementById("treeView")
-    const rootUl = document.createElement("ul")
-
-    treeView.innerHTML = ""
-    rootUl.innerHTML = ""
-
-    // Use the actual treeData from tree-data.js
-    rootUl.appendChild(createTreeNode(treeData[cur_selection]))
-    treeView.appendChild(rootUl)
-
-    // Select the first node by default to show some details
-    const firstNode = document.querySelector(".tree-node")
-    if (firstNode) {
-      firstNode.click()
-    }
-
-    const rootNode = rootUl.querySelector("li > div.tree-node")
-    if (rootNode) {
-      rootNode.click()
-
-      // Also expand the first level
-      const firstLevelUl = rootUl.querySelector("li > ul")
-      if (firstLevelUl) {
-        firstLevelUl.style.display = "block"
-        const toggleIcon = rootNode.querySelector(".toggle-icon")
-        if (toggleIcon) {
-          toggleIcon.classList.add("expanded")
-        }
-      }
-    }
-  }
-
-  Initialize();
-
-  // 还需要处理搜索框（或删掉？）-TODO
-}
-
-// ==================== INTERNATIONALIZATION ====================
-const i18n = {
-  'zh-CN': {
-    'title': '知识图谱查看器',
-    'head': '知识图谱查看器',
-    'network': '计算机网络图谱',
-    'physics': '物理图谱',
-    'chemistry': '化学图谱',
-    'biology': '生物图谱',
-    'download': '点击下载图谱',
-    'search': '搜索',
-    'graph-view': '图谱视图',
-    'tree-view': '树形视图',
-    'standards-tree': '标准树',
-    'expand-all': '全部展开',
-    'collapse-all': '全部折叠',
-    'select-standard': '选择一个标准',
-    'click-node': '点击树中的节点查看详细信息',
-    'refocus': '重新对焦'
-  },
-  'en-US': {
-    'title': 'Knowledge Graph Viewer',
-    'head': 'Knowledge Graph Viewer',
-    'network': 'Computer Networks',
-    'physics': 'Physics',
-    'chemistry': 'Chemistry',
-    'biology': 'Biology',
-    'download': 'Download Graph',
-    'search': 'Search',
-    'graph-view': 'Graph View',
-    'tree-view': 'Tree View',
-    'standards-tree': 'Standards Tree',
-    'expand-all': 'Expand All',
-    'collapse-all': 'Collapse All',
-    'select-standard': 'Select a Standard',
-    'click-node': 'Click on a node in the tree to view its details',
-    'refocus': 'Refocus'
-  }
-};
-
-let currentLang = 'en-US';
-
-window.toggleLang = function() {
-  currentLang = currentLang === 'zh-CN' ? 'en-US' : 'zh-CN';
-  document.documentElement.lang = currentLang;
-  document.getElementById('lang-toggle').textContent = currentLang === 'zh-CN' ? 'EN' : '中';
-  updateI18n();
-};
-
-function updateI18n() {
-  const elements = document.querySelectorAll('[data-i18n]');
-  elements.forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (i18n[currentLang][key]) {
-      if (el.tagName === 'INPUT' && el.getAttribute('placeholder')) {
-        el.placeholder = i18n[currentLang][key];
-      } else {
+  function updateI18n() {
+    const elements = document.querySelectorAll('[data-i18n]');
+    elements.forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (i18n[currentLang][key]) {
         el.textContent = i18n[currentLang][key];
       }
-    }
-  });
-  document.title = i18n[currentLang]['head'];
-}
+    });
+    document.title = i18n[currentLang]['title'];
+  }
 
-// Initialize i18n
-updateI18n();
-  </script>
+  updateI18n();
+
+</script>
+
 </body>
 </html>
