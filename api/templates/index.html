@@ -870,11 +870,11 @@
     </div>
     
     <nav>
-      <a href="#">View Sample</a>
-      <a href="#">Build Graph</a>
-      <a href="#">Get Certified</a>
-      <a href="#">Download Ontology</a>
-      <a href="#">Contact Us</a>
+        <a href="#" onclick="window.location.href='example'; return false;">View Sample</a>
+        <a href="#" onclick="window.location.href='build-guide'; return false;">Build Graph</a>
+        <a href="#" onclick="window.location.href='build-guide'; return false;">Get Certified</a>
+        <a href="#" onclick="downloadOntology()">Download Ontology</a>
+        <a href="#" onclick="scrollToFooter()">Contact Us</a>
     </nav>
     
     <!-- <div class="toggle-group"> -->
@@ -917,11 +917,11 @@
     <button class="mobile-menu-close" id="mobile-menu-close">&times;</button>
   </div>
   <nav class="mobile-nav">
-    <a href="#">View Sample</a>
-    <a href="#">Build Graph</a>
-    <a href="#">Get Certified</a>
-    <a href="#">Download Ontology</a>
-    <a href="#">Contact Us</a>
+    <a href="#" onclick="window.location.href='example'; return false;">View Sample</a>
+    <a href="#" onclick="window.location.href='build-guide'; return false;">Build Graph</a>
+    <a href="#" onclick="window.location.href='build-guide'; return false;">Get Certified</a>
+    <a href="#" onclick="downloadOntology()">Download Ontology</a>
+    <a href="#" onclick="scrollToFooter()">Contact Us</a>
   </nav>
 </div>
 
@@ -1130,7 +1130,7 @@
     </div>
     
     <div class="ontology-link">
-      <b>Want to go deeper?</b>  <a href="#">View the full ontology in Turtle format</a>
+      <b>Want to go deeper?</b>  <a href="#" onclick="downloadOntology()">View the full ontology in Turtle format</a>
     </div>
   </div>
 </section>
@@ -1442,6 +1442,22 @@
       }
     }
   }
+
+  function downloadOntology() {
+    const filePath = "/static/ttl/" + "edkg-ontology-02-25.ttl";
+    const link = document.createElement("a");
+    link.href = filePath;
+    link.download = "edkg-ontology-02-25.ttl";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+function scrollToFooter() {
+    document.getElementById('contact').scrollIntoView({
+        behavior: 'smooth'
+    });
+};
   
   // checkSystemPreference();
   
