@@ -694,12 +694,6 @@
     vertical-align: top;
   }
   
-  .org-logo {
-    width: 40px;
-    height: 40px;
-    background-color: #e0e0e0;
-    border-radius: 50%;
-  }
   
   .contact-section {
     text-align: center;
@@ -823,6 +817,14 @@
   .contact-info {
       color: #6c757d;
   }
+
+.group-name {
+    align-items: flex-start; /* 顶端对齐 */
+    font-weight: bold;
+    font-size: 1rem;
+    color: #495057;
+    flex: 1;
+}
   
   /* 响应式调整 */
   @media (max-width: 768px) {
@@ -910,7 +912,7 @@
 <div class="mobile-menu" id="mobile-menu">
   <div class="mobile-menu-header">
     <div class="logo" onclick="window.location.href='/'">
-        <img src="../static/assets/logo2.png" alt="Animation Example">
+        <img src="/static/assets/logo2.png" alt="Animation Example">
     </div>
     <button class="mobile-menu-close" id="mobile-menu-close">&times;</button>
   </div>
@@ -949,7 +951,7 @@
         <p>Explore a collection of curated example graphs from real educational subjects aligned to the EduKG ontology and standards.</p>
       </div>
       <div class="feature-button-container view-samples-button-container">
-        <a href="#" class="button button-yellow">
+        <a href="#" class="button button-yellow" onclick="window.location.href='example'; return false;">
           <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20'%3E%3C/path%3E%3Cpath d='M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z'%3E%3C/path%3E%3C/svg%3E" alt="">
           View Samples
         </a>
@@ -963,7 +965,7 @@
   <div class="container">
     <div class="feature-row">
       <div class="feature-button-container build-graph-button-container">
-        <a href="#" class="button button-teal">
+        <a href="#" class="button button-teal" onclick="window.location.href='build-guide'; return false;">
           <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'%3E%3C/path%3E%3Cpolyline points='17 8 12 3 7 8'%3E%3C/polyline%3E%3Cline x1='12' y1='3' x2='12' y2='15'%3E%3C/line%3E%3C/svg%3E" alt="">
           Build Graph
         </a>
@@ -984,7 +986,7 @@
         <h2>Certify Your Graph</h2>
         <p>Validate your implementation against the IEEE EduKG Standard and receive a signed digital certificate of compliance.</p>
       </div>
-      <div class="feature-button-container get-certified-button-container">
+      <div class="feature-button-container get-certified-button-container" onclick="window.location.href='certificate'; return false;">
         <a href="#" class="button button-coral">
           <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 12h-4l-3 9L9 3l-3 9H2'%3E%3C/path%3E%3C/svg%3E" alt="">
           Get Certified
