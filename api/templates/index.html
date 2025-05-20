@@ -1,735 +1,1139 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="light">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>首页 - Vercel风格</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css" rel="stylesheet"/>
-    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
-    <style>
-        /* 主题变量 */
-        :root {
-            /* 浅色模式变量 */
-            --light-text-color: #000;
-            --light-text-secondary: #666;
-            --light-background: #fff;
-            --light-border-color: rgba(0, 0, 0, 0.1);
-            --light-accent-1: rgba(0, 0, 0, 0.05);
-            --light-accent-2: rgba(0, 0, 0, 0.1);
-            --light-button-text: #fff;
-            --light-button-bg: #000;
-            --light-card-bg: #fff;
-            --light-toggle-bg: rgba(0, 0, 0, 0.1);
-            --light-toggle-icon: #000;
-            
-            /* 深色模式变量 */
-            --dark-text-color: #fff;
-            --dark-text-secondary: #aaa;
-            --dark-background: #111;
-            --dark-border-color: rgba(255, 255, 255, 0.1);
-            --dark-accent-1: rgba(255, 255, 255, 0.05);
-            --dark-accent-2: rgba(255, 255, 255, 0.1);
-            --dark-button-text: #000;
-            --dark-button-bg: #fff;
-            --dark-card-bg: #1a1a1a;
-            --dark-toggle-bg: rgba(255, 255, 255, 0.1);
-            --dark-toggle-icon: #fff;
-            
-            /* 通用变量 */
-            --radius: 8px;
-            --font-sans: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-        
-        /* 浅色模式 */
-        .light {
-            --text-color: var(--light-text-color);
-            --text-secondary: var(--light-text-secondary);
-            --background: var(--light-background);
-            --border-color: var(--light-border-color);
-            --accent-1: var(--light-accent-1);
-            --accent-2: var(--light-accent-2);
-            --button-text: var(--light-button-text);
-            --button-bg: var(--light-button-bg);
-            --card-bg: var(--light-card-bg);
-            --toggle-bg: var(--light-toggle-bg);
-            --toggle-icon: var(--light-toggle-icon);
-        }
-        
-        /* 深色模式 */
-        .dark {
-            --text-color: var(--dark-text-color);
-            --text-secondary: var(--dark-text-secondary);
-            --background: var(--dark-background);
-            --border-color: var(--dark-border-color);
-            --accent-1: var(--dark-accent-1);
-            --accent-2: var(--dark-accent-2);
-            --button-text: var(--dark-button-text);
-            --button-bg: var(--dark-button-bg);
-            --card-bg: var(--dark-card-bg);
-            --toggle-bg: var(--dark-toggle-bg);
-            --toggle-icon: var(--dark-toggle-icon);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: var(--font-sans);
-            background-color: var(--background);
-            color: var(--text-color);
-            line-height: 1.6;
-            min-height: 100vh;
-            overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        
-        /* 网格背景 */
-        .grid-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background-image: linear-gradient(to right, var(--border-color) 1px, transparent 1px),
-                              linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
-            background-size: 80px 80px;
-            opacity: 0.3;
-            transition: background-image 0.3s ease;
-        }
-        
-        /* 头部 */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid var(--border-color);
-            position: relative;
-            transition: border-color 0.3s ease;
-        }
-        
-        .header-left {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo {
-            font-weight: 700;
-            font-size: 1.25rem;
-            color: var(--text-color);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            margin-right: 2rem;
-            transition: color 0.3s ease;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduKG - Educational Knowledge Graph</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Colors */
+    --primary-color: #00AEEF;
+    --text-color: #333333;
+    --text-secondary: #666666;
+    --background-color: #ffffff;
+    --border-color: #e5e7eb;
+    --accent-orange: #FF9E80;
+    --accent-blue-light: #B3E5FC;
+    --accent-yellow: #FFD966;
+    --accent-teal: #8CDCE6;
+    --accent-coral: #F8C3B0;
+    
+    /* Phase colors */
+    --phase1-bg: #EBF5FF;
+    --phase1-text: #1E40AF;
+    --phase1-border: #BFDBFE;
+    --phase2-bg: #ECFDF5;
+    --phase2-text: #065F46;
+    --phase2-border: #A7F3D0;
+    --phase3-bg: #FFF7ED;
+    --phase3-text: #9A3412;
+    --phase3-border: #FFEDD5;
+    
+    /* Ontology colors */
+    --learning-point-bg: #FEF9C3;
+    --learning-point-text: #854D0E;
+    --learning-point-border: #FDE68A;
+    --resource-bg: #DBEAFE;
+    --resource-text: #1E40AF;
+    --resource-border: #BFDBFE;
+    --rule-bg: #FEE2E2;
+    --rule-text: #991B1B;
+    --rule-border: #FECACA;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    
+    /* Border radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-full: 9999px;
+  }
+  
+  /* Dark mode */
+  .dark {
+    --text-color: #f8f9fa;
+    --text-secondary: #adb5bd;
+    --background-color: #121212;
+    --border-color: #2d3748;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+    transition: color 0.3s, background-color 0.3s;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+  
+  /* Header */
+  header {
+    border-bottom: 1px solid var(--border-color);
+    padding: var(--spacing-md) 0;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
 
-        .logo:hover {
-            cursor: pointer;
-        }
-        
-        .logo img {
-            width: 90px;
-            height: 60px;
-            /* background-color: var(--text-color); */
-        
-        }
-        
-        nav {
-            display: flex;
-            gap: 2rem;
-        }
-        
-        nav a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            opacity: 0.8;
-            transition: opacity 0.2s ease, color 0.3s ease;
-        }
-        
-        nav a:hover {
-            opacity: 1;
-        }
-        
-        /* 切换按钮组 */
-        .toggle-group {
-            display: flex;
-            gap: 0.75rem;
-        }
-        
-        /* 主题切换按钮 */
-        .theme-toggle,
-        .lang-toggle {
-            background-color: var(--toggle-bg);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        
-        .theme-toggle:hover,
-        .lang-toggle:hover {
-            background-color: var(--accent-2);
-        }
-        
-        .theme-toggle svg,
-        .lang-toggle span {
-            fill: var(--toggle-icon);
-            color: var(--toggle-icon);
-            transition: fill 0.3s ease, color 0.3s ease;
-        }
-        
-        .lang-toggle span {
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        
-        /* 主要内容 */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-            position: relative;
-        }
-        
-        /* 英雄区域 */
-        .hero {
-            text-align: center;
-            margin-bottom: 6rem;
-            position: relative;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            max-width: 850px;
-            margin-left: auto;
-            margin-right: auto;
-            transition: color 0.3s ease;
-        }
-        
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 850px;
-            margin: 0 auto 2.5rem;
-            transition: color 0.3s ease;
-        }
-        
-        /* 英雄区域渐变背景 */
-        .gradient-bg {
-            position: absolute;
-            bottom: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 400px;
-            background: radial-gradient(circle, 
-                rgba(255, 0, 128, 0.25) 0%, 
-                rgba(0, 255, 255, 0.25) 50%, 
-                rgba(255, 255, 0, 0.25) 100%);
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.7;
-        }
-        
-        /* 按钮 */
-        .button-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 4rem;
-        }
-        
-        .button {
-            padding: 0.75rem 1.5rem;
-            border-radius: 9999px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        
-        .button-primary {
-            background-color: var(--button-bg);
-            color: var(--button-text);
-            border: none;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        
-        .button-primary:hover {
-            opacity: 0.9;
-        }
-        
-        .button-secondary {
-            background-color: transparent;
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        }
-        
-        .button-secondary:hover {
-            background-color: var(--accent-1);
-        }
-        
-        /* 概念图 */
-        .concept-diagram {
-            background-color: var(--accent-1);
-            border-radius: var(--radius);
-            padding: 0rem 0rem;
-            margin-bottom: 4rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-        
-        .concept-diagram img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        
-        /* 三角形装饰 */
-        .triangle {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background-color: transparent;
-            border-left: 2px solid var(--border-color);
-            border-bottom: 2px solid var(--border-color);
-            transform: rotate(-45deg);
-            transition: border-color 0.3s ease;
-        }
-        
-        .triangle-1 {
-            top: 20%;
-            left: 10%;
-        }
-        
-        .triangle-2 {
-            bottom: 20%;
-            right: 10%;
-            transform: rotate(135deg);
-        }
-        
-        /* 特性部分 */
-        .feature-section {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-            margin-bottom: 4rem;
-            align-items: center;
-        }
-        
-        .feature-section:nth-child(even) {
-            grid-template-columns: 1fr 2fr;
-        }
-        
-        .feature-section:last-child {
-            margin-bottom: 6rem;
-        }
-        
-        .feature-description {
-            padding: 2rem;
-            transition: color 0.3s ease;
-        }
-        
-        .feature-description h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-        
-        .feature-description p {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            transition: color 0.3s ease;
-        }
-        
-        .feature-button {
-            background-color: #007bff; /* 更显眼的蓝色背景 */
-            color: #fff; /* 白色文字 */
-            border: none; /* 去掉边框 */
-            border-radius: 12px; /* 更柔和的圆角 */
-            padding: 1.5rem 2rem;
-            text-align: center;
-            font-weight: 600;
-            font-size: 1.1rem;
-            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3); /* 明显的阴影 */
-            transition: all 0.3s ease;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+  .logo:hover {
+      cursor: pointer;
+  }
+  
+  .logo img {
+    margin-right: var(--spacing-sm);
+    width: 90px;
+    height: 60px;
+  }
+  
+  nav {
+    display: none;
+  }
+  
+  @media (min-width: 768px) {
+    nav {
+      display: flex;
+      gap: var(--spacing-xl);
+    }
+  }
+  
+  nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  
+  nav a:hover {
+    color: var(--primary-color);
+  }
+  
+  .toggle-group {
+    display: flex;
+    gap: var(--spacing-xs);
+  }
+  
+  .toggle-btn {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .toggle-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .dark .toggle-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Hero section - 重新设计 */
+  .hero {
+    padding: var(--spacing-xl) 0;
+    position: relative;
+    overflow: hidden;
+    background-color: #f8fbff; /* 添加浅蓝色背景 */
+  }
+  
+  .hero-container {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .hero-content {
+    max-width: 600px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .hero-tagline {
+    color: #FF6B35;
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  @media (min-width: 768px) {
+    .hero h1 {
+      font-size: 3rem;
+    }
+  }
+  
+  .hero h1 .highlight {
+    color: var(--primary-color);
+  }
+  
+  .hero p {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-lg);
+    max-width: 500px;
+  }
+  
+  /* 图形容器 - 重新定位 */
+  .graph-container {
+    position: absolute;
+    top: 0;
+    right: -100px;
+    width: 60%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  /* 添加渐变遮罩 */
+  .graph-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, 
+      #f8fbff 0%, 
+      rgba(248, 251, 255, 0.9) 20%, 
+      rgba(248, 251, 255, 0.7) 40%, 
+      rgba(248, 251, 255, 0.4) 60%, 
+      rgba(248, 251, 255, 0.2) 80%, 
+      rgba(248, 251, 255, 0) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  .dark .graph-mask {
+    background: linear-gradient(to right, 
+      var(--background-color) 0%, 
+      rgba(18, 18, 18, 0.9) 20%, 
+      rgba(18, 18, 18, 0.7) 40%, 
+      rgba(18, 18, 18, 0.4) 60%, 
+      rgba(18, 18, 18, 0.2) 80%, 
+      rgba(18, 18, 18, 0) 100%);
+  }
+  
+  #knowledge-graph {
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Feature sections */
+  .feature-section {
+    padding: var(--spacing-sm) 0; /* 减少上下间距 */
+  }
+  
+  .feature-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md); /* 减少间距 */
+    align-items: center;
+  }
+  
+  @media (min-width: 768px) {
+    .feature-row {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  
+  .feature-content {
+    flex: 1;
+  }
+  
+  .feature-button-container {
+    flex: 1;
+    display: flex;
+  }
+  
+  /* Default alignment for feature buttons */
+  .feature-button-container {
+    justify-content: center;
+  }
+  
+  /* Left alignment for the Build Graph button */
+  .build-graph-button-container {
+    justify-content: flex-start;
+  }
+  
+  /* Right alignment for View Samples and Get Certified buttons */
+  .view-samples-button-container,
+  .get-certified-button-container {
+    justify-content: flex-end;
+  }
+  
+  .feature-content h2 {
+    font-size: 1.75rem; /* 增大标题字体 */
+    margin-bottom: var(--spacing-xs); /* 减少标题下方间距 */
+    font-weight: 600;
+  }
+  
+  .feature-content p {
+    color: var(--text-secondary);
+    max-width: 500px;
+    font-size: 1.1rem; /* 增大段落字体 */
+  }
+  
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: 1.25rem 2.5rem; /* 增大按钮内边距 */
+    border-radius: var(--radius-full);
+    font-weight: 600; /* 加粗按钮文字 */
+    font-size: 1.125rem; /* 增大按钮文字 */
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+    cursor: pointer;
+    min-width: 200px; /* 增大按钮最小宽度 */
+  }
+  
+  .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .button-yellow {
+    background-color: var(--accent-yellow);
+    color: #000000;
+  }
+  
+  .button-teal {
+    background-color: var(--accent-teal);
+    color: #000000;
+  }
+  
+  .button-coral {
+    background-color: var(--accent-coral);
+    color: #000000;
+  }
+  
+  .button img {
+    width: 24px; /* 增大按钮图标 */
+    height: 24px;
+  }
+  
+  /* Workflow section */
+  .workflow-section {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .workflow-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .workflow-diagram {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  
+  .workflow-phase {
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .workflow-phase:last-child {
+    border-bottom: none;
+  }
+  
+  .phase-header {
+    padding: var(--spacing-sm);
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .phase-header::after {
+    content: "+";
+    position: absolute;
+    right: var(--spacing-md);
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .phase-header.active::after {
+    content: "-";
+  }
+  
+  .phase1-header {
+    background-color: var(--phase1-bg);
+    color: var(--phase1-text);
+  }
+  
+  .phase2-header {
+    background-color: var(--phase2-bg);
+    color: var(--phase2-text);
+  }
+  
+  .phase3-header {
+    background-color: var(--phase3-bg);
+    color: var(--phase3-text);
+  }
+  
+  .phase-content-wrapper {
+    position: relative;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+  }
+  
+  .phase-content-wrapper.active {
+    max-height: 1000px; /* Large enough to fit content */
+    transition: max-height 0.5s cubic-bezier(0.5, 0, 0.1, 1);
+  }
+  
+  .phase-content {
+    padding: var(--spacing-md);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.3s ease;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .phase-content.active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  @media (min-width: 768px) {
+    .phase-content {
+      flex-wrap: nowrap;
+    }
+  }
+  
+  .workflow-box {
+    flex: 1;
+    min-width: 120px;
+    border: 1px dashed;
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-sm);
+    text-align: center;
+  }
+  
+  .phase1-box {
+    background-color: var(--phase1-bg);
+    border-color: var(--phase1-border);
+  }
+  
+  .phase1-box .box-title {
+    color: var(--phase1-text);
+    font-weight: 500;
+  }
+  
+  .phase1-box .box-subtitle {
+    color: var(--phase1-text);
+    opacity: 0.8;
+    font-size: 0.75rem;
+  }
+  
+  .phase2-box {
+    background-color: var(--phase2-bg);
+    border-color: var(--phase2-border);
+  }
+  
+  .phase2-box .box-title {
+    color: var(--phase2-text);
+    font-weight: 500;
+  }
+  
+  .phase2-box .box-subtitle {
+    color: var(--phase2-text);
+    opacity: 0.8;
+    font-size: 0.75rem;
+  }
+  
+  .phase3-box {
+    background-color: var(--phase3-bg);
+    border-color: var(--phase3-border);
+  }
+  
+  .phase3-box .box-title {
+    color: var(--phase3-text);
+    font-weight: 500;
+  }
+  
+  .phase3-box .box-subtitle {
+    color: var(--phase3-text);
+    opacity: 0.8;
+    font-size: 0.75rem;
+  }
+  
+  .workflow-arrow {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+  }
+  
+  @media (min-width: 768px) {
+    .workflow-arrow {
+      display: flex;
+      width: 24px;
+    }
+  }
+  
+  .continuous-improvement {
+    border-top: 1px dashed var(--border-color);
+    padding: var(--spacing-sm);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+  }
+  
+  /* Ontology section */
+  .ontology-section {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .ontology-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .ontology-section p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+    max-width: 800px;
+  }
+  
+  .ontology-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+  }
+  
+  @media (min-width: 768px) {
+    .ontology-diagram {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+  
+  .ontology-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+.ontology-box {
+  width: 220px;        /* 加宽，确保长文本一行显示 */
+  height: 80px;        /* 固定高度，三者一致 */
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 500;
+  white-space: nowrap;        /* 强制不换行 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+  
+  .learning-point {
+    background-color: var(--learning-point-bg);
+    border-color: var(--learning-point-border);
+    color: var(--learning-point-text);
+  }
+  
+  .resource {
+    background-color: var(--resource-bg);
+    border-color: var(--resource-border);
+    color: var(--resource-text);
+  }
+  
+  .rule {
+    background-color: var(--rule-bg);
+    border-color: var(--rule-border);
+    color: var(--rule-text);
+  }
+  
+  .ontology-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  
+.ontology-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: -38px;
+}
+  
+.arrow-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 2px; /* 让文字和箭头线更紧凑 */
+}
+  
+.arrow-line {
+  position: relative;
+  width: 60px;
+  height: 2px;
+  background-color: var(--border-color);
+}
 
-        .feature-button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(0, 123, 255, 0.5); /* 悬停时阴影更浓 */
-            background-color: #0056b3; /* 深一点的蓝色作为 hover 效果 */
-        }
-        
-        .dark .feature-button:hover {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .feature-button h4 {
-            font-size: 1.25rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .code-img {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 2rem;
-            padding: 2rem 0;
-        }
-
-        .code-box, .animation-box {
-            flex: 1;
-            max-width: 48%;
-        }
-
-        .code-box pre {
-            background: #ffffff; /* 白色背景 */
-            color: #333333;      /* 深灰色文字 */
-            padding: 1rem;
-            border-radius: 8px;
-            overflow-x: auto;
-            font-size: 14px;
-            line-height: 1.5;
-            border: 1px solid #ccc;
-        }
-
-        .download-btn {
+.arrow-line::after {
+  content: '';
   position: absolute;
-  /* top: 1px;
-  right: 1px; */
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding-left: 42%;
-  padding-top: 1%;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 8px solid var(--border-color);
 }
-.download-btn img, .download-btn svg {
-  width: 460px;
-  height: 460px;
-}
-.download-btn:hover {
-  opacity: 0.8;
+  
+.ontology-link {
+  text-align: center;
+  margin-top: var(--spacing-md);
 }
 
-        pre {
-            margin: 0;
-            overflow-x: auto;
-            font-size: 14px;
-            line-height: 1.6;
-        }
+.ontology-link a {
+  color: black;
+  text-decoration: underline;
+}
+  
+  .ontology-link a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid var(--border-color);
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .dark footer {
+    background-color: #1a1a1a;
+  }
+  
+  .footer-title {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .representatives-table {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-collapse: collapse;
+  }
+  
+  .representatives-table th {
+    text-align: left;
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1.125rem;
+  }
+  
+  .representatives-table td {
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+  }
+  
+  .org-logo {
+    width: 40px;
+    height: 40px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+  }
+  
+  .contact-section {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+  }
+  
+  .contact-section a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  .contact-section a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Mobile menu */
+  .mobile-menu-btn {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+  }
+  
+  @media (min-width: 768px) {
+    .mobile-menu-btn {
+      display: none;
+    }
+  }
+  
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-lg);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .mobile-menu.active {
+    transform: translateX(0);
+  }
+  
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .mobile-menu-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+  
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  .mobile-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
 
-        .animation-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+  .page-footer {
+      display: flex;
+      justify-content: center;
+  }
 
-        .animation-box img {
-            width: 100%;
-            max-width: 480px;
-            border-radius: 16px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-        }
+  .footer-table {
+      width: 30%;
+      border-collapse: collapse;
+      table-layout: fixed;
+  }
 
-        .code-box {
-            padding-bottom: 2px;
-        }
+  .footer-table th, .footer-table td {
+      /* border: 1px solid #ddd; */
+      padding: 10px;
+      vertical-align: top; /* 关键：顶端对齐 */
+  }
+
+  .footer-table th {
+      background-color: #f9f9f9;
+      text-align: left;
+  }
+
+  .org-logo {
+      max-width: 100px;
+      max-height: 50px;
+      object-fit: contain;
+  }
+
+  .spacer {
+      height: 25.58px; /* 高度应与你的 .person-name 高度一致 */
+  }
+  
+  .person-contact-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-bottom: 0.5rem;
+  }
+  
+  .person-name {
+      padding-right: 1rem;
+  }
+  
+  .contact-info {
+      color: #6c757d;
+  }
+  
+  /* 响应式调整 */
+  @media (max-width: 768px) {
+    .hero {
+      padding: var(--spacing-lg) 0;
+    }
+    
+    .graph-container {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      right: 0;
+      margin-top: var(--spacing-lg);
+    }
+    
+    .graph-mask {
+      background: linear-gradient(to bottom, 
+        rgba(248, 251, 255, 0.8) 0%, 
+        rgba(248, 251, 255, 0.6) 30%, 
+        rgba(248, 251, 255, 0.4) 60%, 
+        rgba(248, 251, 255, 0.2) 80%, 
+        rgba(248, 251, 255, 0) 100%);
+    }
+    
+    .dark .graph-mask {
+      background: linear-gradient(to bottom, 
+        rgba(18, 18, 18, 0.8) 0%, 
+        rgba(18, 18, 18, 0.6) 30%, 
+        rgba(18, 18, 18, 0.4) 60%, 
+        rgba(18, 18, 18, 0.2) 80%, 
+        rgba(18, 18, 18, 0) 100%);
+    }
         
-        /* 响应式 */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-            
-            .header-left {
-                width: 100%;
-                justify-content: space-between;
-            }
-            
-            nav {
-                flex-wrap: wrap;
-                gap: 1rem;
-                margin-top: 1rem;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .feature-section,
-            .feature-section:nth-child(even) {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-        }
-
-        /* 页脚 */
-        footer {
-            background-color: #f8f9fa;
-            padding: 2rem 0;
-            border-top: 1px solid #e9ecef;
-        }
-        
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        
-        .footer-column {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: #343a40;
-            border-bottom: 1px solid #dee2e6;
-            padding-bottom: 0.5rem;
-        }
-        
-        .footer-group {
-            margin-bottom: 25.59px;
-        }
-        
-        .footer-row {
-            display: flex;
-            /* align-items: center; */
-            justify-content: space-between;
-            margin-bottom: 25.59px;
-            gap: 1rem;
-        }
-
-        .group-name {
-            align-items: flex-start; /* 顶端对齐 */
-            font-weight: bold;
-            font-size: 1rem;
-            color: #495057;
-            flex: 1;
-        }
-
-        .page-footer {
-            display: flex;
-            justify-content: center;
-        }
-
-        .footer-table {
-            width: 30%;
-            border-collapse: collapse;
-            table-layout: fixed;
-        }
-
-        .footer-table th, .footer-table td {
-            /* border: 1px solid #ddd; */
-            padding: 10px;
-            vertical-align: top; /* 关键：顶端对齐 */
-        }
-
-        .footer-table th {
-            background-color: #f9f9f9;
-            text-align: left;
-        }
-
-        .org-logo {
-            max-width: 100px;
-            max-height: 50px;
-            object-fit: contain;
-        }
-
-        .spacer {
-            height: 25.58px; /* 高度应与你的 .person-name 高度一致 */
-        }
-        
-        .person-contact-pair {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            margin-bottom: 0.5rem;
-        }
-        
-        .person-name {
-            padding-right: 1rem;
-        }
-        
-        .contact-info {
-            color: #6c757d;
-        }
-    </style>
+  }
+</style>
 </head>
 <body>
-    <div class="grid-background"></div>
-    
-    <!-- 头部导航 -->
-    <header>
-        <div class="header-left">
-            <!-- <a href="#" class="logo"> -->
-                <div class="logo" onclick="window.location.href='/'">
-                    <img src="/static/assets/logo2.png" alt="Animation Example">
-                </div>
-                <!-- <span data-i18n="logo">logo</span> -->
-            <!-- </a> -->
-            <div class="toggle-group">
-                <!-- 语言切换按钮 -->
-                <button class="lang-toggle" id="lang-toggle" aria-label="切换语言">
-                    <span id="lang-indicator">中</span>
-                </button>
-                <!-- 主题切换按钮 -->
-                <button class="theme-toggle" id="theme-toggle" aria-label="切换深色/浅色模式">
-                    <!-- 月亮图标（深色模式） -->
-                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
-                    </svg>
-                    <!-- 太阳图标（浅色模式） -->
-                    <svg class="sun-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1zm0 19a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1zm13-9h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2zM1 12a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1zm19.071-7.657l-.707.707a1 1 0 1 0 1.414 1.414l.707-.707a1 1 0 0 0-1.414-1.414zM3.929 19.657l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0-1.414-1.414zM3.929 4.343a1 1 0 0 0-1.414 1.414l.707.707a1 1 0 0 0 1.414-1.414l-.707-.707zm16.142 15.314a1 1 0 0 0 1.414-1.414l-.707-.707a1 1 0 0 0-1.414 1.414l.707.707z"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <nav>
-            <a href="#" data-i18n="nav.certificate" onclick="location.href='certificate'">图谱认证</a>
-            <a href="#" data-i18n="nav.products" onclick="location.href='build-guide'">图谱构建</a>
-            <a href="#" data-i18n="nav.solutions" onclick="location.href='example'">图谱样例</a>
-            <a href="#" data-i18n="nav.resources" onclick="downloadOntology()">本体下载</a>
-            <a href="#" data-i18n="nav.enterprise" onclick="scrollToFooter()">联系我们</a>
-        </nav>
-    </header>
-    
-    <!-- 主要内容 -->
-    <div class="container">
-        <!-- 英雄区域 -->
-        <section class="hero">
-            <h1 data-i18n="hero.title">IEEE Guide for Architectural Framework and Application of Educational Knowledge Graph</h1>
-            <p data-i18n="hero.subtitle">为您提供完整的解决方案，帮助您更快、更高效地实现目标。</p>
-            <div class="gradient-bg"></div>
-            
-        </section>
-        
-        <!-- 概念图 -->
-        <section class="concept-diagram">
-            <!-- <div class="triangle triangle-1"></div>
-            <div class="triangle triangle-2"></div> -->
-            <img src="/static/assets/concept.png" alt="Animation Example">
-        </section>
-
-        <section class="code-img">
-            <!-- 左侧代码 -->
-            <div class="code-box">
-                <button class="download-btn" onclick="downloadOntology()" title="下载代码"
-                style="position: absolute;  background: none; border: none; cursor: pointer;">
-          <svg viewBox="0 0 24 24"
-               style="width: 30px; height: 30px; transform: rotate(180deg); text-align: right; fill: #333;">
-            <path d="M5 18h14v2H5v-2zm7-14l7 7h-4v6h-6v-6H5l7-7z"/>
-          </svg>
-        </button>
-              <!-- <button class="copy-btn" onclick="copyCode()">Copy</button> -->
-              <pre style="text-align: left; font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.5;">
-                
-                <span style="color:#999;">
-# Learning Point Collection</span><span style="color:#d73a49;">
-edkg:LearningPointCollection</span> a <span style="color:#005cc5;">owl:Class</span> ;
-    rdfs:subClassOf <span style="color:#005cc5;">edkg:BaseEntity</span> ;
-    rdfs:label <span style="color:#032f62;">" Learning Point Collection "</span> ;
-    rdfs:comment <span style="color:#032f62;">"A collection of learning points "</span> .
-                <span style="color:#999;">
-# Learning Point Item</span><span style="color:#d73a49;">
-edkg:LPitem</span> a <span style="color:#005cc5;">owl:Class</span> ;
-    rdfs:subClassOf <span style="color:#005cc5;">edkg:BaseEntity</span> ;
-    rdfs:label <span style="color:#032f62;">" Learning Point "</span> ;
-    rdfs:comment <span style="color:#032f62;">"An individual learning point "</span> .
-                </pre>
-                <p data-i18n="feature1.ttl" style="margin-top: 1rem;">
-                    IEEE教育图谱本体包含三类实体：知识点（LPitem）、资源（RItem）和教学规范（PRItem）。对于属性和关系来说，我们也允许用户进行自定义的扩展，可以点击右上角的下载图标下载本体源文件进行浏览。
-                </p>
-            </div>
-        
-            <!-- 右侧动图 -->
-            <div class="animation-box">
-              <img src="/static/assets/graph.gif" alt="Animation Example">
-            </div>
-        </section>
-
-        <section></section>
-        
-        <!-- 特性部分1：介绍和展示查看按钮 -->
-        <section class="feature-section">
-            <div class="feature-description">
-                <h3 data-i18n="feature1.title">介绍：点击查看图谱和主体</h3>
-                <p data-i18n="feature1.description">通过我们的图谱系统，您可以直观地了解各个主体之间的关系和连接。点击右侧按钮查看详细信息和完整图谱。</p>
-            </div>
-            <div class="feature-button" onclick="location.href='example'">
-                <h4 data-i18n="feature1.button">展示查看按钮</h4>
-            </div>
-        </section>
-
-
-        
-        <!-- 特性部分2：介绍和构建流程按钮 -->
-        <section class="feature-section">
-            <div class="feature-button" onclick="location.href='build-guide'">
-                <h4 data-i18n="feature2.button">构建流程按钮</h4>
-            </div>
-            <div class="feature-description">
-                <h3 data-i18n="feature2.title">介绍：点击尝试生成自己的图谱</h3>
-                <p data-i18n="feature2.description">我们的系统允许您创建自己的图谱，根据您的需求定制内容和关系。点击左侧按钮开始构建您的专属流程。</p>
-            </div>
-        </section>
-
-        
-        
-          <!-- Prism.js 高亮 -->
+<!-- Header -->
+<header>
+  <div class="container header-container">
+    <div class="logo" onclick="window.location.href='/'">
+        <img src="/static/assets/logo2.png" alt="Animation Example">
     </div>
     
+    <nav>
+      <a href="#">View Sample</a>
+      <a href="#">Build Graph</a>
+      <a href="#">Get Certified</a>
+      <a href="#">Download Ontology</a>
+      <a href="#">Contact Us</a>
+    </nav>
     
+    <!-- <div class="toggle-group"> -->
+      <!-- <button class="toggle-btn" id="lang-toggle" aria-label="Toggle language">
+        <span id="lang-indicator">中</span>
+      </button> -->
+      <!-- <button class="toggle-btn" id="theme-toggle" aria-label="Toggle theme">
+        <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button> -->
+      <!-- <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button> -->
+    <!-- </div> -->
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-header">
+    <div class="logo" onclick="window.location.href='/'">
+        <img src="../static/assets/logo2.png" alt="Animation Example">
+    </div>
+    <button class="mobile-menu-close" id="mobile-menu-close">&times;</button>
+  </div>
+  <nav class="mobile-nav">
+    <a href="#">View Sample</a>
+    <a href="#">Build Graph</a>
+    <a href="#">Get Certified</a>
+    <a href="#">Download Ontology</a>
+    <a href="#">Contact Us</a>
+  </nav>
+</div>
+
+<!-- Hero Section - 重新设计 -->
+<section class="hero">
+  <div class="container hero-container">
+    <div class="hero-content">
+      <div class="hero-tagline">Structure. Visualize. Personalize.</div>
+      <h1>Your <span class="highlight">Edu</span>cational<br><span class="highlight">K</span>nowledge <span class="highlight">G</span>raph</h1>
+      <p>Use structured, semantically connected educational knowledge with proven solutions, including construction, visualization, and application guidance.</p>
+    </div>
+  </div>
+  
+  <!-- 图形容器 - 重新定位 -->
+  <div class="graph-container">
+    <div class="graph-mask"></div>
+    <canvas id="knowledge-graph" aria-label="Educational Knowledge Graph Visualization"></canvas>
+  </div>
+</section>
+
+<!-- View Sample Graphs Section -->
+<section class="feature-section">
+  <div class="container">
+    <div class="feature-row">
+      <div class="feature-content">
+        <h2>View Sample Graphs</h2>
+        <p>Explore a collection of curated example graphs from real educational subjects aligned to the EduKG ontology and standards.</p>
+      </div>
+      <div class="feature-button-container view-samples-button-container">
+        <a href="#" class="button button-yellow">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20'%3E%3C/path%3E%3Cpath d='M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z'%3E%3C/path%3E%3C/svg%3E" alt="">
+          View Samples
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Build Your Own Graph Section -->
+<section class="feature-section">
+  <div class="container">
+    <div class="feature-row">
+      <div class="feature-button-container build-graph-button-container">
+        <a href="#" class="button button-teal">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'%3E%3C/path%3E%3Cpolyline points='17 8 12 3 7 8'%3E%3C/polyline%3E%3Cline x1='12' y1='3' x2='12' y2='15'%3E%3C/line%3E%3C/svg%3E" alt="">
+          Build Graph
+        </a>
+      </div>
+      <div class="feature-content">
+        <h2>Build Your Own Graph</h2>
+        <p>Upload your curriculum data or resource list in CSV format, and generate a structured knowledge graph using the EduKG framework.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Certify Your Graph Section -->
+<section class="feature-section">
+  <div class="container">
+    <div class="feature-row">
+      <div class="feature-content">
+        <h2>Certify Your Graph</h2>
+        <p>Validate your implementation against the IEEE EduKG Standard and receive a signed digital certificate of compliance.</p>
+      </div>
+      <div class="feature-button-container get-certified-button-container">
+        <a href="#" class="button button-coral">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 12h-4l-3 9L9 3l-3 9H2'%3E%3C/path%3E%3C/svg%3E" alt="">
+          Get Certified
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Workflow Summary Section -->
+<section class="workflow-section">
+  <div class="container">
+    <h2>Workflow Summary</h2>
+    <div class="workflow-diagram">
+      <!-- Phase 1 -->
+      <div class="workflow-phase">
+        <div class="phase-header phase1-header" id="phase1-header">PHASE 1: EDUKG PREPARATION</div>
+        <div class="phase-content-wrapper" id="phase1-wrapper">
+          <div class="phase-content" id="phase1-content">
+            <div class="workflow-box phase1-box">
+              <div class="box-title">Content Collection</div>
+              <div class="box-subtitle">Gather educational materials</div>
+            </div>
+            <div class="workflow-arrow">→</div>
+            <div class="workflow-box phase1-box">
+              <div class="box-title">Content Analysis</div>
+              <div class="box-subtitle">Extract key concepts</div>
+            </div>
+            <div class="workflow-arrow">→</div>
+            <div class="workflow-box phase1-box">
+              <div class="box-title">Schema Mapping</div>
+              <div class="box-subtitle">Map to EduKG ontology</div>
+            </div>
+            <div class="workflow-arrow">→</div>
+            <div class="workflow-box phase1-box">
+              <div class="box-title">Preparation QA</div>
+              <div class="box-subtitle">Validate mapped content</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Phase 2 -->
+      <div class="workflow-phase">
+        <div class="phase-header phase2-header" id="phase2-header">PHASE 2: EDUKG CREATION</div>
+        <div class="phase-content-wrapper" id="phase2-wrapper">
+          <div class="phase-content" id="phase2-content">
+            <div class="workflow-box phase2-box">
+              <div class="box-title">Entity Creation</div>
+              <div class="box-subtitle">Define learning points, resources</div>
+            </div>
+            <div class="workflow-arrow">→</div>
+            <div class="workflow-box phase2-box">
+              <div class="box-title">Relationship Definition</div>
+              <div class="box-subtitle">Create semantic connections</div>
+            </div>
+            <div class="workflow-arrow">→</div>
+            <div class="workflow-box phase2-box">
+              <div class="box-title">Graph Construction</div>
+              <div class="box-subtitle">Build RDF/OWL representation</div>
+            </div>
+            <div class="workflow-arrow">→</div>
+            <div class="workflow-box phase2-box">
+              <div class="box-title">Graph Evaluation</div>
+              <div class="box-subtitle">Test against requirements</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Phase 3 -->
+      <div class="workflow-phase">
+        <div class="phase-header phase3-header" id="phase3-header">PHASE 3: EDUKG USAGE</div>
+        <div class="phase-content-wrapper" id="phase3-wrapper">
+          <div class="phase-content" id="phase3-content">
+            <div class="workflow-box phase3-box">
+              <div class="box-title">Knowledge Querying</div>
+              <div class="box-subtitle">SPARQL queries, API access</div>
+            </div>
+            <div class="workflow-arrow">→</div>
+            <div class="workflow-box phase3-box">
+              <div class="box-title">LLM Integration</div>
+              <div class="box-subtitle">Graph-LLM systems</div>
+            </div>
+            <div class="workflow-arrow">→</div>
+            <div class="workflow-box phase3-box">
+              <div class="box-title">Application Services</div>
+              <div class="box-subtitle">Learning platforms, tools</div>
+            </div>
+            <div class="workflow-arrow">→</div>
+            <div class="workflow-box phase3-box">
+              <div class="box-title">Feedback Collection</div>
+              <div class="box-subtitle">User data, system metrics</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Continuous Improvement -->
+      <div class="continuous-improvement">Continuous Improvement Loop</div>
+    </div>
+  </div>
+</section>
+
+<!-- Ontology Section -->
+<section class="ontology-section">
+  <div class="container">
+    <h2>What's Inside the EduKG Ontology?</h2>
+    <p>The EduKG standard defines three core types of nodes: Learning Points (LPitems), Resources (Ritems), and Pedagogical Rules (PRitems), along with the relationships that link them. This structure powers adaptive, personalized learning experiences.</p>
+    
+    <div class="ontology-diagram">
+      <!-- Learning Point -->
+      <div class="ontology-item">
+        <div class="ontology-box learning-point">Learning Point</div>
+        <div class="ontology-label">Concept</div>
+      </div>
+      
+      <!-- Covers Arrow -->
+      <div class="ontology-arrow">
+        <div class="arrow-label">covers</div>
+        <div class="arrow-line"></div>
+      </div>
+      
+      <!-- Resource -->
+      <div class="ontology-item">
+        <div class="ontology-box resource">Resource</div>
+        <div class="ontology-label">Lesson, quiz, etc.</div>
+      </div>
+      
+      <!-- Follows Arrow -->
+      <div class="ontology-arrow">
+        <div class="arrow-label">follows</div>
+        <div class="arrow-line"></div>
+      </div>
+      
+      <!-- Pedagogical Rule -->
+      <div class="ontology-item">
+        <div class="ontology-box rule">Pedagogical Rule</div>
+        <div class="ontology-label">Rule (e.g., "if fail twice, show hint")</div>
+      </div>
+    </div>
+    
+    <div class="ontology-link">
+      <b>Want to go deeper?</b>  <a href="#">View the full ontology in Turtle format</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
     <!-- 页脚 -->
     <footer id="page-footer">
         <table class="footer-table" style="margin: 0 auto; border-collapse: collapse; width: 60%; text-align: center;">
@@ -823,167 +1227,234 @@ edkg:LPitem</span> a <span style="color:#005cc5;">owl:Class</span> ;
         <!-- Contact Section -->
 
     </footer>
-
-              <section id="contact" style="padding: 2rem 1rem; background-color: var(--accent-1); text-align: center; border-top: 1px solid var(--border-color);">
+<section id="contact" style="padding: 2rem 1rem; background-color: rgba(224, 223, 223, 0.3); text-align: center; border-top: 1px solid var(--border-color);">
   <p style="font-size: 1rem; color: var(--text-color);">
     📧 <strong>Contact us:</strong>
     <a href="mailto:edukg.org@gmail.com" style="color: #3b82f6; text-decoration: none;">edukg.org@gmail.com</a>
   </p>
 </section>
-    <!-- JavaScript -->
-    <script>
-        // 语言数据
-        const i18n = {
-            'zh-CN': {
-                'logo': 'logo',
-                'nav.solutions': '样例展示',
-                'nav.products': '图谱构建',
-                'nav.resources': '本体下载',
-                'nav.enterprise': '联系我们',
-                'nav.docs': '文档',
-                'hero.title': 'Educational Knowledge Graph',
-                'hero.subtitle': '本标准《IEEE 教育知识图谱架构框架与应用指南》定义了一个在教育领域中表示、集成和应用知识图谱的全面框架。内容涵盖核心本体、数据规范、实施指南、应用案例以及构建、维护和利用教育知识图谱（EduKGs）在不同教育层级和场景中的最佳实践。',
-                'feature1.title': '点击查看标准图谱样例',
-                'feature1.description': '您可以在这里浏览符合我们教育图谱标准的四门学科（计算机网络、生物、化学、物理）的图谱案例。',
-                'feature1.button': '样例展示',
-                'feature2.title': '点击尝试构建自己的图谱',
-                'feature2.description': '我们的系统允许您构建自己的图谱。只需导入一个符合系统格式的 CSV 文件，即可自动完成符合标准的教育图谱构建与展示。',
-                'feature2.button': '图谱构建',
-                'feature1.ttl': 'IEEE教育图谱本体包含三类实体：知识点（LPitem）、资源（RItem）和教学规范（PRItem）。对于属性和关系来说，我们也允许用户进行自定义的扩展，可以点击右上角的下载图标下载本体源文件进行浏览。',
-                'nav.certificate': '图谱认证'
-            },
-            'en-US': {
-                'logo': 'logo',
-                'nav.solutions': 'View Samples',
-                'nav.products': 'Build Graph',
-                'nav.resources': 'Ontology Download',
-                'nav.enterprise': 'Contact Us',
-                'nav.docs': 'Docs',
-                'hero.title': 'Educational Knowledge Graph',
-                'hero.subtitle': 'This standard《IEEE Guide for Architectural Framework and Application of Educational Knowledge Graph》 defines a comprehensive framework for representing, integrating, and utilizing knowledge graphs in the domain of education. It covers the core ontology, data specifications, implementation guidelines, use cases, and best practices for constructing, maintaining, and leveraging educational knowledge graphs (EduKGs) across various educational levels and contexts.',
-                'feature1.title': 'View Standardized Graph Examples',
-                'feature1.description': 'Browse graph examples across four subjects—Computer Networks, Biology, Chemistry, and Physics—that conform to our educational graph standard.',
-                'feature1.button': 'View Samples',
-                'feature2.title': 'Try Building Your Own Graph',
-                'feature2.description': 'Our system allows you to build your own educational graph. Simply upload a CSV file in the required format, and we’ll automatically generate a graph that meets our standards.',
-                'feature2.button': 'Build Graph',
-                'feature1.ttl': 'The IEEE Educational Graph Ontology includes three types of entities: Learning Points (LPitem), Resources (RItem), and Pedagogical Requirements (PRItem). Users can also define custom properties and relationships. Click the download icon in the top-right corner to browse the ontology source file.',
-                'nav.certificate': "Graph Certification"
-            }
-        };
+<script>
+  // Theme toggle functionality
+  const sunIcon = document.getElementById('sun-icon');
+  const htmlElement = document.documentElement;
+  
+  // Check for saved theme preference
+  // const savedTheme = localStorage.getItem('theme');
+  // if (savedTheme) {
+  //   htmlElement.classList.add(savedTheme);
+  //   updateIcons(savedTheme);
+  // }
+  
+  // Toggle theme
 
-        
-        // 获取主题切换按钮和图标
-        const themeToggle = document.getElementById('theme-toggle');
-        const moonIcon = document.querySelector('.moon-icon');
-        const sunIcon = document.querySelector('.sun-icon');
-        const htmlElement = document.documentElement;
-        
-        // 获取语言切换按钮和指示器
-        const langToggle = document.getElementById('lang-toggle');
-        const langIndicator = document.getElementById('lang-indicator');
-        
-        // 检查本地存储中的主题偏好
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            htmlElement.className = savedTheme;
-            updateIcons(savedTheme);
-        }
-        
-        // 检查本地存储中的语言偏好
-        let currentLang = 'en-US';
-        updateLanguage(currentLang);
-        updateLangIndicator(currentLang);
-        
-        // 切换主题
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = htmlElement.className;
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            htmlElement.className = newTheme;
-            localStorage.setItem('theme', newTheme);
-            updateIcons(newTheme);
-        });
-        
-        // 切换语言
-        langToggle.addEventListener('click', () => {
-            currentLang = currentLang === 'zh-CN' ? 'en-US' : 'zh-CN';
-            localStorage.setItem('language', currentLang);
-            updateLanguage(currentLang);
-            updateLangIndicator(currentLang);
-            
-            // 更新HTML lang属性
-            document.documentElement.setAttribute('lang', currentLang);
-        });
-        
-        // 更新图标显示
-        function updateIcons(theme) {
-            if (theme === 'dark') {
-                moonIcon.style.display = 'none';
-                sunIcon.style.display = 'block';
-            } else {
-                moonIcon.style.display = 'block';
-                sunIcon.style.display = 'none';
-            }
-        }
-        
-        // 更新语言指示器
-        function updateLangIndicator(lang) {
-            langIndicator.textContent = lang === 'zh-CN' ? 'EN' : '中';
-        }
-        
-        // 更新页面语言
-        function updateLanguage(lang) {
-            const elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (i18n[lang][key]) {
-                    element.textContent = i18n[lang][key];
-                }
-            });
-            
-            // 更新页面标题
-            document.title = lang === 'zh-CN' ? '首页 - Edukg' : 'Home - EduKg';
-        }
-        
-        // 检查系统偏好
-        function checkSystemPreference() {
-            // 如果用户没有手动设置主题，则检查系统偏好
-            if (!localStorage.getItem('theme')) {
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                htmlElement.className = prefersDark ? 'dark' : 'light';
-                updateIcons(prefersDark ? 'dark' : 'light');
-            }
-        }
-        
-        // 初始检查系统偏好
-        checkSystemPreference();
-        
-        // 监听系统主题变化
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            // 只有当用户没有手动设置主题时才跟随系统
-            if (!localStorage.getItem('theme')) {
-                const newTheme = e.matches ? 'dark' : 'light';
-                htmlElement.className = newTheme;
-                updateIcons(newTheme);
-            }
-        });
+  
+  // Update icons based on theme
+  function updateIcons(theme) {
+    if (theme === 'dark') {
+      moonIcon.style.display = 'none';
+      sunIcon.style.display = 'block';
+    } else {
+      moonIcon.style.display = 'block';
+      sunIcon.style.display = 'none';
+    }
+  }
+  
+  // Language toggle functionality
+  const langIndicator = document.getElementById('lang-indicator');
+  let currentLang = 'en';
+  
+  // Toggle language
 
-        function downloadOntology() {
-            const filePath = "/static/ttl/" + "edkg-ontology-02-25.ttl";
-            const link = document.createElement("a");
-            link.href = filePath;
-            link.download = "edkg-ontology-02-25.ttl";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        };
-
-        function scrollToFooter() {
-            document.getElementById('contact').scrollIntoView({
-                behavior: 'smooth'
-            });
-        };
-    </script>
+  
+  // Mobile menu functionality
+  // const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenuClose = document.getElementById('mobile-menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  // mobileMenuBtn.addEventListener('click', () => {
+  //   mobileMenu.classList.add('active');
+  // });
+  
+  mobileMenuClose.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+  });
+  
+  // Workflow phase toggle functionality
+  const phase1Header = document.getElementById('phase1-header');
+  const phase2Header = document.getElementById('phase2-header');
+  const phase3Header = document.getElementById('phase3-header');
+  const phase1Wrapper = document.getElementById('phase1-wrapper');
+  const phase2Wrapper = document.getElementById('phase2-wrapper');
+  const phase3Wrapper = document.getElementById('phase3-wrapper');
+  const phase1Content = document.getElementById('phase1-content');
+  const phase2Content = document.getElementById('phase2-content');
+  const phase3Content = document.getElementById('phase3-content');
+  
+  // Function to toggle phase content with scroll animation
+  function togglePhase(header, wrapper, content) {
+    header.addEventListener('click', () => {
+      // Toggle active class for the clicked phase
+      const isActive = header.classList.contains('active');
+      
+      if (isActive) {
+        // If already active, collapse it
+        header.classList.remove('active');
+        content.classList.remove('active');
+        
+        // After a short delay, remove the wrapper active class
+        setTimeout(() => {
+          wrapper.classList.remove('active');
+        }, 300);
+      } else {
+        // If not active, expand it
+        header.classList.add('active');
+        wrapper.classList.add('active');
+        
+        // Use setTimeout to ensure the transition happens after the display change
+        setTimeout(() => {
+          content.classList.add('active');
+        }, 50);
+      }
+    });
+  }
+  
+  // Set up toggle for each phase
+  togglePhase(phase1Header, phase1Wrapper, phase1Content);
+  togglePhase(phase2Header, phase2Wrapper, phase2Content);
+  togglePhase(phase3Header, phase3Wrapper, phase3Content);
+  
+  // Knowledge Graph Visualization - 更新节点颜色和大小
+  const canvas = document.getElementById('knowledge-graph');
+  const ctx = canvas.getContext('2d');
+  
+  // Set canvas dimensions
+  function resizeCanvas() {
+    const container = canvas.parentElement;
+    canvas.width = container.clientWidth;
+    canvas.height = container.clientHeight;
+  }
+  
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+  
+  // Node class
+  class Node {
+    constructor(id, x, y, radius, color, opacity = 1) {
+      this.id = id;
+      this.x = x;
+      this.y = y;
+      this.radius = radius;
+      this.color = color;
+      this.opacity = opacity;
+      this.vx = (Math.random() - 0.5) * 0.3;
+      this.vy = (Math.random() - 0.5) * 0.3;
+    }
+    
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = this.color.replace(')', `, ${this.opacity})`).replace('rgb', 'rgba');
+      ctx.fill();
+      ctx.closePath();
+    }
+    
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      
+      // Boundary check
+      if (this.x < this.radius || this.x > canvas.width - this.radius) {
+        this.vx *= -1;
+      }
+      if (this.y < this.radius || this.y > canvas.height - this.radius) {
+        this.vy *= -1;
+      }
+    }
+  }
+  
+  // Create nodes with updated colors
+  const nodes = [];
+  const numNodes = 30; // 增加节点数量
+  const colors = [
+    'rgb(0, 174, 239)', // 蓝色
+    'rgb(255, 158, 128)', // 珊瑚色
+    'rgb(179, 229, 252)' // 浅蓝色
+  ];
+  
+  for (let i = 0; i < numNodes; i++) {
+    const radius = Math.random() * 12 + 4; // 调整节点大小范围
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
+    const colorIndex = Math.floor(Math.random() * colors.length);
+    const opacity = Math.random() * 0.5 + 0.5; // 随机透明度
+    nodes.push(new Node(i, x, y, radius, colors[colorIndex], opacity));
+  }
+  
+  // Create connections with varying opacity
+  const connections = [];
+  for (let i = 0; i < numNodes; i++) {
+    const numConnections = Math.floor(Math.random() * 3) + 1;
+    for (let j = 0; j < numConnections; j++) {
+      const target = Math.floor(Math.random() * numNodes);
+      if (target !== i) {
+        const opacity = Math.random() * 0.3 + 0.1; // 连线透明度
+        connections.push({ from: i, to: target, opacity });
+      }
+    }
+  }
+  
+  // Animation loop
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Draw connections
+    connections.forEach(conn => {
+      const fromNode = nodes[conn.from];
+      const toNode = nodes[conn.to];
+      ctx.beginPath();
+      ctx.moveTo(fromNode.x, fromNode.y);
+      ctx.lineTo(toNode.x, toNode.y);
+      ctx.strokeStyle = `rgba(200, 200, 200, ${conn.opacity})`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    });
+    
+    // Update and draw nodes
+    nodes.forEach(node => {
+      node.update();
+      node.draw();
+    });
+    
+    requestAnimationFrame(animate);
+  }
+  
+  animate();
+  
+  // Check system preference for theme
+  function checkSystemPreference() {
+    if (!localStorage.getItem('theme')) {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (prefersDark) {
+        htmlElement.classList.add('dark');
+        updateIcons('dark');
+      }
+    }
+  }
+  
+  // checkSystemPreference();
+  
+  // Listen for system theme changes
+  // window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+  //   if (!localStorage.getItem('theme')) {
+  //     if (e.matches) {
+  //       htmlElement.classList.add('dark');
+  //       updateIcons('dark');
+  //     } else {
+  //       htmlElement.classList.remove('dark');
+  //       updateIcons('light');
+  //     }
+  //   }
+  // });
+</script>
 </body>
 </html>
