@@ -1,8 +1,8 @@
 from flask import Flask , request, render_template, send_file, jsonify, session
 import requests , json , random
 import io, os
-from .ttl_generator import convert_csv_to_ttl
-from .ttl_parser import gen_json_from_ttl
+from ttl_generator import convert_csv_to_ttl
+from ttl_parser import gen_json_from_ttl
 import uuid
 import tempfile
 
@@ -40,7 +40,6 @@ def presonal_graph():
     file1_path = os.path.join(temp_dir, random_id + "-entities.csv")
     file2_path = os.path.join(temp_dir, random_id + "-relations.csv")
     file3_path = os.path.join(temp_dir, random_id + "-graph.ttl")
-    
     file1.save(file1_path)
     file2.save(file2_path)
     try:
@@ -90,15 +89,16 @@ def personal():
 def home():
     # 判断ttl_path是否在session中
     if 'ttl_path' in session:
-      ttl_path = session.get('ttl_path')
-      if ttl_path:
-          os.remove(ttl_path)
-          # 删除该session中的ttl_path
-          session.pop('ttl_path', None)
+        ttl_path = session.get('ttl_path')
+        if ttl_path:
+            if os.path.exists(ttl_path):
+                os.remove(ttl_path)
+            # 删除该session中的ttl_path
+            session.pop('ttl_path', None)
     if 'graphs' in session:
-      graphs = session.get('graphs')
-      if graphs:
-        session.pop('graphs', None)
+        graphs = session.get('graphs')
+        if graphs:
+            session.pop('graphs', None)
     return render_template('index.html')
 
 if __name__ == '__main__':
