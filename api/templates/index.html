@@ -204,7 +204,7 @@
   }
   
   .hero h1 .highlight {
-    color: var(--primary-color);
+    color: #40C0CB;
   }
   
   .hero p {
@@ -341,12 +341,12 @@
   }
   
   .button-teal {
-    background-color: var(--accent-teal);
+    background-color: #40C0CB;
     color: #000000;
   }
   
   .button-coral {
-    background-color: var(--accent-coral);
+    background-color: #FE7F3C;
     color: #000000;
   }
   
@@ -586,22 +586,22 @@
 }
   
   .learning-point {
-    background-color: var(--learning-point-bg);
-    border-color: var(--learning-point-border);
-    color: var(--learning-point-text);
-  }
-  
-  .resource {
-    background-color: var(--resource-bg);
-    border-color: var(--resource-border);
-    color: var(--resource-text);
-  }
-  
-  .rule {
-    background-color: var(--rule-bg);
-    border-color: var(--rule-border);
-    color: var(--rule-text);
-  }
+  background-color: rgba(255, 223, 0, 0.5); /* 原本是亮黄色 */
+  border-color: var(--learning-point-border);
+  color: black;
+}
+
+.resource {
+  background-color: rgba(64, 192, 203, 0.5); /* 原色是 #40C0CB */
+  border-color: var(--resource-border);
+  color: black;
+}
+
+.rule {
+  background-color: rgba(254, 127, 60, 0.5); /* 原色是 #FE7F3C */
+  border-color: var(--rule-border);
+  color: black;
+}
   
   .ontology-label {
     font-size: 0.875rem;
@@ -872,7 +872,7 @@
     <nav>
         <a href="#" onclick="window.location.href='example'; return false;">View Sample</a>
         <a href="#" onclick="window.location.href='build-guide'; return false;">Build Graph</a>
-        <a href="#" onclick="window.location.href='build-guide'; return false;">Get Certified</a>
+        <a href="#" onclick="window.location.href='build-guide'; return false;">Certify Graph</a>
         <a href="#" onclick="downloadOntology()">Download Ontology</a>
         <a href="#" onclick="scrollToFooter()">Contact Us</a>
     </nav>
@@ -919,7 +919,7 @@
   <nav class="mobile-nav">
     <a href="#" onclick="window.location.href='example'; return false;">View Sample</a>
     <a href="#" onclick="window.location.href='build-guide'; return false;">Build Graph</a>
-    <a href="#" onclick="window.location.href='build-guide'; return false;">Get Certified</a>
+    <a href="#" onclick="window.location.href='build-guide'; return false;">Certify Graph</a>
     <a href="#" onclick="downloadOntology()">Download Ontology</a>
     <a href="#" onclick="scrollToFooter()">Contact Us</a>
   </nav>
@@ -931,7 +931,7 @@
     <div class="hero-content">
       <div class="hero-tagline">Certified. Visualize. Personalize.</div>
       <h1><span class="highlight">Edu</span>cational <span class="highlight">K</span>nowledge <span class="highlight">G</span>raph</h1>
-      <p>This standard《IEEE Guide for Architectural Framework and Application of Educational Knowledge Graph》 defines a comprehensive framework for representing, integrating, and utilizing knowledge graphs in the domain of education. It covers the core ontology, data specifications, implementation guidelines, use cases, and best practices for constructing, maintaining, and leveraging educational knowledge graphs (EduKGs) across various educational levels and contexts.</p>
+      <p>This standard "IEEE Guide for Architectural Framework and Application of Educational Knowledge Graph" defines a comprehensive framework for representing, integrating, and utilizing knowledge graphs in the domain of education. It covers the core ontology, data specifications, implementation guidelines, use cases, and best practices for constructing, maintaining, and leveraging educational knowledge graphs (EduKGs) across various educational levels and contexts.</p>
     </div>
   </div>
   
@@ -989,7 +989,7 @@
       <div class="feature-button-container get-certified-button-container" onclick="window.location.href='certificate'; return false;">
         <a href="#" class="button button-coral">
           <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 12h-4l-3 9L9 3l-3 9H2'%3E%3C/path%3E%3C/svg%3E" alt="">
-          Get Certified
+          Certify Graph
         </a>
       </div>
     </div>
