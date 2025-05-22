@@ -3,9 +3,6 @@ import json
 
 
 
-nodes = {}
-links = []
-
 def simplify_uri(uri):
     if "#" in uri:
         return uri.split("#")[-1]
@@ -21,8 +18,11 @@ def gen_json_from_ttl(ttl_path):
     # 载入 TTL 文件
     g = Graph()
     g.parse(ttl_path, format="ttl")
+    nodes = {}
+    links = []
     for s, p, o in g:
         # print(s, p, o)
+
         s_id = str(s)
         o_id = str(o)
         p_label = simplify_uri(str(p))
@@ -52,6 +52,7 @@ def gen_json_from_ttl(ttl_path):
             "links": links
         }
     }
+    # print(graph_data)
     return graph_data
     # for link in graph_data["physics"]["links"]:
     #     head = link["source"]
@@ -68,5 +69,5 @@ def gen_json_from_ttl(ttl_path):
     #     if not sec:
     #         print(tail)
 if __name__ == '__main__':
-    ttl_path = "/home/tz/cui/Quotera/api/49827fc0-2916-4d2e-919d-7214b27993af-graph.ttl"
+    ttl_path = "/home/tz/cui/Quotera/api/24dc66ba-69d4-45ab-a93d-250b6b84f0d8-graph.ttl"
     print(gen_json_from_ttl(ttl_path))
