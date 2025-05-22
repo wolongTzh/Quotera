@@ -3,6 +3,7 @@ import requests , json , random
 import io, os
 from .ttl_generator import convert_csv_to_ttl
 from .ttl_parser import gen_json_from_ttl
+from .ttl2tree import get_tree_json
 import uuid
 import tempfile
 
@@ -46,12 +47,18 @@ def presonal_graph():
       convert_csv_to_ttl(entities_csv_path=file1_path, relations_csv_path=file2_path, output_ttl_path=file3_path, graph_id=random_id)
     except:
       return jsonify({'success': False, 'error': str(e)}), 500
-    graphs = gen_json_from_ttl(file3_path)["graph"]
+    graphs = {
+        "graph": gen_json_from_ttl(file3_path)["graph"]
+    }
+    # print(get_tree_json(file3_path))
+    treeData = {
+        "graph": get_tree_json(file3_path)
+    }
     os.remove(file1_path)
     os.remove(file2_path)
-    print("from personal")
-    print(presonal_graph)
+    # print(graphs)
     session['graphs'] = graphs
+    session['treeData'] = treeData
     session['ttl_path'] = file3_path
     return jsonify({'success': True})
     # return render_template('personal-graph.html', json_data=graphs) 
@@ -78,11 +85,11 @@ def personal():
     if 'graphs' not in session:
       return "No data found", 400
     graphs = session.get('graphs')
-    print("from personal")
-    print(graphs)
+    treeData = session.get('treeData')
+    # print(treeData)
     if not graphs:
         return "No data found", 400
-    return render_template('personal-graph.html', json_data=graphs)    
+    return render_template('personal-graph.html', json_data=graphs, tree_data=treeData)    
 
 
 @app.route('/',methods=["GET"])
@@ -99,6 +106,10 @@ def home():
         graphs = session.get('graphs')
         if graphs:
             session.pop('graphs', None)
+    if 'treeData' in session:
+        treeData = session.get('treeData')
+        if treeData:
+            session.pop('treeData', None)
     return render_template('index.html')
 
 if __name__ == '__main__':
