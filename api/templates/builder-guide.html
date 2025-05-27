@@ -294,8 +294,9 @@
               <th data-i18n="column1">字段说明</th>
               <td data-i18n="column2">节点类型</td>
               <td data-i18n="column3">节点id</td>
-              <td data-i18n="column4">资源链接</td>
-              <td data-i18n="column5">资源格式</td>
+              <td data-i18n="column4">节点名称</td>
+              <td data-i18n="resource3">资源链接</td>
+              <td data-i18n="resource4">资源格式</td>
             </tr>
           </thead>
           <tbody>
@@ -313,7 +314,7 @@
     </div>
 
     <div class="instructions">
-      <div class="instructions-title" data-i18n="Pitem-title">Pitem：教学规则</div>
+      <div class="instructions-title" data-i18n="Pitem-title">PRitem：教学规则</div>
       <div class="instructions-desc" data-i18n="Pitem-desc">代表教学规则，一个教学计划执行的规则</div>
       <div class="table-wrapper">
         <table class="csv-example">
@@ -323,11 +324,11 @@
               <td data-i18n="column2">节点类型</td>
               <td data-i18n="column3">节点id</td>
               <td data-i18n="column4">节点名称</td>
-              <td data-i18n="column5">执行者</td>
-              <td data-i18n="column6">执行场景</td>
-              <td data-i18n="column7">任务描述</td>
-              <td data-i18n="column8">任务计划</td>
-              <td data-i18n="column9">预期结果</td>
+              <td data-i18n="column6">执行者</td>
+              <td data-i18n="column7">执行场景</td>
+              <td data-i18n="column8">任务描述</td>
+              <td data-i18n="column9">任务计划</td>
+              <td data-i18n="column10">预期结果</td>
             </tr>
           </thead>
           <tbody>
@@ -390,7 +391,7 @@
         'LPitem-desc': '代表一个具体的学科知识点',
         'Ritem-title': 'Ritem：教学资源',
         'Ritem-desc': '代表教学资源，比如视频音频教材等',
-        'Pitem-title': 'Pitem：教学规则',
+        'Pitem-title': 'PRitem：教学规则',
         'Pitem-desc': '代表教学规则，一个教学计划执行的规则',
         'relations-title': '关系表',
         'relations-desc': '将实体关联起来',
@@ -404,12 +405,15 @@
         column7: '执行场景',
         column8: '任务描述',
         column9: '任务计划',
+        column10: '预期结果',
         relation2: "头实体id",
         relation3: "尾实体id",
         relation4: "关系名称",
         download: '下载示例 CSV 文件',
         next: '下一步',
-        sample: '样例'
+        sample: '样例',
+        "resource3": "资源链接",
+        "resource4": "资源格式"
       },
       'en-US': {
         title: 'Graph Building Process - Step 1',
@@ -419,7 +423,7 @@
         'LPitem-desc': 'Represents a specific academic knowledge point.',
         'Ritem-title': 'Ritem: Teaching Resource',
         'Ritem-desc': 'Represents teaching resources, such as videos, audios, textbooks, etc.',
-        'Pitem-title': 'Pitem: Teaching Rule',
+        'Pitem-title': 'PRitem: Teaching Rule',
         'Pitem-desc': 'Represents a rule for executing a teaching plan.',
         'relations-title': 'Relations Table',
         'relations-desc': 'Links entities together.',
@@ -429,16 +433,19 @@
         column3: 'Node ID',
         column4: 'Node Name',
         column5: 'Knowledge Point Attributes (JSON format)',
-        column6: 'Executor',
-        column7: 'Execution Scene',
-        column8: 'Task Description',
-        column9: 'Task Plan',
+        column6: 'Actor',
+        column7: 'Situation',
+        column8: 'Task',
+        column9: 'Plan',
+        column10: 'Expected Result',
         relation2: "Head Entity ID",
         relation3: "Tail Entity ID",
         relation4: "Relation Name",
         download: 'Download Sample CSV File',
         next: 'Next Step',
-        sample: 'Sample'
+        sample: 'Sample',
+        'resource3': 'Resource Url',
+        'resource4': 'Resource Format'
       }
     };
 
