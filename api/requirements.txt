@@ -7,3 +7,4 @@ rdflib
 pyld
 qrcode
 Pillow
+cryptography
