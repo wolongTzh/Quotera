@@ -301,6 +301,14 @@ input[type="file"].hidden {
                         </svg>
                         Download PDF Certificate
                     </button>
+                    <button id="download-elec-btn" class="button button-outline" style="margin-top: 12px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button-icon">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download Electronic Certificate
+                    </button>
                 </div>
             </div>
             <div class="card-footer">
@@ -310,6 +318,8 @@ input[type="file"].hidden {
     </div>
 
     <script>
+    global_href = ""
+    global_elec_href = ""
         document.addEventListener('DOMContentLoaded', function() {
     // Set current year in footer
     document.getElementById('current-year').textContent = new Date().getFullYear();
@@ -326,6 +336,7 @@ input[type="file"].hidden {
     const alertMessage = document.getElementById('alert-message');
     const certificateContainer = document.getElementById('certificate-container');
     const downloadBtn = document.getElementById('download-btn');
+    const downloadElecBtn = document.getElementById('download-elec-btn');
 
     // Current file
     let currentFile = null;
@@ -336,8 +347,9 @@ input[type="file"].hidden {
     uploadArea.addEventListener('dragover', handleDragOver);
     uploadArea.addEventListener('drop', handleDrop);
     fileUpload.addEventListener('change', handleFileChange);
-    validateBtn.addEventListener('click', handleValidation);
+    validateBtn.addEventListener('click', validate);
     downloadBtn.addEventListener('click', handleDownload);
+    downloadElecBtn.addEventListener('click', handleElecDownload);
 
     // Handle drag over
     function handleDragOver(e) {
@@ -500,20 +512,67 @@ input[type="file"].hidden {
     }
 
     // Show certificate
-    function showCertificate() {
+    function showCertificate(png_path) {
         // Display the certificate container with the existing certificate image
         certificateContainer.classList.remove('hidden');
+        console.log("inside showCertificate")
+        const image = certificateContainer.querySelector('#certificate-image');
+
+        // 修改图片路径（比如你从后端获取的路径）
+        image.src = png_path;
     }
 
     // Handle certificate download
     function handleDownload() {
         // Download the existing PDF certificate
         const link = document.createElement('a');
-        link.href = '/static/assets/certificate.pdf';
+        link.href = global_href;
         link.download = 'knowledge_graph_certificate.pdf';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+    }
+
+    // Handle certificate download
+    function handleElecDownload() {
+        // Download the existing PDF certificate
+        const link = document.createElement('a');
+        link.href = global_elec_href;
+        link.download = 'knowledge_graph_certificate.json';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    function validate() {
+        const file1 = document.getElementById('file-upload').files[0];
+        
+        if (!file1) {
+            alert(i18n[currentLang].uploadError);
+            return;
+        }
+        const formData = new FormData();
+        formData.append('file1', file1);
+
+        fetch('/certification', {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log('JSON path:', data.json_path);
+            console.log('PNG path:', data.png_path);
+            console.log('PDF path:', data.pdf_path);
+            showCertificate(data.png_path)
+            global_href = data.pdf_path
+            global_elec_href = data.json_path
+        })
+        .catch(err => {
+            alert('certificate error.');
+            console.error(err);
+        });
+        // window.location.href = 'presonal-graph';
+        // TODO: 调用构建逻辑
     }
 });
     </script>

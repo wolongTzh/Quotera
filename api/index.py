@@ -1,16 +1,31 @@
 from flask import Flask , request, render_template, send_file, jsonify, session
 import requests , json , random
 import io, os
-from .ttl_generator import convert_csv_to_ttl
-from .ttl_parser import gen_json_from_ttl
-from .ttl2tree import get_tree_json
+from ttl_generator import convert_csv_to_ttl
+from ttl_parser import gen_json_from_ttl
+from ttl2tree import get_tree_json
 import uuid
 import tempfile
+from certify import certify
 
 
 
 app = Flask(__name__)
 app.secret_key = 'edukg.org'
+
+@app.route('/certification',methods=["POST"])
+def certification():
+    file1 = request.files.get('file1')
+    temp_dir = tempfile.gettempdir()
+    random_id = str(uuid.uuid4())
+    file1_path = os.path.join(temp_dir, random_id + "-entities.csv")
+    file1.save(file1_path)
+
+    name = "Zheng Tan"
+    level = "level 2"
+    json_path, png_path, pdf_path = certify(file1_path, name, level)
+    print(json_path, png_path, pdf_path)
+    return jsonify({'success': True, "json_path":json_path, "png_path":png_path, "pdf_path":pdf_path})
 
 @app.route('/download-presonal-graph')
 def download_presonal_graph():
