@@ -47,11 +47,11 @@ def generate_certificate(name, level, cert_id, qr_data, png_output_path, pdf_out
 
     # 加载字体（可替换为你自己的路径和字体）
     font_name = ImageFont.truetype(
-        "fonts/SourceSans3-SemiBold.ttf", size=160)
+        "./fonts/SourceSans3-SemiBold.ttf", size=160)
     font_level = ImageFont.truetype(
-        "fonts/SourceSans3-Bold.ttf", size=90)
+        "./fonts/SourceSans3-Bold.ttf", size=90)
     font_info = ImageFont.truetype(
-        "fonts/SourceSans3-Regular.ttf", size=78)
+        "./fonts/SourceSans3-Regular.ttf", size=78)
 
     # 写入文字内容
     # Name
@@ -118,7 +118,7 @@ def certify(ttl_document, user_name, level_of_conformance):
     # serialization: read and parse the contents of the PEM file (a standard format for storing cryptographic keys)
     # turns the raw file data into a usable RSA private key object 
     # RSA private key object: digitally sign, decrypt data
-    with open("key/private_key.pem", "rb") as key_file:
+    with open("./key/private_key.pem", "rb") as key_file:
         private_key = serialization.load_pem_private_key(
             key_file.read(),
             password=None,
