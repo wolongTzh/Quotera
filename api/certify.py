@@ -118,7 +118,7 @@ def certify(ttl_document, user_name, level_of_conformance):
     # serialization: read and parse the contents of the PEM file (a standard format for storing cryptographic keys)
     # turns the raw file data into a usable RSA private key object 
     # RSA private key object: digitally sign, decrypt data
-    with open("./key/private_key.pem", "rb") as key_file:
+    with open(".key/private_key.pem", "rb") as key_file:
         private_key = serialization.load_pem_private_key(
             key_file.read(),
             password=None,
