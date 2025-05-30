@@ -1,12 +1,12 @@
 from flask import Flask , request, render_template, send_file, jsonify, session
 import requests , json , random
 import io, os
-from ttl_generator import convert_csv_to_ttl
-from ttl_parser import gen_json_from_ttl
-from ttl2tree import get_tree_json
+from .ttl_generator import convert_csv_to_ttl
+from .ttl_parser import gen_json_from_ttl
+from .ttl2tree import get_tree_json
 import uuid
 import tempfile
-from certify import certify
+from .certify import certify
 
 
 
