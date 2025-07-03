@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-i18n="head">Knowledge Graph Viewer</title>
+
+  <!-- Global fonts & your stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- ========= ALL STYLES from personal-graph.html ========= -->
+  <style>
+    /* ↓ everything here is copied verbatim from personal-graph.html ↓ */
+    :root{--text-color:#000;--text-secondary:#666;--background:#fff;--border-color:rgba(0,0,0,.1);--accent-1:rgba(0,0,0,.05);--accent-2:rgba(0,0,0,.1);--button-text:#fff;--button-bg:#000;--card-bg:#fff;--radius:12px;--font-sans:'Inter','Noto Sans SC',sans-serif;--primary-color:#0078d4;--primary-light:#e6f2fc;--primary-dark:#005a9e;--secondary-color:#f3f9fd;--accent-color:#2ecc71;--hover-bg:#f0f7fc;--active-bg:#e1f1fc;--card-shadow:0 4px 6px rgba(0,0,0,.1);}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{margin:0;font-family:var(--font-sans);background:var(--background);color:var(--text-color);line-height:1.6;min-height:100vh;overflow-x:hidden;background-image:radial-gradient(var(--border-color) 1px,transparent 1px);background-size:20px 20px;display:flex;flex-direction:column;justify-content:flex-start;}
+    h1{font-size:2.5rem;font-weight:800;text-align:center;margin:1rem 0 1.5rem;}
+    header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;position:relative;}
+    .lang-toggle{position:absolute;top:20px;right:20px;background:var(--accent-1);padding:8px 16px;border-radius:20px;border:none;cursor:pointer;font-weight:bold;}
+    select,.button{font-family:var(--font-sans);font-size:.9rem;font-weight:500;padding:.6rem 1.2rem;border-radius:999px;border:1px solid var(--border-color);background:var(--accent-1);cursor:pointer;transition:background-color .3s;}
+    .button:hover,select:hover{background:var(--accent-2);}
+    .logo{position:absolute;top:20px;left:20px;font-weight:700;font-size:1.25rem;color:var(--text-color);text-decoration:none;display:flex;align-items:center;transition:color .3s;}
+    .logo:hover{cursor:pointer;}
+    .logo img{width:90px;height:60px;}
+
+    /* view-toggle */
+    .view-toggle{display:flex;justify-content:center;margin-bottom:1.5rem;}
+    .view-btn{padding:.75rem 1.5rem;margin:0 .5rem;border:none;border-radius:8px;background:var(--accent-1);font-weight:600;font-size:1rem;cursor:pointer;transition:all .3s;}
+    .view-btn.active{background:var(--primary-color);color:#fff;box-shadow:0 2px 4px rgba(0,0,0,.2);}
+    .view-btn:hover:not(.active){background:var(--accent-2);}
+    .view-container{display:none;width:100%;}
+    .view-container.active{display:block;}
+
+    /* graph view */
+    .viewer-box{margin:1rem auto;width:100%;max-width:1600px;height:700px;background:var(--accent-1);border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:600;color:var(--text-color);transition:background-color .3s;position:relative;}
+    svg{width:100%;height:100%;background:#f9f9f9;border-radius:22px;}
+    text.relation{font-size:14px;fill:#555;pointer-events:none;}
+    .tooltip{position:absolute;padding:10px;background:rgba(255,255,255,.9);border:1px solid #ddd;border-radius:5px;pointer-events:none;font-size:12px;box-shadow:0 2px 4px rgba(0,0,0,.1);max-width:250px;opacity:0;transition:opacity .3s;z-index:1000;}
+    .node-highlight{stroke:#ff7700;stroke-width:2px;}
+    .link-visible{pointer-events:none;}
+    .link-hitarea{stroke-opacity:0;stroke-width:20px;cursor:pointer;}
+
+    .search-box{display:flex;justify-content:center;margin:1.5rem auto;max-width:600px;width:100%;}
+    .search-box input{padding:.8rem 1.4rem;font-size:1rem;border:1px solid var(--border-color);border-radius:22px;outline:none;width:70%;background:#f7f7f7;transition:border-color .3s;margin-right:10px;}
+    .search-box input:focus{border-color:var(--button-bg);}
+    .search-box button{padding:.8rem 1.4rem;font-size:1rem;border:1px solid var(--border-color);border-radius:22px;background:var(--accent-2);color:var(--text-color);cursor:pointer;transition:opacity .3s,transform .2s;}
+    .search-box button:hover{opacity:.9;transform:scale(1.05);}
+
+    /* legend */
+    .legend-wrapper{display:flex;justify-content:center;align-items:center;width:100%;padding:10px 0;}
+    .legend-container{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:12px 20px;margin-bottom:10px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.1);max-width:800px;width:100%;}
+    .legend-item{display:flex;align-items:center;margin:0 10px;}
+    .color-circle{width:20px;height:20px;border-radius:50%;margin-right:8px;}
+    .legend-text{font-size:14px;color:#333;}
+    .color-1{background:#a66ef7;}.color-2{background:#bff76e;}.color-3{background:#ea6ef7;}.color-4{background:#7eafec;}
+
+    /* graph-side buttons */
+    .graph-controls{display:flex;justify-content:center;gap:12px;margin:1rem auto;position:relative;z-index:1;}
+    .graph-controls button{padding:.8rem 1.4rem;font-size:1rem;border:1px solid var(--border-color);border-radius:22px;background:var(--accent-2);color:var(--text-color);cursor:pointer;transition:opacity .3s,transform .2s;}
+    .graph-controls button:hover{opacity:.9;transform:scale(1.05);}
+
+    /* tree view */
+    .container{display:flex;height:100vh;max-width:1400px;margin:0 auto;background:#fff;box-shadow:0 0 10px rgba(0,0,0,.1);}
+    .sidebar{width:400px;border-right:1px solid #e0e0e0;display:flex;flex-direction:column;overflow:hidden;}
+    .tree-content{padding:16px;overflow-y:auto;flex:1;}
+    .tree-node{display:flex;align-items:center;padding:6px 8px;cursor:pointer;border-radius:4px;margin:2px 0;}
+    .tree-node:hover{background:#f0f0f0;}
+    .tree-node.active{background:#e6f7ff;border-left:3px solid #1890ff;}
+    .toggle-icon{display:inline-flex;margin-right:8px;transition:transform .2s;}
+    .toggle-icon.expanded svg{transform:rotate(90deg);}
+    .node-label{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+    .node-type{font-size:.75rem;padding:2px 6px;background:#e6f7ff;color:#1890ff;border-radius:10px;margin-left:8px;}
+    .details-panel{flex:1;padding:24px;overflow-y:auto;}
+    .empty-state{display:flex;height:100%;align-items:center;justify-content:center;color:#999;}
+    .viewer-box{position:relative;}
+
+    /* picker */
+   #ttl-picker {
+  position: static;           /* normal flow */
+  margin: 1rem auto;          /* space above/below, centered */
+  display: inline-flex;       /* line-up label + select */
+  align-items: center;
+  background: rgba(255,255,255,0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 0.9rem;
+  margin: 1rem auto;
+  float: none;
+   align-self:center;
+}
+
+/* optional tweaks */
+#ttl-picker label {
+  margin-right: 0.75rem;
+  font-weight: 500;
+}
+
+#ttl-picker select {
+  padding: 0.5rem 0.75rem;
+  border-radius: 22px;
+  border: 1px solid var(--border-color);
+  background: var(--accent-1);
+  cursor: pointer;
+}
+/* put the flex layout on whatever pane is *active* */
+.view-container.active{
+  display:flex;            /* graph OR tree, whichever is shown */
+  flex-direction:column;
+}
+
+    /* responsive tweaks */
+    @media(max-width:1024px){.container{flex-direction:column;height:auto}.tree-panel,.details-panel{width:100%}.tree-panel{height:400px}.details-panel{margin-top:1rem}}
+    @media(max-width:768px){h1{font-size:1.8rem}.view-btn{padding:.6rem 1rem;font-size:.9rem}.viewer-box{height:500px}}
+  </style>
+</head>
+
+<body>
+  <!-- ---------- HEADER ---------- -->
+  <header>
+    <div class="logo" onclick="window.location='/'"><img src="/static/assets/logo2.png" alt="Logo"></div>
+    <div></div>
+    <div class="header-buttons">
+      <button class="button" id="download-button" onclick="downloadGraph()" data-i18n="download" style="margin-right:50px;">点击下载图谱</button>
+      <button class="lang-toggle" onclick="toggleLang()" id="lang-toggle">中</button>
+    </div>
+  </header>
+
+  <h1 data-i18n="title">Knowledge Graph Viewer</h1>
+
+  <!-- ---------- VIEW TOGGLE ---------- -->
+  <div class="view-toggle">
+    <button id="graph-view-btn" class="view-btn active" onclick="switchView('graph')" data-i18n="graph-view">Graph View</button>
+    <button id="tree-view-btn"  class="view-btn" onclick="switchView('tree')"  data-i18n="tree-view">Tree View</button>
+  </div>
+
+  <!-- ---------- GRAPH VIEW ---------- -->
+  <div id="graph-view-container" class="view-container active">
+    <!-- ── put the file-picker here, just above the graph ── -->
+<form id="ttl-picker" action="{{ url_for('load_graph') }}" method="post">
+  <label for="filename">Select graph (.ttl):</label>
+  <select name="filename" id="filename" required>
+    <option value="" disabled {% if not current_file %}selected{% endif %}>
+      -- choose a file --
+    </option>
+    {% for fn in files %}
+      <option value="{{ fn }}"
+              {% if fn == current_file %}selected{% endif %}>
+        {{ fn }}
+      </option>
+    {% endfor %}
+  </select>
+</form>
+    <div class="legend-wrapper">
+      <div class="legend-container">
+        <div class="legend-item"><div class="color-circle color-2"></div><span class="legend-text">LearningPointCollection</span></div>
+        <div class="legend-item"><div class="color-circle color-1"></div><span class="legend-text">LPitem</span></div>
+        <div class="legend-item"><div class="color-circle color-3"></div><span class="legend-text">RIitem</span></div>
+        <div class="legend-item"><div class="color-circle color-4"></div><span class="legend-text">PRitem</span></div>
+      </div>
+    </div>
+
+    <div class="viewer-box" id="graph-viewer"></div>
+    
+    <div class="tooltip"></div>
+
+    <div class="graph-controls">
+      <!-- <button id="save-btn">Save Graph</button>
+      <button id="discard-btn">Discard Graph</button> -->
+    </div>
+
+    <div class="search-box">
+      <input type="text" id="graph-search-input" placeholder="Search in graph view…">
+      <button onclick="handleGraphSearch()" data-i18n="search">Search</button>
+    </div>
+  </div>
+
+  <!-- ---------- TREE VIEW ---------- -->
+  <div id="tree-view-container" class="view-container">
+    <div class="container">
+      <div class="sidebar"><div id="treeView" class="tree-content"></div></div>
+      <div id="details" class="details-panel"><div class="empty-state"><p>Select a node to view details</p></div></div>
+    </div>
+  </div>
+
+  
+  
+
+  <!-- auto-submit when a file is chosen -->
+  <script>
+    document.getElementById('filename')
+            .addEventListener('change', e => { if (e.target.value) document.getElementById('ttl-picker').submit(); });
+  </script>
+
+  <!-- ---------- LIBS ---------- -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  
+
+  <!-- ========= ALL JAVASCRIPT from personal-graph.html ========= -->
+  <script>
+  /* data injected by Flask */
+  const graphs   = {{ json_data  | default({}) | tojson }};
+  const treeData = {{ tree_data | default({}) | tojson }};
+
+  document.addEventListener('DOMContentLoaded', function () {
+    initGraphView();
+    initTreeView();
+  });
+
+  let cur_selection = "graph";
+
+  /* ---------- view toggle ---------- */
+  function switchView(viewType) {
+    document.getElementById('graph-view-btn').classList.toggle('active', viewType === 'graph');
+    document.getElementById('tree-view-btn').classList.toggle('active',  viewType === 'tree');
+    document.getElementById('graph-view-container').classList.toggle('active', viewType === 'graph');
+    document.getElementById('tree-view-container').classList.toggle('active',  viewType === 'tree');
+    initGraphView();
+    initTreeView();
+  }
+
+  /* ==================== GRAPH VIEW CODE ==================== */
+  function initGraphView() {
+    if (!graphs || !graphs[cur_selection]) return;
+    let allNodes = graphs[cur_selection].nodes;
+    let allLinks = graphs[cur_selection].links;
+    showD3Graph(allNodes, allLinks);
+
+    window.handleGraphSearch = function () {
+      const keyword = document.getElementById('graph-search-input').value.trim().toLowerCase();
+      if (!keyword) { showD3Graph(allNodes, allLinks); return; }
+      const matchedNodes = allNodes.filter(n => n.name.toLowerCase().includes(keyword));
+      const matchedIds   = new Set(matchedNodes.map(n => n.id));
+      const matchedLinks = allLinks.filter(l =>
+        matchedIds.has(l.source.id || l.source) || matchedIds.has(l.target.id || l.target));
+      const connectedIds = new Set([
+        ...matchedLinks.map(l => (typeof l.source === 'object' ? l.source.id : l.source)),
+        ...matchedLinks.map(l => (typeof l.target === 'object' ? l.target.id : l.target))
+      ]);
+      const finalNodes = matchedLinks.length ? allNodes.filter(n => connectedIds.has(n.id)) : matchedNodes;
+      showD3Graph(finalNodes, matchedLinks);
+    };
+
+    function downloadGraph() { window.location = 'download-presonal-graph'; }
+
+    /* ----- D3 draw ----- */
+    function showD3Graph(nodes, links) {
+      const container = document.getElementById('graph-viewer');
+      container.innerHTML = '';
+      const width = container.clientWidth, height = container.clientHeight;
+
+      const svg = d3.select("#graph-viewer").append("svg")
+                    .attr("width", width).attr("height", height);
+      const tooltip = d3.select(".tooltip");
+
+      links = links.filter(l => l.source !== l.target);
+      const zoom = d3.zoom().scaleExtent([0.1, 10]).on("zoom", e => g.attr("transform", e.transform));
+      svg.call(zoom);
+
+      const defs = svg.append("defs");
+      defs.append("marker")
+          .attr("id", "arrowhead").attr("viewBox", "0 -5 10 10")
+          .attr("refX", 45).attr("refY", 0).attr("orient", "auto")
+          .attr("markerWidth", 6).attr("markerHeight", 6)
+          .append("path").attr("d", "M 0,-5 L 10,0 L 0,5")
+          .attr("fill", "#999").style("stroke", "none");
+
+      const g = svg.append("g");
+      const simulation = d3.forceSimulation(nodes)
+                           .force("link", d3.forceLink(links).id(d=>d.id).distance(200))
+                           .force("charge", d3.forceManyBody().strength(-600))
+                           .force("center", d3.forceCenter(width/2, height/2))
+                           .force("collision", d3.forceCollide().radius(50));
+
+      const linkVisible = g.append("g")
+                           .attr("stroke", "#aaa")
+                           .selectAll("line")
+                           .data(links).join("line")
+                           .attr("class", "link-visible")
+                           .attr("stroke-width", 1.5)
+                           .attr("marker-end", "url(#arrowhead)");
+
+      const linkHit = g.append("g")
+                       .selectAll("line")
+                       .data(links).join("line")
+                       .attr("class", "link-hitarea")
+                       .on("mouseover", function (e,d){
+                         tooltip.style("opacity",1)
+                                .html(`<strong>Relation:</strong> ${d.relation}<br>
+                                       <strong>Source:</strong> ${d.source.name} (${d.source.type})<br>
+                                       <strong>Target:</strong> ${d.target.name} (${d.target.type})`)
+                                .style("left", (e.pageX+10)+"px")
+                                .style("top",  (e.pageY-10)+"px");
+                         node.classed("node-highlight", n => n.id===d.source.id||n.id===d.target.id);
+                       })
+                       .on("mouseout", ()=>{ tooltip.style("opacity",0); node.classed("node-highlight",false); });
+
+      const nodeColor = d3.scaleOrdinal()
+                          .domain(["LPitem","LearningPointCollection","RIitem","PRitem"])
+                          .range(["#a66ef7","#bff76e","#ea6ef7","#7eafec"]);
+
+      const node = g.append("g")
+                    .selectAll("circle")
+                    .data(nodes).join("circle")
+                    .attr("r", d=>d.type==="LearningPointCollection"?40:33)
+                    .attr("fill", d=>nodeColor(d.type))
+                    .call(d3.drag()
+                           .on("start", dragstarted)
+                           .on("drag", dragged)
+                           .on("end", dragended));
+
+      const label = g.append("g")
+                     .selectAll("text")
+                     .data(nodes).join("text")
+                     .text(d=>d.name).attr("text-anchor","middle")
+                     .attr("dy","2.0em").attr("font-size","14px").attr("font-weight","bold");
+
+      simulation.on("tick", () => {
+        linkVisible.attr("x1", d=>d.source.x).attr("y1", d=>d.source.y)
+                   .attr("x2", d=>d.target.x).attr("y2", d=>d.target.y);
+        linkHit    .attr("x1", d=>d.source.x).attr("y1", d=>d.source.y)
+                   .attr("x2", d=>d.target.x).attr("y2", d=>d.target.y);
+        node       .attr("cx", d=>d.x).attr("cy", d=>d.y);
+        label      .attr("x", d=>d.x).attr("y", d=>d.y-25);
+      });
+
+      function dragstarted(e,d){ if(!e.active) simulation.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; }
+      function dragged(e,d){ d.fx=e.x; d.fy=e.y; }
+      function dragended(e,d){ if(!e.active) simulation.alphaTarget(0); d.fx=null; d.fy=null; }
+    }
+  } /* end initGraphView */
+
+  /* ==================== TREE VIEW CODE (unchanged) ==================== */
+  function initTreeView() {
+    if (!treeData || !treeData[cur_selection]) return;
+    const root = treeData[cur_selection];  // one root per graph
+
+    const treeView = document.getElementById("treeView");
+    treeView.innerHTML = "";
+    let activeNode = null;
+
+    function createNode(node){
+      const li = document.createElement("li");
+      const div= document.createElement("div");
+      div.className="tree-node";
+      div.dataset.nodeData = JSON.stringify(node);
+      const toggle = document.createElement("span");
+      toggle.className="toggle-icon";
+      toggle.innerHTML = node.children && node.children.length ?
+        '<svg width="16" height="16"><polyline points="9 18 15 12 9 6" stroke="currentColor" stroke-width="2" fill="none"/></svg>' :
+        '<svg width="16" height="16"><circle cx="12" cy="12" r="1" stroke="currentColor" stroke-width="2" fill="none"/></svg>';
+      div.appendChild(toggle);
+
+      const label = document.createElement("span");
+      label.className="node-label";
+      label.textContent = node.title || node.id.split("/").pop();
+      div.appendChild(label);
+
+      if (node.type){
+        const badge=document.createElement("span");
+        badge.className="node-type"; badge.textContent=node.type;
+        div.appendChild(badge);
+      }
+      li.appendChild(div);
+
+      div.addEventListener("click", e=>{
+        e.stopPropagation();
+        if (activeNode) activeNode.classList.remove("active");
+        div.classList.add("active"); activeNode=div;
+        showDetails(JSON.parse(div.dataset.nodeData));
+        if (node.children && node.children.length){
+          const childUl = li.querySelector("ul");
+          if (childUl){ const vis = childUl.style.display!=="none"; childUl.style.display=vis?"none":"block";
+            toggle.classList.toggle("expanded", !vis);
+          }
+        }
+      });
+
+      if (node.children && node.children.length){
+        const ul = document.createElement("ul");
+        ul.style.display="none";
+        node.children.forEach(c=>ul.appendChild(createNode(c)));
+        li.appendChild(ul);
+      }
+      return li;
+    }
+
+    function showDetails(node){
+      const det=document.getElementById("details");
+      let html=`<h3>${node.title||node.id.split("/").pop()}</h3>`;
+      for (const [k,v] of Object.entries(node)){
+        if (k==="id"||k==="children") continue;
+        html+=`<div style="margin-bottom:12px"><strong>${k}:</strong><br>${v}</div>`;
+      }
+      det.innerHTML=html;
+    }
+
+    const rootUl=document.createElement("ul");
+    rootUl.appendChild(createNode(root));
+    treeView.appendChild(rootUl);
+    rootUl.querySelector(".tree-node").click();  // default select
+  }
+
+  /* ==================== INTERNATIONALISATION (unchanged) ==================== */
+  const i18n = {
+    "zh-CN": { title:"知识图谱查看器", head:"知识图谱查看器", download:"下载图谱", search:"搜索", "graph-view":"图谱视图", "tree-view":"树形视图" },
+    "en-US": { title:"Knowledge Graph Viewer", head:"Knowledge Graph Viewer", download:"Download Graph", search:"Search", "graph-view":"Graph View", "tree-view":"Tree View" }
+  };
+  let currentLang="en-US";
+  function toggleLang(){ currentLang=currentLang==="zh-CN"?"en-US":"zh-CN"; updateLang(); }
+  function updateLang(){
+    document.getElementById("lang-toggle").textContent=currentLang==="zh-CN"?"EN":"中";
+    document.querySelectorAll("[data-i18n]").forEach(el=>{
+      const key=el.getAttribute("data-i18n"); if (i18n[currentLang][key]){
+        if (el.tagName==="INPUT") el.placeholder=i18n[currentLang][key];
+        else el.textContent=i18n[currentLang][key];
+      }
+    });
+    document.title=i18n[currentLang].head;
+  }
+  updateLang();
+  </script>
+</body>
+</html>

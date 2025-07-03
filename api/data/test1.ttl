@@ -1,0 +1,34 @@
+@prefix e: <http://edukg.org/graphs/89868d10-b24b-420d-bdaf-254b7e36c7ac/entities#> .
+@prefix edukg: <http://edukg.org/ontology#> .
+@prefix r: <http://edukg.org/graphs/89868d10-b24b-420d-bdaf-254b7e36c7ac/relations#> .
+
+e:L01 a edukg:LPitem ;
+    r:hasChild e:L02 ;
+    edukg:contentJson "{\"fullStatement\":\"Covers basic Python syntax, control flow, and foundational programming ideas.\"}" ;
+    edukg:identifier "96f791c7-b569-4aef-a5f0-067432f40140" ;
+    edukg:title "Basic programming concepts" .
+
+e:P01 a edukg:PRitem ;
+    edukg:actionPlan "Access the Learning Points collection and extract all associated topics." ;
+    edukg:actorRole "LMSAssistant" ;
+    edukg:appliesTo e:R01 ;
+    edukg:expectedResult "A comprehensive list of topics covered in the course." ;
+    edukg:identifier "76ef0fc9-7594-4c16-b401-01719e3c3ae5" ;
+    edukg:situation "When starting the course, the system identifies and lists all available topics." ;
+    edukg:task "Retrieve all topics from the Learning Points hierarchy." ;
+    edukg:title "List Topics" .
+
+r:hasChild a edukg:DisciplinaryProperty .
+
+e:L02 a edukg:LPitem ;
+    edukg:contentJson "{\"fullStatement\":\"Able to read and interpret simple Python statements.\"}" ;
+    edukg:hasResource e:R01 ;
+    edukg:identifier "afe096c8-9e0a-438d-b98c-8bf75bea9357" ;
+    edukg:title "Understand basic Python syntax" .
+
+e:R01 a edukg:RIitem ;
+    edukg:identifier "f8e3e81f-6bbf-4234-bfe7-912c4279a3c9" ;
+    edukg:resourceFormat "video" ;
+    edukg:resourceUrl "http://example.org/lecture/intro-python" ;
+    edukg:title "Introduction to Python" .
+

@@ -557,6 +557,33 @@ pre {
     height: 500px;
   }
 }
+
+.graph-controls {
+  display: flex;
+  justify-content: center;  /* center under the graph */
+  gap: 12px;
+  margin: 1rem auto;        /* vertical spacing */
+  position: relative;       /* default flow */
+  z-index: 1;               /* if you need it above the canvas */
+}
+
+/* match the search‐box button style */
+.graph-controls button {
+  padding: 0.8rem 1.4rem;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 22px;
+  background-color: var(--accent-2);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.graph-controls button:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
   </style>
 </head>
 <body>
@@ -610,10 +637,18 @@ pre {
     <div class="viewer-box" id="graph-viewer"></div>
     <div class="tooltip"></div>
 
+    <div class="graph-controls">
+      <button id="save-btn">Save Graph</button>
+      <button id="discard-btn">Discard Graph</button>
+    </div>
+
     <div class="search-box" id="graph-search-box">
       <input type="text" id="graph-search-input" placeholder="Search in graph view...">
       <button onclick="handleGraphSearch()" data-i18n="search">Search</button>
     </div>
+    
+  
+
   </div>
 
   <!-- Tree View Components -->
@@ -661,6 +696,42 @@ function switchView(viewType) {
   initGraphView();
   initTreeView();
 }
+
+ document.getElementById('save-btn').addEventListener('click', async () => {
+    const name = prompt('Enter a name for your graph (without “.ttl”):');
+    if (!name) return;
+
+    let res, data;
+    try {
+      res = await fetch('/save-ttl', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filename: name })
+      });
+      data = await res.json();
+    } catch (err) {
+      return alert('Network error: ' + err.message);
+    }
+
+    if (res.ok && data.saved) {
+      alert(`Graph saved as “${data.filename}”`);
+      
+    } else if (res.status === 409) {
+      // conflict: file exists
+      alert(data.error || 'A file with that name already exists. Please choose another.');
+    } else {
+      // some other error
+      alert('Error saving graph: ' + (data.error || res.statusText));
+    }
+  });
+
+document.getElementById('discard-btn').addEventListener('click', () => {
+  fetch('/discard-ttl', { method: 'POST' })
+    .then(r => r.json())
+    .then(_ => window.location = '/');
+});
+
+
 
 // document.getElementById('graph-selector').addEventListener('change', function() {
 //   cur_selection = this.value;
