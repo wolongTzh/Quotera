@@ -260,6 +260,24 @@ def load_graph():
         tree_data=treeData
     )
 
+@app.route('/download-graph', methods=['GET'])
+def download_graph():
+    # ?file=foo.ttl
+    filename = request.args.get('file', '').strip()
+    if not filename:
+        return "No file specified", 400
+
+    ttl_path = os.path.join(DATA_DIR, filename)
+    if not os.path.exists(ttl_path):
+        return f"{filename} not found", 404
+
+    return send_file(
+        ttl_path,
+        as_attachment=True,
+        download_name=filename,
+        mimetype='text/ttl'
+    )
+
 
 
 if __name__ == '__main__':

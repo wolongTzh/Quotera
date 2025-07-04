@@ -119,6 +119,85 @@
 </head>
 
 <body>
+
+  <!-- ↓ Demo verification modal ↓ -->
+  <div id="verify-modal" style="
+      display: none;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4); backdrop-filter: blur(2px);
+      align-items: center; justify-content: center; z-index: 1000;
+    ">
+    <div style="
+        background: rgba(255,255,255,0.95);
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        max-width: 400px;
+        width: 90%;
+        font-family: var(--font-sans);
+      ">
+      <h2 style="margin-bottom: 1rem; font-size: 1.25rem; text-align: center;">
+        请先验证后下载
+      </h2>
+      <form id="verify-form" style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <input type="text" id="v-name" placeholder="姓名" required
+               style="padding: 0.75rem; border:1px solid var(--border-color); border-radius:8px;">
+        <input type="tel" id="v-phone" placeholder="手机号" required
+               style="padding: 0.75rem; border:1px solid var(--border-color); border-radius:8px;">
+        <input type="text" id="v-org" placeholder="组织" required
+               style="padding: 0.75rem; border:1px solid var(--border-color); border-radius:8px;">
+        <div style="display:flex; justify-content: space-between; margin-top:1rem;">
+          <button type="button" id="verify-cancel" style="
+              padding: 0.6rem 1.2rem; border:none; border-radius:8px;
+              background: var(--accent-2); cursor:pointer;
+            ">
+            取消
+          </button>
+          <button type="submit" style="
+              padding: 0.6rem 1.2rem; border:none; border-radius:8px;
+              background: var(--primary-color); color:#fff; cursor:pointer;
+            ">
+            确定
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // grab elements
+    const modal = document.getElementById('verify-modal');
+    const form  = document.getElementById('verify-form');
+    const cancelBtn = document.getElementById('verify-cancel');
+
+    // override downloadGraph to pop the modal first
+    function downloadGraph() {
+      modal.style.display = 'flex';
+    }
+
+    cancelBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      // (you could read the fields here if you like:)
+      // const name = document.getElementById('v-name').value;
+      // const phone = document.getElementById('v-phone').value;
+      // const org = document.getElementById('v-org').value;
+      modal.style.display = 'none';
+      // now actually trigger the download
+      const sel = document.getElementById('filename');
+      const file = sel && sel.value;
+      if (!file) {
+        return alert('请先选择要下载的图谱。');
+      }
+      window.location.href = '/download-graph?file=' + encodeURIComponent(file);
+    });
+  </script>
+
+
+
   <!-- ---------- HEADER ---------- -->
   <header>
     <div class="logo" onclick="window.location='/'"><img src="/static/assets/logo2.png" alt="Logo"></div>
@@ -244,7 +323,7 @@
       showD3Graph(finalNodes, matchedLinks);
     };
 
-    function downloadGraph() { window.location = 'download-presonal-graph'; }
+
 
     /* ----- D3 draw ----- */
     function showD3Graph(nodes, links) {
