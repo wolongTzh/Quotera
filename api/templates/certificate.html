@@ -387,11 +387,14 @@ input[type="file"].hidden {
         validateBtn.disabled = true;
 
         try {
-            // Read file content
-            const fileContent = await readFileContent(currentFile);
-            
-            // Validate TTL file
-            const result = await validateTtlFile(fileContent);
+            const formData = new FormData();
+            formData.append('file', currentFile);
+
+            const response = await fetch('/api/validate-ttl', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
             
             // Display validation result
             showValidationResult(result);
@@ -399,6 +402,8 @@ input[type="file"].hidden {
             // Show certificate if valid
             if (result.valid) {
                 showCertificate();
+            } else {
+                certificateContainer.classList.add('hidden');
             }
         } catch (error) {
             console.error('Error processing file:', error);
@@ -411,65 +416,6 @@ input[type="file"].hidden {
             validateBtn.textContent = 'Validate Knowledge Graph';
             validateBtn.disabled = false;
         }
-    }
-
-    // Read file content
-    function readFileContent(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = (e) => resolve(e.target.result);
-            reader.onerror = (e) => reject(e);
-            reader.readAsText(file);
-        });
-    }
-
-    // Validate TTL file
-    async function validateTtlFile(fileContent) {
-        // Simulate server processing time
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        // Simple validation - check for basic TTL syntax elements
-        // In a real application, you would use a proper RDF parser
-        
-        // Check if file is empty
-        if (!fileContent.trim()) {
-            return {
-                valid: false,
-                message: "File content is empty. Please upload a valid TTL file."
-            };
-        }
-        
-        // Check for basic TTL syntax elements
-        const hasPrefix = fileContent.includes('@prefix') || fileContent.includes('@base');
-        const hasTriples = /\s+\w+\s+\w+\s*[.;]/.test(fileContent);
-        const hasValidSyntax = !fileContent.includes('ERROR') && !fileContent.includes('INVALID');
-        
-        if (!hasPrefix) {
-            return {
-                valid: false,
-                message: "Missing valid prefix declaration (@prefix). Please ensure your TTL file contains necessary namespace declarations."
-            };
-        }
-        
-        if (!hasTriples) {
-            return {
-                valid: false,
-                message: "No valid triples (subject-predicate-object) structure detected. Please check your knowledge graph format."
-            };
-        }
-        
-        if (!hasValidSyntax) {
-            return {
-                valid: false,
-                message: "File syntax error. Please ensure your TTL file complies with Turtle syntax specifications."
-            };
-        }
-        
-        // If all checks pass
-        return {
-            valid: true,
-            message: "Congratulations! Your knowledge graph meets standard specifications. Certificate has been generated and is ready for download."
-        };
     }
 
     // Show validation result

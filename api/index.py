@@ -4,6 +4,7 @@ import io, os
 from .ttl_generator import convert_csv_to_ttl
 from .ttl_parser import gen_json_from_ttl
 from .ttl2tree import get_tree_json
+from .validator import validate_turtle
 import uuid
 import tempfile
 
@@ -11,6 +12,22 @@ import tempfile
 
 app = Flask(__name__)
 app.secret_key = 'edukg.org'
+app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
+
+
+@app.route('/api/validate-ttl', methods=['POST'])
+def validate_ttl():
+    uploaded_file = request.files.get('file')
+    if uploaded_file is None:
+        return jsonify({
+            'valid': False,
+            'stage': 'input',
+            'message': 'No TTL file uploaded.',
+            'triple_count': 0,
+        }), 400
+
+    result = validate_turtle(uploaded_file.read())
+    return jsonify(result), 200 if result['valid'] else 422
 
 @app.route('/download-presonal-graph')
 def download_presonal_graph():
